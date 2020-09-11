@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<LanguageData>
+	<SideBarInfo>Unlock achievements and redeem Storyteller points on various events.</SideBarInfo>
+	
+	<StorytellerPoints>Storyteller Points</StorytellerPoints>
+	
+	<PointsRedeem>Redeem points</PointsRedeem>
+	<PointsAvailable>Available: {0}</PointsAvailable>
+	<PointsEarned>Total earnt: {0}</PointsEarned>
+	
+	<AchievementsUnlocked>Achievements Unlocked: {0}</AchievementsUnlocked>
+	<AchievementUnlocked>Achievement Unlocked!</AchievementUnlocked>
+</LanguageData>

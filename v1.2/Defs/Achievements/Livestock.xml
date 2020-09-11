@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<AchievementDef>
+		<defName>threeLittlePigs</defName>
+		<label>Three Little Pigs</label>
+		<description>Have 3 Pigs and 1 Timberwolf</description>
+		
+		<texPath>Achievements/ThreeLittlePigs</texPath>
+		<points>0</points>
+	</AchievementDef>
+	
+	<AchievementDef>
+		<defName>lookAtAllThoseChickens</defName>
+		<label>Look At All Those Chickens</label>
+		<description>Have 20 Geese</description>
+		
+		<texPath>Achievements/LookAtAllThoseChickens</texPath>
+		<points>0</points>
+	</AchievementDef>
+	
+	<AchievementDef>
+		<defName>sustainableFuelSource</defName>
+		<label>Sustainable Fuel Source</label>
+		<description>Have 8 Boomalopes</description>
+		
+		<texPath>Achievements/SustainableFuelSource</texPath>
+		<points>0</points>
+	</AchievementDef>
+	
+	<AchievementDef>
+		<defName>muffaloRancher</defName>
+		<label>Muffalo Rancher</label>
+		<description>Have 12 Muffalos</description>
+		
+		<texPath>Achievements/MuffaloRancher</texPath>
+		<points>0</points>
+	</AchievementDef>
+	
+	<AchievementDef>
+		<defName>arkHalfFull</defName>
+		<label>Ark Half Full</label>
+		<description>Have 1 of every vanilla animal at the same time.</description>
+		
+		<texPath>Achievements/ArkHalfFull</texPath>
+		<points>0</points>
+	</AchievementDef>
+	
+	<AchievementDef>
+		<defName>gentleGiant</defName>
+		<label>Gentle Giant</label>
+		<description>Tame a Thrumbo</description>
+		
+		<texPath>Achievements/GentleGiant</texPath>
+		<points>0</points>
+	</AchievementDef>
+</Defs>

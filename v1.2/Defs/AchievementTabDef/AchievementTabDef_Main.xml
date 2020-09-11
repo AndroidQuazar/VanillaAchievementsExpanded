@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<AchievementsExpanded.AchievementTabDef>
+		<defName>Main</defName>
+		<label>Main</label>
+	</AchievementsExpanded.AchievementTabDef>
+	
+	<AchievementsExpanded.AchievementTabDef>
+		<defName>Test1</defName>
+		<label>Test2</label>
+	</AchievementsExpanded.AchievementTabDef>
+	
+	<AchievementsExpanded.AchievementTabDef>
+		<defName>Test3</defName>
+		<label>Test3</label>
+	</AchievementsExpanded.AchievementTabDef>
+</Defs>

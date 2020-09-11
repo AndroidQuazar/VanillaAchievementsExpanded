@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<AchievementDef>
+		<defName>iWillSurvive</defName>
+		<label>I Will Survive</label>
+		<description>Have 7 colonists</description>
+		
+		<texPath>Achievements/IWillSurvive</texPath>
+		<points>5</points>
+	</AchievementDef>
+	
+	<AchievementDef>
+		<defName>imStillStanding</defName>
+		<label>I'm Still Standing</label>
+		<description>Have 12 colonists</description>
+		
+		<texPath>Achievements/ImStillStanding</texPath>
+		<points>10</points>
+	</AchievementDef>
+	
+	<AchievementDef>
+		<defName>imASurvivor</defName>
+		<label>I'm a Survivor</label>
+		<description>Have 18 colonists</description>
+		
+		<texPath>Achievements/ImASurvivor</texPath>
+		<points>15</points>
+	</AchievementDef>
+	
+	<AchievementDef>
+		<defName>aintNoStoppingUsNow</defName>
+		<label>Ain't no Stopping us Now</label>
+		<description>Have 33 colonists</description>
+		
+		<texPath>Achievements/AintNoStoppingUsNow</texPath>
+		<points>25</points>
+	</AchievementDef>
+</Defs>
