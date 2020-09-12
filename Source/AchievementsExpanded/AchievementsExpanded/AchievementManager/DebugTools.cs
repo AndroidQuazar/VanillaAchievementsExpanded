@@ -14,7 +14,7 @@ namespace AchievementsExpanded
         private static void UnlockAchievement()
         {
             List<DebugMenuOption> list = new List<DebugMenuOption>();
-            var lockedAchievements = Current.Game.GetComponent<AchievementPointManager>().activeAchievements.Where(c => !c.unlocked);
+            var lockedAchievements = AchievementPointManager.AchievementList.Where(c => !c.unlocked);
             if (!lockedAchievements.EnumerableNullOrEmpty())
             {
                 foreach (AchievementCard card in lockedAchievements.OrderBy(a => a.def.defName))
@@ -35,7 +35,7 @@ namespace AchievementsExpanded
         [DebugAction(VAEDebugCategory, null)]
         private static void UnlockAllAchievements()
         {
-            foreach (AchievementCard card in Current.Game.GetComponent<AchievementPointManager>().activeAchievements)
+            foreach (AchievementCard card in AchievementPointManager.AchievementList)
             {
                 card.UnlockCard();
             }
@@ -44,12 +44,18 @@ namespace AchievementsExpanded
         [DebugAction(VAEDebugCategory, null)]
         private static void LockAllAchievements()
         {
-            foreach (AchievementCard card in Current.Game.GetComponent<AchievementPointManager>().activeAchievements)
+            foreach (AchievementCard card in AchievementPointManager.AchievementList)
             {
                 card.LockCard();
             }
 
             Current.Game.GetComponent<AchievementPointManager>().ResetPoints();
+        }
+
+        [DebugAction(VAEDebugCategory, null)]
+        private static void RegenerateAllAchievements()
+        {
+            Current.Game.GetComponent<AchievementPointManager>().HardReset();
         }
     }
 }

@@ -58,22 +58,42 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AchievementCard.cs" />
-    <Compile Include="AchievementDef.cs" />
-    <Compile Include="AchievementGenerator.cs" />
-    <Compile Include="AchievementNotification.cs" />
-    <Compile Include="AchievementPointManager.cs" />
-    <Compile Include="AchievementTabDef.cs" />
-    <Compile Include="AchievementTabDefOf.cs" />
-    <Compile Include="AchievementTex.cs" />
-    <Compile Include="DebugTools.cs" />
-    <Compile Include="MainTabWindow_Achievements.cs" />
-    <Compile Include="MovingWindow.cs" />
+    <Compile Include="AchievementCard\AchievementCard.cs" />
+    <Compile Include="AchievementCard\AchievementDef.cs" />
+    <Compile Include="AchievementManager\AchievementGenerator.cs" />
+    <Compile Include="AchievementManager\AchievementHarmony.cs" />
+    <Compile Include="Tracker\ItemCraftTracker.cs" />
+    <Compile Include="Tracker\QuestTracker.cs" />
+    <Compile Include="Tracker\WealthTracker.cs" />
+    <Compile Include="Tracker\ItemTracker.cs" />
+    <Compile Include="AchievementManager\VAESettings.cs" />
+    <Compile Include="Tracker\AnimalBondedTracker.cs" />
+    <Compile Include="Tracker\DevModeTracker.cs" />
+    <Compile Include="Tracker\IncidentSeasonalTracker.cs" />
+    <Compile Include="Tracker\MentalBreakTracker.cs" />
+    <Compile Include="Tracker\KillTracker.cs" />
+    <Compile Include="Tracker\MultiKillTracker.cs" />
+    <Compile Include="Tracker\Tracker2.cs" />
+    <Compile Include="Tracker\Tracker3.cs" />
+    <Compile Include="UI\AchievementNotification.cs" />
+    <Compile Include="AchievementManager\AchievementPointManager.cs" />
+    <Compile Include="AchievementCard\AchievementTabDef.cs" />
+    <Compile Include="AchievementCard\AchievementTabDefOf.cs" />
+    <Compile Include="UI\AchievementTex.cs" />
+    <Compile Include="AchievementManager\DebugTools.cs" />
+    <Compile Include="Tracker\IncidentTracker.cs" />
+    <Compile Include="UI\MainTabWindow_Achievements.cs" />
+    <Compile Include="UI\MovingWindow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StringExtension.cs" />
+    <Compile Include="Tracker\RaceDefTracker.cs" />
+    <Compile Include="AchievementManager\UtilityMethods.cs" />
+    <Compile Include="Tracker\TimeTracker.cs" />
+    <Compile Include="Tracker\Tracker.cs" />
+    <Compile Include="Tracker\TrackerBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

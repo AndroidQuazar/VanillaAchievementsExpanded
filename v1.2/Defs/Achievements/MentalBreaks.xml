@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<AchievementsExpanded.AchievementDef>
+		<defName>aFormalComplaint</defName>
+		<label>A Formal Complaint</label>
+		<description>Have a pawn go berserk</description>
+		
+		<tracker Class="AchievementsExpanded.MentalBreakTracker">
+			<def>Berserk</def>
+			<count>1</count>
+		</tracker>
+		
+		<texPath>Achievements/AFormalComplaint</texPath>
+		<points>0</points>
+	</AchievementsExpanded.AchievementDef>
+</Defs>

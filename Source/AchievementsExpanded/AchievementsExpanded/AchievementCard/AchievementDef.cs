@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Verse;
 using RimWorld;
 using UnityEngine;
 
-namespace Verse
+namespace AchievementsExpanded
 {
     public class AchievementDef : Def
     {
         public string texPath;
+        public string bgtexPath;
+
         public int points;
-        public AchievementsExpanded.AchievementTabDef tab;
-        //Temp
-        public string tracker;
+        public TrackerBase tracker;
+
+        public AchievementTabDef tab;
     }
 }

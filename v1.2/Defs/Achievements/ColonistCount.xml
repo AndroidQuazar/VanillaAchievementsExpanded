@@ -1,38 +1,94 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-	<AchievementDef>
+	<AchievementsExpanded.AchievementDef>
 		<defName>iWillSurvive</defName>
 		<label>I Will Survive</label>
 		<description>Have 7 colonists</description>
 		
+		<tracker Class="AchievementsExpanded.RaceDefTracker">
+			<pawnKinds>
+				<li>
+					<key>Colonist</key>
+					<value>7</value>
+				</li>
+				<li>
+					<key>Tribesperson</key>
+					<value>7</value>
+				</li>
+			</pawnKinds>
+			<requireAll>false</requireAll>
+		</tracker>
+		
 		<texPath>Achievements/IWillSurvive</texPath>
 		<points>5</points>
-	</AchievementDef>
+	</AchievementsExpanded.AchievementDef>
 	
-	<AchievementDef>
+	<AchievementsExpanded.AchievementDef>
 		<defName>imStillStanding</defName>
 		<label>I'm Still Standing</label>
 		<description>Have 12 colonists</description>
 		
+		<tracker Class="AchievementsExpanded.RaceDefTracker">
+			<pawnKinds>
+				<li>
+					<key>Colonist</key>
+					<value>12</value>
+				</li>
+				<li>
+					<key>Tribesperson</key>
+					<value>12</value>
+				</li>
+			</pawnKinds>
+			<requireAll>false</requireAll>
+		</tracker>
+		
 		<texPath>Achievements/ImStillStanding</texPath>
 		<points>10</points>
-	</AchievementDef>
+	</AchievementsExpanded.AchievementDef>
 	
-	<AchievementDef>
+	<AchievementsExpanded.AchievementDef>
 		<defName>imASurvivor</defName>
 		<label>I'm a Survivor</label>
 		<description>Have 18 colonists</description>
 		
+		<tracker Class="AchievementsExpanded.RaceDefTracker">
+			<pawnKinds>
+				<li>
+					<key>Colonist</key>
+					<value>18</value>
+				</li>
+				<li>
+					<key>Tribesperson</key>
+					<value>18</value>
+				</li>
+			</pawnKinds>
+			<requireAll>false</requireAll>
+		</tracker>
+		
 		<texPath>Achievements/ImASurvivor</texPath>
 		<points>15</points>
-	</AchievementDef>
+	</AchievementsExpanded.AchievementDef>
 	
-	<AchievementDef>
+	<AchievementsExpanded.AchievementDef>
 		<defName>aintNoStoppingUsNow</defName>
 		<label>Ain't no Stopping us Now</label>
 		<description>Have 33 colonists</description>
 		
+		<tracker Class="AchievementsExpanded.RaceDefTracker">
+			<pawnKinds>
+				<li>
+					<key>Colonist</key>
+					<value>33</value>
+				</li>
+				<li>
+					<key>Tribesperson</key>
+					<value>33</value>
+				</li>
+			</pawnKinds>
+			<requireAll>false</requireAll>
+		</tracker>
+		
 		<texPath>Achievements/AintNoStoppingUsNow</texPath>
 		<points>25</points>
-	</AchievementDef>
+	</AchievementsExpanded.AchievementDef>
 </Defs>

@@ -1,56 +1,115 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-	<AchievementDef>
+	<AchievementsExpanded.AchievementDef>
 		<defName>threeLittlePigs</defName>
 		<label>Three Little Pigs</label>
 		<description>Have 3 Pigs and 1 Timberwolf</description>
 		
+		<tracker Class="AchievementsExpanded.RaceDefTracker">
+			<pawnKinds>
+				<li>
+					<key>Pig</key>
+					<value>3</value>
+				</li>
+				<li>
+					<key>Wolf_Timber</key>
+					<value>1</value>
+				</li>
+			</pawnKinds>
+		</tracker>
+		
 		<texPath>Achievements/ThreeLittlePigs</texPath>
 		<points>0</points>
-	</AchievementDef>
+	</AchievementsExpanded.AchievementDef>
 	
-	<AchievementDef>
+	<AchievementsExpanded.AchievementDef>
 		<defName>lookAtAllThoseChickens</defName>
 		<label>Look At All Those Chickens</label>
 		<description>Have 20 Geese</description>
 		
+		<tracker Class="AchievementsExpanded.RaceDefTracker">
+			<pawnKinds>
+				<li>
+					<key>Goose</key>
+					<value>20</value>
+				</li>
+			</pawnKinds>
+		</tracker>
+		
 		<texPath>Achievements/LookAtAllThoseChickens</texPath>
 		<points>0</points>
-	</AchievementDef>
+	</AchievementsExpanded.AchievementDef>
 	
-	<AchievementDef>
+	<AchievementsExpanded.AchievementDef>
 		<defName>sustainableFuelSource</defName>
 		<label>Sustainable Fuel Source</label>
 		<description>Have 8 Boomalopes</description>
 		
+		<tracker Class="AchievementsExpanded.RaceDefTracker">
+			<pawnKinds>
+				<li>
+					<key>Boomalope</key>
+					<value>8</value>
+				</li>
+			</pawnKinds>
+		</tracker>
+		
 		<texPath>Achievements/SustainableFuelSource</texPath>
 		<points>0</points>
-	</AchievementDef>
+	</AchievementsExpanded.AchievementDef>
 	
-	<AchievementDef>
+	<AchievementsExpanded.AchievementDef>
 		<defName>muffaloRancher</defName>
 		<label>Muffalo Rancher</label>
 		<description>Have 12 Muffalos</description>
 		
+		<tracker Class="AchievementsExpanded.RaceDefTracker">
+			<pawnKinds>
+				<li>
+					<key>Muffalo</key>
+					<value>12</value>
+				</li>
+			</pawnKinds>
+		</tracker>
+		
 		<texPath>Achievements/MuffaloRancher</texPath>
 		<points>0</points>
-	</AchievementDef>
+	</AchievementsExpanded.AchievementDef>
 	
-	<AchievementDef>
+	<!-- Incomplete -->
+	<AchievementsExpanded.AchievementDef>
 		<defName>arkHalfFull</defName>
 		<label>Ark Half Full</label>
 		<description>Have 1 of every vanilla animal at the same time.</description>
 		
+		<tracker Class="AchievementsExpanded.RaceDefTracker">
+			<pawnKinds>
+				<li>
+					<key>Muffalo</key>
+					<value>9999</value>
+				</li>
+			</pawnKinds>
+		</tracker>
+		
 		<texPath>Achievements/ArkHalfFull</texPath>
 		<points>0</points>
-	</AchievementDef>
+	</AchievementsExpanded.AchievementDef>
 	
-	<AchievementDef>
+	<AchievementsExpanded.AchievementDef>
 		<defName>gentleGiant</defName>
 		<label>Gentle Giant</label>
 		<description>Tame a Thrumbo</description>
 		
+		<tracker Class="AchievementsExpanded.RaceDefTracker">
+			<pawnKinds>
+				<li>
+					<key>Thrumbo</key>
+					<value>1</value>
+				</li>
+			</pawnKinds>
+		</tracker>
+		
 		<texPath>Achievements/GentleGiant</texPath>
 		<points>0</points>
-	</AchievementDef>
+	</AchievementsExpanded.AchievementDef>
 </Defs>

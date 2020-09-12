@@ -117,7 +117,7 @@ namespace AchievementsExpanded
             rect.y += 40;
 
             Text.Font = GameFont.Tiny;
-            var unlockCount = $"{APM.activeAchievements.Where(a => a.unlocked).Count()} / {APM.activeAchievements.Count}";
+            var unlockCount = $"{APM.achievementList.Where(a => a.unlocked).Count()} / {APM.achievementList.Count}";
             Widgets.Label(rect, "AchievementsUnlocked".Translate(unlockCount));
 
             Text.Font = font;
@@ -128,12 +128,12 @@ namespace AchievementsExpanded
             float iconWidth = (rect.width / CardsPerRow) - SpaceBetweenCards - (SpaceBetweenCards * 2 / CardsPerRow);
             float iconHeight = iconWidth + iconWidth * 0.55f;
 
-            var achievementList = APM.activeAchievements.Where(a => a.tab == CurTab && (string.IsNullOrEmpty(searchText) || a.def.label.Contains(searchText, StringComparison.OrdinalIgnoreCase))).ToList();
+            var achievementList = APM.achievementList.Where(a => a.tab == CurTab && (string.IsNullOrEmpty(searchText) || a.def.label.Contains(searchText, StringComparison.OrdinalIgnoreCase))).ToList();
 
             Rect windowRect = new Rect(rect.x, rect.y + 60, rect.width, rect.height);
 
             Rect cardRect = new Rect(windowRect.x, windowRect.y, iconWidth, iconHeight);
-            var height = rect.y + Mathf.CeilToInt(achievementList.Count / CardsPerRow) * (iconHeight + SpaceBetweenCards) + (iconHeight + SpaceBetweenCards);
+            var height = rect.y + Mathf.CeilToInt(achievementList.Count / CardsPerRow) * (iconHeight + SpaceBetweenCards) + ((achievementList.Count % CardsPerRow == 0) ? 0 : (iconHeight + SpaceBetweenCards));
 
             Rect viewRect = new Rect(windowRect.x, windowRect.y, windowRect.width - SpaceBetweenCards * 2, height);
             
@@ -158,11 +158,11 @@ namespace AchievementsExpanded
             Rect iconRect = new Rect(rect.x, rect.y, rect.width, rect.width).ContractedBy(SpaceBetweenCards);
 
             Widgets.DrawMenuSection(rect);
-            GUI.DrawTexture(iconRect, AchievementTex.CardBG);
+            GUI.DrawTexture(iconRect, card.AchievementBGIcon);
 
             Rect innerIconRect = iconRect.ContractedBy(3);
             var color = GUI.color;
-            if(!card.unlocked)
+            if(!card.unlocked && !card.BadTex)
                 GUI.color = Color.black;
             GUI.DrawTexture(innerIconRect, card.AchievementIcon);
             GUI.color = color;
@@ -214,5 +214,6 @@ namespace AchievementsExpanded
         private static string searchText;
 
         public static Color LightGray = new Color(0.85f, 0.85f, 0.85f, 1f);
+        public static Color MediumGray = new Color(0.75f, 0.75f, 0.75f, 1f);
     }
 }

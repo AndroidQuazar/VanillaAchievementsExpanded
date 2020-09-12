@@ -1,0 +1,45 @@
+﻿using System;
+using System.Linq;
+using System.Reflection;
+using HarmonyLib;
+using Verse;
+using RimWorld;
+
+namespace AchievementsExpanded
+{
+    public class WealthTracker : TrackerBase
+    {
+        public override string Key => "WealthTracker";
+
+        public override Func<bool> AttachToLongTick => () => { return Trigger();  };
+
+        public WealthTracker()
+        {
+        }
+
+        public WealthTracker(WealthTracker reference) : base(reference)
+        {
+            count = reference.count;
+        }
+
+        public override void ExposeData()
+        {
+            base.ExposeData();
+            Scribe_Values.Look(ref count, "count");
+        }
+
+        public override bool Trigger()
+        {
+            foreach (Map map in Find.Maps.Where(m => m.IsPlayerHome))
+            {
+                if (map.wealthWatcher.WealthTotal >= count)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public int count;
+    }
+}

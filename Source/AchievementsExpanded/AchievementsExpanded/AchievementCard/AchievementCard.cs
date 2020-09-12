@@ -11,24 +11,54 @@ namespace AchievementsExpanded
     {
         public AchievementDef def;
         public AchievementTabDef tab;
+        public TrackerBase tracker;
 
-        private string texPath;
         public bool unlocked;
 
         public int uniqueHash = -1;
         public string dateUnlocked = "Locked";
 
+        public bool BadTex { get; set; }
         private Texture2D achievementIcon;
         public Texture2D AchievementIcon
         {
             get
             {
-                if(achievementIcon is null)
+                if (achievementIcon is null)
                 {
-                    achievementIcon = ContentFinder<Texture2D>.Get(texPath);
+                    achievementIcon = ContentFinder<Texture2D>.Get(def.texPath, false);
+                    if (achievementIcon is null)
+                    { 
+                        achievementIcon = BaseContent.BadTex;
+                        BadTex = true;
+                    }
                 }
                 return achievementIcon;
             }
+        }
+
+        private Texture2D achievementBGIcon;
+        public Texture2D AchievementBGIcon
+        {
+            get
+            {
+                if(achievementBGIcon is null)
+                {
+                    if(string.IsNullOrEmpty(def.bgtexPath))
+                    {
+                        achievementBGIcon = AchievementTex.CardBG;
+                    }
+                    else
+                    {
+                        achievementBGIcon = ContentFinder<Texture2D>.Get(def.bgtexPath);
+                    }
+                }
+                return achievementBGIcon;
+            }
+        }
+
+        public AchievementCard()
+        {
         }
 
         public AchievementCard(AchievementDef def, bool preUnlocked = false)
@@ -39,10 +69,9 @@ namespace AchievementsExpanded
             {
                 tab = AchievementTabDefOf.Main;
             }
-            texPath = def.texPath;
             uniqueHash = def.defName.GetHashCode();
             unlocked = preUnlocked;
-            //ADD TRACKER REFERENCE
+            tracker = (TrackerBase)Activator.CreateInstance(def.tracker.GetType(), new object[] { def.tracker });
         }
 
         public string GetUniqueLoadID()
@@ -75,7 +104,8 @@ namespace AchievementsExpanded
             Scribe_Defs.Look(ref def, "def");
             Scribe_Defs.Look(ref tab, "tab");
 
-            Scribe_Values.Look(ref texPath, "texPath");
+            Scribe_Deep.Look(ref tracker, "tracker");
+
             Scribe_Values.Look(ref unlocked, "unlocked", false);
             Scribe_Values.Look(ref dateUnlocked, "dateUnlocked", "Locked");
 
