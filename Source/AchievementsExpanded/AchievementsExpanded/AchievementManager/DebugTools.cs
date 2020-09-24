@@ -21,7 +21,51 @@ namespace AchievementsExpanded
 			    {
 				    list.Add(new DebugMenuOption(card.def.defName, DebugMenuOptionMode.Action, delegate()
 				    {
-                        card.UnlockCard();
+                        card.UnlockCard(true);
+				    }));
+			    }
+			    Find.WindowStack.Add(new Dialog_DebugOptionListLister(list));
+            }
+            else
+            {
+                Messages.Message("No Achievements To Unlock", MessageTypeDefOf.RejectInput);
+            }
+        }
+
+        [DebugAction(VAEDebugCategory, null)]
+        private static void LockAchievement()
+        {
+            List<DebugMenuOption> list = new List<DebugMenuOption>();
+            var lockedAchievements = AchievementPointManager.AchievementList.Where(c => !c.unlocked);
+            if (!lockedAchievements.EnumerableNullOrEmpty())
+            {
+                foreach (AchievementCard card in lockedAchievements.OrderBy(a => a.def.defName))
+			    {
+				    list.Add(new DebugMenuOption(card.def.defName, DebugMenuOptionMode.Action, delegate()
+				    {
+                        card.LockCard();
+				    }));
+			    }
+			    Find.WindowStack.Add(new Dialog_DebugOptionListLister(list));
+            }
+            else
+            {
+                Messages.Message("No Achievements To Lock", MessageTypeDefOf.RejectInput);
+            }
+        }
+
+        [DebugAction(VAEDebugCategory, null)]
+        private static void RegenerateAchievement()
+        {
+            List<DebugMenuOption> list = new List<DebugMenuOption>();
+            var lockedAchievements = AchievementPointManager.AchievementList;
+            if (!lockedAchievements.EnumerableNullOrEmpty())
+            {
+                foreach (AchievementCard card in lockedAchievements.OrderBy(a => a.def.defName))
+			    {
+				    list.Add(new DebugMenuOption(card.def.defName, DebugMenuOptionMode.Action, delegate()
+				    {
+                        Current.Game?.GetComponent<AchievementPointManager>().ResetAchievement(card);
 				    }));
 			    }
 			    Find.WindowStack.Add(new Dialog_DebugOptionListLister(list));
@@ -37,7 +81,7 @@ namespace AchievementsExpanded
         {
             foreach (AchievementCard card in AchievementPointManager.AchievementList)
             {
-                card.UnlockCard();
+                card.UnlockCard(true);
             }
         }
 

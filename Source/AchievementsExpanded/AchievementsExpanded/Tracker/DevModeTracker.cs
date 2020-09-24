@@ -14,7 +14,7 @@ namespace AchievementsExpanded
 
         public override MethodInfo MethodHook => AccessTools.Method(typeof(Prefs), "set_DevMode");
         public override MethodInfo PatchMethod => AccessTools.Method(typeof(AchievementHarmony), nameof(AchievementHarmony.DevModeToggled));
-
+        protected override string[] DebugText => new string[] { $"Value: {value}" };
         public DevModeTracker()
         {
         }
@@ -30,7 +30,11 @@ namespace AchievementsExpanded
             Scribe_Values.Look(ref value, "value");
         }
 
-        public override bool Trigger(bool value) => this.value == value;
+        public override bool Trigger(bool value)
+        {
+            base.Trigger(value);
+            return this.value == value;
+        }
 
         public bool value;
     }

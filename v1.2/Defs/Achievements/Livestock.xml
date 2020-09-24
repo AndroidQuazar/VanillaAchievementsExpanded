@@ -6,7 +6,7 @@
 		<description>Have 3 Pigs and 1 Timberwolf</description>
 		
 		<tracker Class="AchievementsExpanded.RaceDefTracker">
-			<pawnKinds>
+			<kindDefDict>
 				<li>
 					<key>Pig</key>
 					<value>3</value>
@@ -15,7 +15,7 @@
 					<key>Wolf_Timber</key>
 					<value>1</value>
 				</li>
-			</pawnKinds>
+			</kindDefDict>
 		</tracker>
 		
 		<texPath>Achievements/ThreeLittlePigs</texPath>
@@ -28,12 +28,12 @@
 		<description>Have 20 Geese</description>
 		
 		<tracker Class="AchievementsExpanded.RaceDefTracker">
-			<pawnKinds>
+			<kindDefDict>
 				<li>
 					<key>Goose</key>
 					<value>20</value>
 				</li>
-			</pawnKinds>
+			</kindDefDict>
 		</tracker>
 		
 		<texPath>Achievements/LookAtAllThoseChickens</texPath>
@@ -46,12 +46,12 @@
 		<description>Have 8 Boomalopes</description>
 		
 		<tracker Class="AchievementsExpanded.RaceDefTracker">
-			<pawnKinds>
+			<kindDefDict>
 				<li>
 					<key>Boomalope</key>
 					<value>8</value>
 				</li>
-			</pawnKinds>
+			</kindDefDict>
 		</tracker>
 		
 		<texPath>Achievements/SustainableFuelSource</texPath>
@@ -64,12 +64,12 @@
 		<description>Have 12 Muffalos</description>
 		
 		<tracker Class="AchievementsExpanded.RaceDefTracker">
-			<pawnKinds>
+			<kindDefDict>
 				<li>
 					<key>Muffalo</key>
 					<value>12</value>
 				</li>
-			</pawnKinds>
+			</kindDefDict>
 		</tracker>
 		
 		<texPath>Achievements/MuffaloRancher</texPath>
@@ -83,12 +83,12 @@
 		<description>Have 1 of every vanilla animal at the same time.</description>
 		
 		<tracker Class="AchievementsExpanded.RaceDefTracker">
-			<pawnKinds>
+			<kindDefDict>
 				<li>
 					<key>Muffalo</key>
 					<value>9999</value>
 				</li>
-			</pawnKinds>
+			</kindDefDict>
 		</tracker>
 		
 		<texPath>Achievements/ArkHalfFull</texPath>
@@ -101,12 +101,12 @@
 		<description>Tame a Thrumbo</description>
 		
 		<tracker Class="AchievementsExpanded.RaceDefTracker">
-			<pawnKinds>
+			<kindDefDict>
 				<li>
 					<key>Thrumbo</key>
 					<value>1</value>
 				</li>
-			</pawnKinds>
+			</kindDefDict>
 		</tracker>
 		
 		<texPath>Achievements/GentleGiant</texPath>

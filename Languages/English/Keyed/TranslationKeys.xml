@@ -9,6 +9,9 @@
 	<PointsAvailable>Available: {0}</PointsAvailable>
 	<PointsEarned>Total earnt: {0}</PointsEarned>
 	
+	<UnlockedDevMode>Unlocked with DevMode</UnlockedDevMode>
+	<AchievementLocked>Locked</AchievementLocked>
+	
 	<AchievementsUnlocked>Achievements Unlocked: {0}</AchievementsUnlocked>
 	<AchievementUnlocked>Achievement Unlocked!</AchievementUnlocked>
 </LanguageData>

@@ -41,7 +41,7 @@ namespace AchievementsExpanded
             }
         }
 
-        protected void Drift()
+        protected virtual void Drift()
         {
             if (driftingOut)
             {

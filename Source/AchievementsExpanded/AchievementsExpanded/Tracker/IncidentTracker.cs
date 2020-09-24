@@ -14,7 +14,7 @@ namespace AchievementsExpanded
 
         public override MethodInfo MethodHook => AccessTools.Method(typeof(IncidentWorker), nameof(IncidentWorker.TryExecute));
         public override MethodInfo PatchMethod => AccessTools.Method(typeof(AchievementHarmony), nameof(AchievementHarmony.IncidentTriggered));
-
+        protected override string[] DebugText => new string[] { $"Def: {def?.defName ?? "None"}", $"Count: {count}", $"Current: {triggeredCount}" };
         public IncidentTracker()
         {
         }
@@ -29,14 +29,15 @@ namespace AchievementsExpanded
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Values.Look(ref triggeredCount, "triggeredCount", 0);
             Scribe_Defs.Look(ref def, "def");
             Scribe_Values.Look(ref count, "count");
+            Scribe_Values.Look(ref triggeredCount, "triggeredCount", 0);
         }
 
-        public override bool Trigger(IncidentDef param1, Map map)
+        public override bool Trigger(IncidentDef param, Map map)
         {
-            if (param1 == def)
+            base.Trigger(param, map);
+            if (param == def)
             {
                 triggeredCount++;
                 if (triggeredCount >= count)

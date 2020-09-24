@@ -56,14 +56,27 @@
       <HintPath>..\..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>..\..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AchievementCard\AchievementCard.cs" />
     <Compile Include="AchievementCard\AchievementDef.cs" />
     <Compile Include="AchievementManager\AchievementGenerator.cs" />
     <Compile Include="AchievementManager\AchievementHarmony.cs" />
+    <Compile Include="AchievementManager\DebugWriter.cs" />
+    <Compile Include="AchievementManager\TraderTracker.cs" />
+    <Compile Include="Tracker\BuildingTracker.cs" />
+    <Compile Include="Tracker\HediffTracker.cs" />
+    <Compile Include="Tracker\MoodTracker.cs" />
+    <Compile Include="Tracker\MultiHediffTracker.cs" />
+    <Compile Include="Tracker\ResearchTracker.cs" />
     <Compile Include="Tracker\ItemCraftTracker.cs" />
     <Compile Include="Tracker\QuestTracker.cs" />
+    <Compile Include="Tracker\BuildingGroupTracker.cs" />
+    <Compile Include="Tracker\SkillTracker.cs" />
     <Compile Include="Tracker\WealthTracker.cs" />
     <Compile Include="Tracker\ItemTracker.cs" />
     <Compile Include="AchievementManager\VAESettings.cs" />

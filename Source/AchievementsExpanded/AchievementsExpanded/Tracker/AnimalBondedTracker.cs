@@ -14,6 +14,7 @@ namespace AchievementsExpanded
 
         public override MethodInfo MethodHook => AccessTools.Method(typeof(RelationsUtility), nameof(RelationsUtility.TryDevelopBondRelation));
         public override MethodInfo PatchMethod => AccessTools.Method(typeof(AchievementHarmony), nameof(AchievementHarmony.AnimalBondedEvent));
+        protected override string[] DebugText => new string[] { $"KindDef: {kindDef?.defName ?? "None"}", $"Count: {count}", $"Current: {triggeredCount}" };
 
         public AnimalBondedTracker()
         {
@@ -36,7 +37,8 @@ namespace AchievementsExpanded
 
         public override bool Trigger(PawnKindDef param)
         {
-            if (param == kindDef)
+            base.Trigger(param);
+            if (kindDef is null || param == kindDef)
             {
                 triggeredCount++;
             }

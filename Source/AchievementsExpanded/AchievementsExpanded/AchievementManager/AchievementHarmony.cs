@@ -5,6 +5,7 @@ using System.Linq;
 using Verse;
 using RimWorld;
 using HarmonyLib;
+using UnityEngine;
 using OpCodes = System.Reflection.Emit.OpCodes;
 
 namespace AchievementsExpanded
@@ -183,6 +184,110 @@ namespace AchievementsExpanded
             foreach(var card in AchievementPointManager.AchievementList.Where(a => a.tracker.GetType().SameOrSubclass(typeof(QuestTracker)) && !a.unlocked))
             {
                 if ((card.tracker as QuestTracker).Trigger(__instance, outcome))
+                {
+                    card.UnlockCard();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Inserts right before MoteThrow on Levelup to trigger Tracker event
+        /// </summary>
+        /// <param name="instructions"></param>
+        /// <returns></returns>
+        public static IEnumerable<CodeInstruction> LevelUpMoteHook(IEnumerable<CodeInstruction> instructions)
+        {
+            foreach (CodeInstruction instruction in instructions)
+            {
+                if (instruction.Calls(AccessTools.Method(typeof(MoteMaker), nameof(MoteMaker.ThrowText), new Type[] { typeof(Vector3), typeof(Map), typeof(string), typeof(float) })))
+                {
+                    yield return new CodeInstruction(opcode: OpCodes.Ldarg_0);
+                    yield return new CodeInstruction(opcode: OpCodes.Ldfld, operand: AccessTools.Field(typeof(SkillRecord), nameof(SkillRecord.def)));
+                    yield return new CodeInstruction(opcode: OpCodes.Ldarg_0);
+                    yield return new CodeInstruction(opcode: OpCodes.Ldfld, operand: AccessTools.Field(typeof(SkillRecord), nameof(SkillRecord.levelInt)));
+                    yield return new CodeInstruction(opcode: OpCodes.Call, operand: AccessTools.Method(typeof(UtilityMethods), nameof(UtilityMethods.LevelUpTrigger)));
+                }
+                yield return instruction;
+            }
+        }
+        
+        /// <summary>
+        /// Grab average mood of colony from History event which triggers every 60000 ticks
+        /// </summary>
+        /// <param name="__result"></param>
+        public static void AverageMoodColony(float __result)
+        {
+            foreach(var card in AchievementPointManager.AchievementList.Where(a => a.tracker.GetType().SameOrSubclass(typeof(MoodTracker)) && !a.unlocked))
+            {
+                if ((card.tracker as MoodTracker).Trigger(__result))
+                {
+                    card.UnlockCard();
+                }
+            }
+        }
+
+        /// <summary>
+        /// ResearchProject event when project is finished
+        /// </summary>
+        /// <param name="proj"></param>
+        /// <param name="doCompletionDialog"></param>
+        /// <param name="researcher"></param>
+        public static void ResearchProjectFinished(ResearchProjectDef proj, bool doCompletionDialog, Pawn researcher)
+        {
+            foreach(var card in AchievementPointManager.AchievementList.Where(a => a.tracker.GetType().SameOrSubclass(typeof(ResearchTracker)) && !a.unlocked))
+            {
+                if ((card.tracker as ResearchTracker).Trigger(proj))
+                {
+                    card.UnlockCard();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Building SpawnSetup event
+        /// </summary>
+        /// <param name="map"></param>
+        /// <param name="respawningAfterLoad"></param>
+        public static void BuildingSpawned(Pawn worker, Frame __instance)
+        {
+            foreach(var card in AchievementPointManager.AchievementList.Where(a => a.tracker.GetType().SameOrSubclass(typeof(BuildingTracker)) && !a.unlocked))
+            {
+                if (worker.Faction == Faction.OfPlayer && (card.tracker as BuildingTracker).Trigger(__instance.def.entityDefToBuild, __instance.Stuff))
+                {
+                    card.UnlockCard();
+                }
+            }
+        }
+
+        /// <summary>
+        /// TradeDeal event to retrieve what was exchanged
+        /// </summary>
+        /// <param name="actuallyTraded"></param>
+        /// <param name="__result"></param>
+        /// <param name="___tradeables"></param>
+        public static void TradeDealComplete(bool __result, List<Tradeable> ___tradeables)
+        {
+            if (__result)
+            {
+                foreach(var card in AchievementPointManager.AchievementList.Where(a => a.tracker.GetType().SameOrSubclass(typeof(TraderTracker)) && !a.unlocked))
+                {
+                    if ((card.tracker as TraderTracker).Trigger(___tradeables))
+                    {
+                        card.UnlockCard();
+                    }
+                }
+            }
+        }
+        
+        /// <summary>
+        /// Event whenever a Hediff gets added to a pawn
+        /// </summary>
+        /// <param name="dinfo"></param>
+        public static void HediffAdded(Hediff hediff, BodyPartRecord part = null, DamageInfo? dinfo = null, DamageWorker.DamageResult result = null)
+        {
+            foreach(var card in AchievementPointManager.AchievementList.Where(a => a.tracker.GetType().SameOrSubclass(typeof(HediffTracker)) && !a.unlocked))
+            {
+                if ((card.tracker as HediffTracker).Trigger(hediff))
                 {
                     card.UnlockCard();
                 }

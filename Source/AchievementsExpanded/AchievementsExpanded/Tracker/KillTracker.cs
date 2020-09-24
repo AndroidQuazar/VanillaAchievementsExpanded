@@ -12,7 +12,10 @@ namespace AchievementsExpanded
 
         public override MethodInfo MethodHook => AccessTools.Method(typeof(Pawn), nameof(Pawn.Kill));
         public override MethodInfo PatchMethod => AccessTools.Method(typeof(AchievementHarmony), nameof(AchievementHarmony.KillPawn));
-
+        protected override string[] DebugText => new string[] { $"KindDef: {kindDef?.defName ?? "None"}", 
+                                                                $"Race: {raceDef?.defName ?? "None"}", 
+                                                                $"Faction: {factionDef?.defName ?? "None"}", 
+                                                                $"Count: {count}", $"Current: {triggeredCount}" };
         public KillTracker()
         {
         }
@@ -38,11 +41,12 @@ namespace AchievementsExpanded
 
         public override bool Trigger(Pawn param)
         {
+            base.Trigger(param);
             bool kind = kindDef is null || param.kindDef == kindDef;
             bool race = raceDef is null || param.def == raceDef;
             bool faction = factionDef is null || param.Faction.def == factionDef;
             bool hitCount = count <= 1 ? true : ++triggeredCount >= count;
-            if (kind && faction && hitCount)
+            if (kind && race && faction && hitCount)
             {
                 return true;
             }

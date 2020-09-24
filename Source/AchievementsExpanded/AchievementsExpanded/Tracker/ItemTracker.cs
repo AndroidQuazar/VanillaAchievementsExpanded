@@ -13,6 +13,7 @@ namespace AchievementsExpanded
         public override string Key => "ItemTracker";
 
         public override Func<bool> AttachToLongTick => () => { return Trigger(); };
+        protected override string[] DebugText => new string[] { $"Def: {def?.defName ?? "None"}", $"Count: {count}" };
 
         public ItemTracker()
         {
@@ -22,17 +23,20 @@ namespace AchievementsExpanded
         {
             def = reference.def;
             count = reference.count;
+            if (count <= 0)
+                count = 1;
         }
 
         public override void ExposeData()
         {
             base.ExposeData();
             Scribe_Defs.Look(ref def, "def");
-            Scribe_Values.Look(ref count, "count");
+            Scribe_Values.Look(ref count, "count", 1);
         }
 
         public override bool Trigger()
         {
+            base.Trigger();
             return UtilityMethods.PlayerHas(def, out int total, count);
         }
 

@@ -12,7 +12,11 @@ namespace AchievementsExpanded
 
         public override MethodInfo MethodHook => AccessTools.Method(typeof(QuestManager), nameof(QuestManager.Notify_ThingsProduced));
         public override MethodInfo PatchMethod => AccessTools.Method(typeof(AchievementHarmony), nameof(AchievementHarmony.ThingSpawned));
-        
+        protected override string[] DebugText => new string[] { $"Def: {def?.defName ?? "None"}", 
+                                                                $"MadeFrom: {madeFrom?.defName ?? "Any"}", 
+                                                                $"Quality: {quality}", 
+                                                                $"Count: {count}", 
+                                                                $"Current: {triggeredCount}" };
         public ItemCraftTracker()
         {
         }
@@ -38,6 +42,7 @@ namespace AchievementsExpanded
 
         public override bool Trigger(Thing thing)
         {
+            base.Trigger(thing);
             if ((def is null || thing.def == def) && (madeFrom is null || madeFrom == thing.Stuff))
             {
                 if (quality is null || (thing.TryGetQuality(out var qc) && qc >= quality))

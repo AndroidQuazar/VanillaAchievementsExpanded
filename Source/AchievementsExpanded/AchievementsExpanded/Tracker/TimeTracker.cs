@@ -14,7 +14,7 @@ namespace AchievementsExpanded
 
         public override MethodInfo MethodHook => AccessTools.Method(typeof(TickManager), nameof(TickManager.TickManagerUpdate));
         public override MethodInfo PatchMethod => AccessTools.Method(typeof(AchievementHarmony), nameof(AchievementHarmony.TimeTickPassed));
-
+        protected override string[] DebugText => new string[] { $"Ticks: {ticksPassed}", $"Require unpaused to Tick: {gameTime}" };
         public TimeTracker()
         {
         }
@@ -33,6 +33,7 @@ namespace AchievementsExpanded
         }
         public override bool Trigger()
         {
+            base.Trigger();
             int ticks = gameTime ? Find.TickManager.TicksGame : Find.TickManager.TicksAbs;
             return ticks >= ticksPassed;
         }

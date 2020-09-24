@@ -35,7 +35,6 @@ namespace AchievementsExpanded
         }
 
         public override void OnAcceptKeyPressed() { }
-        public override void OnCancelKeyPressed() { }
 
         protected virtual void DrawCard(Rect rect)
         {
@@ -44,15 +43,17 @@ namespace AchievementsExpanded
             GUI.DrawTexture(imageRect, card.AchievementIcon);
 
             var labelWidth = rect.width - (imageRect.width + Padding);
-            var labelStart = imageRect.x + imageRect.width + Padding + (labelWidth / 2);
+            var labelStart = imageRect.x + imageRect.width + Padding;
 
             var font1 = Text.Font;
+            var anchor = Text.Anchor;
             Text.Font = GameFont.Small;
+            Text.Anchor = TextAnchor.UpperCenter;
 
             string text = "AchievementUnlocked".Translate();
             var textSize = Text.CalcSize(text);
             var textWidth = Mathf.Clamp(textSize.x, 0f, labelWidth);
-            Rect labelRect = new Rect(labelStart - (textWidth / 2), imageRect.y, labelWidth, rect.height);
+            Rect labelRect = new Rect(labelStart, imageRect.y, labelWidth, rect.height);
             Widgets.Label(labelRect, text);
 
             Text.Font = GameFont.Tiny;
@@ -61,17 +62,17 @@ namespace AchievementsExpanded
             GUI.color = MainTabWindow_Achievements.LightGray;
             var titleSize = Text.CalcSize(card.def.label);
             var titleWidth = Mathf.Clamp(titleSize.x, 0f, labelWidth);
-
-            Rect titleRect = new Rect(labelStart - (titleWidth / 2), labelRect.y + textSize.y, labelWidth, rect.height);
+            Rect titleRect = new Rect(labelStart, labelRect.y + textSize.y, labelWidth, rect.height);
             Widgets.Label(titleRect, card.def.label);
 
             GUI.color = MainTabWindow_Achievements.MediumGray;
             var descSize = Text.CalcSize(card.def.description);
             var descWidth = Mathf.Clamp(descSize.x, 0f, labelWidth);
-            Rect descRect = new Rect(labelStart - (descWidth / 2), titleRect.y + titleSize.y / 1.5f, labelWidth, rect.height);
+            Rect descRect = new Rect(labelStart, titleRect.y + titleSize.y / 1.5f, labelWidth, rect.height);
             Widgets.Label(descRect, card.def.description);
-
+            
             Text.Font = font1;
+            Text.Anchor = anchor;
             GUI.color = color;
         }
 

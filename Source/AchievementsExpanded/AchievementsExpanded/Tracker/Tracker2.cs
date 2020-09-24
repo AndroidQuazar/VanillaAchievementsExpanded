@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Verse;
 
 namespace AchievementsExpanded
 {
@@ -8,6 +9,6 @@ namespace AchievementsExpanded
     {
         public Tracker2() { }
         public Tracker2(Tracker2<T1, T2> reference) : base(reference) { }
-        public abstract bool Trigger(T1 param = default, T2 param2 = default);
+        public virtual bool Trigger(T1 param = default, T2 param2 = default) => base.Trigger(string.Concat(param.ToStringSafe(), param2.ToStringSafe()));
     }
 }

@@ -9,11 +9,12 @@ namespace AchievementsExpanded
 {
     public class VAESettings : ModSettings
     {
-
+        public bool writeAllSettings = true;
 
         public override void ExposeData()
         {
             base.ExposeData();
+            Scribe_Values.Look(ref writeAllSettings, "writeAllSettings", true);
         }
     }
 

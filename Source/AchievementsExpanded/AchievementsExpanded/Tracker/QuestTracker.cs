@@ -12,6 +12,7 @@ namespace AchievementsExpanded
 
         public override MethodInfo MethodHook => AccessTools.Method(typeof(Quest), nameof(Quest.End));
         public override MethodInfo PatchMethod => AccessTools.Method(typeof(AchievementHarmony), nameof(AchievementHarmony.QuestEnded));
+        protected override string[] DebugText => new string[] { $"Quest: {quest?.defName}", $"Outcome: {outcome}", $"Count: {count}", $"Current: {triggeredCount}" };
 
         public QuestTracker()
         {
@@ -36,6 +37,7 @@ namespace AchievementsExpanded
 
         public override bool Trigger(Quest quest, QuestEndOutcome outcome)
         {
+            base.Trigger(quest, outcome);
             if (this.outcome == outcome && (this.quest is null || (this.quest == quest.root)))
             {
                 triggeredCount++;

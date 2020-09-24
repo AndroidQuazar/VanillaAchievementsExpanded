@@ -46,13 +46,16 @@ namespace AchievementsExpanded
         {
             base.FinalizeInit();
             PreInit();
+            DebugWriter.RootDir = ModLister.GetModWithIdentifier("smashphil.achievements").RootDir.ToString();
+            DebugWriter.Clear();
+            DebugWriter.Log(new string[] { "Vanilla Achievements Expanded", "This log is for logging Tracker information and Event triggers only.\n"});
         }
 
         internal void HardReset()
         {
             achievementLookup = null;
             achievementList = null;
-            Log.Message($"[{AchievementTag}] Regenerating achievements...");
+            DebugWriter.Log($"Regenerating achievements...\n");
             PreInit(true);
             ResetPoints();
         }
@@ -64,11 +67,17 @@ namespace AchievementsExpanded
             if (achievementList is null)
                 achievementList = new HashSet<AchievementCard>();
             if(debug)
-                Log.Message($"[{AchievementTag}] Resetting AchievementLinks");
+                DebugWriter.Log($"Resetting AchievementLinks");
             achievementLookup = AchievementGenerator.GenerateAchievementLinks(achievementList);
             if(debug)
-                Log.Message($"[{AchievementTag}] Verifying Achievement List");
+                DebugWriter.Log($"Verifying Achievement List");
             AchievementGenerator.VerifyAchievementList(ref achievementList, debug);
+        }
+
+        public void ResetAchievement(AchievementCard card)
+        {
+            achievementList.Remove(card);
+            achievementList.Add(new AchievementCard(card.def));
         }
 
         public void ResetPoints()

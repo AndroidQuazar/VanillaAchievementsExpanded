@@ -40,6 +40,17 @@ namespace AchievementsExpanded
                     newlyAdded = true;
                     count++;
                 }
+                else if (card.tracker is null || card.def is null)
+                {
+                    Log.Warning($"[{AchievementPointManager.AchievementTag}] Corrupted AchievementCard detected. " +
+                        $"Regenerating {card?.GetUniqueLoadID() ?? "Null"}\n " +
+                        $"If the problem persists, consider manually resetting {card.def?.defName ?? "[Null Def]"} through the DebugTools");
+                    achievementCards.Remove(card);
+                    var card2 = new AchievementCard(def, card.unlocked);
+                    achievementCards.Add(card2);
+                    newlyAdded = true;
+                    count++;
+                }
                 defCount++;
             }
             if(debugOutput)

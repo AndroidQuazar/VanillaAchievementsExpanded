@@ -14,6 +14,7 @@ namespace AchievementsExpanded
         public TrackerBase tracker;
 
         public bool unlocked;
+        public bool devModeUnlocked;
 
         public int uniqueHash = -1;
         public string dateUnlocked = "Locked";
@@ -79,16 +80,21 @@ namespace AchievementsExpanded
             return $"Achievement_{uniqueHash}";
         }
 
-        public void UnlockCard()
+        public void UnlockCard(bool debugTools = false)
         {
             if(!unlocked)
             {
                 unlocked = true;
+
                 var vector = Find.WorldGrid.LongLatOf(Find.CurrentMap.Tile);
-                dateUnlocked = GenDate.DateReadoutStringAt(Find.TickManager.TicksAbs, vector);
+                dateUnlocked = (Prefs.DevMode || debugTools) ? "UnlockedDevMode".Translate().ToString() : GenDate.DateReadoutStringAt(Find.TickManager.TicksAbs, vector);
 
                 Current.Game.GetComponent<AchievementPointManager>().availablePoints += def.points;
-
+                DebugWriter.Log($"Unlocking: {GetUniqueLoadID()} Card: {def.label}");
+                if (debugTools)
+                {
+                    DebugWriter.Log($"[Unlocked with DebugTools]");
+                }
                 Find.WindowStack.Add(new AchievementNotification(this));
             }
         }
@@ -96,7 +102,8 @@ namespace AchievementsExpanded
         internal void LockCard()
         {
             unlocked = false;
-            dateUnlocked = "Locked";
+            devModeUnlocked = false;
+            dateUnlocked = "AchievementLocked".Translate();
         }
 
         public void ExposeData()
@@ -107,6 +114,7 @@ namespace AchievementsExpanded
             Scribe_Deep.Look(ref tracker, "tracker");
 
             Scribe_Values.Look(ref unlocked, "unlocked", false);
+            Scribe_Values.Look(ref devModeUnlocked, "devModeUnlocked", false);
             Scribe_Values.Look(ref dateUnlocked, "dateUnlocked", "Locked");
 
             Scribe_Values.Look(ref uniqueHash, "uniqueHash");

@@ -10,6 +10,26 @@ namespace AchievementsExpanded
     public class MultiKillTracker : KillTracker
     {
         public override string Key => "MultiKillTracker";
+        protected override string[] DebugText
+        {
+            get
+            {
+                string[] text = new string[0];
+                foreach (var kind in kindDefDict)
+                {
+                    triggeredKindDefCount.TryGetValue(kind.Key, out int current);
+                    var entry = $"Kind: {kind.Key?.defName ?? "None"} Count: {kind.Value} Current: {current}";
+                    text.AddItem(entry);
+                }
+                foreach (var race in raceDefDict)
+                {
+                    triggeredRaceDefCount.TryGetValue(race.Key, out int current);
+                    var entry = $"Race: {race.Key?.defName ?? "None"} Count: {race.Value} Current: {current}";
+                    text.AddItem(entry);
+                }
+                return base.DebugText.AddRangeToArray(text);
+            }
+        }
 
         public MultiKillTracker()
         {
@@ -35,6 +55,7 @@ namespace AchievementsExpanded
 
         public override bool Trigger(Pawn param)
         {
+            base.Trigger(param);
             bool kindDef = kindDefDict.EnumerableNullOrEmpty() || kindDefDict.ContainsKey(param.kindDef);
             bool raceDef = raceDefDict.EnumerableNullOrEmpty() || raceDefDict.ContainsKey(param.def);
             if (kindDef && raceDef)

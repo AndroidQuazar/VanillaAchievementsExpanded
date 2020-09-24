@@ -12,7 +12,7 @@ namespace AchievementsExpanded
         public override string Key => "WealthTracker";
 
         public override Func<bool> AttachToLongTick => () => { return Trigger();  };
-
+        protected override string[] DebugText => new string[] { $"Wealth: {count}" };
         public WealthTracker()
         {
         }
@@ -30,6 +30,7 @@ namespace AchievementsExpanded
 
         public override bool Trigger()
         {
+            base.Trigger();
             foreach (Map map in Find.Maps.Where(m => m.IsPlayerHome))
             {
                 if (map.wealthWatcher.WealthTotal >= count)
