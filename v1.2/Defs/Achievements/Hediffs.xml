@@ -40,7 +40,7 @@
 		<description>Install a peg leg on a pawn</description>
 		
 		<tracker Class="AchievementsExpanded.HediffTracker">
-			<def>WoundInfection</def>
+			<def>PegLeg</def>
 			<count>1</count>
 		</tracker>
 		
@@ -53,9 +53,8 @@
 		<label>On Edge</label>
 		<description>Gain immunity when infection is on 99%</description>
 		
-		<tracker Class="AchievementsExpanded.HediffTracker">
-			<def>WoundInfection</def>
-			<count>1</count>
+		<tracker Class="AchievementsExpanded.ImmunityHediffTracker">
+			<percentImmune>0.99</percentImmune>
 		</tracker>
 		
 		<texPath>Achievements/OnEdge</texPath>
@@ -66,10 +65,9 @@
 		<defName>thatllShowHim</defName>
 		<label>That'll Show Him</label>
 		<description>Starve a pawn to death</description>
-		
-		<tracker Class="AchievementsExpanded.HediffTracker">
-			<def>WoundInfection</def>
-			<count>1</count>
+		<!-- Might potentially trigger for non-colonist non-prisoner pawns -->
+		<tracker Class="AchievementsExpanded.HediffDeathTracker">
+			<def>Malnutrition</def>
 		</tracker>
 		
 		<texPath>Achievements/ThatllShowHim</texPath>

@@ -3,6 +3,7 @@ using System.Reflection;
 using HarmonyLib;
 using Verse;
 using RimWorld;
+using System.Collections.Generic;
 
 namespace AchievementsExpanded
 {
@@ -14,7 +15,7 @@ namespace AchievementsExpanded
         public override MethodInfo PatchMethod => AccessTools.Method(typeof(AchievementHarmony), nameof(AchievementHarmony.KillPawn));
         protected override string[] DebugText => new string[] { $"KindDef: {kindDef?.defName ?? "None"}", 
                                                                 $"Race: {raceDef?.defName ?? "None"}", 
-                                                                $"Faction: {factionDef?.defName ?? "None"}", 
+                                                                $"Factions: {factionDefs?.Count.ToString() ?? "None"}", 
                                                                 $"Count: {count}", $"Current: {triggeredCount}" };
         public KillTracker()
         {
@@ -24,7 +25,7 @@ namespace AchievementsExpanded
         {
             kindDef = reference.kindDef;
             raceDef = reference.raceDef;
-            factionDef = reference.factionDef;
+            factionDefs = reference.factionDefs;
             count = reference.count;
             triggeredCount = 0;
         }
@@ -34,17 +35,17 @@ namespace AchievementsExpanded
             base.ExposeData();
             Scribe_Defs.Look(ref kindDef, "kindDef");
             Scribe_Defs.Look(ref raceDef, "raceDef");
-            Scribe_Defs.Look(ref factionDef, "factionDef");
+            Scribe_Collections.Look(ref factionDefs, "factionDefs", LookMode.Def);
             Scribe_Values.Look(ref count, "count", 1);
             Scribe_Values.Look(ref triggeredCount, "triggeredCount", 0);
         }
 
-        public override bool Trigger(Pawn param)
+        public override bool Trigger(Pawn pawn)
         {
-            base.Trigger(param);
-            bool kind = kindDef is null || param.kindDef == kindDef;
-            bool race = raceDef is null || param.def == raceDef;
-            bool faction = factionDef is null || param.Faction.def == factionDef;
+            base.Trigger(pawn);
+            bool kind = kindDef is null || pawn.kindDef == kindDef;
+            bool race = raceDef is null || pawn.def == raceDef;
+            bool faction = factionDefs.NullOrEmpty() || factionDefs.Contains(pawn.Faction.def);
             bool hitCount = count <= 1 ? true : ++triggeredCount >= count;
             if (kind && race && faction && hitCount)
             {
@@ -55,9 +56,9 @@ namespace AchievementsExpanded
 
         public PawnKindDef kindDef;
         public ThingDef raceDef;
-        public FactionDef factionDef;
+        public List<FactionDef> factionDefs;
         public int count = 1;
 
-        private int triggeredCount;
+        protected int triggeredCount;
     }
 }

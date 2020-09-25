@@ -67,8 +67,12 @@
     <Compile Include="AchievementManager\AchievementGenerator.cs" />
     <Compile Include="AchievementManager\AchievementHarmony.cs" />
     <Compile Include="AchievementManager\DebugWriter.cs" />
-    <Compile Include="AchievementManager\TraderTracker.cs" />
+    <Compile Include="Tracker\BondedAnimalOnFireKillTracker.cs" />
+    <Compile Include="Tracker\ImmunityHediffTracker.cs" />
+    <Compile Include="Tracker\SettlementDefeatTracker.cs" />
+    <Compile Include="Tracker\TraderTracker.cs" />
     <Compile Include="Tracker\BuildingTracker.cs" />
+    <Compile Include="Tracker\HediffDeathTracker.cs" />
     <Compile Include="Tracker\HediffTracker.cs" />
     <Compile Include="Tracker\MoodTracker.cs" />
     <Compile Include="Tracker\MultiHediffTracker.cs" />

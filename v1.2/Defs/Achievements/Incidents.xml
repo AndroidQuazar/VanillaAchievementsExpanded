@@ -78,15 +78,18 @@
 		<points>0</points>
 	</AchievementsExpanded.AchievementDef>
 	
-	<!-- Different Tracker? -->
 	<AchievementsExpanded.AchievementDef>
 		<defName>intoTheFire</defName>
 		<label>Into The Fire</label>
 		<description>Have a bonded pig die on fire</description>
 		
-		<tracker Class="AchievementsExpanded.IncidentTracker">
-			<def>RaidEnemy</def>
-			<count>9999</count>
+		<tracker Class="AchievementsExpanded.BondedAnimalOnFireKillTracker">
+			<kindDef>Pig</kindDef>
+			<factionDefs>
+				<li>PlayerColony</li>
+				<li>PlayerTribe</li>
+			</factionDefs>
+			<count>1</count>
 		</tracker>
 		
 		<texPath>Achievements/IntoTheFire</texPath>
@@ -99,9 +102,8 @@
 		<label>Blitzkrieg</label>
 		<description>Destroy 5 faction bases</description>
 		
-		<tracker Class="AchievementsExpanded.IncidentTracker">
-			<def>RaidEnemy</def>
-			<count>9999</count>
+		<tracker Class="AchievementsExpanded.SettlementDefeatTracker">
+			<count>5</count>
 		</tracker>
 		
 		<texPath>Achievements/Blitzkrieg</texPath>

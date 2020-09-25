@@ -1,61 +1,39 @@
 Vanilla Achievements Expanded
 This log is for logging Tracker information and Event triggers only.
 
-Unlocking: Achievement_-523016175 Card: T-800
 
-Trigger Event called for IncidentTracker_41786
-RaidEnemyMap-0-PlayerHome
-Def: RaidEnemy
-Count: 3
-Current: 0
-
-Trigger Event called for IncidentTracker_41787
-RaidEnemyMap-0-PlayerHome
-Def: StrangerInBlackJoin
+Trigger Event called for KillTracker_41799
+Alexei
+KindDef: None
+Race: None
+Factions: None
 Count: 1
 Current: 0
-2
-2
+Unlocking: Achievement_-786378924 Card: First Blood
 
-Trigger Event called for IncidentTracker_41791
-RaidEnemyMap-0-PlayerHome
-Def: RaidEnemy
-Count: 9999
+Trigger Event called for KillTracker_41800
+Alexei
+KindDef: None
+Race: Human
+Factions: None
+Count: 100
 Current: 0
 
-Trigger Event called for IncidentTracker_41792
-RaidEnemyMap-0-PlayerHome
-Def: RaidEnemy
-Count: 9999
+Trigger Event called for KillTracker_41801
+Alexei
+KindDef: None
+Race: Human
+Factions: None
+Count: 1000
 Current: 0
 
-Trigger Event called for IncidentTracker_41786
-RaidEnemyMap-0-PlayerHome
-Def: RaidEnemy
-Count: 3
-Current: 1
-
-Trigger Event called for IncidentTracker_41787
-RaidEnemyMap-0-PlayerHome
-Def: StrangerInBlackJoin
-Count: 1
+Trigger Event called for KillTracker_41802
+Alexei
+KindDef: Thrumbo
+Race: None
+Factions: None
+Count: 20
 Current: 0
-2
-2
 
-Trigger Event called for IncidentTracker_41791
-RaidEnemyMap-0-PlayerHome
-Def: RaidEnemy
-Count: 9999
-Current: 1
-
-Trigger Event called for IncidentTracker_41792
-RaidEnemyMap-0-PlayerHome
-Def: RaidEnemy
-Count: 9999
-Current: 1
-
-Trigger Event called for PropertyTracker_41781
-True
-Value: True
-Unlocking: Achievement_-140621834 Card: Cheater, Cheater!
+Trigger Event called for MultiKillTracker_41803
+Alexei

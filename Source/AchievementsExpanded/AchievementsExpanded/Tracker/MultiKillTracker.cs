@@ -14,6 +14,7 @@ namespace AchievementsExpanded
         {
             get
             {
+                return new string[] { };
                 string[] text = new string[0];
                 foreach (var kind in kindDefDict)
                 {
@@ -53,35 +54,35 @@ namespace AchievementsExpanded
             Scribe_Collections.Look(ref triggeredRaceDefCount, "triggeredRaceDefCount", LookMode.Def, LookMode.Value);
         }
 
-        public override bool Trigger(Pawn param)
+        public override bool Trigger(Pawn pawn)
         {
-            base.Trigger(param);
-            bool kindDef = kindDefDict.EnumerableNullOrEmpty() || kindDefDict.ContainsKey(param.kindDef);
-            bool raceDef = raceDefDict.EnumerableNullOrEmpty() || raceDefDict.ContainsKey(param.def);
+            base.Trigger(pawn);
+            bool kindDef = kindDefDict.EnumerableNullOrEmpty() || kindDefDict.ContainsKey(pawn.kindDef);
+            bool raceDef = raceDefDict.EnumerableNullOrEmpty() || raceDefDict.ContainsKey(pawn.def);
             if (kindDef && raceDef)
             {
-                bool kindDefFound = triggeredKindDefCount.ContainsKey(param.kindDef);
-                bool raceDefFound = triggeredRaceDefCount.ContainsKey(param.def);
+                bool kindDefFound = triggeredKindDefCount.ContainsKey(pawn.kindDef);
+                bool raceDefFound = triggeredRaceDefCount.ContainsKey(pawn.def);
                 if (kindDefFound)
                 {
-                    triggeredKindDefCount[param.kindDef]++;
+                    triggeredKindDefCount[pawn.kindDef]++;
                 }
                 else
                 {
-                    triggeredKindDefCount.Add(param.kindDef, 1);
+                    triggeredKindDefCount.Add(pawn.kindDef, 1);
                 }
                 if (raceDefFound)
                 {
-                    triggeredRaceDefCount[param.def]++;
+                    triggeredRaceDefCount[pawn.def]++;
                 }
                 else
                 {
-                    triggeredRaceDefCount.Add(param.def, 1);
+                    triggeredRaceDefCount.Add(pawn.def, 1);
                 }
                 bool universalCount = count > 0;
-                bool kindDefCount = (kindDefFound && (triggeredKindDefCount[param.kindDef] >= kindDefDict[param.kindDef] || (universalCount && triggeredKindDefCount[param.kindDef] >= count)));
-                bool raceDefCount = (raceDefFound && (triggeredRaceDefCount[param.def] >= raceDefDict[param.def] || (universalCount && triggeredRaceDefCount[param.def] >= count)));
-                return kindDefCount && raceDefCount && (factionDef is null || param.Faction.def == factionDef);
+                bool kindDefCount = (kindDefFound && (triggeredKindDefCount[pawn.kindDef] >= kindDefDict[pawn.kindDef] || (universalCount && triggeredKindDefCount[pawn.kindDef] >= count)));
+                bool raceDefCount = (raceDefFound && (triggeredRaceDefCount[pawn.def] >= raceDefDict[pawn.def] || (universalCount && triggeredRaceDefCount[pawn.def] >= count)));
+                return kindDefCount && raceDefCount && factionDefs.NullOrEmpty() || factionDefs.Contains(pawn.Faction.def);
             }
             return false;
         }

@@ -295,6 +295,61 @@ namespace AchievementsExpanded
         }
 
         /// <summary>
+        /// Event on immunity ticker
+        /// </summary>
+        /// <param name="pawn"></param>
+        /// <param name="sick"></param>
+        /// <param name="diseaseInstance"></param>
+        public static void ImmunityTicking(Pawn pawn, bool sick, Hediff diseaseInstance, ImmunityRecord __instance)
+        {
+            foreach(var card in AchievementPointManager.AchievementList.Where(a => a.tracker.GetType().SameOrSubclass(typeof(ImmunityHediffTracker)) && !a.unlocked))
+            {
+                if ((card.tracker as ImmunityHediffTracker).Trigger(diseaseInstance, __instance.immunity))
+                {
+                    card.UnlockCard();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Hediff PawnDeath Event
+        /// </summary>
+        /// <param name="p"></param>
+        /// <param name="ev"></param>
+        /// <param name="dinfo"></param>
+        public static void HediffDeathEvent(Hediff __instance)
+        {
+            foreach (var card in AchievementPointManager.AchievementList.Where(a => a.tracker.GetType().SameOrSubclass(typeof(HediffDeathTracker)) && !a.unlocked))
+            {
+                if ((card.tracker as HediffDeathTracker).Trigger(__instance))
+                {
+                    card.UnlockCard();
+                }
+            }
+        }
+
+        /// <summary>
+        /// SettlementDefeated Event
+        /// </summary>
+        /// <param name="map"></param>
+        /// <param name="faction"></param>
+        /// <param name="__result"></param>
+        /// <remarks>Only trigger on success</remarks>
+        public static void SettlementDefeatedEvent(Map map, Faction faction, ref bool __result)
+        {
+            if(__result)
+            {
+                foreach (var card in AchievementPointManager.AchievementList.Where(a => a.tracker.GetType().SameOrSubclass(typeof(SettlementDefeatTracker)) && !a.unlocked))
+                {
+                    if ((card.tracker as SettlementDefeatTracker).Trigger(Find.World.worldObjects.SettlementAt(map.Tile)))
+                    {
+                        card.UnlockCard();
+                    }
+                }
+            }
+        }
+
+        /// <summary>
         /// Hook onto LongTick for Trackers that need constant checking
         /// </summary>
         public static void SingleLongTickTracker()
