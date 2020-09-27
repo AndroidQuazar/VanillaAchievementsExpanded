@@ -33,9 +33,11 @@ namespace AchievementsExpanded
             foreach (AchievementDef def in DefDatabase<AchievementDef>.AllDefs)
             {
                 var card = achievementCards.FirstOrDefault(a => a.def.defName == def.defName);
+                if (def.achievementClass is null)
+                    def.achievementClass = typeof(AchievementCard);
                 if (card is null)
                 {
-                    card = new AchievementCard(def);
+                    card = (AchievementCard)Activator.CreateInstance(def.achievementClass, new object[] { def, false});
                     achievementCards.Add(card);
                     newlyAdded = true;
                     count++;
@@ -43,10 +45,10 @@ namespace AchievementsExpanded
                 else if (card.tracker is null || card.def is null)
                 {
                     Log.Warning($"[{AchievementPointManager.AchievementTag}] Corrupted AchievementCard detected. " +
-                        $"Regenerating {card?.GetUniqueLoadID() ?? "Null"}\n " +
-                        $"If the problem persists, consider manually resetting {card.def?.defName ?? "[Null Def]"} through the DebugTools");
+                        $"Regenerating {card?.GetUniqueLoadID() ?? "Null"}. Your current progress for it will be lost but it will remain unlocked if already completed.\n " +
+                        $"If the problem persists, consider manually resetting {card.def?.defName ?? "[Null Def]"} through the DebugTools or reporting on the Steam Workshop.");
                     achievementCards.Remove(card);
-                    var card2 = new AchievementCard(def, card.unlocked);
+                    var card2 = (AchievementCard)Activator.CreateInstance(def.achievementClass, new object[] { def, card.unlocked });
                     achievementCards.Add(card2);
                     newlyAdded = true;
                     count++;

@@ -16,5 +16,6 @@ namespace AchievementsExpanded
         public TrackerBase tracker;
 
         public AchievementTabDef tab;
+        public Type achievementClass;
     }
 }

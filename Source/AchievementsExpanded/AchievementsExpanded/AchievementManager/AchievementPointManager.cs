@@ -79,7 +79,8 @@ namespace AchievementsExpanded
         public void ResetAchievement(AchievementCard card)
         {
             achievementList.Remove(card);
-            achievementList.Add(new AchievementCard(card.def));
+            AchievementCard newCard = (AchievementCard)Activator.CreateInstance(card.def.achievementClass, new object[] { card.def, false });
+            achievementList.Add(newCard);
         }
 
         public void ResetPoints()

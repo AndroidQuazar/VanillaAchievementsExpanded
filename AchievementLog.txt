@@ -3,3 +3,58 @@ This log is for logging Tracker information and Event triggers only.
 
 Resetting AchievementLinks
 Verifying Achievement List
+
+Trigger Event called for RecordEventTracker_116206
+Param 1: ShotsFired Param 2: Mech_Pikeman4793
+Def: ShotsFired
+Count: 2000
+Card: TriggerHappy
+
+Trigger Event called for PropertyTracker_116166
+Param 1: True
+Value: True
+Card: cheaterCheater
+Unlocking: Achievement_-140621834 Card: Cheater, Cheater!
+
+Trigger Event called for ItemTracker_116178
+Def: AIPersonaCore
+Count: 1
+Card: oneStepCloser
+
+Trigger Event called for ItemTracker_116180
+Def: Gold
+Count: 5000
+Card: midas
+
+Trigger Event called for ItemTracker_116181
+Def: SmokeleafJoint
+Count: 420
+Card: 420
+
+Trigger Event called for TimeTracker_116225
+Ticks: 900000
+Require unpaused to Tick: True
+Card: couldBeWorse
+
+Trigger Event called for TimeTracker_116226
+Ticks: 3600000
+Require unpaused to Tick: True
+Card: itsAllDownhillFromHere
+
+Trigger Event called for TimeTracker_116227
+Ticks: 2160000
+Require unpaused to Tick: False
+Card: tenHoursWoah
+
+Trigger Event called for TimeTracker_116228
+Ticks: 21600000
+Require unpaused to Tick: False
+Card: waitAMinute
+
+Trigger Event called for WealthTracker_116232
+Wealth: 100000
+Card: inForAPenny
+
+Trigger Event called for WealthTracker_116233
+Wealth: 1000000
+Card: inForAPound
