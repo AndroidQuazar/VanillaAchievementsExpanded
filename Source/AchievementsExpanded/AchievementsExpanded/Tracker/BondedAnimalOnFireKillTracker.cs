@@ -18,20 +18,10 @@ namespace AchievementsExpanded
         {
         }
 
-        public override void ExposeData()
+        public override bool Trigger(Pawn pawn, DamageInfo? dinfo)
         {
-            base.ExposeData();
-        }
-
-        public override bool Trigger(Pawn pawn)
-        {
-            base.Trigger(pawn);
-            bool kind = kindDef is null || pawn.kindDef == kindDef;
-            bool race = raceDef is null || pawn.def == raceDef;
-            bool faction = factionDefs.NullOrEmpty() || factionDefs.Contains(pawn.Faction.def);
-            bool hitCount = count <= 1 ? true : ++triggeredCount >= count;
             bool bonded = pawn.relations.DirectRelations.Any(d => d.def == PawnRelationDefOf.Bond);
-            return kind && race && faction && hitCount && pawn.IsBurning() && bonded;
+            return pawn.IsBurning() && bonded && base.Trigger(pawn, dinfo);
         }
     }
 }

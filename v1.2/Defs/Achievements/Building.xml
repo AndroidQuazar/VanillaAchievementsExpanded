@@ -48,26 +48,7 @@
 		<label>It Ain't Rocket Science</label>
 		<description>Build a spaceship</description>
 		
-		<tracker Class="AchievementsExpanded.BuildingGroupTracker">
-			<buildings>
-				<li>
-					<key>Ship_ComputerCore</key>
-					<value>1</value>
-				</li>
-				<li>
-					<key>Ship_Reactor</key>
-					<value>1</value>
-				</li>
-				<li>
-					<key>Ship_Engine</key>
-					<value>1</value>
-				</li>
-				<li>
-					<key>Ship_SensorCluster</key>
-					<value>1</value>
-				</li>
-			</buildings>
-		</tracker>
+		<tracker Class="AchievementsExpanded.ShipBuildingTracker"/>
 		
 		<texPath>Achievements/ItAintRocketScience</texPath>
 		<points>0</points>

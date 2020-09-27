@@ -73,6 +73,7 @@ namespace AchievementsExpanded
             uniqueHash = def.defName.GetHashCode();
             unlocked = preUnlocked;
             tracker = (TrackerBase)Activator.CreateInstance(def.tracker.GetType(), new object[] { def.tracker });
+            tracker.cardAssigned = this.def.defName;
         }
 
         public string GetUniqueLoadID()
@@ -80,7 +81,7 @@ namespace AchievementsExpanded
             return $"Achievement_{uniqueHash}";
         }
 
-        public void UnlockCard(bool debugTools = false)
+        public virtual void UnlockCard(bool debugTools = false)
         {
             if(!unlocked)
             {
@@ -95,8 +96,52 @@ namespace AchievementsExpanded
                 {
                     DebugWriter.Log($"[Unlocked with DebugTools]");
                 }
-                Find.WindowStack.Add(new AchievementNotification(this));
+                Current.Game.GetComponent<AchievementPointManager>().DisplayCardWindow(this);
             }
+        }
+
+        public virtual void DrawCard(Rect rect)
+        {
+            Rect iconRect = new Rect(rect.x, rect.y, rect.width, rect.width).ContractedBy(MainTabWindow_Achievements.SpaceBetweenCards);
+
+            Widgets.DrawMenuSection(rect);
+            GUI.DrawTexture(iconRect, AchievementBGIcon);
+
+            Rect innerIconRect = iconRect.ContractedBy(3);
+            var color = GUI.color;
+            if(!unlocked && !BadTex)
+                GUI.color = Color.black;
+            GUI.DrawTexture(innerIconRect, AchievementIcon);
+            GUI.color = color;
+
+            var textWidth = Text.CalcSize(def.label).x;
+            Rect labelRect = new Rect(rect.x + (rect.width / 2) - (textWidth / 2), iconRect.y + iconRect.width, iconRect.width, rect.height - MainTabWindow_Achievements.SpaceBetweenCards - iconRect.height);
+            if(textWidth > labelRect.width)
+            {
+                labelRect.x = iconRect.x;
+            }
+            Widgets.Label(labelRect, def.label);
+
+            var font = Text.Font;
+            var textColor = GUI.color;
+            Text.Font = GameFont.Tiny;
+            GUI.color = MainTabWindow_Achievements.LightGray;
+            var descTextFull = $"{def.points} - {def.description}";
+            var descSize = Text.CalcSize(descTextFull);
+            var descWidth = Mathf.Clamp(descSize.x, 0f, iconRect.width);
+            Rect pointIconRect = new Rect(rect.x + (rect.width / 2) - (descWidth / 2) - 10, labelRect.y + MainTabWindow_Achievements.SpaceBetweenCards * 5f, descSize.y, descSize.y);
+            Rect descRect = new Rect(pointIconRect.x + pointIconRect.width + 2, pointIconRect.y + 1, iconRect.width, labelRect.height);
+            GUI.DrawTexture(pointIconRect, AchievementTex.PointsIcon);
+            Widgets.Label(descRect, descTextFull);
+
+            GUI.color = Color.gray;
+            var timeSize = Text.CalcSize(dateUnlocked);
+            var timeWidth = Mathf.Clamp(timeSize.x, 0f, iconRect.width);
+            Rect unlockTimeRect = new Rect(rect.x + (rect.width / 2) - (timeWidth / 2), iconRect.y + rect.height - (timeSize.y * 1.5f), rect.width, timeSize.y);
+            Widgets.Label(unlockTimeRect, dateUnlocked);
+
+            Text.Font = font;
+            GUI.color = textColor;
         }
 
         internal void LockCard()

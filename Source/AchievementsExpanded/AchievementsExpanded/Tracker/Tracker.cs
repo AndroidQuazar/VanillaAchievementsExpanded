@@ -12,6 +12,6 @@ namespace AchievementsExpanded
     {
         public Tracker() { }
         public Tracker(Tracker<T> reference) : base(reference) { }
-        public virtual bool Trigger(T param = default) => base.Trigger(param.ToStringSafe());
+        public virtual bool Trigger(T param = default) => base.Trigger($"Param 1: { param.ToStringSafe() }");
     }
 }

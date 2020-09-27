@@ -55,9 +55,19 @@ namespace AchievementsExpanded
         {
             base.Trigger(param);
             bool trigger = true;
-            if (total)
+            if (total > 0)
             {
-
+                var factionPawns = PawnsFinder.AllMapsCaravansAndTravelingTransportPods_Alive_OfPlayerFaction;
+                if (factionPawns is null)
+                    return false;
+                var totalCount = 0;
+                foreach (KeyValuePair<PawnKindDef, int> set in kindDefDict)
+                {
+                    if (set.Key == param)
+                        totalCount += 1;
+                    totalCount += factionPawns.Where(f => f.kindDef.defName == set.Key.defName).Count();
+                }
+                return totalCount >= total;
             }
             else
             {
@@ -90,7 +100,7 @@ namespace AchievementsExpanded
         }
 
         Dictionary<PawnKindDef, int> kindDefDict = new Dictionary<PawnKindDef, int>();
-        public bool total;
+        public int total = 0;
         public bool requireAll = true;
     }
 }

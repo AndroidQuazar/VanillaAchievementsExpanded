@@ -12,8 +12,7 @@ namespace AchievementsExpanded
     {
         public override string Key => "TimeTracker";
 
-        public override MethodInfo MethodHook => AccessTools.Method(typeof(TickManager), nameof(TickManager.TickManagerUpdate));
-        public override MethodInfo PatchMethod => AccessTools.Method(typeof(AchievementHarmony), nameof(AchievementHarmony.TimeTickPassed));
+        public override Func<bool> AttachToLongTick => () => { return Trigger(); };
         protected override string[] DebugText => new string[] { $"Ticks: {ticksPassed}", $"Require unpaused to Tick: {gameTime}" };
         public TimeTracker()
         {

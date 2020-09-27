@@ -67,8 +67,13 @@
     <Compile Include="AchievementManager\AchievementGenerator.cs" />
     <Compile Include="AchievementManager\AchievementHarmony.cs" />
     <Compile Include="AchievementManager\DebugWriter.cs" />
+    <Compile Include="Rewards\Reward_MapIncident.cs" />
+    <Compile Include="Rewards\Reward_RandomQuest.cs" />
+    <Compile Include="Rewards\Reward_Random.cs" />
     <Compile Include="Tracker\BondedAnimalOnFireKillTracker.cs" />
     <Compile Include="Tracker\ImmunityHediffTracker.cs" />
+    <Compile Include="Tracker\RecordTimeTracker.cs" />
+    <Compile Include="Tracker\RecordEventTracker.cs" />
     <Compile Include="Tracker\SettlementDefeatTracker.cs" />
     <Compile Include="Tracker\TraderTracker.cs" />
     <Compile Include="Tracker\BuildingTracker.cs" />
@@ -79,7 +84,7 @@
     <Compile Include="Tracker\ResearchTracker.cs" />
     <Compile Include="Tracker\ItemCraftTracker.cs" />
     <Compile Include="Tracker\QuestTracker.cs" />
-    <Compile Include="Tracker\BuildingGroupTracker.cs" />
+    <Compile Include="Tracker\ShipBuildingTracker.cs" />
     <Compile Include="Tracker\SkillTracker.cs" />
     <Compile Include="Tracker\WealthTracker.cs" />
     <Compile Include="Tracker\ItemTracker.cs" />
@@ -89,13 +94,13 @@
     <Compile Include="Tracker\IncidentSeasonalTracker.cs" />
     <Compile Include="Tracker\MentalBreakTracker.cs" />
     <Compile Include="Tracker\KillTracker.cs" />
-    <Compile Include="Tracker\MultiKillTracker.cs" />
     <Compile Include="Tracker\Tracker2.cs" />
     <Compile Include="Tracker\Tracker3.cs" />
     <Compile Include="UI\AchievementNotification.cs" />
     <Compile Include="AchievementManager\AchievementPointManager.cs" />
     <Compile Include="AchievementCard\AchievementTabDef.cs" />
     <Compile Include="AchievementCard\AchievementTabDefOf.cs" />
+    <Compile Include="Rewards\AchievementReward.cs" />
     <Compile Include="UI\AchievementTex.cs" />
     <Compile Include="AchievementManager\DebugTools.cs" />
     <Compile Include="Tracker\IncidentTracker.cs" />
@@ -107,6 +112,7 @@
     <Compile Include="Tracker\TimeTracker.cs" />
     <Compile Include="Tracker\Tracker.cs" />
     <Compile Include="Tracker\TrackerBase.cs" />
+    <Compile Include="Rewards\Reward_EnemyRaid.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

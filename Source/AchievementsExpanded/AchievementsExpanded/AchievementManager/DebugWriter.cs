@@ -12,6 +12,8 @@ namespace AchievementsExpanded
     {
         public static bool Log(string text)
         {
+            if (string.IsNullOrEmpty(RootDir))
+                ResetRootDir();
             try
             {
                 File.AppendAllLines(FullPath, new[] { text });
@@ -26,6 +28,8 @@ namespace AchievementsExpanded
 
         public static bool Log(string[] text)
         {
+            if (string.IsNullOrEmpty(RootDir))
+                ResetRootDir();
             try
             {
                 File.AppendAllLines(FullPath, text);
@@ -36,6 +40,13 @@ namespace AchievementsExpanded
                 return false;
             }
             return true;
+        }
+
+        internal static void ResetRootDir()
+        {
+            RootDir = ModLister.GetModWithIdentifier("smashphil.achievements").RootDir.ToString();
+            Clear();
+            Log(new string[] { "Vanilla Achievements Expanded", "This log is for logging Tracker information and Event triggers only.\n"});
         }
 
         public static void Clear()

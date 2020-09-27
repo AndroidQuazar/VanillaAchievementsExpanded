@@ -6,7 +6,7 @@ using Verse;
 
 namespace AchievementsExpanded
 {
-    public enum PatchType { Prefix, Transpiler, Postfix, Finalizer, Reverse, Unpatch };
+    public enum PatchType { Prefix, Transpiler, Postfix, Finalizer };
     public abstract class TrackerBase : IExposable, ILoadReferenceable
     {
         public TrackerBase()
@@ -39,6 +39,7 @@ namespace AchievementsExpanded
                 if (!string.IsNullOrEmpty(text))
                     DebugWriter.Log(text);
                 DebugWriter.Log(DebugText);
+                DebugWriter.Log($"Card: {cardAssigned}");
             }
             return false;
         }
@@ -47,6 +48,7 @@ namespace AchievementsExpanded
         {
             Scribe_Values.Look(ref uniqueId, "uniqueId", -1);
             Scribe_Values.Look(ref logTracker, "logTracker", false);
+            Scribe_Values.Look(ref cardAssigned, "cardAssigned");
         }
 
         protected void DebugLog(string text) => DebugWriter.Log(text);
@@ -57,5 +59,6 @@ namespace AchievementsExpanded
 
         public int uniqueId = -1;
         public bool logTracker;
+        public string cardAssigned;
     }
 }

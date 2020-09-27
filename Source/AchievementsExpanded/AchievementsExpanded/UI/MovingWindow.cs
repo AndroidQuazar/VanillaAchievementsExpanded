@@ -51,7 +51,7 @@ namespace AchievementsExpanded
                 windowRect.y -= FloatSpeed.y;
                 drift.y -= Mathf.Abs(FloatSpeed.y);
 
-                if(ticksActive >= (TicksTillRemoval * 2))
+                if(ticksActive >= (TicksTillRemoval * 2) || (windowRect.position == WindowPosition))
                 {
                     Close(false);
                 }

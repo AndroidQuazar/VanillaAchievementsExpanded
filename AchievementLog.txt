@@ -1,39 +1,5 @@
 Vanilla Achievements Expanded
 This log is for logging Tracker information and Event triggers only.
 
-
-Trigger Event called for KillTracker_41799
-Alexei
-KindDef: None
-Race: None
-Factions: None
-Count: 1
-Current: 0
-Unlocking: Achievement_-786378924 Card: First Blood
-
-Trigger Event called for KillTracker_41800
-Alexei
-KindDef: None
-Race: Human
-Factions: None
-Count: 100
-Current: 0
-
-Trigger Event called for KillTracker_41801
-Alexei
-KindDef: None
-Race: Human
-Factions: None
-Count: 1000
-Current: 0
-
-Trigger Event called for KillTracker_41802
-Alexei
-KindDef: Thrumbo
-Race: None
-Factions: None
-Count: 20
-Current: 0
-
-Trigger Event called for MultiKillTracker_41803
-Alexei
+Resetting AchievementLinks
+Verifying Achievement List

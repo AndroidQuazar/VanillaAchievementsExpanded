@@ -16,6 +16,7 @@ namespace AchievementsExpanded
         public static Dictionary<TrackerBase, HashSet<AchievementCard>> achievementLookup = new Dictionary<TrackerBase, HashSet<AchievementCard>>();
 
         internal HashSet<AchievementCard> achievementList;
+        internal Stack<AchievementCard> unlockedCards;
 
         internal static HashSet<AchievementCard> AchievementList => Current.Game?.GetComponent<AchievementPointManager>()?.achievementList ?? new HashSet<AchievementCard>();
         internal static IEnumerable<Type> TrackerTypes { get; set; }
@@ -46,15 +47,13 @@ namespace AchievementsExpanded
         {
             base.FinalizeInit();
             PreInit();
-            DebugWriter.RootDir = ModLister.GetModWithIdentifier("smashphil.achievements").RootDir.ToString();
-            DebugWriter.Clear();
-            DebugWriter.Log(new string[] { "Vanilla Achievements Expanded", "This log is for logging Tracker information and Event triggers only.\n"});
         }
 
         internal void HardReset()
         {
             achievementLookup = null;
             achievementList = null;
+            unlockedCards = new Stack<AchievementCard>();
             DebugWriter.Log($"Regenerating achievements...\n");
             PreInit(true);
             ResetPoints();
@@ -66,6 +65,9 @@ namespace AchievementsExpanded
                 achievementLookup = new Dictionary<TrackerBase, HashSet<AchievementCard>>();
             if (achievementList is null)
                 achievementList = new HashSet<AchievementCard>();
+            if (unlockedCards is null)
+                unlockedCards = new Stack<AchievementCard>();
+            DebugWriter.ResetRootDir();
             if(debug)
                 DebugWriter.Log($"Resetting AchievementLinks");
             achievementLookup = AchievementGenerator.GenerateAchievementLinks(achievementList);
@@ -86,12 +88,37 @@ namespace AchievementsExpanded
             totalEarnedPoints = 0;
         }
 
+        public void DisplayCardWindow(AchievementCard card)
+        {
+            unlockedCards.Push(card);
+        }
+
+        public bool TryPurchasePoints(int points)
+        {
+            if (DebugSettings.godMode)
+                return true;
+            if (availablePoints < points)
+                return false;
+            availablePoints -= points;
+            return true;
+        }
+
+        public override void GameComponentTick()
+        {
+            if (unlockedCards.Any() && !Find.WindowStack.Windows.Any(w => w.GetType() == typeof(AchievementNotification)))
+            {
+                Find.WindowStack.Add(new AchievementNotification(unlockedCards.Pop()));
+                Log.Message($"DISPLAYING CARD! Count: {unlockedCards.Count}");
+            }
+        }
+
         public override void ExposeData()
         {
             Scribe_Values.Look(ref availablePoints, "points");
             Scribe_Values.Look(ref totalEarnedPoints, "totalEarnedPoints");
 
             Scribe_Collections.Look(ref achievementList, "achievementList", LookMode.Deep);
+            Scribe_Collections.Look(ref unlockedCards, "unlockedCards", LookMode.Deep);
         }
 
         internal const string AchievementTag = "VanillaAchievementsExpanded";

@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<AchievementsExpanded.Reward_EnemyRaid>
+		<defName>EnemyRaidReward</defName>
+		<label>Summon A Raid</label>
+		
+		<cost>25</cost>
+		<incident>RaidEnemy</incident>
+	</AchievementsExpanded.Reward_EnemyRaid>
+	
+	<AchievementsExpanded.Reward_MapIncident>
+		<defName>CargoPodsReward</defName>
+		<label>Spawn Cargo Pods</label>
+		
+		<cost>50</cost>
+		<incident>ResourcePodCrash</incident>
+	</AchievementsExpanded.Reward_MapIncident>
+	
+	<AchievementsExpanded.Reward_MapIncident>
+		<defName>TradeCaravanReward</defName>
+		<label>Summon a Trade Caravan</label>
+		
+		<cost>100</cost>
+		<incident>TraderCaravanArrival</incident>
+	</AchievementsExpanded.Reward_MapIncident>
+	
+	<AchievementsExpanded.Reward_Random>
+		<defName>RandomReward</defName>
+		<label>Random Event</label>
+		
+		<cost>150</cost>
+	</AchievementsExpanded.Reward_Random>
+	
+	<AchievementsExpanded.Reward_MapIncident>
+		<defName>ManInBlackReward</defName>
+		<label>Man in Black Joins</label>
+		
+		<cost>300</cost>
+		<incident>StrangerInBlackJoin</incident>
+	</AchievementsExpanded.Reward_MapIncident>
+	
+	<AchievementsExpanded.Reward_RandomQuest>
+		<defName>RandomRewardQuest</defName>
+		<label>Random Quest</label>
+		
+		<cost>500</cost>
+	</AchievementsExpanded.Reward_RandomQuest>
+	
+	<!-- Random Quest Reward -->
+</Defs>

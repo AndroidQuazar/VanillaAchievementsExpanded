@@ -44,45 +44,46 @@ namespace AchievementsExpanded
                             harmony.Patch(original: tracker.MethodHook,
                                 finalizer: new HarmonyMethod(tracker.PatchMethod));
                             break;
-                        case PatchType.Reverse:
-                            throw new NotImplementedException();
-                        case PatchType.Unpatch:
-                            throw new NotImplementedException();
                     }
-                    
                 }
             }
 
+            /* Additional Event Catches */
+            harmony.Patch(original: AccessTools.Method(typeof(Thing), nameof(Thing.Kill)),
+                prefix: new HarmonyMethod(typeof(AchievementHarmony),
+                nameof(KillThing)));
+            harmony.Patch(original: AccessTools.Method(typeof(Pawn_RecordsTracker), nameof(Pawn_RecordsTracker.AddTo)),
+                postfix: new HarmonyMethod(typeof(AchievementHarmony),
+                nameof(RecordAddToEvent)));
+
+            /* Event thrown every Long Tick */
             harmony.Patch(original: AccessTools.Method(typeof(TickManager), nameof(TickManager.DoSingleTick)),
                 postfix: new HarmonyMethod(typeof(AchievementHarmony),
                 nameof(SingleLongTickTracker)));
         }
 
+        /// <summary>
+        /// Pawn PopulationAdaptation event
+        /// </summary>
+        /// <param name="p"></param>
+        /// <param name="ev"></param>
         public static void PawnJoinedFaction(Pawn p, PopAdaptationEvent ev)
         {
             foreach(var card in AchievementPointManager.AchievementList.Where(a => a.tracker.GetType() == typeof(RaceDefTracker) && !a.unlocked))
             {
-                if((card.tracker as RaceDefTracker).Trigger(p.kindDef))
+                if(ev == PopAdaptationEvent.GainedColonist && (card.tracker as RaceDefTracker).Trigger(p.kindDef))
                 {
                     card.UnlockCard();
                 }
             }
         }
 
-        public static void TimeTickPassed()
-        {
-            if (Find.TickManager.TicksGame % 2000 == 0)
-            {
-                foreach(var card in AchievementPointManager.AchievementList.Where(a => a.tracker.GetType().SameOrSubclass(typeof(TimeTracker)) && !a.unlocked))
-                {
-                    if ((card.tracker as TimeTracker).Trigger())
-                    {
-                        card.UnlockCard();
-                    }
-                }
-            }
-        }
-
+        /// <summary>
+        /// Any incident being triggered event
+        /// </summary>
+        /// <param name="parms"></param>
+        /// <param name="__instance"></param>
+        /// <param name="__result"></param>
         public static void IncidentTriggered(IncidentParms parms, IncidentWorker __instance, ref bool __result)
         {
             foreach(var card in AchievementPointManager.AchievementList.Where(a => a.tracker.GetType().SameOrSubclass(typeof(IncidentTracker)) && !a.unlocked))
@@ -94,6 +95,13 @@ namespace AchievementsExpanded
             }
         }
 
+        /// <summary>
+        /// Animal being set to Bonded event
+        /// </summary>
+        /// <param name="humanlike"></param>
+        /// <param name="animal"></param>
+        /// <param name="baseChance"></param>
+        /// <param name="__result"></param>
         public static void AnimalBondedEvent(Pawn humanlike, Pawn animal, float baseChance, ref bool __result)
         {
             if(__result)
@@ -108,6 +116,10 @@ namespace AchievementsExpanded
             }
         }
 
+        /// <summary>
+        /// DevMode event (when devMode is toggled)
+        /// </summary>
+        /// <param name="value"></param>
         public static void DevModeToggled(bool value)
         {
             foreach(var card in AchievementPointManager.AchievementList.Where(a => a.tracker.GetType().SameOrSubclass(typeof(DevModeTracker)) && !a.unlocked))
@@ -119,6 +131,11 @@ namespace AchievementsExpanded
             }
         }
 
+        /// <summary>
+        /// MentalState event
+        /// </summary>
+        /// <param name="instructions"></param>
+        /// <returns></returns>
         public static IEnumerable<CodeInstruction> MentalBreakTriggered(IEnumerable<CodeInstruction> instructions)
         {
             List<CodeInstruction> instructionList = instructions.ToList();
@@ -138,15 +155,37 @@ namespace AchievementsExpanded
             yield return new CodeInstruction(opcode: OpCodes.Ret);
         }
 
+        /// <summary>
+        /// Pawn Kill event triggered whenever a pawn is killed
+        /// </summary>
+        /// <param name="dinfo"></param>
+        /// <param name="__instance"></param>
+        /// <param name="exactCulprit"></param>
         public static void KillPawn(DamageInfo? dinfo, Pawn __instance, Hediff exactCulprit = null)
         {
             foreach(var card in AchievementPointManager.AchievementList.Where(a => a.tracker.GetType().SameOrSubclass(typeof(KillTracker)) && !a.unlocked))
             {
-                if ((card.tracker as KillTracker).Trigger(__instance))
+                if ((card.tracker as KillTracker).Trigger(__instance, dinfo))
                 {
                     card.UnlockCard();
                 }
             }
+        }
+
+        /// <summary>
+        /// Additional Event where Thing is killed. Catches Things that are Pawns calling here instead of main Pawn Kill method. (DebugGeneral for instance)
+        /// </summary>
+        /// <param name="dinfo"></param>
+        /// <param name="__instance"></param>
+        /// <param name="exactCulprit"></param>
+        public static bool KillThing(DamageInfo? dinfo, Thing __instance, Hediff exactCulprit = null)
+        {
+            if (__instance is Pawn pawn)
+            {
+                pawn.Kill(dinfo, exactCulprit);
+                return false;
+            }
+            return true;
         }
 
         /// <summary>
@@ -244,17 +283,24 @@ namespace AchievementsExpanded
         }
 
         /// <summary>
-        /// Building SpawnSetup event
+        /// Spawn event for Buildings
         /// </summary>
+        /// <param name="newThing"></param>
+        /// <param name="loc"></param>
         /// <param name="map"></param>
+        /// <param name="rot"></param>
+        /// <param name="wipeMode"></param>
         /// <param name="respawningAfterLoad"></param>
-        public static void BuildingSpawned(Pawn worker, Frame __instance)
+        public static void ThingBuildingSpawned(Thing newThing, IntVec3 loc, Map map, Rot4 rot, WipeMode wipeMode = WipeMode.Vanish, bool respawningAfterLoad = false)
         {
-            foreach(var card in AchievementPointManager.AchievementList.Where(a => a.tracker.GetType().SameOrSubclass(typeof(BuildingTracker)) && !a.unlocked))
+            if (newThing is Building building && building.Faction == Faction.OfPlayer && Current.ProgramState == ProgramState.Playing)
             {
-                if (worker.Faction == Faction.OfPlayer && (card.tracker as BuildingTracker).Trigger(__instance.def.entityDefToBuild, __instance.Stuff))
+                foreach(var card in AchievementPointManager.AchievementList.Where(a => a.tracker.GetType().SameOrSubclass(typeof(BuildingTracker)) && !a.unlocked))
                 {
-                    card.UnlockCard();
+                    if ((card.tracker as BuildingTracker).Trigger(building))
+                    {
+                        card.UnlockCard();
+                    }
                 }
             }
         }
@@ -346,6 +392,62 @@ namespace AchievementsExpanded
                         card.UnlockCard();
                     }
                 }
+            }
+        }
+
+        /// <summary>
+        /// Increment Event where Records are incremented by 1
+        /// </summary>
+        /// <param name="def"></param>
+        /// <param name="__instance"></param>
+        public static void RecordEvent(RecordDef def, Pawn_RecordsTracker __instance)
+        {
+            foreach (var card in AchievementPointManager.AchievementList.Where(a => a.tracker.GetType().SameOrSubclass(typeof(RecordEventTracker)) && !a.unlocked))
+            {
+                var tracker = card.tracker as RecordEventTracker;
+                if (tracker.def == def && tracker.Trigger(def, __instance.pawn))
+                {
+                    card.UnlockCard();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Additional Patch to AddTo to catch outside calls to increment the non Time-based RecordDef
+        /// </summary>
+        /// <param name="def"></param>
+        /// <param name="__instance"></param>
+        public static void RecordAddToEvent(RecordDef def, Pawn_RecordsTracker __instance)
+        {
+            RecordEvent(def, __instance);
+        }
+
+        /// <summary>
+        /// AddTo event where a float value is added to the Record (used for Time based Records)
+        /// </summary>
+        /// <param name="def"></param>
+        /// <param name="value"></param>
+        /// <param name="__instance"></param>
+        public static IEnumerable<CodeInstruction> RecordTimeEvent(IEnumerable<CodeInstruction> instructions)
+        {
+            List<CodeInstruction> instructionList = instructions.ToList();
+
+            for(int i = 0; i < instructionList.Count; i++)
+            {
+                CodeInstruction instruction = instructionList[i];
+
+                if (instruction.opcode == OpCodes.Stloc_3)
+                {
+                    yield return instruction;
+                    instruction = instructionList[++i];
+
+                    yield return new CodeInstruction(opcode: OpCodes.Ldloc_3);
+                    yield return new CodeInstruction(opcode: OpCodes.Ldarg_0);
+                    yield return new CodeInstruction(opcode: OpCodes.Ldfld, AccessTools.Field(typeof(Pawn_RecordsTracker), nameof(Pawn_RecordsTracker.pawn)));
+                    yield return new CodeInstruction(opcode: OpCodes.Ldarg_1);
+                    yield return new CodeInstruction(opcode: OpCodes.Call, AccessTools.Method(typeof(UtilityMethods), nameof(UtilityMethods.RecordTimeEvent)));
+                }
+                yield return instruction;
             }
         }
 

@@ -23,6 +23,18 @@ namespace AchievementsExpanded
 
         }
 
+        public List<AchievementReward> Rewards
+        {
+            get
+            {
+                if (rewardCache.NullOrEmpty())
+                {
+                    rewardCache = DefDatabase<AchievementReward>.AllDefsListForReading;
+                }
+                return rewardCache;
+            }
+        }
+
         private AchievementTabDef CurTab
 		{
 			get
@@ -84,7 +96,7 @@ namespace AchievementsExpanded
         {
             Widgets.DrawMenuSection(rect);
             TabDrawer.DrawTabs(rect, tabs, 200f);
-            Rect searchRect = new Rect(rect.x + 10f, rect.y + 15f, 200f, 30f);
+            Rect searchRect = new Rect(rect.width - 240, rect.y + 15f, 200f, 30f);
             searchText = Widgets.TextField(searchRect, searchText);
         }
         
@@ -120,6 +132,40 @@ namespace AchievementsExpanded
             var unlockCount = $"{APM.achievementList.Where(a => a.unlocked).Count()} / {APM.achievementList.Count}";
             Widgets.Label(rect, "AchievementsUnlocked".Translate(unlockCount));
 
+            rect.y += 100;
+            Text.Font = GameFont.Medium;
+            Widgets.Label(rect, "PointsRedeem".Translate());
+
+            rect.y += 35;
+            iconRect.width = rect.width * 0.1f;
+            labelRect.width = rect.width * 0.1f;
+            var color = GUI.color;
+            foreach (AchievementReward reward in Rewards.OrderBy(r => r.cost))
+            {
+                iconRect.y = rect.y;
+                labelRect.y = rect.y;
+                bool disabled = !string.IsNullOrEmpty(reward.Disabled);
+                Rect buttonRect = new Rect(iconRect.x + 100, rect.y, rect.width * 0.6f, 30);
+                Text.Font = GameFont.Medium;
+                Widgets.DrawTextureFitted(iconRect, AchievementTex.PointsIcon, 1f);
+                Widgets.Label(labelRect, reward.cost.ToString());
+                Text.Font = GameFont.Small;
+                if (disabled)
+                {
+                    GUI.color = Color.gray;
+                    TooltipHandler.TipRegion(buttonRect, reward.Disabled);
+                }
+                if (Widgets.ButtonText(buttonRect, reward.label) && !disabled)
+                {
+                    if (reward.PurchaseReward())
+                    {
+                        reward.TryExecuteEvent();
+                    }
+                }
+                rect.y += 35f;
+                GUI.color = color;
+            }
+
             Text.Font = font;
         }
 
@@ -147,59 +193,15 @@ namespace AchievementsExpanded
                 {
                     cardRect.y = windowRect.y + (iconHeight + SpaceBetweenCards) * Mathf.FloorToInt(i / CardsPerRow);
                 }
-                DrawCard(cardRect, card);
+                card.DrawCard(cardRect);
             }
 
             Widgets.EndScrollView();
         }
 
-        private void DrawCard(Rect rect, AchievementCard card)
-        {
-            Rect iconRect = new Rect(rect.x, rect.y, rect.width, rect.width).ContractedBy(SpaceBetweenCards);
+        public const int CardsPerRow = 7;
 
-            Widgets.DrawMenuSection(rect);
-            GUI.DrawTexture(iconRect, card.AchievementBGIcon);
-
-            Rect innerIconRect = iconRect.ContractedBy(3);
-            var color = GUI.color;
-            if(!card.unlocked && !card.BadTex)
-                GUI.color = Color.black;
-            GUI.DrawTexture(innerIconRect, card.AchievementIcon);
-            GUI.color = color;
-
-            var textWidth = Text.CalcSize(card.def.label).x;
-            Rect labelRect = new Rect(rect.x + (rect.width / 2) - (textWidth / 2), iconRect.y + iconRect.width, iconRect.width, rect.height - SpaceBetweenCards - iconRect.height);
-            if(textWidth > labelRect.width)
-            {
-                labelRect.x = iconRect.x;
-            }
-            Widgets.Label(labelRect, card.def.label);
-
-            var font = Text.Font;
-            var textColor = GUI.color;
-            Text.Font = GameFont.Tiny;
-            GUI.color = LightGray;
-            var descTextFull = $"{card.def.points} - {card.def.description}";
-            var descSize = Text.CalcSize(descTextFull);
-            var descWidth = Mathf.Clamp(descSize.x, 0f, iconRect.width);
-            Rect pointIconRect = new Rect(rect.x + (rect.width / 2) - (descWidth / 2) - 10, labelRect.y + SpaceBetweenCards * 5f, descSize.y, descSize.y);
-            Rect descRect = new Rect(pointIconRect.x + pointIconRect.width + 2, pointIconRect.y + 1, iconRect.width, labelRect.height);
-            GUI.DrawTexture(pointIconRect, AchievementTex.PointsIcon);
-            Widgets.Label(descRect, descTextFull);
-
-            GUI.color = Color.gray;
-            var timeSize = Text.CalcSize(card.dateUnlocked);
-            var timeWidth = Mathf.Clamp(timeSize.x, 0f, iconRect.width);
-            Rect unlockTimeRect = new Rect(rect.x + (rect.width / 2) - (timeWidth / 2), iconRect.y + rect.height - (timeSize.y * 1.5f), rect.width, timeSize.y);
-            Widgets.Label(unlockTimeRect, card.dateUnlocked);
-
-            Text.Font = font;
-            GUI.color = textColor;
-        }
-
-        private const int CardsPerRow = 7;
-
-        private const float SpaceBetweenCards = 10;
+        public const float SpaceBetweenCards = 10;
 
         private const float TextAreaHeight = 0.15f;
         private const float SidePanelMargin = 0.05f;
@@ -207,6 +209,7 @@ namespace AchievementsExpanded
         private const float ScreenHeightPercent = 0.8f;
 
         private AchievementPointManager apmCache;
+        private List<AchievementReward> rewardCache;
         private static AchievementTabDef curTab;
         private List<TabRecord> tabs = new List<TabRecord>();
 

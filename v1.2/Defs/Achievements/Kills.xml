@@ -60,22 +60,11 @@
 		<label>Exterminator</label>
 		<description>Kill 150 Insectoids</description>
 		
-		<tracker Class="AchievementsExpanded.MultiKillTracker">
-			<kindDefDict>
-				<li>
-					<key>Megascarab</key>
-					<value/>
-				</li>
-				<li>
-					<key>Spelopede</key>
-					<value/>
-				</li>
-				<li>
-					<key>Megaspider</key>
-					<value/>
-				</li>
-			</kindDefDict>
-			<count>150</count>
+		<tracker Class="AchievementsExpanded.KillTracker">
+			<factionDefs>
+				<li>Insect</li>
+			</factionDefs>
+			<count>3</count>
 		</tracker>
 		
 		<texPath>Achievements/Exterminator</texPath>

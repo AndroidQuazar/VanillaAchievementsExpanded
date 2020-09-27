@@ -6,12 +6,12 @@ using RimWorld;
 
 namespace AchievementsExpanded
 {
-    public class BuildingTracker : Tracker2<BuildableDef, ThingDef>
+    public class BuildingTracker : Tracker<Building>
     {
         public override string Key => "BuildingTracker";
 
-        public override MethodInfo MethodHook => AccessTools.Method(typeof(Frame), nameof(Frame.CompleteConstruction));
-        public override MethodInfo PatchMethod => AccessTools.Method(typeof(AchievementHarmony), nameof(AchievementHarmony.BuildingSpawned));
+        public override MethodInfo MethodHook => AccessTools.Method(typeof(GenSpawn), nameof(GenSpawn.Spawn), new Type[] { typeof(Thing), typeof(IntVec3), typeof(Map), typeof(Rot4), typeof(WipeMode), typeof(bool) });
+        public override MethodInfo PatchMethod => AccessTools.Method(typeof(AchievementHarmony), nameof(AchievementHarmony.ThingBuildingSpawned));
         protected override string[] DebugText => new string[] { $"Def: {def?.defName ?? "None"}", $"MadeFrom: {madeFrom?.defName ?? "Any"}", $"Count: {count}", $"Current: {triggeredCount}" };
         public BuildingTracker()
         {
@@ -34,10 +34,10 @@ namespace AchievementsExpanded
             Scribe_Values.Look(ref triggeredCount, "triggeredCount");
         }
 
-        public override bool Trigger(BuildableDef building, ThingDef stuff)
+        public override bool Trigger(Building building)
         {
-            base.Trigger(building, stuff);
-            if ( (def is null || def == building) && (madeFrom is null || madeFrom == stuff) )
+            base.Trigger(building);
+            if ( (def is null || def == building.def) && (madeFrom is null || madeFrom == building.Stuff) )
             {
                 triggeredCount++;
             }

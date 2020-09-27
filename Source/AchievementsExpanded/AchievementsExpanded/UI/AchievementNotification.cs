@@ -13,10 +13,10 @@ namespace AchievementsExpanded
     public class AchievementNotification : MovingWindow
     {
         protected override Vector2 MaxDrift => new Vector2(250, 110);
-        protected override Vector2 FloatSpeed => new Vector2(0, -2);
+        protected override Vector2 FloatSpeed => new Vector2(0, -1);
         protected override Vector2 WindowPosition => new Vector2(UI.screenWidth - MaxDrift.x, UI.screenHeight);
         protected override float Margin => 0f;
-        protected override int TicksTillRemoval => 800;
+        protected override int TicksTillRemoval => 1500;
 
         public AchievementNotification(AchievementCard card, Action clickAction = null)
         {

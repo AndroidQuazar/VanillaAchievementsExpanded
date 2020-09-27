@@ -81,6 +81,24 @@ namespace AchievementsExpanded
         }
 
 		/// <summary>
+		/// HelperMethod for Time based record event
+		/// </summary>
+		/// <param name="def"></param>
+		/// <param name="pawn"></param>
+		/// <param name="interval"></param>
+		public static void RecordTimeEvent(RecordDef def, Pawn pawn, int interval)
+        {
+			foreach (var card in AchievementPointManager.AchievementList.Where(a => a.tracker.GetType().SameOrSubclass(typeof(RecordTimeTracker)) && !a.unlocked))
+            {
+                var tracker = card.tracker as RecordTimeTracker;
+                if (tracker.def == def && tracker.Trigger(def, pawn, (float)interval))
+                {
+                    card.UnlockCard();
+                }
+            }
+        }
+
+		/// <summary>
 		/// Get all items from Player's home inventory
 		/// </summary>
 		/// <param name="thingDef"></param>
