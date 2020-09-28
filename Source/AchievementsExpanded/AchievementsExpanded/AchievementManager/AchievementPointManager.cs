@@ -104,6 +104,12 @@ namespace AchievementsExpanded
             return true;
         }
 
+        public void AddPoints(int points)
+        {
+            availablePoints += points;
+            totalEarnedPoints += points;
+        }
+
         public override void GameComponentTick()
         {
             if (unlockedCards.Any() && !Find.WindowStack.Windows.Any(w => w.GetType() == typeof(AchievementNotification)))

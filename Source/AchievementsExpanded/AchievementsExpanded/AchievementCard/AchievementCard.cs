@@ -90,7 +90,7 @@ namespace AchievementsExpanded
                 var vector = Find.WorldGrid.LongLatOf(Find.CurrentMap.Tile);
                 dateUnlocked = (Prefs.DevMode || debugTools) ? "UnlockedDevMode".Translate().ToString() : GenDate.DateReadoutStringAt(Find.TickManager.TicksAbs, vector);
 
-                Current.Game.GetComponent<AchievementPointManager>().availablePoints += def.points;
+                Current.Game.GetComponent<AchievementPointManager>().AddPoints(def.points);
                 DebugWriter.Log($"Unlocking: {GetUniqueLoadID()} Card: {def.label}");
                 if (debugTools)
                 {

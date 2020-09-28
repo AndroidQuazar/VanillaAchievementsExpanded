@@ -1,9 +1,660 @@
 Vanilla Achievements Expanded
 This log is for logging Tracker information and Event triggers only.
 
+Resetting AchievementLinks
+Verifying Achievement List
 
-Trigger Event called for PropertyTracker_94081
-Param 1: True
-Value: True
-Card: cheaterCheater
-Unlocking: Achievement_-140621834 Card: Cheater, Cheater!
+Trigger Event called for KillTracker_115969
+Param 1: Megascarab72177 Param 2: null
+KindDef: None
+Race: None
+Factions: None
+Instigators: 2
+Count: 1
+Current: 0
+Card: firstBlood
+
+Trigger Event called for KillTracker_115970
+Param 1: Megascarab72177 Param 2: null
+KindDef: None
+Race: Human
+Factions: None
+Instigators: None
+Count: 100
+Current: 0
+Card: bloodlust
+
+Trigger Event called for KillTracker_115971
+Param 1: Megascarab72177 Param 2: null
+KindDef: None
+Race: Human
+Factions: None
+Instigators: None
+Count: 1000
+Current: 0
+Card: bloodForTheBloodGod
+
+Trigger Event called for KillTracker_115972
+Param 1: Megascarab72177 Param 2: null
+KindDef: Thrumbo
+Race: None
+Factions: None
+Instigators: None
+Count: 20
+Current: 0
+Card: bigGameHunter
+
+Trigger Event called for KillTracker_115973
+Param 1: Megascarab72177 Param 2: null
+KindDef: None
+Race: None
+Factions: 1
+Instigators: None
+Count: 3
+Current: 0
+Card: exterminator
+
+Trigger Event called for KillTracker_115974
+Param 1: Megascarab72177 Param 2: null
+KindDef: Iguana
+Race: None
+Factions: None
+Instigators: None
+Count: 50
+Current: 0
+Card: dragonSlayer
+
+Trigger Event called for KillTracker_115975
+Param 1: Megascarab72177 Param 2: null
+KindDef: Emu
+Race: None
+Factions: None
+Instigators: None
+Count: 30
+Current: 0
+Card: australianRevenge
+
+Trigger Event called for KillTracker_115969
+Param 1: Megascarab72177 Param 2: null
+KindDef: None
+Race: None
+Factions: None
+Instigators: 2
+Count: 1
+Current: 0
+Card: firstBlood
+
+Trigger Event called for KillTracker_115970
+Param 1: Megascarab72177 Param 2: null
+KindDef: None
+Race: Human
+Factions: None
+Instigators: None
+Count: 100
+Current: 0
+Card: bloodlust
+
+Trigger Event called for KillTracker_115971
+Param 1: Megascarab72177 Param 2: null
+KindDef: None
+Race: Human
+Factions: None
+Instigators: None
+Count: 1000
+Current: 0
+Card: bloodForTheBloodGod
+
+Trigger Event called for KillTracker_115972
+Param 1: Megascarab72177 Param 2: null
+KindDef: Thrumbo
+Race: None
+Factions: None
+Instigators: None
+Count: 20
+Current: 0
+Card: bigGameHunter
+
+Trigger Event called for KillTracker_115973
+Param 1: Megascarab72177 Param 2: null
+KindDef: None
+Race: None
+Factions: 1
+Instigators: None
+Count: 3
+Current: 1
+Card: exterminator
+
+Trigger Event called for KillTracker_115974
+Param 1: Megascarab72177 Param 2: null
+KindDef: Iguana
+Race: None
+Factions: None
+Instigators: None
+Count: 50
+Current: 0
+Card: dragonSlayer
+
+Trigger Event called for KillTracker_115975
+Param 1: Megascarab72177 Param 2: null
+KindDef: Emu
+Race: None
+Factions: None
+Instigators: None
+Count: 30
+Current: 0
+Card: australianRevenge
+
+Trigger Event called for SkillTracker_116007
+Param 1: Melee Param 2: 1
+Skill: Shooting
+Level: 20
+Count: 1
+Current: 0
+Card: sharpshooter
+
+Trigger Event called for SkillTracker_116008
+Param 1: Melee Param 2: 1
+Skill: Social
+Level: 20
+Count: 1
+Current: 0
+Card: mrPresident
+
+Trigger Event called for SkillTracker_116009
+Param 1: Melee Param 2: 1
+Skill: Melee
+Level: 20
+Count: 1
+Current: 0
+Card: conanTheBarbarian
+
+Trigger Event called for RecordEventTracker_115991
+Param 1: ShotsFired Param 2: Mech_Pikeman4793
+Def: ShotsFired
+Count: 2000
+Card: TriggerHappy
+
+Trigger Event called for ItemTracker_115963
+Def: AIPersonaCore
+Count: 1
+Card: oneStepCloser
+
+Trigger Event called for ItemTracker_115965
+Def: Gold
+Count: 5000
+Card: midas
+
+Trigger Event called for ItemTracker_115966
+Def: SmokeleafJoint
+Count: 420
+Card: 420
+
+Trigger Event called for TimeTracker_116010
+Ticks: 900000
+Require unpaused to Tick: True
+Card: couldBeWorse
+
+Trigger Event called for TimeTracker_116011
+Ticks: 3600000
+Require unpaused to Tick: True
+Card: itsAllDownhillFromHere
+
+Trigger Event called for TimeTracker_116012
+Ticks: 2160000
+Require unpaused to Tick: False
+Card: tenHoursWoah
+
+Trigger Event called for TimeTracker_116013
+Ticks: 21600000
+Require unpaused to Tick: False
+Card: waitAMinute
+
+Trigger Event called for WealthTracker_116017
+Wealth: 100000
+Card: inForAPenny
+
+Trigger Event called for WealthTracker_116018
+Wealth: 1000000
+Card: inForAPound
+
+Trigger Event called for SkillTracker_116007
+Param 1: Melee Param 2: 9
+Skill: Shooting
+Level: 20
+Count: 1
+Current: 0
+Card: sharpshooter
+
+Trigger Event called for SkillTracker_116008
+Param 1: Melee Param 2: 9
+Skill: Social
+Level: 20
+Count: 1
+Current: 0
+Card: mrPresident
+
+Trigger Event called for SkillTracker_116009
+Param 1: Melee Param 2: 9
+Skill: Melee
+Level: 20
+Count: 1
+Current: 0
+Card: conanTheBarbarian
+
+Trigger Event called for KillTracker_115969
+Param 1: Spelopede72179 Param 2: null
+KindDef: None
+Race: None
+Factions: None
+Instigators: 2
+Count: 1
+Current: 0
+Card: firstBlood
+
+Trigger Event called for KillTracker_115970
+Param 1: Spelopede72179 Param 2: null
+KindDef: None
+Race: Human
+Factions: None
+Instigators: None
+Count: 100
+Current: 0
+Card: bloodlust
+
+Trigger Event called for KillTracker_115971
+Param 1: Spelopede72179 Param 2: null
+KindDef: None
+Race: Human
+Factions: None
+Instigators: None
+Count: 1000
+Current: 0
+Card: bloodForTheBloodGod
+
+Trigger Event called for KillTracker_115972
+Param 1: Spelopede72179 Param 2: null
+KindDef: Thrumbo
+Race: None
+Factions: None
+Instigators: None
+Count: 20
+Current: 0
+Card: bigGameHunter
+
+Trigger Event called for KillTracker_115973
+Param 1: Spelopede72179 Param 2: null
+KindDef: None
+Race: None
+Factions: 1
+Instigators: None
+Count: 3
+Current: 1
+Card: exterminator
+
+Trigger Event called for KillTracker_115974
+Param 1: Spelopede72179 Param 2: null
+KindDef: Iguana
+Race: None
+Factions: None
+Instigators: None
+Count: 50
+Current: 0
+Card: dragonSlayer
+
+Trigger Event called for KillTracker_115975
+Param 1: Spelopede72179 Param 2: null
+KindDef: Emu
+Race: None
+Factions: None
+Instigators: None
+Count: 30
+Current: 0
+Card: australianRevenge
+
+Trigger Event called for KillTracker_115969
+Param 1: Spelopede72179 Param 2: null
+KindDef: None
+Race: None
+Factions: None
+Instigators: 2
+Count: 1
+Current: 0
+Card: firstBlood
+
+Trigger Event called for KillTracker_115970
+Param 1: Spelopede72179 Param 2: null
+KindDef: None
+Race: Human
+Factions: None
+Instigators: None
+Count: 100
+Current: 0
+Card: bloodlust
+
+Trigger Event called for KillTracker_115971
+Param 1: Spelopede72179 Param 2: null
+KindDef: None
+Race: Human
+Factions: None
+Instigators: None
+Count: 1000
+Current: 0
+Card: bloodForTheBloodGod
+
+Trigger Event called for KillTracker_115972
+Param 1: Spelopede72179 Param 2: null
+KindDef: Thrumbo
+Race: None
+Factions: None
+Instigators: None
+Count: 20
+Current: 0
+Card: bigGameHunter
+
+Trigger Event called for KillTracker_115973
+Param 1: Spelopede72179 Param 2: null
+KindDef: None
+Race: None
+Factions: 1
+Instigators: None
+Count: 3
+Current: 2
+Card: exterminator
+
+Trigger Event called for KillTracker_115974
+Param 1: Spelopede72179 Param 2: null
+KindDef: Iguana
+Race: None
+Factions: None
+Instigators: None
+Count: 50
+Current: 0
+Card: dragonSlayer
+
+Trigger Event called for KillTracker_115975
+Param 1: Spelopede72179 Param 2: null
+KindDef: Emu
+Race: None
+Factions: None
+Instigators: None
+Count: 30
+Current: 0
+Card: australianRevenge
+
+Trigger Event called for KillTracker_115969
+Param 1: Spelopede72180 Param 2: null
+KindDef: None
+Race: None
+Factions: None
+Instigators: 2
+Count: 1
+Current: 0
+Card: firstBlood
+
+Trigger Event called for KillTracker_115970
+Param 1: Spelopede72180 Param 2: null
+KindDef: None
+Race: Human
+Factions: None
+Instigators: None
+Count: 100
+Current: 0
+Card: bloodlust
+
+Trigger Event called for KillTracker_115971
+Param 1: Spelopede72180 Param 2: null
+KindDef: None
+Race: Human
+Factions: None
+Instigators: None
+Count: 1000
+Current: 0
+Card: bloodForTheBloodGod
+
+Trigger Event called for KillTracker_115972
+Param 1: Spelopede72180 Param 2: null
+KindDef: Thrumbo
+Race: None
+Factions: None
+Instigators: None
+Count: 20
+Current: 0
+Card: bigGameHunter
+
+Trigger Event called for KillTracker_115973
+Param 1: Spelopede72180 Param 2: null
+KindDef: None
+Race: None
+Factions: 1
+Instigators: None
+Count: 3
+Current: 2
+Card: exterminator
+Unlocking: Achievement_-592311470 Card: Exterminator
+
+Trigger Event called for KillTracker_115974
+Param 1: Spelopede72180 Param 2: null
+KindDef: Iguana
+Race: None
+Factions: None
+Instigators: None
+Count: 50
+Current: 0
+Card: dragonSlayer
+
+Trigger Event called for KillTracker_115975
+Param 1: Spelopede72180 Param 2: null
+KindDef: Emu
+Race: None
+Factions: None
+Instigators: None
+Count: 30
+Current: 0
+Card: australianRevenge
+
+Trigger Event called for KillTracker_115969
+Param 1: Spelopede72180 Param 2: null
+KindDef: None
+Race: None
+Factions: None
+Instigators: 2
+Count: 1
+Current: 0
+Card: firstBlood
+
+Trigger Event called for KillTracker_115970
+Param 1: Spelopede72180 Param 2: null
+KindDef: None
+Race: Human
+Factions: None
+Instigators: None
+Count: 100
+Current: 0
+Card: bloodlust
+
+Trigger Event called for KillTracker_115971
+Param 1: Spelopede72180 Param 2: null
+KindDef: None
+Race: Human
+Factions: None
+Instigators: None
+Count: 1000
+Current: 0
+Card: bloodForTheBloodGod
+
+Trigger Event called for KillTracker_115972
+Param 1: Spelopede72180 Param 2: null
+KindDef: Thrumbo
+Race: None
+Factions: None
+Instigators: None
+Count: 20
+Current: 0
+Card: bigGameHunter
+
+Trigger Event called for KillTracker_115974
+Param 1: Spelopede72180 Param 2: null
+KindDef: Iguana
+Race: None
+Factions: None
+Instigators: None
+Count: 50
+Current: 0
+Card: dragonSlayer
+
+Trigger Event called for KillTracker_115975
+Param 1: Spelopede72180 Param 2: null
+KindDef: Emu
+Race: None
+Factions: None
+Instigators: None
+Count: 30
+Current: 0
+Card: australianRevenge
+
+Trigger Event called for SkillTracker_116007
+Param 1: Melee Param 2: 11
+Skill: Shooting
+Level: 20
+Count: 1
+Current: 0
+Card: sharpshooter
+
+Trigger Event called for SkillTracker_116008
+Param 1: Melee Param 2: 11
+Skill: Social
+Level: 20
+Count: 1
+Current: 0
+Card: mrPresident
+
+Trigger Event called for SkillTracker_116009
+Param 1: Melee Param 2: 11
+Skill: Melee
+Level: 20
+Count: 1
+Current: 0
+Card: conanTheBarbarian
+
+Trigger Event called for RecordEventTracker_115991
+Param 1: ShotsFired Param 2: Mech_Pikeman4793
+Def: ShotsFired
+Count: 2000
+Card: TriggerHappy
+
+Trigger Event called for KillTracker_115969
+Param 1: Spelopede72178 Param 2: (def=Cut, amount= 21.99285, instigator=Alex, angle=225.0)
+KindDef: None
+Race: None
+Factions: None
+Instigators: 2
+Count: 1
+Current: 0
+Card: firstBlood
+Unlocking: Achievement_-786378924 Card: First Blood
+
+Trigger Event called for KillTracker_115970
+Param 1: Spelopede72178 Param 2: (def=Cut, amount= 21.99285, instigator=Alex, angle=225.0)
+KindDef: None
+Race: Human
+Factions: None
+Instigators: None
+Count: 100
+Current: 0
+Card: bloodlust
+
+Trigger Event called for KillTracker_115971
+Param 1: Spelopede72178 Param 2: (def=Cut, amount= 21.99285, instigator=Alex, angle=225.0)
+KindDef: None
+Race: Human
+Factions: None
+Instigators: None
+Count: 1000
+Current: 0
+Card: bloodForTheBloodGod
+
+Trigger Event called for KillTracker_115972
+Param 1: Spelopede72178 Param 2: (def=Cut, amount= 21.99285, instigator=Alex, angle=225.0)
+KindDef: Thrumbo
+Race: None
+Factions: None
+Instigators: None
+Count: 20
+Current: 0
+Card: bigGameHunter
+
+Trigger Event called for KillTracker_115974
+Param 1: Spelopede72178 Param 2: (def=Cut, amount= 21.99285, instigator=Alex, angle=225.0)
+KindDef: Iguana
+Race: None
+Factions: None
+Instigators: None
+Count: 50
+Current: 0
+Card: dragonSlayer
+
+Trigger Event called for KillTracker_115975
+Param 1: Spelopede72178 Param 2: (def=Cut, amount= 21.99285, instigator=Alex, angle=225.0)
+KindDef: Emu
+Race: None
+Factions: None
+Instigators: None
+Count: 30
+Current: 0
+Card: australianRevenge
+
+Trigger Event called for KillTracker_115970
+Param 1: Spelopede72178 Param 2: (def=Cut, amount= 21.99285, instigator=Alex, angle=225.0)
+KindDef: None
+Race: Human
+Factions: None
+Instigators: None
+Count: 100
+Current: 0
+Card: bloodlust
+
+Trigger Event called for KillTracker_115971
+Param 1: Spelopede72178 Param 2: (def=Cut, amount= 21.99285, instigator=Alex, angle=225.0)
+KindDef: None
+Race: Human
+Factions: None
+Instigators: None
+Count: 1000
+Current: 0
+Card: bloodForTheBloodGod
+
+Trigger Event called for KillTracker_115972
+Param 1: Spelopede72178 Param 2: (def=Cut, amount= 21.99285, instigator=Alex, angle=225.0)
+KindDef: Thrumbo
+Race: None
+Factions: None
+Instigators: None
+Count: 20
+Current: 0
+Card: bigGameHunter
+
+Trigger Event called for KillTracker_115974
+Param 1: Spelopede72178 Param 2: (def=Cut, amount= 21.99285, instigator=Alex, angle=225.0)
+KindDef: Iguana
+Race: None
+Factions: None
+Instigators: None
+Count: 50
+Current: 0
+Card: dragonSlayer
+
+Trigger Event called for KillTracker_115975
+Param 1: Spelopede72178 Param 2: (def=Cut, amount= 21.99285, instigator=Alex, angle=225.0)
+KindDef: Emu
+Race: None
+Factions: None
+Instigators: None
+Count: 30
+Current: 0
+Card: australianRevenge
+
+Trigger Event called for RecordEventTracker_115991
+Param 1: ShotsFired Param 2: Mech_Pikeman4793
+Def: ShotsFired
+Count: 2000
+Card: TriggerHappy

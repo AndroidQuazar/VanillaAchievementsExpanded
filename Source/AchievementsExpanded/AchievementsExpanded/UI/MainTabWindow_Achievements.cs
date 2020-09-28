@@ -160,6 +160,7 @@ namespace AchievementsExpanded
                     if (reward.PurchaseReward())
                     {
                         reward.TryExecuteEvent();
+                        Close(false);
                     }
                 }
                 rect.y += 35f;

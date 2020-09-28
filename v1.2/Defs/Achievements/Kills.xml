@@ -7,6 +7,10 @@
 		
 		<tracker Class="AchievementsExpanded.KillTracker">
 			<count>1</count>
+			<instigatorFactionDefs>
+				<li>PlayerColony</li>
+				<li>PlayerTribe</li>
+			</instigatorFactionDefs>
 		</tracker>
 		
 		<texPath>Achievements/FirstBlood</texPath>
