@@ -58,6 +58,20 @@
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
+		<defName>silenceOfTheLambs</defName>
+		<label>Silence of the Lambs</label>
+		<description>Obtain 100 human meat</description>
+		
+		<tracker Class="AchievementsExpanded.ItemTracker">
+			<def>Meat_Human</def>
+			<count>100</count>
+		</tracker>
+		
+		<texPath>Achievements/SilenceOfTheLambs</texPath>
+		<points>10</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
 		<defName>theStuffOfLegends</defName>
 		<label>The Stuff Of Legends</label>
 		<description>Craft any legendary item</description>
