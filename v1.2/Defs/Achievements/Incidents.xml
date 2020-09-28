@@ -11,7 +11,7 @@
 		</tracker>
 		
 		<texPath>Achievements/ThisIsWhereTheFunBegins</texPath>
-		<points>0</points>
+		<points>5</points>
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
@@ -25,7 +25,7 @@
 		</tracker>
 		
 		<texPath>Achievements/ShowMustGoOn</texPath>
-		<points>0</points>
+		<points>25</points>
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
@@ -43,7 +43,7 @@
 		</tracker>
 		
 		<texPath>Achievements/Brrr</texPath>
-		<points>0</points>
+		<points>25</points>
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
@@ -61,7 +61,7 @@
 		</tracker>
 		
 		<texPath>Achievements/Phew</texPath>
-		<points>0</points>
+		<points>25</points>
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
@@ -75,7 +75,7 @@
 		</tracker>
 		
 		<texPath>Achievements/OutOfTheFryingPan</texPath>
-		<points>0</points>
+		<points>25</points>
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
@@ -93,7 +93,7 @@
 		</tracker>
 		
 		<texPath>Achievements/IntoTheFire</texPath>
-		<points>0</points>
+		<points>50</points>
 	</AchievementsExpanded.AchievementDef>
 	
 	<!-- Different Tracker? -->
@@ -107,6 +107,6 @@
 		</tracker>
 		
 		<texPath>Achievements/Blitzkrieg</texPath>
-		<points>0</points>
+		<points>75</points>
 	</AchievementsExpanded.AchievementDef>
 </Defs>

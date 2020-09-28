@@ -11,7 +11,7 @@
 		</tracker>
 		
 		<texPath>Achievements/OneShotOneKill</texPath>
-		<points>0</points>
+		<points>50</points>
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
@@ -25,7 +25,7 @@
 		</tracker>
 		
 		<texPath>Achievements/TriggerHappy</texPath>
-		<points>0</points>
+		<points>25</points>
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
@@ -39,7 +39,7 @@
 		</tracker>
 		
 		<texPath>Achievements/OneSolidGardener</texPath>
-		<points>0</points>
+		<points>50</points>
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
@@ -53,7 +53,7 @@
 		</tracker>
 		
 		<texPath>Achievements/LifeSentence</texPath>
-		<points>0</points>
+		<points>25</points>
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
@@ -67,7 +67,7 @@
 		</tracker>
 		
 		<texPath>Achievements/IMightNeedAShrink</texPath>
-		<points>0</points>
+		<points>25</points>
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
@@ -81,7 +81,7 @@
 		</tracker>
 		
 		<texPath>Achievements/DrDolittle</texPath>
-		<points>0</points>
+		<points>50</points>
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
@@ -95,7 +95,7 @@
 		</tracker>
 		
 		<texPath>Achievements/ProfessionalStripper</texPath>
-		<points>0</points>
+		<points>25</points>
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
@@ -109,7 +109,7 @@
 		</tracker>
 		
 		<texPath>Achievements/BladeRunner</texPath>
-		<points>0</points>
+		<points>50</points>
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
@@ -124,7 +124,7 @@
 		</tracker>
 		
 		<texPath>Achievements/3-StarMichelin</texPath>
-		<points>0</points>
+		<points>25</points>
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
@@ -139,7 +139,7 @@
 		</tracker>
 		
 		<texPath>Achievements/ScrubUp</texPath>
-		<points>0</points>
+		<points>25</points>
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
@@ -154,7 +154,7 @@
 		</tracker>
 		
 		<texPath>Achievements/TheRimsBrightest</texPath>
-		<points>0</points>
+		<points>25</points>
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
@@ -169,7 +169,7 @@
 		</tracker>
 		
 		<texPath>Achievements/IWishThisWasIkea</texPath>
-		<points>0</points>
+		<points>10</points>
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
@@ -183,6 +183,6 @@
 		</tracker>
 		
 		<texPath>Achievements/ImOnFire</texPath>
-		<points>0</points>
+		<points>100</points>
 	</AchievementsExpanded.AchievementDef>
 </Defs>

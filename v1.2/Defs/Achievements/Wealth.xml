@@ -10,7 +10,7 @@
 		</tracker>
 		
 		<texPath>Achievements/InForAPenny</texPath>
-		<points>0</points>
+		<points>10</points>
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
@@ -23,6 +23,6 @@
 		</tracker>
 		
 		<texPath>Achievements/InForAPound</texPath>
-		<points>0</points>
+		<points>50</points>
 	</AchievementsExpanded.AchievementDef>
 </Defs>

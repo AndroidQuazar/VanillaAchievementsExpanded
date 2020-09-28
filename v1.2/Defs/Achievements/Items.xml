@@ -11,7 +11,7 @@
 		</tracker>
 		
 		<texPath>Achievements/OneStepCloser</texPath>
-		<points>0</points>
+		<points>25</points>
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
@@ -26,7 +26,7 @@
 		</tracker>
 		
 		<texPath>Achievements/Midas</texPath>
-		<points>0</points>
+		<points>10</points>
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
@@ -40,7 +40,7 @@
 		</tracker>
 		
 		<texPath>Achievements/Midas</texPath>
-		<points>0</points>
+		<points>50</points>
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
@@ -49,12 +49,26 @@
 		<description>Obtain 420 smokeleaf</description>
 		
 		<tracker Class="AchievementsExpanded.ItemTracker">
-			<def>SmokeleafJoint</def>
+			<def>SmokeleafLeaves</def>
 			<count>420</count>
 		</tracker>
 		
 		<texPath>Achievements/420</texPath>
-		<points>0</points>
+		<points>25</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>silenceOfTheLambs</defName>
+		<label>Silence of the Lambs</label>
+		<description>Obtain 100 human meat</description>
+		
+		<tracker Class="AchievementsExpanded.ItemTracker">
+			<def>Meat_Human</def>
+			<count>100</count>
+		</tracker>
+		
+		<texPath>Achievements/SilenceOfTheLambs</texPath>
+		<points>10</points>
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
@@ -68,7 +82,7 @@
 		</tracker>
 		
 		<texPath>Achievements/TheStuffOfLegends</texPath>
-		<points>0</points>
+		<points>25</points>
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
@@ -83,6 +97,6 @@
 		</tracker>
 		
 		<texPath>Achievements/FutureCaveman</texPath>
-		<points>0</points>
+		<points>10</points>
 	</AchievementsExpanded.AchievementDef>
 </Defs>

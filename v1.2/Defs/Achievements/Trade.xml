@@ -12,7 +12,7 @@
 		</tracker>
 		
 		<texPath>Achievements/PabloEmilioEscobarGaviria</texPath>
-		<points>0</points>
+		<points>25</points>
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
@@ -26,7 +26,7 @@
 		</tracker>
 		
 		<texPath>Achievements/CheaterCheater</texPath>
-		<points>0</points>
+		<points>25</points>
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
@@ -41,6 +41,6 @@
 		</tracker>
 		
 		<texPath>Achievements/SlaverScum</texPath>
-		<points>0</points>
+		<points>50</points>
 	</AchievementsExpanded.AchievementDef>
 </Defs>

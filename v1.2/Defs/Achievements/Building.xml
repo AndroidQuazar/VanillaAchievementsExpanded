@@ -12,7 +12,7 @@
 		</tracker>
 		
 		<texPath>Achievements/ComfierThanUsual</texPath>
-		<points>0</points>
+		<points>10</points>
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
@@ -26,7 +26,7 @@
 		</tracker>
 		
 		<texPath>Achievements/TheArchitect</texPath>
-		<points>0</points>
+		<points>10</points>
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
@@ -40,7 +40,7 @@
 		</tracker>
 		
 		<texPath>Achievements/BuildingTheSkynet</texPath>
-		<points>0</points>
+		<points>25</points>
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
@@ -51,6 +51,6 @@
 		<tracker Class="AchievementsExpanded.ShipBuildingTracker"/>
 		
 		<texPath>Achievements/ItAintRocketScience</texPath>
-		<points>0</points>
+		<points>50</points>
 	</AchievementsExpanded.AchievementDef>
 </Defs>

@@ -19,7 +19,7 @@
 		</tracker>
 		
 		<texPath>Achievements/ThreeLittlePigs</texPath>
-		<points>0</points>
+		<points>25</points>
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
@@ -37,7 +37,7 @@
 		</tracker>
 		
 		<texPath>Achievements/LookAtAllThoseChickens</texPath>
-		<points>0</points>
+		<points>25</points>
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
@@ -55,7 +55,7 @@
 		</tracker>
 		
 		<texPath>Achievements/SustainableFuelSource</texPath>
-		<points>0</points>
+		<points>25</points>
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
@@ -73,7 +73,7 @@
 		</tracker>
 		
 		<texPath>Achievements/MuffaloRancher</texPath>
-		<points>0</points>
+		<points>25</points>
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
@@ -319,7 +319,7 @@
 		</tracker>
 		
 		<texPath>Achievements/ArkHalfFull</texPath>
-		<points>0</points>
+		<points>100</points>
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
@@ -337,6 +337,6 @@
 		</tracker>
 		
 		<texPath>Achievements/GentleGiant</texPath>
-		<points>0</points>
+		<points>50</points>
 	</AchievementsExpanded.AchievementDef>
 </Defs>
