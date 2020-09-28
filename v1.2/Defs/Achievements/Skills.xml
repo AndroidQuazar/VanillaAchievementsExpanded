@@ -11,7 +11,7 @@
 		</tracker>
 		
 		<texPath>Achievements/Sharpshooter</texPath>
-		<points>0</points>
+		<points>50</points>
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
@@ -25,7 +25,7 @@
 		</tracker>
 		
 		<texPath>Achievements/MrPresident</texPath>
-		<points>0</points>
+		<points>50</points>
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
@@ -39,6 +39,6 @@
 		</tracker>
 		
 		<texPath>Achievements/ConanTheBarbarian</texPath>
-		<points>0</points>
+		<points>50</points>
 	</AchievementsExpanded.AchievementDef>
 </Defs>

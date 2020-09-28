@@ -6,11 +6,12 @@
 		<description>Kill another pawn</description>
 		
 		<tracker Class="AchievementsExpanded.KillTracker">
+			<raceDef>Human</raceDef>
 			<count>1</count>
 		</tracker>
 		
 		<texPath>Achievements/FirstBlood</texPath>
-		<points>0</points>
+		<points>5</points>
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
@@ -24,7 +25,7 @@
 		</tracker>
 		
 		<texPath>Achievements/Bloodlust</texPath>
-		<points>0</points>
+		<points>10</points>
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
@@ -38,7 +39,7 @@
 		</tracker>
 		
 		<texPath>Achievements/BloodForTheBloodGod</texPath>
-		<points>0</points>
+		<points>50</points>
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
@@ -52,7 +53,7 @@
 		</tracker>
 		
 		<texPath>Achievements/BigGameHunter</texPath>
-		<points>0</points>
+		<points>50</points>
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
@@ -63,12 +64,13 @@
 		<tracker Class="AchievementsExpanded.KillTracker">
 			<factionDefs>
 				<li>Insect</li>
+				<li>VFEI_Insect</li>
 			</factionDefs>
-			<count>3</count>
+			<count>150</count>
 		</tracker>
 		
 		<texPath>Achievements/Exterminator</texPath>
-		<points>0</points>
+		<points>25</points>
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
@@ -82,7 +84,7 @@
 		</tracker>
 		
 		<texPath>Achievements/DragonSlayer</texPath>
-		<points>0</points>
+		<points>25</points>
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
@@ -96,6 +98,6 @@
 		</tracker>
 		
 		<texPath>Achievements/AustralianRevenge</texPath>
-		<points>0</points>
+		<points>25</points>
 	</AchievementsExpanded.AchievementDef>
 </Defs>

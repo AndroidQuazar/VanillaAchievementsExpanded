@@ -66,7 +66,7 @@
 		</tracker>
 		
 		<texPath>Achievements/ImASurvivor</texPath>
-		<points>15</points>
+		<points>25</points>
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
@@ -89,6 +89,6 @@
 		</tracker>
 		
 		<texPath>Achievements/AintNoStoppingUsNow</texPath>
-		<points>25</points>
+		<points>50</points>
 	</AchievementsExpanded.AchievementDef>
 </Defs>

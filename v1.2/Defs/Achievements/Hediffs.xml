@@ -31,7 +31,7 @@
 		</tracker>
 		
 		<texPath>Achievements/T800</texPath>
-		<points>0</points>
+		<points>50</points>
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
@@ -45,7 +45,7 @@
 		</tracker>
 		
 		<texPath>Achievements/ImaPirate</texPath>
-		<points>0</points>
+		<points>5</points>
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
@@ -58,7 +58,7 @@
 		</tracker>
 		
 		<texPath>Achievements/OnEdge</texPath>
-		<points>0</points>
+		<points>50</points>
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
@@ -71,6 +71,6 @@
 		</tracker>
 		
 		<texPath>Achievements/ThatllShowHim</texPath>
-		<points>0</points>
+		<points>10</points>
 	</AchievementsExpanded.AchievementDef>
 </Defs>

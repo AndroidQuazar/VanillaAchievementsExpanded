@@ -10,7 +10,7 @@
 		</tracker>
 		
 		<texPath>Achievements/CouldBeWorse</texPath>
-		<points>0</points>
+		<points>5</points>
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
@@ -23,7 +23,7 @@
 		</tracker>
 		
 		<texPath>Achievements/ItsAllDownhillFromHere</texPath>
-		<points>0</points>
+		<points>10</points>
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
@@ -37,7 +37,7 @@
 		</tracker>
 		
 		<texPath>Achievements/10HoursWoah</texPath>
-		<points>0</points>
+		<points>10</points>
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
@@ -51,6 +51,6 @@
 		</tracker>
 		
 		<texPath>Achievements/WaitAMinute</texPath>
-		<points>0</points>
+		<points>25</points>
 	</AchievementsExpanded.AchievementDef>
 </Defs>

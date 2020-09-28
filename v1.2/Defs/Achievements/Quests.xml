@@ -11,7 +11,7 @@
 		</tracker>
 		
 		<texPath>Achievements/Mercenary</texPath>
-		<points>0</points>
+		<points>10</points>
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
@@ -26,6 +26,6 @@
 		</tracker>
 		
 		<texPath>Achievements/AmbassadorOfPeace</texPath>
-		<points>0</points>
+		<points>25</points>
 	</AchievementsExpanded.AchievementDef>
 </Defs>
