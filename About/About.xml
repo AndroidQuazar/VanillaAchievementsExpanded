@@ -15,7 +15,7 @@
 			<downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
 		</li>
 	</modDependencies>
-	<packageId>vanillaexpanded.achievements</packageId>
+	<packageId>smashphil.achievements</packageId>
 	<description>
 Vanilla Achievements Expanded is a unique, never before seen in RimWorld modding achievement mod, part of the Vanilla Expanded mod series and a framework for other modders. 
 
