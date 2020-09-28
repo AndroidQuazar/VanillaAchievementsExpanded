@@ -85,7 +85,7 @@ namespace AchievementsExpanded
             float panelWidth = UI.screenWidth - menuRect.width;
             float marginWidth = panelWidth * SidePanelMargin;
             float marginRowheight = panelWidth * TextAreaHeight;
-            Rect panelRect = new Rect(UI.screenWidth - panelWidth + marginWidth, 0f, panelWidth - marginWidth, marginRowheight);
+            Rect panelRect = new Rect(UI.screenWidth - panelWidth + marginWidth, 0f, panelWidth - marginWidth * 2.5f, marginRowheight);
             DrawSidePanel(panelRect);
 
             Rect cardMenuRect = menuRect.ContractedBy(10f);
@@ -138,14 +138,14 @@ namespace AchievementsExpanded
 
             rect.y += 35;
             iconRect.width = rect.width * 0.1f;
-            labelRect.width = rect.width * 0.1f;
+            labelRect.width = rect.width * 0.2f;
             var color = GUI.color;
             foreach (AchievementReward reward in Rewards.OrderBy(r => r.cost))
             {
                 iconRect.y = rect.y;
                 labelRect.y = rect.y;
                 bool disabled = !string.IsNullOrEmpty(reward.Disabled);
-                Rect buttonRect = new Rect(iconRect.x + 100, rect.y, rect.width * 0.6f, 30);
+                Rect buttonRect = new Rect(iconRect.x + 100, rect.y, rect.width - (iconRect.width + labelRect.width) - 10, 30);
                 Text.Font = GameFont.Medium;
                 Widgets.DrawTextureFitted(iconRect, AchievementTex.PointsIcon, 1f);
                 Widgets.Label(labelRect, reward.cost.ToString());
