@@ -68,7 +68,6 @@
 		<tracker Class="AchievementsExpanded.KillTracker">
 			<factionDefs>
 				<li>Insect</li>
-				<li>VFEI_Insect</li>
 			</factionDefs>
 			<count>150</count>
 		</tracker>
