@@ -73,19 +73,29 @@ namespace AchievementsExpanded
                 CurTab = AchievementTabDefOf.Main;
 		}
 
+        public override void PreOpen()
+        {
+            base.PreOpen();
+            FullPanelWidth = Verse.UI.screenWidth - SidePanelWidth;
+            float cardMenuWidth = FullPanelWidth - 20f;
+            CardsPerRow = Mathf.FloorToInt((cardMenuWidth - (SpaceBetweenCards * 6)) / 200);
+            Log.Message($"Cards: {CardsPerRow}");
+            Log.Message($"SCREEN: {Verse.UI.screenWidth} Panel: {FullPanelWidth} Side: {SidePanelWidth} TOTAL: {FullPanelWidth + SidePanelWidth}");
+        }
+
         public override void DoWindowContents(Rect inRect)
         {
             base.DoWindowContents(inRect);
             Rect menuRect = inRect;
             menuRect.y += 40f;
             menuRect.height -= 40f;
-            menuRect.width = UI.screenWidth * SidePanelRatio;
+            menuRect.width = FullPanelWidth;
             DrawAchievementsMenu(menuRect);
 
-            float panelWidth = UI.screenWidth - menuRect.width;
+            float panelWidth = SidePanelWidth;
             float marginWidth = panelWidth * SidePanelMargin;
-            float marginRowheight = panelWidth * TextAreaHeight;
-            Rect panelRect = new Rect(UI.screenWidth - panelWidth + marginWidth, 0f, panelWidth - marginWidth * 2.5f, marginRowheight);
+            float marginRowHeight = panelWidth * TextAreaHeight;
+            Rect panelRect = new Rect(UI.screenWidth - panelWidth + marginWidth, 0f, panelWidth - marginWidth * 2.5f, marginRowHeight);
             DrawSidePanel(panelRect);
 
             Rect cardMenuRect = menuRect.ContractedBy(10f);
@@ -200,7 +210,7 @@ namespace AchievementsExpanded
             Widgets.EndScrollView();
         }
 
-        public const int CardsPerRow = 7;
+        public static int CardsPerRow;
 
         public const float SpaceBetweenCards = 10;
 
@@ -208,6 +218,10 @@ namespace AchievementsExpanded
         private const float SidePanelMargin = 0.05f;
         private const float SidePanelRatio = 0.8f;
         private const float ScreenHeightPercent = 0.8f;
+
+        //Default sizing of side panel based on 1920x1080 resolution ratio
+        private const float SidePanelWidth = 1920 * (1 - SidePanelRatio);
+        private static float FullPanelWidth;
 
         private AchievementPointManager apmCache;
         private List<AchievementReward> rewardCache;

@@ -118,7 +118,6 @@ namespace AchievementsExpanded
             Text.Anchor = TextAnchor.UpperCenter;
 
             Rect labelRect = new Rect(iconRect.x, iconRect.y + iconRect.height, iconRect.width, rect.height - MainTabWindow_Achievements.SpaceBetweenCards - iconRect.height);
-            Widgets.DrawBox(labelRect, 1);
             Widgets.Label(labelRect, def.label);
 
             var font = Text.Font;
@@ -126,20 +125,18 @@ namespace AchievementsExpanded
             Text.Font = GameFont.Tiny;
             GUI.color = MainTabWindow_Achievements.LightGray;
 
-            var size = Text.CalcSize(def.description);
-            Rect pointRect = new Rect(iconRect.x, labelRect.y + MainTabWindow_Achievements.SpaceBetweenCards, iconRect.width, labelRect.height);
-            Rect pointIconRect = new Rect(iconRect.x, labelRect.y + MainTabWindow_Achievements.SpaceBetweenCards * 2, size.y, size.y);
+            Rect descRect = new Rect(iconRect.x, labelRect.y + MainTabWindow_Achievements.SpaceBetweenCards * 6, iconRect.width, labelRect.height);
+            Widgets.Label(descRect, def.description);
+
+            var pointTextSize = Text.CalcSize(def.points.ToString());
+            Rect pointRect = new Rect(iconRect.x + pointTextSize.y, descRect.y - MainTabWindow_Achievements.SpaceBetweenCards * 2, iconRect.width - pointTextSize.y, labelRect.height);
+            Rect pointIconRect = new Rect(iconRect.x + iconRect.width / 2 - pointTextSize.y, descRect.y - MainTabWindow_Achievements.SpaceBetweenCards * 2, pointTextSize.y, pointTextSize.y);
             Widgets.Label(pointRect, def.points.ToStringSafe());
             GUI.DrawTexture(pointIconRect, AchievementTex.PointsIcon);
 
-            var descTextFull = $"{def.points} - {def.description}";
-            Rect descRect = new Rect(iconRect.x, pointIconRect.y + MainTabWindow_Achievements.SpaceBetweenCards * 5f, iconRect.width, labelRect.height);
-            Widgets.Label(descRect, def.description);
-
             GUI.color = Color.gray;
             var timeSize = Text.CalcSize(dateUnlocked);
-            var timeWidth = Mathf.Clamp(timeSize.x, 0f, iconRect.width);
-            Rect unlockTimeRect = new Rect(rect.x + (rect.width / 2) - (timeWidth / 2), iconRect.y + rect.height - (timeSize.y * 1.5f), rect.width, timeSize.y);
+            Rect unlockTimeRect = new Rect(iconRect.x, iconRect.y + rect.height - (timeSize.y * 1.5f), iconRect.width, timeSize.y);
             Widgets.Label(unlockTimeRect, dateUnlocked);
 
             Text.Font = font;

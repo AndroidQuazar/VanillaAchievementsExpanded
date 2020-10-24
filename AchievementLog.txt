@@ -2,3 +2,4 @@ Vanilla Achievements Expanded
 This log is for logging Tracker information and Event triggers only.
 
 Generating Achievement Links...
+Unlocking: Achievement_-140621834 Card: Cheater, Cheater!
