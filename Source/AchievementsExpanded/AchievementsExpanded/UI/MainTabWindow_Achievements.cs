@@ -79,8 +79,6 @@ namespace AchievementsExpanded
             FullPanelWidth = Verse.UI.screenWidth - SidePanelWidth;
             float cardMenuWidth = FullPanelWidth - 20f;
             CardsPerRow = Mathf.FloorToInt((cardMenuWidth - (SpaceBetweenCards * 6)) / 200);
-            Log.Message($"Cards: {CardsPerRow}");
-            Log.Message($"SCREEN: {Verse.UI.screenWidth} Panel: {FullPanelWidth} Side: {SidePanelWidth} TOTAL: {FullPanelWidth + SidePanelWidth}");
         }
 
         public override void DoWindowContents(Rect inRect)
