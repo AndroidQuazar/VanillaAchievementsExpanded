@@ -179,13 +179,11 @@ namespace AchievementsExpanded
 				tmpState = false;
 				if (checkState)
 				{
-					Log.Message($"Temp Before: {tmpState}");
 					Find.WindowStack.Add(Dialog_MessageBox.CreateConfirmation("DebugWriterConfirmation".Translate(), delegate()
 					{
 						tmpState = true;
 						SoundDefOf.Checkbox_TurnedOff.PlayOneShotOnCamera(null);
 					}));
-					Log.Message($"Temp After: {tmpState}");
 				}
 			}
 			checkOn = tmpState;

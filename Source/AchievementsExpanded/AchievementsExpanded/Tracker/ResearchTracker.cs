@@ -42,7 +42,6 @@ namespace AchievementsExpanded
                     
                     foreach (var research in researchProjs.Where(r => r.Key.techLevel == tech.Value))
                     {
-                        Log.Message($"Research: {research.Key.label} Value: {research.Value}");
                         if (research.Value < research.Key.baseCost && research.Key.modContentPack.IsCoreMod)
                             return false;
                     }

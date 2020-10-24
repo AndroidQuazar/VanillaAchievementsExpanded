@@ -158,7 +158,6 @@ namespace AchievementsExpanded
             if (unlockedCards.Any() && !Find.WindowStack.Windows.Any(w => w.GetType() == typeof(AchievementNotification)))
             {
                 Find.WindowStack.Add(new AchievementNotification(unlockedCards.Pop()));
-                Log.Message($"DISPLAYING CARD! Count: {unlockedCards.Count}");
             }
         }
 

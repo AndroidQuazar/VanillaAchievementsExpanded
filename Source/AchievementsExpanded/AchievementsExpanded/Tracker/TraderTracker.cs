@@ -40,7 +40,6 @@ namespace AchievementsExpanded
         public override bool Trigger(List<Tradeable> tradeables)
         {
             base.Trigger(tradeables);
-            Log.Message("Trader Triggered");
             float tradeValue = 0f;
             int itemCount = 0;
             foreach (Tradeable item in tradeables)
