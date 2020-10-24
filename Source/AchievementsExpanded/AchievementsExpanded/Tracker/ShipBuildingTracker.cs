@@ -10,7 +10,6 @@ namespace AchievementsExpanded
 {
     public class ShipBuildingTracker : BuildingTracker
     {
-        public override string Key => "BuildingGroupTracker";
         protected override string[] DebugText => base.DebugText;
 
         public ShipBuildingTracker()

@@ -44,7 +44,7 @@ namespace AchievementsExpanded
 
         internal static void ResetRootDir()
         {
-            RootDir = ModLister.GetModWithIdentifier("smashphil.achievements").RootDir.ToString();
+            RootDir = ModLister.GetModWithIdentifier(AchievementHarmony.modIdentifier).RootDir.ToString();
             Clear();
             Log(new string[] { "Vanilla Achievements Expanded", "This log is for logging Tracker information and Event triggers only.\n"});
         }

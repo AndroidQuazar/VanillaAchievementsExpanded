@@ -8,21 +8,34 @@ namespace AchievementsExpanded
 {
     public static class AchievementGenerator
     {
-        public static Dictionary<TrackerBase, HashSet<AchievementCard>> GenerateAchievementLinks(HashSet<AchievementCard> cards)
+        public static Dictionary<string, HashSet<AchievementCard>> GenerateAchievementLinks(HashSet<AchievementCard> cards)
         {
-            var achievementList = new Dictionary<TrackerBase, HashSet<AchievementCard>>();
+            var lookup = new Dictionary<string, HashSet<AchievementCard>>();
 
-            foreach (AchievementCard card in cards)
+            DebugWriter.Log("Generating Achievement Links...");
+
+            try
             {
-                var tracker = AchievementPointManager.TrackersGenerated.Single(t => t.Key == card.def.tracker.Key);
-                if (!achievementList.TryGetValue(tracker, out var hash))
+                foreach (AchievementCard card in cards)
                 {
-                    achievementList.Add(tracker, new HashSet<AchievementCard>() { card });
-                    continue;
+                    if (lookup.TryGetValue(card.tracker.Key, out var hash))
+                    {
+                        hash.Add(card);
+                    }
+                    else
+                    {
+                        lookup.Add(card.tracker.Key, new HashSet<AchievementCard>() { card });
+                    }
                 }
-                hash.Add(card);
             }
-            return achievementList;
+            catch (Exception ex)
+            {
+                string error = $"Failed to generate Achievement Links. Exception: {ex.Message}";
+                Log.Message(error);
+                DebugWriter.Log(error);
+                return new Dictionary<string, HashSet<AchievementCard>>();
+            }
+            return lookup;
         }
 
         public static bool VerifyAchievementList(ref HashSet<AchievementCard> achievementCards, bool debugOutput = false)

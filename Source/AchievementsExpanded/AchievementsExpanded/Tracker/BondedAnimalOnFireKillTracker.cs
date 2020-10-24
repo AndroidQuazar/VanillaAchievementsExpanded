@@ -8,8 +8,6 @@ namespace AchievementsExpanded
 {
     public class BondedAnimalOnFireKillTracker : KillTracker
     {
-        public override string Key => "BondedAnimalKillTracker";
-
         public BondedAnimalOnFireKillTracker()
         {
         }
@@ -20,7 +18,7 @@ namespace AchievementsExpanded
 
         public override bool Trigger(Pawn pawn, DamageInfo? dinfo)
         {
-            bool bonded = pawn.relations.DirectRelations.Any(d => d.def == PawnRelationDefOf.Bond);
+            bool bonded = pawn.relations?.DirectRelations?.Any(d => d.def == PawnRelationDefOf.Bond) ?? false;
             return pawn.IsBurning() && bonded && base.Trigger(pawn, dinfo);
         }
     }

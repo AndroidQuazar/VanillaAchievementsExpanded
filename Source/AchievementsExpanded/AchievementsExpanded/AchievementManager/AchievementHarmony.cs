@@ -13,10 +13,12 @@ namespace AchievementsExpanded
     [StaticConstructorOnStartup]
     internal static class AchievementHarmony
     {
+        internal static string modIdentifier = "vanillaexpanded.achievements";
+
         static AchievementHarmony()
         {
             AchievementPointManager.OnStartUp();
-            var harmony = new Harmony("smashphil.achievements");
+            var harmony = new Harmony(modIdentifier);
 
             /// <summary>
             /// Automated Patches by allowing user to specify MethodInfo. 
@@ -69,7 +71,7 @@ namespace AchievementsExpanded
         /// <param name="ev"></param>
         public static void PawnJoinedFaction(Pawn p, PopAdaptationEvent ev)
         {
-            foreach(var card in AchievementPointManager.AchievementList.Where(a => a.tracker.GetType() == typeof(RaceDefTracker) && !a.unlocked))
+            foreach(var card in AchievementPointManager.GetCards<RaceDefTracker>())
             {
                 if(ev == PopAdaptationEvent.GainedColonist && (card.tracker as RaceDefTracker).Trigger(p.kindDef))
                 {
@@ -86,7 +88,7 @@ namespace AchievementsExpanded
         /// <param name="__result"></param>
         public static void IncidentTriggered(IncidentParms parms, IncidentWorker __instance, ref bool __result)
         {
-            foreach(var card in AchievementPointManager.AchievementList.Where(a => a.tracker.GetType().SameOrSubclass(typeof(IncidentTracker)) && !a.unlocked))
+            foreach(var card in AchievementPointManager.GetCards<IncidentTracker>())
             {
                 if (__result && (card.tracker as IncidentTracker).Trigger(__instance.def, parms.target as Map))
                 {
@@ -106,7 +108,7 @@ namespace AchievementsExpanded
         {
             if(__result)
             {
-                foreach(var card in AchievementPointManager.AchievementList.Where(a => a.tracker.GetType().SameOrSubclass(typeof(AnimalBondedTracker)) && !a.unlocked))
+                foreach(var card in AchievementPointManager.GetCards<AnimalBondedTracker>())
                 {
                     if ((card.tracker as AnimalBondedTracker).Trigger(animal.kindDef))
                     {
@@ -122,7 +124,7 @@ namespace AchievementsExpanded
         /// <param name="value"></param>
         public static void DevModeToggled(bool value)
         {
-            foreach(var card in AchievementPointManager.AchievementList.Where(a => a.tracker.GetType().SameOrSubclass(typeof(DevModeTracker)) && !a.unlocked))
+            foreach(var card in AchievementPointManager.GetCards<DevModeTracker>())
             {
                 if ((card.tracker as DevModeTracker).Trigger(value))
                 {
@@ -163,7 +165,7 @@ namespace AchievementsExpanded
         /// <param name="exactCulprit"></param>
         public static void KillPawn(DamageInfo? dinfo, Pawn __instance, Hediff exactCulprit = null)
         {
-            foreach(var card in AchievementPointManager.AchievementList.Where(a => a.tracker.GetType().SameOrSubclass(typeof(KillTracker)) && !a.unlocked))
+            foreach(var card in AchievementPointManager.GetCards<KillTracker>())
             {
                 if ((card.tracker as KillTracker).Trigger(__instance, dinfo))
                 {
@@ -200,7 +202,7 @@ namespace AchievementsExpanded
         /// <notes>Cannot Transpile onto Toil itself, delegate initAction gets inlined</notes>
         public static void ThingSpawned(Pawn worker, List<Thing> things)
         {
-            foreach(var card in AchievementPointManager.AchievementList.Where(a => a.tracker.GetType().SameOrSubclass(typeof(ItemCraftTracker)) && !a.unlocked))
+            foreach(var card in AchievementPointManager.GetCards<ItemCraftTracker>())
             {
                 foreach (Thing thing in things)
                 {
@@ -220,7 +222,7 @@ namespace AchievementsExpanded
         /// <param name="sendLetter"></param>
         public static void QuestEnded(QuestEndOutcome outcome, Quest __instance, bool sendLetter = true)
         {
-            foreach(var card in AchievementPointManager.AchievementList.Where(a => a.tracker.GetType().SameOrSubclass(typeof(QuestTracker)) && !a.unlocked))
+            foreach(var card in AchievementPointManager.GetCards<QuestTracker>())
             {
                 if ((card.tracker as QuestTracker).Trigger(__instance, outcome))
                 {
@@ -256,7 +258,7 @@ namespace AchievementsExpanded
         /// <param name="__result"></param>
         public static void AverageMoodColony(float __result)
         {
-            foreach(var card in AchievementPointManager.AchievementList.Where(a => a.tracker.GetType().SameOrSubclass(typeof(MoodTracker)) && !a.unlocked))
+            foreach(var card in AchievementPointManager.GetCards<MoodTracker>())
             {
                 if ((card.tracker as MoodTracker).Trigger(__result))
                 {
@@ -273,7 +275,7 @@ namespace AchievementsExpanded
         /// <param name="researcher"></param>
         public static void ResearchProjectFinished(ResearchProjectDef proj, bool doCompletionDialog, Pawn researcher)
         {
-            foreach(var card in AchievementPointManager.AchievementList.Where(a => a.tracker.GetType().SameOrSubclass(typeof(ResearchTracker)) && !a.unlocked))
+            foreach(var card in AchievementPointManager.GetCards<ResearchTracker>())
             {
                 if ((card.tracker as ResearchTracker).Trigger(proj))
                 {
@@ -295,7 +297,7 @@ namespace AchievementsExpanded
         {
             if (newThing is Building building && building.Faction == Faction.OfPlayer && Current.ProgramState == ProgramState.Playing)
             {
-                foreach(var card in AchievementPointManager.AchievementList.Where(a => a.tracker.GetType().SameOrSubclass(typeof(BuildingTracker)) && !a.unlocked))
+                foreach(var card in AchievementPointManager.GetCards<BuildingTracker>())
                 {
                     if ((card.tracker as BuildingTracker).Trigger(building))
                     {
@@ -315,7 +317,7 @@ namespace AchievementsExpanded
         {
             if (__result)
             {
-                foreach(var card in AchievementPointManager.AchievementList.Where(a => a.tracker.GetType().SameOrSubclass(typeof(TraderTracker)) && !a.unlocked))
+                foreach(var card in AchievementPointManager.GetCards<TraderTracker>())
                 {
                     if ((card.tracker as TraderTracker).Trigger(___tradeables))
                     {
@@ -331,7 +333,7 @@ namespace AchievementsExpanded
         /// <param name="dinfo"></param>
         public static void HediffAdded(Hediff hediff, BodyPartRecord part = null, DamageInfo? dinfo = null, DamageWorker.DamageResult result = null)
         {
-            foreach(var card in AchievementPointManager.AchievementList.Where(a => a.tracker.GetType().SameOrSubclass(typeof(HediffTracker)) && !a.unlocked))
+            foreach(var card in AchievementPointManager.GetCards<HediffTracker>())
             {
                 if ((card.tracker as HediffTracker).Trigger(hediff))
                 {
@@ -348,7 +350,7 @@ namespace AchievementsExpanded
         /// <param name="diseaseInstance"></param>
         public static void ImmunityTicking(Pawn pawn, bool sick, Hediff diseaseInstance, ImmunityRecord __instance)
         {
-            foreach(var card in AchievementPointManager.AchievementList.Where(a => a.tracker.GetType().SameOrSubclass(typeof(ImmunityHediffTracker)) && !a.unlocked))
+            foreach(var card in AchievementPointManager.GetCards<ImmunityHediffTracker>())
             {
                 if ((card.tracker as ImmunityHediffTracker).Trigger(diseaseInstance, __instance.immunity))
                 {
@@ -365,7 +367,7 @@ namespace AchievementsExpanded
         /// <param name="dinfo"></param>
         public static void HediffDeathEvent(Hediff __instance)
         {
-            foreach (var card in AchievementPointManager.AchievementList.Where(a => a.tracker.GetType().SameOrSubclass(typeof(HediffDeathTracker)) && !a.unlocked))
+            foreach (var card in AchievementPointManager.GetCards<HediffDeathTracker>())
             {
                 if ((card.tracker as HediffDeathTracker).Trigger(__instance))
                 {
@@ -385,7 +387,7 @@ namespace AchievementsExpanded
         {
             if(__result)
             {
-                foreach (var card in AchievementPointManager.AchievementList.Where(a => a.tracker.GetType().SameOrSubclass(typeof(SettlementDefeatTracker)) && !a.unlocked))
+                foreach (var card in AchievementPointManager.GetCards<SettlementDefeatTracker>())
                 {
                     if ((card.tracker as SettlementDefeatTracker).Trigger(Find.World.worldObjects.SettlementAt(map.Tile)))
                     {
@@ -402,7 +404,7 @@ namespace AchievementsExpanded
         /// <param name="__instance"></param>
         public static void RecordEvent(RecordDef def, Pawn_RecordsTracker __instance)
         {
-            foreach (var card in AchievementPointManager.AchievementList.Where(a => a.tracker.GetType().SameOrSubclass(typeof(RecordEventTracker)) && !a.unlocked))
+            foreach (var card in AchievementPointManager.GetCards<RecordEventTracker>())
             {
                 var tracker = card.tracker as RecordEventTracker;
                 if (tracker.def == def && tracker.Trigger(def, __instance.pawn))
@@ -458,7 +460,7 @@ namespace AchievementsExpanded
         {
             if (Find.TickManager.TicksGame % 2000 == 0)
             {
-                foreach(var card in AchievementPointManager.AchievementList.Where(a => a.tracker.AttachToLongTick != null && !a.unlocked))
+                foreach(var card in AchievementPointManager.GetLongTickCards())
                 {
                     if(card.tracker.AttachToLongTick())
                     {

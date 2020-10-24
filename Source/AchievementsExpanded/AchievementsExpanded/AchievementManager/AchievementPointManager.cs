@@ -13,7 +13,10 @@ namespace AchievementsExpanded
         public int availablePoints;
         public int totalEarnedPoints;
 
-        public static Dictionary<TrackerBase, HashSet<AchievementCard>> achievementLookup = new Dictionary<TrackerBase, HashSet<AchievementCard>>();
+        internal static Dictionary<string, HashSet<AchievementCard>> achievementLookup = new Dictionary<string, HashSet<AchievementCard>>();
+        internal static Dictionary<Type, string> typeToKey = new Dictionary<Type, string>();
+
+        internal static HashSet<AchievementCard> tickerAchievements = new HashSet<AchievementCard>();
 
         internal HashSet<AchievementCard> achievementList;
         internal Stack<AchievementCard> unlockedCards;
@@ -62,7 +65,7 @@ namespace AchievementsExpanded
         private void PreInit(bool debug = false)
         {
             if (achievementLookup is null)
-                achievementLookup = new Dictionary<TrackerBase, HashSet<AchievementCard>>();
+                achievementLookup = new Dictionary<string, HashSet<AchievementCard>>();
             if (achievementList is null)
                 achievementList = new HashSet<AchievementCard>();
             if (unlockedCards is null)
@@ -71,6 +74,8 @@ namespace AchievementsExpanded
             if(debug)
                 DebugWriter.Log($"Resetting AchievementLinks");
             achievementLookup = AchievementGenerator.GenerateAchievementLinks(achievementList);
+            typeToKey.Clear();
+            tickerAchievements.Clear();
             if(debug)
                 DebugWriter.Log($"Verifying Achievement List");
             AchievementGenerator.VerifyAchievementList(ref achievementList, debug);
@@ -81,6 +86,10 @@ namespace AchievementsExpanded
             achievementList.Remove(card);
             AchievementCard newCard = (AchievementCard)Activator.CreateInstance(card.def.achievementClass, new object[] { card.def, false });
             achievementList.Add(newCard);
+
+            achievementLookup = AchievementGenerator.GenerateAchievementLinks(achievementList);
+            typeToKey.Clear();
+            tickerAchievements.Clear();
         }
 
         public void ResetPoints()
@@ -108,6 +117,40 @@ namespace AchievementsExpanded
         {
             availablePoints += points;
             totalEarnedPoints += points;
+        }
+
+        public static HashSet<AchievementCard> GetCards<T>(bool locked = true)
+        {
+            if (achievementLookup.TryGetValue(GetTrackerKey<T>(), out var hashset))
+            {
+                if (locked)
+                    return hashset.Where(c => !c.unlocked).ToHashSet();
+                return hashset;
+            }
+            Log.Warning("TrackerBase hashset not initially in lookup. Correcting...");
+            achievementLookup.Add(GetTrackerKey<T>(), AchievementList.Where(c => c.tracker.Key == GetTrackerKey<T>()).ToHashSet());
+            if (locked)
+                return achievementLookup[GetTrackerKey<T>()].Where(c => !c.unlocked).ToHashSet();
+            return achievementLookup[GetTrackerKey<T>()];
+        }
+
+        public static string GetTrackerKey<T>()
+        {
+            if (typeToKey.TryGetValue(typeof(T), out string key))
+            {
+                return key;
+            }
+            typeToKey.Add(typeof(T), TrackersGenerated.FirstOrDefault(t => t.GetType() == typeof(T)).Key);
+            return typeToKey[typeof(T)];
+        }
+
+        public static HashSet<AchievementCard> GetLongTickCards()
+        {
+            if (tickerAchievements.EnumerableNullOrEmpty())
+            {
+                tickerAchievements.AddRange(AchievementList.Where(a => a.tracker.AttachToLongTick != null && !a.unlocked));
+            }
+            return tickerAchievements;
         }
 
         public override void GameComponentTick()

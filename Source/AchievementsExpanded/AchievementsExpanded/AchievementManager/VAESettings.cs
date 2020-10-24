@@ -9,13 +9,7 @@ namespace AchievementsExpanded
 {
     public class VAESettings : ModSettings
     {
-        public bool writeAllSettings = true;
-
-        public override void ExposeData()
-        {
-            base.ExposeData();
-            Scribe_Values.Look(ref writeAllSettings, "writeAllSettings", true);
-        }
+        public bool writeAllSettings;
     }
 
     public class VAEMod : Mod
@@ -30,6 +24,15 @@ namespace AchievementsExpanded
         public override void DoSettingsWindowContents(Rect inRect)
         {
             base.DoSettingsWindowContents(inRect);
+            var listing = new Listing_Standard();
+            listing.Begin(inRect);
+            listing.ConfirmationBoxCheckboxLabeled("DebugWriter".Translate(), ref settings.writeAllSettings);
+            listing.End();
+        }
+
+        public override string SettingsCategory()
+        {
+            return "VAE".Translate();
         }
     }
 }

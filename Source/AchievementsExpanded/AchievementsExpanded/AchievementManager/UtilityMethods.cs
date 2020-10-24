@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Verse;
+using Verse.Sound;
 using RimWorld;
 using RimWorld.Planet;
 using UnityEngine;
@@ -41,7 +42,7 @@ namespace AchievementsExpanded
 		/// </summary>
 		public static void MentalBreakTrigger(bool started, MentalBreakDef def)
 		{
-			foreach (var card in AchievementPointManager.AchievementList.Where(a => a.tracker.GetType().SameOrSubclass(typeof(MentalBreakTracker)) && !a.unlocked))
+			foreach (var card in AchievementPointManager.GetCards<MentalBreakTracker>())
 			{
 				if (started && (card.tracker as MentalBreakTracker).Trigger(def))
 				{
@@ -56,7 +57,7 @@ namespace AchievementsExpanded
 		/// <param name="thing"></param>
 		public static void ItemCraftedTrigger(Thing thing)
         {
-			foreach(var card in AchievementPointManager.AchievementList.Where(a => a.tracker.GetType().SameOrSubclass(typeof(ItemCraftTracker)) && !a.unlocked))
+			foreach(var card in AchievementPointManager.GetCards<ItemCraftTracker>())
             {
                 if ((card.tracker as ItemCraftTracker).Trigger(thing))
                 {
@@ -71,7 +72,7 @@ namespace AchievementsExpanded
 		/// <param name="skill"></param>
 		public static void LevelUpTrigger(SkillDef skill, int level)
         {
-			foreach(var card in AchievementPointManager.AchievementList.Where(a => a.tracker.GetType().SameOrSubclass(typeof(SkillTracker)) && !a.unlocked))
+			foreach(var card in AchievementPointManager.GetCards<SkillTracker>())
             {
                 if ((card.tracker as SkillTracker).Trigger(skill, level))
                 {
@@ -88,7 +89,7 @@ namespace AchievementsExpanded
 		/// <param name="interval"></param>
 		public static void RecordTimeEvent(RecordDef def, Pawn pawn, int interval)
         {
-			foreach (var card in AchievementPointManager.AchievementList.Where(a => a.tracker.GetType().SameOrSubclass(typeof(RecordTimeTracker)) && !a.unlocked))
+			foreach (var card in AchievementPointManager.GetCards<RecordTimeTracker>())
             {
                 var tracker = card.tracker as RecordTimeTracker;
                 if (tracker.def == def && tracker.Trigger(def, pawn, (float)interval))
@@ -145,5 +146,76 @@ namespace AchievementsExpanded
 			}
 			return total >= count;
 		}
+
+		public static void ConfirmationBoxCheckboxLabeled(this Listing_Standard listing, string label, ref bool checkOn, string tooltip = null)
+        {
+			float lineHeight = Text.LineHeight;
+			Rect rect = listing.GetRect(lineHeight);
+			if (!tooltip.NullOrEmpty())
+			{
+				if (Mouse.IsOver(rect))
+				{
+					Widgets.DrawHighlight(rect);
+				}
+				TooltipHandler.TipRegion(rect, tooltip);
+			}
+			ConfirmationCheckbox(rect, label, ref checkOn, false, null, null, false);
+			listing.Gap(listing.verticalSpacing);
+        }
+
+		private static bool tmpState;
+		private static void ConfirmationCheckbox(Rect rect, string label, ref bool checkOn, bool disabled = false, Texture2D texChecked = null, Texture2D texUnchecked = null, bool placeCheckboxNearText = false)
+		{ 
+			TextAnchor anchor = Text.Anchor;
+			Text.Anchor = TextAnchor.MiddleLeft;
+			if (placeCheckboxNearText)
+			{
+				rect.width = Mathf.Min(rect.width, Text.CalcSize(label).x + 24f + 10f);
+			}
+			Widgets.Label(rect, label);
+			if (!disabled && Widgets.ButtonInvisible(rect, true))
+			{
+				bool checkState = !checkOn;
+				tmpState = false;
+				if (checkState)
+				{
+					Log.Message($"Temp Before: {tmpState}");
+					Find.WindowStack.Add(Dialog_MessageBox.CreateConfirmation("DebugWriterConfirmation".Translate(), delegate()
+					{
+						tmpState = true;
+						SoundDefOf.Checkbox_TurnedOff.PlayOneShotOnCamera(null);
+					}));
+					Log.Message($"Temp After: {tmpState}");
+				}
+			}
+			checkOn = tmpState;
+			CheckboxDraw(rect.x + rect.width - 24f, rect.y, checkOn, disabled, 24f, null, null);
+			Text.Anchor = anchor;
+		}
+
+		private static void CheckboxDraw(float x, float y, bool active, bool disabled, float size = 24f, Texture2D texChecked = null, Texture2D texUnchecked = null)
+		{
+			Color color = GUI.color;
+			if (disabled)
+			{
+				GUI.color = InactiveColor;
+			}
+			Texture2D image;
+			if (active)
+			{
+				image = ((texChecked != null) ? texChecked : Widgets.CheckboxOnTex);
+			}
+			else
+			{
+				image = ((texUnchecked != null) ? texUnchecked : Widgets.CheckboxOffTex);
+			}
+			GUI.DrawTexture(new Rect(x, y, size, size), image);
+			if (disabled)
+			{
+				GUI.color = color;
+			}
+		}
+
+		private static readonly Color InactiveColor = new Color(0.37f, 0.37f, 0.37f, 0.8f);
 	}
 }

@@ -8,7 +8,7 @@ namespace AchievementsExpanded
 {
     public class HediffDeathTracker : Tracker<Hediff>
     {
-        public override string Key => "ColonistDeathTracker";
+        public override string Key => "HediffDeathTracker";
 
         public override MethodInfo MethodHook => AccessTools.Method(typeof(Hediff), nameof(Hediff.Notify_PawnDied));
         public override MethodInfo PatchMethod => AccessTools.Method(typeof(AchievementHarmony), nameof(AchievementHarmony.HediffDeathEvent));

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <LanguageData>
+	<VAE>Vanilla Achievements Expanded</VAE>
+	<DebugWriter>Enable DebugWriter</DebugWriter>
+	<DebugWriterConfirmation>Are you sure you want to enable the DebugWriter? This will significantly decrease performance in return for Achievement related data. This should only be enabled to track valuable information for debugging.</DebugWriterConfirmation>
+	
 	<SideBarInfo>Unlock achievements and earn Storyteller points which you can redeem for various events.</SideBarInfo>
 	
 	<StorytellerPoints>Storyteller Points</StorytellerPoints>

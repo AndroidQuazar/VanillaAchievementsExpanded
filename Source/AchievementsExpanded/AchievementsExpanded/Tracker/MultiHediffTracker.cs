@@ -10,8 +10,6 @@ namespace AchievementsExpanded
 {
     public class MultiHediffTracker : HediffTracker
     {
-        public override string Key => "MultiHediffTracker";
-
         public MultiHediffTracker()
         {
         }

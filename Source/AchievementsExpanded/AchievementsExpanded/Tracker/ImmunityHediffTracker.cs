@@ -31,7 +31,7 @@ namespace AchievementsExpanded
         public override bool Trigger(Hediff hediff, float immunity)
         {
             base.Trigger(hediff);
-            if (hediff.def == HediffDefOf.WoundInfection)
+            if (def is null || hediff?.def == def)
             {
                 if (hediff.Severity >= percentImmune && immunity >= 99)
                 {
@@ -42,5 +42,6 @@ namespace AchievementsExpanded
         }
 
         public float percentImmune;
+        public HediffDef def;
     }
 }

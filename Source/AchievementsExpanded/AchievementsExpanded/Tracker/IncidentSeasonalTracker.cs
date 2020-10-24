@@ -10,8 +10,6 @@ namespace AchievementsExpanded
 {
     public class IncidentSeasonalTracker : IncidentTracker
     {
-        public override string Key => "IncidentSeasonalTracker";
-
         public IncidentSeasonalTracker()
         {
         }

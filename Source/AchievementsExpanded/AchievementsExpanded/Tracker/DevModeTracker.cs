@@ -10,7 +10,7 @@ namespace AchievementsExpanded
     /// </summary>
     public class DevModeTracker : Tracker<bool>
     {
-        public override string Key => "PropertyTracker";
+        public override string Key => "DevModeTracker";
 
         public override MethodInfo MethodHook => AccessTools.Method(typeof(Prefs), "set_DevMode");
         public override MethodInfo PatchMethod => AccessTools.Method(typeof(AchievementHarmony), nameof(AchievementHarmony.DevModeToggled));

@@ -114,25 +114,27 @@ namespace AchievementsExpanded
             GUI.DrawTexture(innerIconRect, AchievementIcon);
             GUI.color = color;
 
-            var textWidth = Text.CalcSize(def.label).x;
-            Rect labelRect = new Rect(rect.x + (rect.width / 2) - (textWidth / 2), iconRect.y + iconRect.width, iconRect.width, rect.height - MainTabWindow_Achievements.SpaceBetweenCards - iconRect.height);
-            if(textWidth > labelRect.width)
-            {
-                labelRect.x = iconRect.x;
-            }
+            var anchor = Text.Anchor;
+            Text.Anchor = TextAnchor.UpperCenter;
+
+            Rect labelRect = new Rect(iconRect.x, iconRect.y + iconRect.height, iconRect.width, rect.height - MainTabWindow_Achievements.SpaceBetweenCards - iconRect.height);
+            Widgets.DrawBox(labelRect, 1);
             Widgets.Label(labelRect, def.label);
 
             var font = Text.Font;
             var textColor = GUI.color;
             Text.Font = GameFont.Tiny;
             GUI.color = MainTabWindow_Achievements.LightGray;
-            var descTextFull = $"{def.points} - {def.description}";
-            var descSize = Text.CalcSize(descTextFull);
-            var descWidth = Mathf.Clamp(descSize.x, 0f, iconRect.width);
-            Rect pointIconRect = new Rect(rect.x + (rect.width / 2) - (descWidth / 2) - 10, labelRect.y + MainTabWindow_Achievements.SpaceBetweenCards * 5f, descSize.y, descSize.y);
-            Rect descRect = new Rect(pointIconRect.x + pointIconRect.width + 2, pointIconRect.y + 1, iconRect.width, labelRect.height);
+
+            var size = Text.CalcSize(def.description);
+            Rect pointRect = new Rect(iconRect.x, labelRect.y + MainTabWindow_Achievements.SpaceBetweenCards, iconRect.width, labelRect.height);
+            Rect pointIconRect = new Rect(iconRect.x, labelRect.y + MainTabWindow_Achievements.SpaceBetweenCards * 2, size.y, size.y);
+            Widgets.Label(pointRect, def.points.ToStringSafe());
             GUI.DrawTexture(pointIconRect, AchievementTex.PointsIcon);
-            Widgets.Label(descRect, descTextFull);
+
+            var descTextFull = $"{def.points} - {def.description}";
+            Rect descRect = new Rect(iconRect.x, pointIconRect.y + MainTabWindow_Achievements.SpaceBetweenCards * 5f, iconRect.width, labelRect.height);
+            Widgets.Label(descRect, def.description);
 
             GUI.color = Color.gray;
             var timeSize = Text.CalcSize(dateUnlocked);
@@ -142,6 +144,7 @@ namespace AchievementsExpanded
 
             Text.Font = font;
             GUI.color = textColor;
+            Text.Anchor = anchor;
         }
 
         internal void LockCard()
