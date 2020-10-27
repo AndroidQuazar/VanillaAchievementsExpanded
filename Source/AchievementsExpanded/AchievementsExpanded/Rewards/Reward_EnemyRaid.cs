@@ -13,8 +13,7 @@ namespace AchievementsExpanded
             IncidentParms parms = new IncidentParms()
             {
                 target = Find.CurrentMap,
-                points = StorytellerUtility.DefaultThreatPointsNow(Find.CurrentMap) * 2.5f,
-                faction = Find.World.factionManager.RandomEnemyFaction(true),
+                points = StorytellerUtility.DefaultThreatPointsNow(Find.CurrentMap) * RaidRatioDifficultyIncrease
             };
             if (!incident.Worker.TryExecute(parms))
             {
@@ -23,5 +22,7 @@ namespace AchievementsExpanded
             }
             return true;
         }
+
+        private const float RaidRatioDifficultyIncrease = 1.25f;
     }
 }

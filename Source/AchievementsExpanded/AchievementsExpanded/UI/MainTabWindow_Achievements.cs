@@ -78,7 +78,7 @@ namespace AchievementsExpanded
             base.PreOpen();
             FullPanelWidth = Verse.UI.screenWidth - SidePanelWidth;
             float cardMenuWidth = FullPanelWidth - 20f;
-            CardsPerRow = Mathf.FloorToInt((cardMenuWidth - (SpaceBetweenCards * 6)) / 200);
+            CardsPerRow = Mathf.FloorToInt((cardMenuWidth - (SpaceBetweenCards * 6)) / CardSize);
         }
 
         public override void DoWindowContents(Rect inRect)
@@ -208,9 +208,13 @@ namespace AchievementsExpanded
             Widgets.EndScrollView();
         }
 
+        private const float CardSize = 200;
+
         public static int CardsPerRow;
 
         public const float SpaceBetweenCards = 10;
+
+        private const float CardSizeToResolutionRatio = 9.6f;
 
         private const float TextAreaHeight = 0.15f;
         private const float SidePanelMargin = 0.05f;

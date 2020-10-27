@@ -13,7 +13,7 @@ namespace AchievementsExpanded
         public override string Key => "TimeTracker";
 
         public override Func<bool> AttachToLongTick => () => { return Trigger(); };
-        protected override string[] DebugText => new string[] { $"Ticks: {ticksPassed}", $"Require unpaused to Tick: {gameTime}" };
+        protected override string[] DebugText => new string[] { $"Ticks: {ticksPassed}", $"Require unpaused to Tick: {gameTime}", $"Current Abs: {(int)Find.GameInfo.RealPlayTimeInteracting} Current Game: {Find.TickManager.TicksGame}"};
         public TimeTracker()
         {
         }
@@ -33,7 +33,7 @@ namespace AchievementsExpanded
         public override bool Trigger()
         {
             base.Trigger();
-            int ticks = gameTime ? Find.TickManager.TicksGame : Find.TickManager.TicksAbs;
+            int ticks = gameTime ? Find.TickManager.TicksGame : (int)Find.GameInfo.RealPlayTimeInteracting;
             return ticks >= ticksPassed;
         }
 

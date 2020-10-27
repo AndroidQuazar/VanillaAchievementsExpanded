@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Reflection;
 using HarmonyLib;
+using RimWorld;
 using Verse;
 
 namespace AchievementsExpanded
@@ -34,7 +35,7 @@ namespace AchievementsExpanded
 
         public override bool Trigger(Hediff hediff)
         {
-            if (def == hediff.def)
+            if (hediff != null && hediff.pawn.Faction == Faction.OfPlayer && def == hediff.def)
             {
                 triggeredCount++;
             }
