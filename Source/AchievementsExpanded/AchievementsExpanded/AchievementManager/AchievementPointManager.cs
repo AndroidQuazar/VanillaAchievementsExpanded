@@ -127,7 +127,6 @@ namespace AchievementsExpanded
                     return hashset.Where(c => !c.unlocked).ToHashSet();
                 return hashset;
             }
-            Log.Warning("TrackerBase hashset not initially in lookup. Correcting...");
             achievementLookup.Add(GetTrackerKey<T>(), AchievementList.Where(c => c.tracker.Key == GetTrackerKey<T>()).ToHashSet());
             if (locked)
                 return achievementLookup[GetTrackerKey<T>()].Where(c => !c.unlocked).ToHashSet();

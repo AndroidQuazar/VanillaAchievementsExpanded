@@ -33,14 +33,11 @@ namespace AchievementsExpanded
 
         public bool Trigger(string text = null)
         {
-            if (logTracker || VAEMod.settings.writeAllSettings)
-            {
-                DebugWriter.Log($"\nTrigger Event called for {GetUniqueLoadID()}");
-                if (!string.IsNullOrEmpty(text))
-                    DebugWriter.Log(text);
-                DebugWriter.Log(DebugText);
-                DebugWriter.Log($"Card: {cardAssigned}");
-            }
+            DebugWriter.Log($"\nTrigger Event called for {GetUniqueLoadID()}");
+            if (!string.IsNullOrEmpty(text))
+                DebugWriter.Log(text);
+            DebugWriter.Log(DebugText);
+            DebugWriter.Log($"Card: {cardAssigned}");
             return false;
         }
 
@@ -50,8 +47,6 @@ namespace AchievementsExpanded
             Scribe_Values.Look(ref logTracker, "logTracker", false);
             Scribe_Values.Look(ref cardAssigned, "cardAssigned");
         }
-
-        protected void DebugLog(string text) => DebugWriter.Log(text);
 
         protected abstract string[] DebugText { get; }
 

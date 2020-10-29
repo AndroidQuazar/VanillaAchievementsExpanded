@@ -25,8 +25,16 @@ namespace AchievementsExpanded
         {
             base.DoSettingsWindowContents(inRect);
             var listing = new Listing_Standard();
-            listing.Begin(inRect);
-            listing.ConfirmationBoxCheckboxLabeled("DebugWriter".Translate(), ref settings.writeAllSettings);
+            Rect buttonRect = new Rect(inRect)
+            {
+                width = inRect.width / 5
+            };
+            listing.Begin(buttonRect);
+            //listing.ConfirmationBoxCheckboxLabeled("DebugWriter".Translate(), ref settings.writeAllSettings);
+            if (listing.ButtonText("GenerateLogInfo".Translate(), "GenerateLogInfoTooltip".Translate()))
+            {
+                DebugWriter.PushToFile();
+            }
             listing.End();
         }
 

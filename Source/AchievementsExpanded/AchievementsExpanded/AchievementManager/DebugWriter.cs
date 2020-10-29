@@ -14,9 +14,11 @@ namespace AchievementsExpanded
         {
             if (string.IsNullOrEmpty(RootDir))
                 ResetRootDir();
+            MessageLogsLimitReached();
             try
             {
-                File.AppendAllLines(FullPath, new[] { text });
+                //File.AppendAllLines(FullPath, new[] { text });
+                messageLogs.Add(text);
             }
             catch(Exception ex)
             {
@@ -30,9 +32,11 @@ namespace AchievementsExpanded
         {
             if (string.IsNullOrEmpty(RootDir))
                 ResetRootDir();
+            MessageLogsLimitReached();
             try
             {
-                File.AppendAllLines(FullPath, text);
+                //File.AppendAllLines(FullPath, text);
+                messageLogs.AddRange(text);
             }
             catch(Exception ex)
             {
@@ -52,7 +56,37 @@ namespace AchievementsExpanded
         public static void Clear()
         {
             File.WriteAllText(FullPath, string.Empty);
+            if (messageLogs is null)
+                messageLogs = new List<string>();
         }
+
+        private static void MessageLogsLimitReached()
+        {
+            if (messageLogs.Count > MaxMessageLimit)
+            {
+                messageLogs = new List<string>();
+            }
+        }
+
+        public static void PushToFile()
+        {
+            Clear();
+            string successMessage = "SuccessfulWriteToFile".Translate();
+            MessageTypeDef messageType = MessageTypeDefOf.TaskCompletion;
+            try
+            {
+                File.AppendAllLines(FullPath, messageLogs);
+            }
+            catch(Exception ex)
+            {
+                successMessage = $"Failed to push logs to file. Exception: {ex.Message}";
+                messageType = MessageTypeDefOf.RejectInput;
+            }
+            Messages.Message(successMessage, messageType);
+        }
+
+        internal static List<string> messageLogs = new List<string>();
+        private const int MaxMessageLimit = 1000;
 
         internal static string FullPath => $"{RootDir}\\{FileName}";
         internal static string RootDir;

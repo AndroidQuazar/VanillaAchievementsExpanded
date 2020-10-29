@@ -53,8 +53,7 @@ namespace AchievementsExpanded
                             total += 1;
                         }
                     }
-                    if (logTracker || VAEMod.settings.writeAllSettings)
-                        DebugWriter.Log($"Total in Mental State: {total}");
+                    DebugWriter.Log($"Total in Mental State: {total}");
                     if (total < consecutive)
                         return false;
                 }

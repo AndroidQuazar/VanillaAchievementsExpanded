@@ -7,7 +7,7 @@
 		
 		<tracker Class="AchievementsExpanded.IncidentTracker">
 			<def>RaidEnemy</def>
-			<count>3</count>
+			<count>1</count>
 		</tracker>
 		
 		<texPath>Achievements/ThisIsWhereTheFunBegins</texPath>

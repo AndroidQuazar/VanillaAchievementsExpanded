@@ -27,7 +27,6 @@ namespace AchievementsExpanded
 
         public override bool Trigger(IncidentDef param, Map map)
         {
-            DebugLog($"{allowedSeasons?.Count ?? 0}");
             if(map is null)
                 return false;
             if (!allowedSeasons?.Contains(GenLocalDate.Season(map.Tile)) ?? true)

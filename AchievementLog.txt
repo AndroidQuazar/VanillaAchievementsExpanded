@@ -2,3 +2,21 @@ Vanilla Achievements Expanded
 This log is for logging Tracker information and Event triggers only.
 
 Generating Achievement Links...
+
+Trigger Event called for MoodTracker_14995
+Param 1: 50
+Requires mood to be: Above
+Average: 0.9
+Card: aHappyEnding
+
+Trigger Event called for MoodTracker_14996
+Param 1: 50
+Requires mood to be: Below
+Average: 0.05
+Card: areYouNotEntertained
+
+Trigger Event called for DevModeTracker_14959
+Param 1: True
+Value: True
+Card: cheaterCheater
+Unlocking: Achievement_-140621834 Card: Cheater, Cheater!

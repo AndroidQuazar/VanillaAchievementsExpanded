@@ -5,6 +5,10 @@
 	<DebugWriter>Enable DebugWriter</DebugWriter>
 	<DebugWriterConfirmation>Are you sure you want to enable the DebugWriter? This will significantly decrease performance in return for Achievement related data. This should only be enabled to track valuable information for debugging.</DebugWriterConfirmation>
 	
+	<GenerateLogInfo>Write to File</GenerateLogInfo>
+	<GenerateLogInfoTooltip>Push achievement related logs to file. For debugging purposes only.</GenerateLogInfoTooltip>
+	<SuccessfulWriteToFile>Successfully pushed achievement logs to AchievementLog.txt</SuccessfulWriteToFile>
+	
 	<SideBarInfo>Unlock achievements and earn Storyteller points which you can redeem for various events.</SideBarInfo>
 	
 	<StorytellerPoints>Storyteller Points</StorytellerPoints>
@@ -23,4 +27,5 @@
 	<FailedTargetFinder>Must have map loaded or IncidentTarget object selected on World Map</FailedTargetFinder>
 	<NoValidMap>Must be purchased with PlayerHome map in view.</NoValidMap>
 	<NotEnoughPoints>Not Enough Points</NotEnoughPoints>
+
 </LanguageData>
