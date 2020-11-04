@@ -27,5 +27,7 @@
 	<FailedTargetFinder>Must have map loaded or IncidentTarget object selected on World Map</FailedTargetFinder>
 	<NoValidMap>Must be purchased with PlayerHome map in view.</NoValidMap>
 	<NotEnoughPoints>Not Enough Points</NotEnoughPoints>
-
+	
+	<RandomQuestRewardItemLetter>Quest Item</RandomQuestRewardItemLetter>
+	<RandomQuestRewardItem>Random quest item dropped!</RandomQuestRewardItem>
 </LanguageData>

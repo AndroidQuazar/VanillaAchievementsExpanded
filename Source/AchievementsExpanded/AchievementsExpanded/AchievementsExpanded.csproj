@@ -70,6 +70,7 @@
     <Compile Include="Rewards\Reward_MapIncident.cs" />
     <Compile Include="Rewards\Reward_RandomQuest.cs" />
     <Compile Include="Rewards\Reward_Random.cs" />
+    <Compile Include="Rewards\Reward_RandomQuestItem.cs" />
     <Compile Include="Tracker\BondedAnimalOnFireKillTracker.cs" />
     <Compile Include="Tracker\ImmunityHediffTracker.cs" />
     <Compile Include="Tracker\RecordTimeTracker.cs" />
