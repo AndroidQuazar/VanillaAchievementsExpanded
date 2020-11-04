@@ -24,8 +24,6 @@ namespace AchievementsExpanded
             level = reference.level;
             count = reference.count;
             triggeredCount = reference.triggeredCount;
-
-            logTracker = true;
         }
 
         public override void ExposeData()
