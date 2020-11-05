@@ -21,6 +21,7 @@
 	<AchievementLocked>Locked</AchievementLocked>
 	
 	<AchievementsUnlocked>Achievements Unlocked: {0}</AchievementsUnlocked>
+	<AchievementsTotalUnlocked>Total Achievements Unlocked: {0}</AchievementsTotalUnlocked>
 	<AchievementUnlocked>Achievement Unlocked!</AchievementUnlocked>
 	
 	<FailedRewardEvent>Failed to redeem reward {0}</FailedRewardEvent>

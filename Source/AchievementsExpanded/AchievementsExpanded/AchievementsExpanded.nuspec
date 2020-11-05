@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>AchievementsExpanded</id>
+    <version>1.0.0</version>
+    <title>Vanilla Achievements Expanded</title>
+    <authors>Smash Phil, Oskar Potocki</authors>
+	<owners />
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/AndroidQuazar/VanillaAchievementsExpanded</projectUrl>
+    <icon>vaeIcon.png</icon>
+    <description>Vanilla Achievements Expanded modding tool</description>
+    <releaseNotes>Initial release</releaseNotes>
+    <copyright>Copyright 2020</copyright>
+    <tags>rimworld vanilla achievements expanded</tags>
+  </metadata>
+  <files>
+	<file src="vaeIcon.png" target="" />
+  </files>
+</package>

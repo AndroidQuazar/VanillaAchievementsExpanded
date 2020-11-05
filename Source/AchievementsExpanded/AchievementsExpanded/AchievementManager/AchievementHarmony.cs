@@ -20,48 +20,51 @@ namespace AchievementsExpanded
             AchievementPointManager.OnStartUp();
             var harmony = new Harmony(modIdentifier);
 
-            /// <summary>
-            /// Automated Patches by allowing user to specify MethodInfo. 
-            /// Solely for organization regarding Trackers
-            /// </summary>
-            foreach(TrackerBase tracker in AchievementPointManager.TrackersGenerated)
+            if (ModsConfig.IsActive(modIdentifier))
             {
-                if (tracker.MethodHook != null && tracker.PatchMethod != null)
+                /// <summary>
+                /// Automated Patches by allowing user to specify MethodInfo. 
+                /// Solely for organization regarding Trackers
+                /// </summary>
+                foreach(TrackerBase tracker in AchievementPointManager.TrackersGenerated)
                 {
-                    switch(tracker.PatchType)
+                    if (tracker.MethodHook != null && tracker.PatchMethod != null)
                     {
-                        case PatchType.Prefix:
-                            harmony.Patch(original: tracker.MethodHook,
-                                prefix: new HarmonyMethod(tracker.PatchMethod));
-                            break;
-                        case PatchType.Postfix:
-                            harmony.Patch(original: tracker.MethodHook,
-                                postfix: new HarmonyMethod(tracker.PatchMethod));
-                            break;
-                        case PatchType.Transpiler:
-                            harmony.Patch(original: tracker.MethodHook,
-                                transpiler: new HarmonyMethod(tracker.PatchMethod));
-                            break;
-                        case PatchType.Finalizer:
-                            harmony.Patch(original: tracker.MethodHook,
-                                finalizer: new HarmonyMethod(tracker.PatchMethod));
-                            break;
+                        switch(tracker.PatchType)
+                        {
+                            case PatchType.Prefix:
+                                harmony.Patch(original: tracker.MethodHook,
+                                    prefix: new HarmonyMethod(tracker.PatchMethod));
+                                break;
+                            case PatchType.Postfix:
+                                harmony.Patch(original: tracker.MethodHook,
+                                    postfix: new HarmonyMethod(tracker.PatchMethod));
+                                break;
+                            case PatchType.Transpiler:
+                                harmony.Patch(original: tracker.MethodHook,
+                                    transpiler: new HarmonyMethod(tracker.PatchMethod));
+                                break;
+                            case PatchType.Finalizer:
+                                harmony.Patch(original: tracker.MethodHook,
+                                    finalizer: new HarmonyMethod(tracker.PatchMethod));
+                                break;
+                        }
                     }
                 }
+
+                /* Additional Event Catches */
+                harmony.Patch(original: AccessTools.Method(typeof(Thing), nameof(Thing.Kill)),
+                    prefix: new HarmonyMethod(typeof(AchievementHarmony),
+                    nameof(KillThing)));
+                harmony.Patch(original: AccessTools.Method(typeof(Pawn_RecordsTracker), nameof(Pawn_RecordsTracker.AddTo)),
+                    postfix: new HarmonyMethod(typeof(AchievementHarmony),
+                    nameof(RecordAddToEvent)));
+
+                /* Event thrown every Long Tick */
+                harmony.Patch(original: AccessTools.Method(typeof(TickManager), nameof(TickManager.DoSingleTick)),
+                    postfix: new HarmonyMethod(typeof(AchievementHarmony),
+                    nameof(SingleLongTickTracker)));
             }
-
-            /* Additional Event Catches */
-            harmony.Patch(original: AccessTools.Method(typeof(Thing), nameof(Thing.Kill)),
-                prefix: new HarmonyMethod(typeof(AchievementHarmony),
-                nameof(KillThing)));
-            harmony.Patch(original: AccessTools.Method(typeof(Pawn_RecordsTracker), nameof(Pawn_RecordsTracker.AddTo)),
-                postfix: new HarmonyMethod(typeof(AchievementHarmony),
-                nameof(RecordAddToEvent)));
-
-            /* Event thrown every Long Tick */
-            harmony.Patch(original: AccessTools.Method(typeof(TickManager), nameof(TickManager.DoSingleTick)),
-                postfix: new HarmonyMethod(typeof(AchievementHarmony),
-                nameof(SingleLongTickTracker)));
         }
 
         /// <summary>

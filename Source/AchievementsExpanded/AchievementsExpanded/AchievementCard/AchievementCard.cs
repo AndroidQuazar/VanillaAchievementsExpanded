@@ -68,7 +68,7 @@ namespace AchievementsExpanded
             tab = def.tab;
             if(tab is null)
             {
-                tab = AchievementTabDefOf.Main;
+                tab = AchievementTabHelper.MainTab;
             }
             uniqueHash = def.defName.GetHashCode();
             unlocked = preUnlocked;

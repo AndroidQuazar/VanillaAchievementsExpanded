@@ -17,7 +17,7 @@
 	
 	<AchievementsExpanded.AchievementDef>
 		<defName>wolfOfWallStreet</defName>
-		<label>Wolf Of Wall Stree</label>
+		<label>Wolf Of Wall Street</label>
 		<description>Earn 3000 silver from a single transaction</description>
 		
 		<tracker Class="AchievementsExpanded.TraderTracker">

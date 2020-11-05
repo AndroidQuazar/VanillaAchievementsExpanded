@@ -29,7 +29,8 @@ namespace AchievementsExpanded
             {
                 if (rewardCache.NullOrEmpty())
                 {
-                    rewardCache = DefDatabase<AchievementReward>.AllDefsListForReading;
+                    rewardCache = DefDatabase<AchievementReward>.AllDefsListForReading.Where(r => (CurTab == AchievementTabHelper.MainTab && r.tab is null) 
+                                                                                            || r.tab == CurTab).OrderBy(d => d.cost).ToList();
                 }
                 return rewardCache;
             }
@@ -46,6 +47,7 @@ namespace AchievementsExpanded
 				if (value == curTab)
 					return;
 				curTab = value;
+                ClearRewardCache();
 			}
 		}
 
@@ -70,7 +72,7 @@ namespace AchievementsExpanded
 				}, () => CurTab == localTabDef));
 			}
             if (CurTab is null)
-                CurTab = AchievementTabDefOf.Main;
+                CurTab = AchievementTabHelper.MainTab;
 		}
 
         public override void PreOpen()
@@ -136,11 +138,10 @@ namespace AchievementsExpanded
 
             rect.y += 40;
 
-            Text.Font = GameFont.Tiny;
-            var unlockCount = $"{APM.achievementList.Where(a => a.unlocked).Count()} / {APM.achievementList.Count}";
-            Widgets.Label(rect, "AchievementsUnlocked".Translate(unlockCount));
+            var unlockCountTotal = $"{APM.achievementList.Where(a => a.unlocked).Count()} / {APM.achievementList.Count}";
+            Widgets.Label(rect, "AchievementsTotalUnlocked".Translate(unlockCountTotal));
 
-            rect.y += 100;
+            rect.y += 60;
             Text.Font = GameFont.Medium;
             Widgets.Label(rect, "PointsRedeem".Translate());
 
@@ -206,6 +207,14 @@ namespace AchievementsExpanded
             }
 
             Widgets.EndScrollView();
+        }
+
+        private void ClearRewardCache()
+        {
+            if (rewardCache is null)
+                rewardCache = new List<AchievementReward>();
+            else
+                rewardCache.Clear();
         }
 
         private const float CardSize = 200;

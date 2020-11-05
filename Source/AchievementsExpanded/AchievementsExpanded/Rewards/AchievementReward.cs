@@ -10,6 +10,7 @@ namespace AchievementsExpanded
     {
         public int cost;
         public IncidentDef incident;
+        public AchievementTabDef tab;
 
         /// <summary>
         /// Reason for being disabled (if empty, user can purchase)

@@ -3,6 +3,7 @@
 	<AchievementsExpanded.Reward_EnemyRaid>
 		<defName>EnemyRaidReward</defName>
 		<label>Summon A Raid</label>
+		<tab>Main</tab>
 		
 		<cost>10</cost>
 		<incident>RaidEnemy</incident>
@@ -11,6 +12,7 @@
 	<AchievementsExpanded.Reward_MapIncident>
 		<defName>TradeCaravanReward</defName>
 		<label>Summon a Trade Caravan</label>
+		<tab>Main</tab>
 		
 		<cost>15</cost>
 		<incident>TraderCaravanArrival</incident>
@@ -19,6 +21,7 @@
 	<AchievementsExpanded.Reward_Random>
 		<defName>RandomEventReward</defName>
 		<label>Random Event</label>
+		<tab>Main</tab>
 		
 		<cost>25</cost>
 	</AchievementsExpanded.Reward_Random>
@@ -26,6 +29,7 @@
 	<AchievementsExpanded.Reward_MapIncident>
 		<defName>CargoPodsReward</defName>
 		<label>Spawn Cargo Pods</label>
+		<tab>Main</tab>
 		
 		<cost>25</cost>
 		<incident>ResourcePodCrash</incident>
@@ -43,6 +47,7 @@
 	<AchievementsExpanded.Reward_RandomQuestItem>
 		<defName>RandomRewardQuestItem</defName>
 		<label>Random Quest Item</label>
+		<tab>Main</tab>
 		
 		<cost>100</cost>
 		<thingSetMakerTags>
@@ -54,6 +59,7 @@
 	<AchievementsExpanded.Reward_MapIncident>
 		<defName>ManInBlackReward</defName>
 		<label>Man in Black Joins</label>
+		<tab>Main</tab>
 		
 		<cost>150</cost>
 		<incident>StrangerInBlackJoin</incident>

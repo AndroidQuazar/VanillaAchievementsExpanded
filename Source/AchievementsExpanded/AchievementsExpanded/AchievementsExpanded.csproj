@@ -33,20 +33,39 @@
   <ItemGroup>
     <Reference Include="0Harmony, Version=2.0.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Lib.Harmony.2.0.4\lib\net472\0Harmony.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>..\..\..\..\..\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.InteropServices.RuntimeInformation" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
+    <Reference Include="System">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>False</Private>
+    </Reference>
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>..\..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
       <Private>False</Private>
@@ -63,8 +82,10 @@
   <ItemGroup>
     <Compile Include="AchievementCard\AchievementCard.cs" />
     <Compile Include="AchievementCard\AchievementDef.cs" />
+    <Compile Include="AchievementCard\AchievementTabHelper.cs" />
     <Compile Include="AchievementManager\AchievementGenerator.cs" />
     <Compile Include="AchievementManager\AchievementHarmony.cs" />
+    <Compile Include="AchievementManager\AssemblyHandler.cs" />
     <Compile Include="AchievementManager\DebugWriter.cs" />
     <Compile Include="Rewards\Reward_MapIncident.cs" />
     <Compile Include="Rewards\Reward_RandomQuest.cs" />
@@ -99,7 +120,6 @@
     <Compile Include="UI\AchievementNotification.cs" />
     <Compile Include="AchievementManager\AchievementPointManager.cs" />
     <Compile Include="AchievementCard\AchievementTabDef.cs" />
-    <Compile Include="AchievementCard\AchievementTabDefOf.cs" />
     <Compile Include="Rewards\AchievementReward.cs" />
     <Compile Include="UI\AchievementTex.cs" />
     <Compile Include="AchievementManager\DebugTools.cs" />
