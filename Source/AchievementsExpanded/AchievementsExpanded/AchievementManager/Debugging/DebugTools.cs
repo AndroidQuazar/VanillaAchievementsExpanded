@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Linq;
 using Verse;
 using RimWorld;
+using HarmonyLib;
 
 namespace AchievementsExpanded
 {
@@ -10,7 +12,7 @@ namespace AchievementsExpanded
     {
         internal const string VAEDebugCategory = "Vanilla Achievements Expanded";
 
-        [DebugAction(VAEDebugCategory, null)]
+        [AchievementDebugActionAttribute(VAEDebugCategory, null)]
         private static void UnlockAchievement()
         {
             List<DebugMenuOption> list = new List<DebugMenuOption>();
@@ -32,7 +34,7 @@ namespace AchievementsExpanded
             }
         }
 
-        [DebugAction(VAEDebugCategory, null)]
+        [AchievementDebugActionAttribute(VAEDebugCategory, null)]
         private static void LockAchievement()
         {
             List<DebugMenuOption> list = new List<DebugMenuOption>();
@@ -54,7 +56,7 @@ namespace AchievementsExpanded
             }
         }
 
-        [DebugAction(VAEDebugCategory, null)]
+        [AchievementDebugActionAttribute(VAEDebugCategory, null)]
         private static void RegenerateAchievement()
         {
             List<DebugMenuOption> list = new List<DebugMenuOption>();
@@ -76,7 +78,7 @@ namespace AchievementsExpanded
             }
         }
 
-        [DebugAction(VAEDebugCategory, null)]
+        [AchievementDebugActionAttribute(VAEDebugCategory, null)]
         private static void UnlockAllAchievements()
         {
             foreach (AchievementCard card in AchievementPointManager.AchievementList)
@@ -85,7 +87,7 @@ namespace AchievementsExpanded
             }
         }
 
-        [DebugAction(VAEDebugCategory, null)]
+        [AchievementDebugActionAttribute(VAEDebugCategory, null)]
         private static void LockAllAchievements()
         {
             foreach (AchievementCard card in AchievementPointManager.AchievementList)
@@ -96,7 +98,7 @@ namespace AchievementsExpanded
             Current.Game.GetComponent<AchievementPointManager>().ResetPoints();
         }
 
-        [DebugAction(VAEDebugCategory, null)]
+        [AchievementDebugActionAttribute(VAEDebugCategory, null)]
         private static void RegenerateAllAchievements()
         {
             Current.Game.GetComponent<AchievementPointManager>().HardReset();

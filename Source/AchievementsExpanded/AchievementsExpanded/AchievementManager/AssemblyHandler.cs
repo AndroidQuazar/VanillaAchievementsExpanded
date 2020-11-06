@@ -5,14 +5,12 @@ using System.Linq;
 using Verse;
 using RimWorld;
 using HarmonyLib;
-using OpCodes = System.Reflection.Emit.OpCodes;
 
 namespace AchievementsExpanded
 {
     internal class AssemblyHandler : Mod
     {
         private const string AssemblyName = "AchievementsExpanded";
-        internal static Assembly vaeAssembly = AppDomain.CurrentDomain.GetAssemblies().Where(a => a.FullName.Contains("AchievementsExpanded")).FirstOrDefault();
 
         public AssemblyHandler(ModContentPack content) : base(content)
         {

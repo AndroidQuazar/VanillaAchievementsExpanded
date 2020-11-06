@@ -8,7 +8,7 @@
 		<tracker Class="AchievementsExpanded.BuildingTracker">
 			<def>Armchair</def>
 			<madeFrom>Leather_Human</madeFrom>
-			<count>1</count>
+			<count>5</count>
 		</tracker>
 		
 		<texPath>Achievements/ComfierThanUsual</texPath>

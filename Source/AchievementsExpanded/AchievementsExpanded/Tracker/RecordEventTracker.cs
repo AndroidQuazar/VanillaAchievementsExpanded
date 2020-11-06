@@ -38,20 +38,36 @@ namespace AchievementsExpanded
             if (total)
             {
                 float value = 0;
-                foreach (Map map in Find.Maps)
+                foreach (Pawn pawn2 in PawnsFinder.AllMapsCaravansAndTravelingTransportPods_Alive_OfPlayerFaction)
                 {
-                    foreach (Pawn pawn2 in map.mapPawns.FreeColonists)
-                    {
-                        value += pawn2.records.GetValue(record);
-                        if (value >= count)
-                            return true;
-                    }
+                    value += pawn2.records.GetValue(record);
                     if (value >= count)
-                            return true;
+                        return true;
                 }
+                if (value >= count)
+                        return true;
                 return false;
             }
             return pawn.records.GetValue(def) >= count;
+        }
+
+        public override bool UnlockOnStartup
+        {
+            get
+            {
+                if (total)
+                {
+                    return Trigger(def, null);
+                }
+                foreach (Pawn pawn in PawnsFinder.AllMapsCaravansAndTravelingTransportPods_Alive_OfPlayerFaction)
+                {
+                    if (Trigger(def, pawn))
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
         }
 
         public RecordDef def;

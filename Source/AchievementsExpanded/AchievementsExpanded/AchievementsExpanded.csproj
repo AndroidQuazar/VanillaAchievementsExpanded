@@ -86,7 +86,9 @@
     <Compile Include="AchievementManager\AchievementGenerator.cs" />
     <Compile Include="AchievementManager\AchievementHarmony.cs" />
     <Compile Include="AchievementManager\AssemblyHandler.cs" />
-    <Compile Include="AchievementManager\DebugWriter.cs" />
+    <Compile Include="AchievementManager\Debugging\AchievementDebugAction.cs" />
+    <Compile Include="AchievementManager\Debugging\DebugActionsSetup.cs" />
+    <Compile Include="AchievementManager\Debugging\DebugWriter.cs" />
     <Compile Include="Rewards\Reward_MapIncident.cs" />
     <Compile Include="Rewards\Reward_RandomQuest.cs" />
     <Compile Include="Rewards\Reward_Random.cs" />
@@ -122,7 +124,7 @@
     <Compile Include="AchievementCard\AchievementTabDef.cs" />
     <Compile Include="Rewards\AchievementReward.cs" />
     <Compile Include="UI\AchievementTex.cs" />
-    <Compile Include="AchievementManager\DebugTools.cs" />
+    <Compile Include="AchievementManager\Debugging\DebugTools.cs" />
     <Compile Include="Tracker\IncidentTracker.cs" />
     <Compile Include="UI\MainTabWindow_Achievements.cs" />
     <Compile Include="UI\MovingWindow.cs" />

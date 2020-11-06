@@ -54,9 +54,14 @@ namespace AchievementsExpanded
         public virtual Func<bool> AttachToLongTick => null;
 
         /// <summary>
+        /// Checked on startup to determine if card should be unlocked or not
+        /// </summary>
+        /// <returns></returns>
+        public virtual bool UnlockOnStartup => false;
+
+        /// <summary>
         /// Trigger event to check requirements if card should be unlocked or not
         /// </summary>
-        /// <returns>If card should be unlocked</returns>
         public virtual bool Trigger()
         {
             return Trigger(string.Empty);

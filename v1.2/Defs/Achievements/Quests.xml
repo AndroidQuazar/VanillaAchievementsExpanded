@@ -20,7 +20,7 @@
 		<description>Complete 3 PeaceTalks quests</description>
 		
 		<tracker Class="AchievementsExpanded.QuestTracker">
-			<quest>OpportunitySite_PeaceTalks</quest>
+			<def>OpportunitySite_PeaceTalks</def>
 			<outcome>Success</outcome>
 			<count>3</count>
 		</tracker>

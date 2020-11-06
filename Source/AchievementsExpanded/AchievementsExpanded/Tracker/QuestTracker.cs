@@ -12,7 +12,7 @@ namespace AchievementsExpanded
 
         public override MethodInfo MethodHook => AccessTools.Method(typeof(Quest), nameof(Quest.End));
         public override MethodInfo PatchMethod => AccessTools.Method(typeof(AchievementHarmony), nameof(AchievementHarmony.QuestEnded));
-        protected override string[] DebugText => new string[] { $"Quest: {quest?.defName}", $"Outcome: {outcome}", $"Count: {count}", $"Current: {triggeredCount}" };
+        protected override string[] DebugText => new string[] { $"Quest: {def?.defName}", $"Outcome: {outcome}", $"Count: {count}", $"Current: {triggeredCount}" };
 
         public QuestTracker()
         {
@@ -20,7 +20,7 @@ namespace AchievementsExpanded
 
         public QuestTracker(QuestTracker reference) : base(reference)
         {
-            quest = reference.quest;
+            def = reference.def;
             outcome = reference.outcome;
             count = reference.count;
             triggeredCount = reference.triggeredCount;
@@ -29,7 +29,7 @@ namespace AchievementsExpanded
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Defs.Look(ref quest, "quest");
+            Scribe_Defs.Look(ref def, "def");
             Scribe_Values.Look(ref outcome, "outcome");
             Scribe_Values.Look(ref count, "count");
             Scribe_Values.Look(ref triggeredCount, "triggeredCount");
@@ -38,14 +38,14 @@ namespace AchievementsExpanded
         public override bool Trigger(Quest quest, QuestEndOutcome outcome)
         {
             base.Trigger(quest, outcome);
-            if (this.outcome == outcome && (this.quest is null || (this.quest == quest.root)))
+            if (this.outcome == outcome && (def is null || (def == quest.root)))
             {
                 triggeredCount++;
             }
             return triggeredCount >= count;
         }
 
-        public QuestScriptDef quest;
+        public QuestScriptDef def;
         public QuestEndOutcome outcome;
         public int count;
 

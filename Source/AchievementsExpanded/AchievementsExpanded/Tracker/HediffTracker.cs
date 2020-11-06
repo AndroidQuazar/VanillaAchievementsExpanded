@@ -35,7 +35,7 @@ namespace AchievementsExpanded
 
         public override bool Trigger(Hediff hediff)
         {
-            if (hediff != null && hediff.pawn.Faction == Faction.OfPlayerSilentFail && def == hediff.def)
+            if (hediff?.pawn != null && hediff.pawn.Faction == Faction.OfPlayer && (def is null || def == hediff.def))
             {
                 triggeredCount++;
             }

@@ -21,19 +21,31 @@ namespace AchievementsExpanded
         public HediffDeathTracker(HediffDeathTracker reference) : base(reference)
         {
             def = reference.def;
+            count = reference.count;
+            triggeredCount = reference.triggeredCount;
         }
 
         public override void ExposeData()
         {
             base.ExposeData();
             Scribe_Defs.Look(ref def, "def");
+            Scribe_Values.Look(ref count, "count");
+
+            Scribe_Values.Look(ref triggeredCount, "triggeredCount");
         }
 
         public override bool Trigger(Hediff hediff)
         {
-            return hediff.def == def;
+            if (hediff.pawn != null && (hediff.pawn.Faction == Faction.OfPlayer || hediff.pawn.IsPrisonerOfColony) && (def is null || hediff.def == def))
+            {
+                triggeredCount++;
+            }
+            return triggeredCount >= count;
         }
 
         public HediffDef def;
+        public int count;
+
+        private int triggeredCount;
     }
 }

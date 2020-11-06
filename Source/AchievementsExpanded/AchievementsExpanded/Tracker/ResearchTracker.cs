@@ -14,27 +14,29 @@ namespace AchievementsExpanded
 
         public override MethodInfo MethodHook => AccessTools.Method(typeof(ResearchManager), nameof(ResearchManager.FinishProject));
         public override MethodInfo PatchMethod => AccessTools.Method(typeof(AchievementHarmony), nameof(AchievementHarmony.ResearchProjectFinished));
-        protected override string[] DebugText => new string[] { $"Tech: {tech}", $"Project: {project?.defName ?? "None"}" };
+        protected override string[] DebugText => new string[] { $"Tech: {tech}", $"Project: {def?.defName ?? "None"}", $"CoreOnly: {coreModsOnly}" };
         public ResearchTracker()
         {
         }
 
         public ResearchTracker(ResearchTracker reference) : base(reference)
         {
-            project = reference.project;
+            def = reference.def;
             tech = reference.tech;
+            coreModsOnly = reference.coreModsOnly;
         }
 
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Deep.Look(ref project, "project");
+            Scribe_Deep.Look(ref def, "project");
             Scribe_Values.Look(ref tech, "tech");
+            Scribe_Values.Look(ref coreModsOnly, "coreModsOnly");
         }
 
         public override bool Trigger(ResearchProjectDef proj)
         {
-            if (project is null || project == proj)
+            if (def is null || def == proj)
             {
                 if (tech != null)
                 {
@@ -42,7 +44,7 @@ namespace AchievementsExpanded
                     
                     foreach (var research in researchProjs.Where(r => r.Key.techLevel == tech.Value))
                     {
-                        if (research.Value < research.Key.baseCost && research.Key.modContentPack.IsCoreMod)
+                        if (research.Value < research.Key.baseCost && coreModsOnly && research.Key.modContentPack.IsCoreMod)
                             return false;
                     }
                 }
@@ -51,7 +53,31 @@ namespace AchievementsExpanded
             return false;
         }
 
-        public ResearchProjectDef project;
+        public override bool UnlockOnStartup
+        {
+            get
+            {
+                if (def is null && tech != null)
+                {
+                    foreach (ResearchProjectDef research in DefDatabase<ResearchProjectDef>.AllDefsListForReading)
+                    {
+                        if (research.techLevel == tech && Find.ResearchManager.GetProgress(research) < 1)
+                        {
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+                else if (def != null && tech is null)
+                {
+                    return Find.ResearchManager.GetProgress(def) >= 1;
+                }
+                return false;
+            }
+        }
+
+        public ResearchProjectDef def;
         public TechLevel? tech;
+        public bool coreModsOnly;
     }
 }

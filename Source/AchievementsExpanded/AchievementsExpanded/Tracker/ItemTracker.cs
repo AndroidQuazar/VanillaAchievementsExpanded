@@ -37,8 +37,10 @@ namespace AchievementsExpanded
         public override bool Trigger()
         {
             base.Trigger();
-            return UtilityMethods.PlayerHas(def, out int total, count);
+            return UtilityMethods.PlayerHas(def, out int _, count);
         }
+
+        public override bool UnlockOnStartup => Trigger();
 
         public ThingDef def;
         public int count;

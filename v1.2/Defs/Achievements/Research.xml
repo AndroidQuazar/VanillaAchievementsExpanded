@@ -7,6 +7,7 @@
 		
 		<tracker Class="AchievementsExpanded.ResearchTracker">
 			<tech>Neolithic</tech>
+			<coreModsOnly>true</coreModsOnly>
 		</tracker>
 		
 		<texPath>Achievements/SticksAndStones</texPath>
@@ -20,6 +21,7 @@
 		
 		<tracker Class="AchievementsExpanded.ResearchTracker">
 			<tech>Medieval</tech>
+			<coreModsOnly>true</coreModsOnly>
 		</tracker>
 		
 		<texPath>Achievements/OutOfTheDarkAges</texPath>
@@ -33,6 +35,7 @@
 		
 		<tracker Class="AchievementsExpanded.ResearchTracker">
 			<tech>Industrial</tech>
+			<coreModsOnly>true</coreModsOnly>
 		</tracker>
 		
 		<texPath>Achievements/IndustrialRevolution</texPath>
@@ -46,6 +49,7 @@
 		
 		<tracker Class="AchievementsExpanded.ResearchTracker">
 			<tech>Spacer</tech>
+			<coreModsOnly>true</coreModsOnly>
 		</tracker>
 		
 		<texPath>Achievements/OffToTheStars</texPath>

@@ -37,7 +37,7 @@ namespace AchievementsExpanded
         public override bool Trigger(Building building)
         {
             base.Trigger(building);
-            if ( (def is null || def == building.def) && (madeFrom is null || madeFrom == building.Stuff) )
+            if (building.Faction ==  Faction.OfPlayer && (def is null || def == building.def) && (madeFrom is null || madeFrom == building.Stuff) )
             {
                 triggeredCount++;
             }

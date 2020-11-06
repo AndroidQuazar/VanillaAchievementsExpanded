@@ -22,7 +22,7 @@ namespace AchievementsExpanded
         internal Stack<AchievementCard> unlockedCards;
 
         internal static HashSet<AchievementCard> AchievementList => Current.Game?.GetComponent<AchievementPointManager>()?.achievementList ?? new HashSet<AchievementCard>();
-        internal static IEnumerable<Type> TrackerTypes { get; set; }
+        internal static HashSet<Type> TrackerTypes { get; set; }
         internal static List<TrackerBase> TrackersGenerated { get; set; }
 
         public AchievementPointManager(Game game)
@@ -31,7 +31,7 @@ namespace AchievementsExpanded
 
         public static void OnStartUp()
         {
-            TrackerTypes = GenTypes.AllTypes.Where(t => t.IsSubclassOf(typeof(TrackerBase)) && !t.IsAbstract);
+            TrackerTypes = GenTypes.AllTypes.Where(t => t.IsSubclassOf(typeof(TrackerBase)) && !t.IsAbstract).ToHashSet();
             TrackersGenerated = new List<TrackerBase>();
             foreach (Type t in TrackerTypes)
             {
@@ -50,6 +50,7 @@ namespace AchievementsExpanded
         {
             base.FinalizeInit();
             PreInit();
+            CheckUnlocks();
         }
 
         internal void HardReset()
@@ -79,6 +80,17 @@ namespace AchievementsExpanded
             if(debug)
                 DebugWriter.Log($"Verifying Achievement List");
             AchievementGenerator.VerifyAchievementList(ref achievementList, debug);
+        }
+
+        private void CheckUnlocks()
+        {
+            foreach (AchievementCard card in achievementList)
+            {
+                if (card.tracker.UnlockOnStartup)
+                {
+                    card.UnlockCard();
+                }
+            }
         }
 
         public void ResetAchievement(AchievementCard card)

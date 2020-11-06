@@ -37,6 +37,8 @@ namespace AchievementsExpanded
             return ticks >= ticksPassed;
         }
 
+        public override bool UnlockOnStartup => Trigger();
+
         public int ticksPassed;
         public bool gameTime = true;
     }

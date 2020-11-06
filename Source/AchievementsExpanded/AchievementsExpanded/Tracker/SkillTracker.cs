@@ -13,14 +13,14 @@ namespace AchievementsExpanded
         public override MethodInfo MethodHook => AccessTools.Method(typeof(SkillRecord), nameof(SkillRecord.Learn));
         public override MethodInfo PatchMethod => AccessTools.Method(typeof(AchievementHarmony), nameof(AchievementHarmony.LevelUpMoteHook));
         public override PatchType PatchType => PatchType.Transpiler;
-        protected override string[] DebugText => new string[] { $"Skill: {skill?.defName ?? "None"}", $"Level: {level}", $"Count: {count}", $"Current: {triggeredCount}" };
+        protected override string[] DebugText => new string[] { $"Skill: {def?.defName ?? "None"}", $"Level: {level}", $"Count: {count}", $"Current: {triggeredCount}" };
         public SkillTracker()
         {
         }
 
         public SkillTracker(SkillTracker reference) : base(reference)
         {
-            skill = reference.skill;
+            def = reference.def;
             level = reference.level;
             count = reference.count;
             triggeredCount = reference.triggeredCount;
@@ -29,7 +29,7 @@ namespace AchievementsExpanded
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Defs.Look(ref skill, "skill");
+            Scribe_Defs.Look(ref def, "def");
             Scribe_Values.Look(ref level, "level");
             Scribe_Values.Look(ref count, "count", 1);
             Scribe_Values.Look(ref triggeredCount, "triggeredCount", 0);
@@ -38,14 +38,29 @@ namespace AchievementsExpanded
         public override bool Trigger(SkillDef skill, int level)
         {
             base.Trigger(skill, level);
-            if ( (this.skill is null || this.skill == skill) && level >= this.level)
+            if ( (def is null || def == skill) && level >= this.level)
             {
                 triggeredCount++;
             }
             return triggeredCount >= count;
         }
 
-        public SkillDef skill;
+        public override bool UnlockOnStartup
+        {
+            get
+            {
+                foreach (Pawn pawn in PawnsFinder.AllMapsCaravansAndTravelingTransportPods_Alive_OfPlayerFaction)
+                {
+                    if (pawn.skills != null && Trigger(def, pawn.skills.GetSkill(def).Level))
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+        }
+
+        public SkillDef def;
         public int level;
         public int count = 1;
 

@@ -64,6 +64,10 @@ namespace AchievementsExpanded
                 harmony.Patch(original: AccessTools.Method(typeof(TickManager), nameof(TickManager.DoSingleTick)),
                     postfix: new HarmonyMethod(typeof(AchievementHarmony),
                     nameof(SingleLongTickTracker)));
+                /* Debug Actions register in menu */
+                harmony.Patch(original: AccessTools.Method(typeof(Dialog_DebugActionsMenu), "GenerateCacheForMethod"),
+                    prefix: new HarmonyMethod(typeof(DebugActionsSetup), 
+                    nameof(DebugActionsSetup.GenerateCacheForVAEDebugActions)));
             }
         }
 

@@ -55,6 +55,25 @@ namespace AchievementsExpanded
             return (next + pawn.records.GetValue(def)) >= count;
         }
 
+        public override bool UnlockOnStartup
+        {
+            get
+            {
+                if (total)
+                {
+                    return Trigger(def, null, 0);
+                }
+                foreach (Pawn pawn in PawnsFinder.AllMapsCaravansAndTravelingTransportPods_Alive_OfPlayerFaction)
+                {
+                    if (Trigger(def, pawn, 0))
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+        }
+
         public RecordDef def;
         public float count;
         public bool total;

@@ -13,7 +13,8 @@ namespace AchievementsExpanded
 
         public override MethodInfo MethodHook => AccessTools.Method(typeof(TradeDeal), nameof(TradeDeal.TryExecute));
         public override MethodInfo PatchMethod => AccessTools.Method(typeof(AchievementHarmony), nameof(AchievementHarmony.TradeDealComplete));
-        protected override string[] DebugText => new string[] { };
+        protected override string[] DebugText => new string[] { $"Def: {def?.defName ?? "[NoDef]"}", $"Count: {count}", $"Worth: {worth}", $"Single Transaction: {singleTransaction}",
+                                                                $"Current: [Count = {triggeredCount}] [Worth = {triggeredWorth}" };
 
         public TraderTracker()
         {
@@ -24,7 +25,10 @@ namespace AchievementsExpanded
             def = reference.def;
             count = reference.count;
             worth = reference.worth;
+            singleTransaction = reference.singleTransaction;
+
             triggeredCount = 0;
+            triggeredWorth = 0;
         }
 
         public override void ExposeData()
@@ -35,6 +39,7 @@ namespace AchievementsExpanded
             Scribe_Values.Look(ref worth, "worth");
             Scribe_Values.Look(ref singleTransaction, "singleTransaction");
             Scribe_Values.Look(ref triggeredCount, "triggeredCount", 0);
+            Scribe_Values.Look(ref triggeredWorth, "triggeredWorth", 0);
         }
 
         public override bool Trigger(List<Tradeable> tradeables)
@@ -51,8 +56,16 @@ namespace AchievementsExpanded
                 }
             }
             if (singleTransaction)
+            {
                 triggeredCount = itemCount;
-            return triggeredCount >= count && tradeValue >= worth;
+                triggeredWorth = tradeValue;
+            }
+            else
+            {
+                triggeredCount += itemCount;
+                triggeredWorth += tradeValue;
+            }
+            return triggeredCount >= count && triggeredWorth >= worth;
         }
 
         public ThingDef def;
@@ -61,5 +74,6 @@ namespace AchievementsExpanded
         public bool singleTransaction = false;
 
         private int triggeredCount;
+        private float triggeredWorth;
     }
 }

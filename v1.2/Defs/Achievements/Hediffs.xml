@@ -54,7 +54,8 @@
 		<description>Gain immunity when infection is on 99%</description>
 		
 		<tracker Class="AchievementsExpanded.ImmunityHediffTracker">
-			<percentImmune>0.99</percentImmune>
+			<def>WoundInfection</def>
+			<count>0.99</count>
 		</tracker>
 		
 		<texPath>Achievements/OnEdge</texPath>
@@ -65,9 +66,10 @@
 		<defName>thatllShowHim</defName>
 		<label>That'll Show Him</label>
 		<description>Starve a pawn to death</description>
-		<!-- Might potentially trigger for non-colonist non-prisoner pawns -->
+
 		<tracker Class="AchievementsExpanded.HediffDeathTracker">
 			<def>Malnutrition</def>
+			<count>1</count>
 		</tracker>
 		
 		<texPath>Achievements/ThatllShowHim</texPath>

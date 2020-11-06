@@ -13,7 +13,7 @@ namespace AchievementsExpanded
 
         public override MethodInfo MethodHook => AccessTools.Method(typeof(SettlementDefeatUtility), "IsDefeated");
         public override MethodInfo PatchMethod => AccessTools.Method(typeof(AchievementHarmony), nameof(AchievementHarmony.SettlementDefeatedEvent));
-        protected override string[] DebugText => new string[] { $"Faction: {factionDef.defName}", $"Count: {count}"};
+        protected override string[] DebugText => new string[] { $"Faction: {def.defName}", $"Count: {count}"};
 
         public SettlementDefeatTracker()
         {
@@ -21,27 +21,28 @@ namespace AchievementsExpanded
 
         public SettlementDefeatTracker(SettlementDefeatTracker reference) : base(reference)
         {
+            def = reference.def;
             count = reference.count;
-            factionDef = reference.factionDef;
         }
 
         public override void ExposeData()
         {
             base.ExposeData();
+            Scribe_Defs.Look(ref def, "def");
             Scribe_Values.Look(ref triggeredCount, "triggeredCount");
         }
 
         public override bool Trigger(Settlement settlement)
         {
-            if (factionDef is null || factionDef == settlement.Faction.def)
+            if (def is null || def == settlement.Faction.def)
             {
                 triggeredCount++;
             }
             return triggeredCount >= count;
         }
 
+        public FactionDef def;
         public int count;
-        public FactionDef factionDef;
 
         protected int triggeredCount;
     }

@@ -6,7 +6,7 @@
 		<description>Have a colonist reach level 20 in shooting</description>
 		
 		<tracker Class="AchievementsExpanded.SkillTracker">
-			<skill>Shooting</skill>
+			<def>Shooting</def>
 			<level>20</level>
 		</tracker>
 		
@@ -20,7 +20,7 @@
 		<description>Have a colonist reach level 20 in Social</description>
 		
 		<tracker Class="AchievementsExpanded.SkillTracker">
-			<skill>Social</skill>
+			<def>Social</def>
 			<level>20</level>
 		</tracker>
 		
@@ -34,7 +34,7 @@
 		<description>Have a colonist reach level 20 in Melee</description>
 		
 		<tracker Class="AchievementsExpanded.SkillTracker">
-			<skill>Melee</skill>
+			<def>Melee</def>
 			<level>20</level>
 		</tracker>
 		

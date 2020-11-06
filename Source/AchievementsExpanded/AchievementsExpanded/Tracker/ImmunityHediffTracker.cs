@@ -11,7 +11,7 @@ namespace AchievementsExpanded
         public override string Key => "ImmunityHediffTracker";
         public override MethodInfo MethodHook => AccessTools.Method(typeof(ImmunityRecord), nameof(ImmunityRecord.ImmunityTick));
         public override MethodInfo PatchMethod => AccessTools.Method(typeof(AchievementHarmony), nameof(AchievementHarmony.ImmunityTicking));
-        protected override string[] DebugText => new string[] { $"ImmunityLevel: {percentImmune}" };
+        protected override string[] DebugText => new string[] { $"ImmunityLevel: {count}" };
 
         public ImmunityHediffTracker()
         {
@@ -19,13 +19,14 @@ namespace AchievementsExpanded
 
         public ImmunityHediffTracker(ImmunityHediffTracker reference) : base(reference)
         {
-            percentImmune = reference.percentImmune;
+            def = reference.def;
+            count = reference.count;
         }
 
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Values.Look(ref percentImmune, "percentImmune");
+            Scribe_Values.Look(ref count, "percentImmune");
         }
 
         public override bool Trigger(Hediff hediff, float immunity)
@@ -34,7 +35,7 @@ namespace AchievementsExpanded
 
             if (def is null || (hediff != null && hediff?.def == def))
             {
-                if (hediff.Severity >= percentImmune && immunity == 1)
+                if (hediff.Severity >= count && immunity == 1)
                 {
                     return true;
                 }
@@ -42,7 +43,7 @@ namespace AchievementsExpanded
             return false;
         }
 
-        public float percentImmune;
         public HediffDef def;
+        public float count;
     }
 }

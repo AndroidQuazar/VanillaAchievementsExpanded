@@ -41,6 +41,8 @@ namespace AchievementsExpanded
             return false;
         }
 
+        public override bool UnlockOnStartup => Trigger();
+
         public int count;
     }
 }

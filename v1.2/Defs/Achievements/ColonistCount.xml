@@ -6,7 +6,7 @@
 		<description>Have 7 colonists</description>
 		
 		<tracker Class="AchievementsExpanded.RaceDefTracker">
-			<kindDefDict>
+			<kindDefs>
 				<li>
 					<key>Colonist</key>
 					<value>7</value>
@@ -15,7 +15,7 @@
 					<key>Tribesperson</key>
 					<value>7</value>
 				</li>
-			</kindDefDict>
+			</kindDefs>
 			<requireAll>false</requireAll>
 		</tracker>
 		
@@ -29,7 +29,7 @@
 		<description>Have 12 colonists</description>
 		
 		<tracker Class="AchievementsExpanded.RaceDefTracker">
-			<kindDefDict>
+			<kindDefs>
 				<li>
 					<key>Colonist</key>
 					<value>12</value>
@@ -38,7 +38,7 @@
 					<key>Tribesperson</key>
 					<value>12</value>
 				</li>
-			</kindDefDict>
+			</kindDefs>
 			<requireAll>false</requireAll>
 		</tracker>
 		
@@ -52,7 +52,7 @@
 		<description>Have 18 colonists</description>
 		
 		<tracker Class="AchievementsExpanded.RaceDefTracker">
-			<kindDefDict>
+			<kindDefs>
 				<li>
 					<key>Colonist</key>
 					<value>18</value>
@@ -61,7 +61,7 @@
 					<key>Tribesperson</key>
 					<value>18</value>
 				</li>
-			</kindDefDict>
+			</kindDefs>
 			<requireAll>false</requireAll>
 		</tracker>
 		
@@ -75,7 +75,7 @@
 		<description>Have 33 colonists</description>
 		
 		<tracker Class="AchievementsExpanded.RaceDefTracker">
-			<kindDefDict>
+			<kindDefs>
 				<li>
 					<key>Colonist</key>
 					<value>33</value>
@@ -84,7 +84,7 @@
 					<key>Tribesperson</key>
 					<value>33</value>
 				</li>
-			</kindDefDict>
+			</kindDefs>
 			<requireAll>false</requireAll>
 		</tracker>
 		

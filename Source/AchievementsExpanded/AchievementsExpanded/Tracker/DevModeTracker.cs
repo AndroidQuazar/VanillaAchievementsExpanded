@@ -36,6 +36,8 @@ namespace AchievementsExpanded
             return this.value == value;
         }
 
+        public override bool UnlockOnStartup => Trigger(Prefs.DevMode);
+
         public bool value;
     }
 }

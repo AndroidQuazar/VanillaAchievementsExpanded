@@ -19,12 +19,11 @@ namespace AchievementsExpanded
             get
             {
                 string[] text = new string[0];
-                foreach (var kind in kindDefDict)
+                foreach (var kind in kindDefs)
                 {
                     string entry = $"Kind: {kind.Key?.defName ?? "None"} Count: {kind.Value}";
                     text.AddItem(entry);
                 }
-                text.AddItem($"Total over time: {total}");
                 text.AddItem($"Require all in list: {requireAll}");
                 return text;
             }
@@ -36,18 +35,16 @@ namespace AchievementsExpanded
 
         public RaceDefTracker(RaceDefTracker reference) : base(reference)
         {
-            kindDefDict = reference.kindDefDict;
-            if (kindDefDict.EnumerableNullOrEmpty())
+            kindDefs = reference.kindDefs;
+            if (kindDefs.EnumerableNullOrEmpty())
                 Log.Error($"KindDef list for RaceDefTracker cannot be Null or Empty");
-            total = reference.total;
             requireAll = reference.requireAll;
         }
 
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Collections.Look(ref kindDefDict, "kindDefDict", LookMode.Def, LookMode.Value);
-            Scribe_Values.Look(ref total, "total");
+            Scribe_Collections.Look(ref kindDefs, "kindDefs", LookMode.Def, LookMode.Value);
             Scribe_Values.Look(ref requireAll, "requireAll", true);
         }
 
@@ -55,52 +52,36 @@ namespace AchievementsExpanded
         {
             base.Trigger(param);
             bool trigger = true;
-            if (total > 0)
+            var factionPawns = PawnsFinder.AllMapsCaravansAndTravelingTransportPods_Alive_OfPlayerFaction;
+            if (factionPawns is null)
+                return false;
+            foreach (KeyValuePair<PawnKindDef, int> set in kindDefs)
             {
-                var factionPawns = PawnsFinder.AllMapsCaravansAndTravelingTransportPods_Alive_OfPlayerFaction;
-                if (factionPawns is null)
-                    return false;
-                var totalCount = 0;
-                foreach (KeyValuePair<PawnKindDef, int> set in kindDefDict)
+                var count = 0;
+                if (set.Key == param)
+                    count += 1;
+                if (requireAll)
                 {
-                    if (set.Key == param)
-                        totalCount += 1;
-                    totalCount += factionPawns.Where(f => f.kindDef.defName == set.Key.defName).Count();
-                }
-                return totalCount >= total;
-            }
-            else
-            {
-                var factionPawns = PawnsFinder.AllMapsCaravansAndTravelingTransportPods_Alive_OfPlayerFaction;
-                if (factionPawns is null)
-                    return false;
-                foreach (KeyValuePair<PawnKindDef, int> set in kindDefDict)
-                {
-                    var count = 0;
-                    if (set.Key == param)
-                        count += 1;
-                    if (requireAll)
-                    {
-                        if (factionPawns.Where(f => f.kindDef.defName == set.Key.defName).Count() + count < set.Value)
-                        {
-                            trigger = false;
-                        }
-                    }
-                    else
+                    if (factionPawns.Where(f => f.kindDef.defName == set.Key.defName).Count() + count < set.Value)
                     {
                         trigger = false;
-                        if (factionPawns.Where(f => f.kindDef.defName == set.Key.defName).Count() + count >= set.Value)
-                        {
-                            return true;
-                        }
+                    }
+                }
+                else
+                {
+                    trigger = false;
+                    if (factionPawns.Where(f => f.kindDef.defName == set.Key.defName).Count() + count >= set.Value)
+                    {
+                        return true;
                     }
                 }
             }
             return trigger;
         }
 
-        Dictionary<PawnKindDef, int> kindDefDict = new Dictionary<PawnKindDef, int>();
-        public int total = 0;
+        public override bool UnlockOnStartup => Trigger(null);
+
+        Dictionary<PawnKindDef, int> kindDefs = new Dictionary<PawnKindDef, int>();
         public bool requireAll = true;
     }
 }
