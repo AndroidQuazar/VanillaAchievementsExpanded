@@ -29,7 +29,7 @@ namespace AchievementsExpanded
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Deep.Look(ref def, "def");
+            Scribe_Defs.Look(ref def, "def");
             Scribe_Values.Look(ref tech, "tech");
             Scribe_Values.Look(ref coreModsOnly, "coreModsOnly");
         }
