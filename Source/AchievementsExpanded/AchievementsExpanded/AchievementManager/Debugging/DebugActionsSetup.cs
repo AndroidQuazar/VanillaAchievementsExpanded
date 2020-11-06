@@ -11,10 +11,15 @@ namespace AchievementsExpanded
     {
 		private static HashSet<MethodInfo> actionsAdded = new HashSet<MethodInfo>();
 
+		public static void ClearCachedActions()
+        {
+			actionsAdded = new HashSet<MethodInfo>();
+        }
+
         public static bool GenerateCacheForVAEDebugActions(MethodInfo method, DebugActionAttribute attribute)
         {
 			bool vaeActive = ModsConfig.IsActive(AchievementHarmony.modIdentifier);
-			if (method.TryGetAttribute(out AchievementDebugActionAttribute vaeAttribute))
+			if (method.TryGetAttribute(out AchievementDebugAction vaeAttribute))
 			{
 				return (vaeActive || !vaeAttribute.requireBaseMod) && actionsAdded.Add(method);
 			}

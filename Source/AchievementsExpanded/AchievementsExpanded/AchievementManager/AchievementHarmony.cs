@@ -68,6 +68,9 @@ namespace AchievementsExpanded
                 harmony.Patch(original: AccessTools.Method(typeof(Dialog_DebugActionsMenu), "GenerateCacheForMethod"),
                     prefix: new HarmonyMethod(typeof(DebugActionsSetup), 
                     nameof(DebugActionsSetup.GenerateCacheForVAEDebugActions)));
+                harmony.Patch(original: AccessTools.Constructor(typeof(Dialog_DebugActionsMenu)),
+                    prefix: new HarmonyMethod(typeof(DebugActionsSetup),
+                    nameof(DebugActionsSetup.ClearCachedActions)));
             }
         }
 

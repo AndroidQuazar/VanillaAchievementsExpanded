@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using System.Collections.Generic;
 using HarmonyLib;
 using Verse;
 using RimWorld;
@@ -23,6 +24,7 @@ namespace AchievementsExpanded
             madeFrom = reference.madeFrom;
             count = reference.count;
             triggeredCount = 0;
+            registeredBuildings = new HashSet<string>();
         }
 
         public override void ExposeData()
@@ -32,13 +34,19 @@ namespace AchievementsExpanded
             Scribe_Defs.Look(ref madeFrom, "madeFrom");
             Scribe_Values.Look(ref count, "count", 1);
             Scribe_Values.Look(ref triggeredCount, "triggeredCount");
+
+            Scribe_Collections.Look(ref registeredBuildings, "registeredBuildings");
         }
 
         public override bool Trigger(Building building)
         {
             base.Trigger(building);
-            if (building.Faction ==  Faction.OfPlayer && (def is null || def == building.def) && (madeFrom is null || madeFrom == building.Stuff) )
+            if (building.Faction ==  Faction.OfPlayer && (def is null || def == building.def) && (madeFrom is null || madeFrom == building.Stuff))
             {
+                if (!registeredBuildings.Add(building.GetUniqueLoadID()))
+                {
+                    return false;
+                }
                 triggeredCount++;
             }
             return triggeredCount >= count;
@@ -49,5 +57,6 @@ namespace AchievementsExpanded
         public int count = 1;
 
         private int triggeredCount;
+        protected HashSet<string> registeredBuildings;
     }
 }

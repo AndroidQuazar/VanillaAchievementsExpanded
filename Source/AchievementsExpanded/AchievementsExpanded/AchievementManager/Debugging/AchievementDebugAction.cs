@@ -7,9 +7,9 @@ using Verse;
 namespace AchievementsExpanded
 {
     [AttributeUsage(AttributeTargets.Method)]
-    public class AchievementDebugActionAttribute : DebugActionAttribute
+    public class AchievementDebugAction : DebugActionAttribute
     {
-		public AchievementDebugActionAttribute(string category = null, string name = null, bool requireBaseMod = true) : base(category, name)
+		public AchievementDebugAction(string category = null, string name = null, bool requireBaseMod = true) : base(category, name)
 		{
 			this.requireBaseMod = requireBaseMod;
 		}
