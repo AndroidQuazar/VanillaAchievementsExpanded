@@ -168,8 +168,14 @@ namespace AchievementsExpanded
                 {
                     if (reward.PurchaseReward())
                     {
-                        reward.TryExecuteEvent();
-                        Close(false);
+                        if (!reward.TryExecuteEvent())
+                        {
+                            reward.RefundPoints();
+                        }
+                        else
+                        {
+                            Close(false);
+                        }
                     }
                 }
                 rect.y += 35f;

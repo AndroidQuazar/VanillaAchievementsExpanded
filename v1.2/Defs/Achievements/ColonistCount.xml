@@ -6,17 +6,12 @@
 		<description>Have 7 colonists</description>
 		
 		<tracker Class="AchievementsExpanded.RaceDefTracker">
-			<kindDefs>
+			<raceDefs>
 				<li>
-					<key>Colonist</key>
+					<key>Human</key>
 					<value>7</value>
 				</li>
-				<li>
-					<key>Tribesperson</key>
-					<value>7</value>
-				</li>
-			</kindDefs>
-			<requireAll>false</requireAll>
+			</raceDefs>
 		</tracker>
 		
 		<texPath>Achievements/IWillSurvive</texPath>
@@ -29,17 +24,12 @@
 		<description>Have 12 colonists</description>
 		
 		<tracker Class="AchievementsExpanded.RaceDefTracker">
-			<kindDefs>
+			<raceDefs>
 				<li>
-					<key>Colonist</key>
+					<key>Human</key>
 					<value>12</value>
 				</li>
-				<li>
-					<key>Tribesperson</key>
-					<value>12</value>
-				</li>
-			</kindDefs>
-			<requireAll>false</requireAll>
+			</raceDefs>
 		</tracker>
 		
 		<texPath>Achievements/ImStillStanding</texPath>
@@ -52,17 +42,12 @@
 		<description>Have 18 colonists</description>
 		
 		<tracker Class="AchievementsExpanded.RaceDefTracker">
-			<kindDefs>
+			<raceDefs>
 				<li>
-					<key>Colonist</key>
+					<key>Human</key>
 					<value>18</value>
 				</li>
-				<li>
-					<key>Tribesperson</key>
-					<value>18</value>
-				</li>
-			</kindDefs>
-			<requireAll>false</requireAll>
+			</raceDefs>
 		</tracker>
 		
 		<texPath>Achievements/ImASurvivor</texPath>
@@ -75,17 +60,12 @@
 		<description>Have 33 colonists</description>
 		
 		<tracker Class="AchievementsExpanded.RaceDefTracker">
-			<kindDefs>
+			<raceDefs>
 				<li>
-					<key>Colonist</key>
+					<key>Human</key>
 					<value>33</value>
 				</li>
-				<li>
-					<key>Tribesperson</key>
-					<value>33</value>
-				</li>
-			</kindDefs>
-			<requireAll>false</requireAll>
+			</raceDefs>
 		</tracker>
 		
 		<texPath>Achievements/AintNoStoppingUsNow</texPath>

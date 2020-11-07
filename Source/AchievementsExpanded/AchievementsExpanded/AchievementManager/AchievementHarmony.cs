@@ -64,6 +64,7 @@ namespace AchievementsExpanded
                 harmony.Patch(original: AccessTools.Method(typeof(TickManager), nameof(TickManager.DoSingleTick)),
                     postfix: new HarmonyMethod(typeof(AchievementHarmony),
                     nameof(SingleLongTickTracker)));
+
                 /* Debug Actions register in menu */
                 harmony.Patch(original: AccessTools.Method(typeof(Dialog_DebugActionsMenu), "GenerateCacheForMethod"),
                     prefix: new HarmonyMethod(typeof(DebugActionsSetup), 
@@ -81,9 +82,9 @@ namespace AchievementsExpanded
         /// <param name="ev"></param>
         public static void PawnJoinedFaction(Pawn p, PopAdaptationEvent ev)
         {
-            foreach(var card in AchievementPointManager.GetCards<RaceDefTracker>())
+            foreach(var card in AchievementPointManager.GetCards<PawnJoinedTracker>())
             {
-                if(ev == PopAdaptationEvent.GainedColonist && (card.tracker as RaceDefTracker).Trigger(p.kindDef))
+                if(ev == PopAdaptationEvent.GainedColonist && (card.tracker as PawnJoinedTracker).Trigger(p))
                 {
                     card.UnlockCard();
                 }
@@ -375,13 +376,16 @@ namespace AchievementsExpanded
         /// <param name="p"></param>
         /// <param name="ev"></param>
         /// <param name="dinfo"></param>
-        public static void HediffDeathEvent(Hediff __instance)
+        public static void HediffDeathEvent(Hediff __instance, ref bool __result)
         {
-            foreach (var card in AchievementPointManager.GetCards<HediffDeathTracker>())
+            if (__result)
             {
-                if ((card.tracker as HediffDeathTracker).Trigger(__instance))
+                foreach (var card in AchievementPointManager.GetCards<HediffDeathTracker>())
                 {
-                    card.UnlockCard();
+                    if ((card.tracker as HediffDeathTracker).Trigger(__instance))
+                    {
+                        card.UnlockCard();
+                    }
                 }
             }
         }
@@ -416,8 +420,7 @@ namespace AchievementsExpanded
         {
             foreach (var card in AchievementPointManager.GetCards<RecordEventTracker>())
             {
-                var tracker = card.tracker as RecordEventTracker;
-                if (tracker.def == def && tracker.Trigger(def, __instance.pawn))
+                if ((card.tracker as RecordEventTracker).Trigger(def, __instance.pawn))
                 {
                     card.UnlockCard();
                 }
@@ -470,7 +473,7 @@ namespace AchievementsExpanded
         {
             if (Find.TickManager.TicksGame % 2000 == 0)
             {
-                foreach(var card in AchievementPointManager.GetLongTickCards())
+                foreach (var card in AchievementPointManager.GetLongTickCards().Where(c => !c.unlocked))
                 {
                     if(card.tracker.AttachToLongTick())
                     {

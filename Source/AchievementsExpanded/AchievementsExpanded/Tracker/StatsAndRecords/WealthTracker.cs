@@ -25,7 +25,7 @@ namespace AchievementsExpanded
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Values.Look(ref count, "count");
+            Scribe_Values.Look(ref count, "count", 1);
         }
 
         public override bool Trigger()
@@ -43,6 +43,6 @@ namespace AchievementsExpanded
 
         public override bool UnlockOnStartup => Trigger();
 
-        public int count;
+        public int count = 1;
     }
 }

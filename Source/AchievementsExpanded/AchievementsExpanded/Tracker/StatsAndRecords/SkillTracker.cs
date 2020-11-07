@@ -64,6 +64,6 @@ namespace AchievementsExpanded
         public int level;
         public int count = 1;
 
-        public int triggeredCount;
+        protected int triggeredCount;
     }
 }

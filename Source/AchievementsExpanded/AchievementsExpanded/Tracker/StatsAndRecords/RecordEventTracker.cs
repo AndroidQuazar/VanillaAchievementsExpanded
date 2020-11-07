@@ -11,7 +11,7 @@ namespace AchievementsExpanded
         public override string Key => "RecordEventTracker";
         public override MethodInfo MethodHook => AccessTools.Method(typeof(Pawn_RecordsTracker), nameof(Pawn_RecordsTracker.Increment)); //Patch on AddTo as well
         public override MethodInfo PatchMethod => AccessTools.Method(typeof(AchievementHarmony), nameof(AchievementHarmony.RecordEvent));
-        protected override string[] DebugText => new string[] { $"Def: {def.defName}", $"Count: {count}" };
+        protected override string[] DebugText => new string[] { $"Def: {def?.defName ?? "[NullDef]"}", $"Count: {count}" };
 
         public RecordEventTracker()
         {
@@ -28,13 +28,17 @@ namespace AchievementsExpanded
         {
             base.ExposeData();
             Scribe_Defs.Look(ref def, "def");
-            Scribe_Values.Look(ref count, "num");
+            Scribe_Values.Look(ref count, "count", 1);
             Scribe_Values.Look(ref total, "total");
         }
 
         public override bool Trigger(RecordDef record, Pawn pawn)
         {
             base.Trigger(record, pawn);
+            if (def != record)
+            {
+                return false;
+            }
             if (total)
             {
                 float value = 0;
@@ -71,7 +75,7 @@ namespace AchievementsExpanded
         }
 
         public RecordDef def;
-        public float count;
+        public float count = 1;
         public bool total;
     }
 }

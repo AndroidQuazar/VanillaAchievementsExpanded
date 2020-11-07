@@ -5,7 +5,7 @@
 		<label>Three Little Pigs</label>
 		<description>Have 3 Pigs and 1 Timberwolf</description>
 		
-		<tracker Class="AchievementsExpanded.RaceDefTracker">
+		<tracker Class="AchievementsExpanded.KindDefTracker">
 			<kindDefs>
 				<li>
 					<key>Pig</key>
@@ -27,7 +27,7 @@
 		<label>Look At All Those Chickens</label>
 		<description>Have 20 Geese</description>
 		
-		<tracker Class="AchievementsExpanded.RaceDefTracker">
+		<tracker Class="AchievementsExpanded.KindDefTracker">
 			<kindDefs>
 				<li>
 					<key>Goose</key>
@@ -45,7 +45,7 @@
 		<label>Sustainable Fuel Source</label>
 		<description>Have 8 Boomalopes</description>
 		
-		<tracker Class="AchievementsExpanded.RaceDefTracker">
+		<tracker Class="AchievementsExpanded.KindDefTracker">
 			<kindDefs>
 				<li>
 					<key>Boomalope</key>
@@ -63,7 +63,7 @@
 		<label>Muffalo Rancher</label>
 		<description>Have 12 Muffalos</description>
 		
-		<tracker Class="AchievementsExpanded.RaceDefTracker">
+		<tracker Class="AchievementsExpanded.KindDefTracker">
 			<kindDefs>
 				<li>
 					<key>Muffalo</key>
@@ -81,7 +81,7 @@
 		<label>Ark Half Full</label>
 		<description>Have 1 of every vanilla animal at the same time.</description>
 		
-		<tracker Class="AchievementsExpanded.RaceDefTracker">
+		<tracker Class="AchievementsExpanded.KindDefTracker">
 			<kindDefs>
 				<li>
 					<key>Muffalo</key>
@@ -327,7 +327,7 @@
 		<label>Gentle Giant</label>
 		<description>Tame a Thrumbo</description>
 		
-		<tracker Class="AchievementsExpanded.RaceDefTracker">
+		<tracker Class="AchievementsExpanded.KindDefTracker">
 			<kindDefs>
 				<li>
 					<key>Thrumbo</key>

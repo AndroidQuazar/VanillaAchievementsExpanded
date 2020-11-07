@@ -13,11 +13,13 @@ namespace AchievementsExpanded
             var lookup = new Dictionary<string, HashSet<AchievementCard>>();
 
             DebugWriter.Log("Generating Achievement Links...");
-
+            AchievementCard currentCard = null;
             try
             {
                 foreach (AchievementCard card in cards)
                 {
+                    currentCard = card;
+                    DebugWriter.Log($"Linking card {card.def.label} to {card.tracker.Key}");
                     if (lookup.TryGetValue(card.tracker.Key, out var hash))
                     {
                         hash.Add(card);
@@ -30,8 +32,8 @@ namespace AchievementsExpanded
             }
             catch (Exception ex)
             {
-                string error = $"Failed to generate Achievement Links. Exception: {ex.Message}";
-                Log.Message(error);
+                string error = $"Failed to generate Achievement Links for {currentCard?.def.label ?? "[Null Card]"}. Exception: {ex.Message}";
+                Log.Error(error);
                 DebugWriter.Log(error);
                 return new Dictionary<string, HashSet<AchievementCard>>();
             }
@@ -58,7 +60,7 @@ namespace AchievementsExpanded
                 else if (card.tracker is null || card.def is null)
                 {
                     Log.Warning($"[{AchievementPointManager.AchievementTag}] Corrupted AchievementCard detected. " +
-                        $"Regenerating {card?.GetUniqueLoadID() ?? "Null"}. Your current progress for it will be lost but it will remain unlocked if already completed.\n " +
+                        $"Regenerating {card?.GetUniqueLoadID() ?? "[Null Card]"}. Your current progress for it will be lost but it will remain unlocked if already completed.\n " +
                         $"If the problem persists, consider manually resetting {card.def?.defName ?? "[Null Def]"} through the DebugTools or reporting on the Steam Workshop.");
                     achievementCards.Remove(card);
                     var card2 = (AchievementCard)Activator.CreateInstance(def.achievementClass, new object[] { def, card.unlocked });

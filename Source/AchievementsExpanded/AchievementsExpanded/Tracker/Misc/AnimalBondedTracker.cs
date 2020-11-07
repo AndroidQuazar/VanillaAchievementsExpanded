@@ -31,7 +31,7 @@ namespace AchievementsExpanded
         {
             base.ExposeData();
             Scribe_Defs.Look(ref kindDef, "kindDef");
-            Scribe_Values.Look(ref count, "count");
+            Scribe_Values.Look(ref count, "count", 1);
             Scribe_Values.Look(ref triggeredCount, "triggeredCount");
         }
 
@@ -46,8 +46,8 @@ namespace AchievementsExpanded
         }
 
         public PawnKindDef kindDef;
-        public int count;
+        public int count = 1;
 
-        private int triggeredCount;
+        protected int triggeredCount;
     }
 }

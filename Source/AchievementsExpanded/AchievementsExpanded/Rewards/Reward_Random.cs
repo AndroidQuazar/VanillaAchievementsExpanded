@@ -30,7 +30,8 @@ namespace AchievementsExpanded
             {
                 try
                 {
-                    if (incident.Worker.TryExecute(StorytellerUtility.DefaultParmsNow(incident.category, target)))
+                    var parms = StorytellerUtility.DefaultParmsNow(incident.category, target);
+                    if (incident.Worker.CanFireNow(parms) && incident.Worker.TryExecute(parms))
                     {
                         return true;
                     }

@@ -17,14 +17,20 @@ namespace AchievementsExpanded
                 {
                     reason += "\n" + "NoValidMap".Translate();
                 }
+                if (!incident.Worker.CanFireNow(Parms))
+                {
+                    reason += "\n" + "IncidentNotAvailable".Translate();
+                }
                 return reason;
             }
         }
 
+        protected IncidentParms Parms => StorytellerUtility.DefaultParmsNow(incident.category, Find.CurrentMap);
+
         public override bool TryExecuteEvent()
         {
-            IncidentParms parms = StorytellerUtility.DefaultParmsNow(incident.category, Find.CurrentMap);
-            if (!incident.Worker.TryExecute(parms))
+            
+            if (!incident.Worker.TryExecute(Parms))
             {
                 Messages.Message("FailedRewardEvent".Translate(defName), MessageTypeDefOf.RejectInput);
                 return false;

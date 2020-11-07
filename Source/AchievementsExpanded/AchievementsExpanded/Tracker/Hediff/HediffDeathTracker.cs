@@ -10,7 +10,7 @@ namespace AchievementsExpanded
     {
         public override string Key => "HediffDeathTracker";
 
-        public override MethodInfo MethodHook => AccessTools.Method(typeof(Hediff), nameof(Hediff.Notify_PawnDied));
+        public override MethodInfo MethodHook => AccessTools.Method(typeof(Hediff), nameof(Hediff.CauseDeathNow));
         public override MethodInfo PatchMethod => AccessTools.Method(typeof(AchievementHarmony), nameof(AchievementHarmony.HediffDeathEvent));
         protected override string[] DebugText => new string[] { $"Def: {def.defName}"};
 
@@ -44,8 +44,8 @@ namespace AchievementsExpanded
         }
 
         public HediffDef def;
-        public int count;
+        public int count = 1;
 
-        private int triggeredCount;
+        protected int triggeredCount;
     }
 }

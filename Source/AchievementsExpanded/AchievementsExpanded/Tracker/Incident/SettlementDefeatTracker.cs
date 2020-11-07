@@ -29,6 +29,7 @@ namespace AchievementsExpanded
         {
             base.ExposeData();
             Scribe_Defs.Look(ref def, "def");
+            Scribe_Values.Look(ref count, "count", 1);
             Scribe_Values.Look(ref triggeredCount, "triggeredCount");
         }
 
@@ -42,7 +43,7 @@ namespace AchievementsExpanded
         }
 
         public FactionDef def;
-        public int count;
+        public int count = 1;
 
         protected int triggeredCount;
     }

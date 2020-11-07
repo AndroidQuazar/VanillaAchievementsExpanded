@@ -29,13 +29,13 @@ namespace AchievementsExpanded
         {
             base.ExposeData();
             Scribe_Defs.Look(ref def, "def");
-            Scribe_Values.Look(ref count, "count");
+            Scribe_Values.Look(ref count, "count", 1);
             Scribe_Values.Look(ref triggeredCount, "triggeredCount");
         }
 
         public override bool Trigger(Hediff hediff)
         {
-            if (hediff?.pawn != null && hediff.pawn.Faction == Faction.OfPlayer && (def is null || def == hediff.def))
+            if (hediff?.pawn != null && hediff.pawn.Faction == Faction.OfPlayerSilentFail && (def is null || def == hediff.def))
             {
                 triggeredCount++;
             }
@@ -43,8 +43,8 @@ namespace AchievementsExpanded
         }
 
         public HediffDef def;
-        public int count;
+        public int count = 1;
 
-        private int triggeredCount;
+        protected int triggeredCount;
     }
 }

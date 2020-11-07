@@ -56,7 +56,7 @@ namespace AchievementsExpanded
         public ThingDef madeFrom;
         public int count = 1;
 
-        private int triggeredCount;
+        protected int triggeredCount;
         protected HashSet<string> registeredBuildings;
     }
 }

@@ -24,8 +24,6 @@ namespace AchievementsExpanded
             def = reference.def;
             count = reference.count;
             consecutive = reference.consecutive;
-            if (count < 1)
-                count = 1;
             triggeredCount = 0;
         }
 
@@ -33,8 +31,8 @@ namespace AchievementsExpanded
         {
             base.ExposeData();
             Scribe_Defs.Look(ref def, "def");
-            Scribe_Values.Look(ref count, "count");
-            Scribe_Values.Look(ref consecutive, "consecutive", 1);
+            Scribe_Values.Look(ref count, "count", 1);
+            Scribe_Values.Look(ref consecutive, "consecutive");
             Scribe_Values.Look(ref triggeredCount, "triggeredCount", 0);
         }
 
@@ -64,9 +62,9 @@ namespace AchievementsExpanded
         }
 
         public MentalBreakDef def;
-        public int count;
+        public int count = 1;
         public int consecutive;
 
-        private int triggeredCount;
+        protected int triggeredCount;
     }
 }

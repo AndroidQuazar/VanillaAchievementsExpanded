@@ -27,6 +27,7 @@
 	<FailedRewardEvent>Failed to redeem reward {0}</FailedRewardEvent>
 	<FailedTargetFinder>Must have map loaded or IncidentTarget object selected on World Map</FailedTargetFinder>
 	<NoValidMap>Must be purchased with PlayerHome map in view.</NoValidMap>
+	<IncidentNotAvailable>Incident not available right now.</IncidentNotAvailable>
 	<NotEnoughPoints>Not Enough Points</NotEnoughPoints>
 	
 	<RandomQuestRewardItemLetter>Quest Item</RandomQuestRewardItemLetter>

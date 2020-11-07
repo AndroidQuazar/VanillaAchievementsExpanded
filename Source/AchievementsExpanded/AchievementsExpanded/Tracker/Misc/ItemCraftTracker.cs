@@ -36,7 +36,7 @@ namespace AchievementsExpanded
             Scribe_Defs.Look(ref def, "def");
             Scribe_Defs.Look(ref madeFrom, "madeFrom");
             Scribe_Values.Look(ref quality, "quality");
-            Scribe_Values.Look(ref count, "count");
+            Scribe_Values.Look(ref count, "count", 1);
             Scribe_Values.Look(ref triggeredCount, "triggeredCount");
         }
 
@@ -56,8 +56,8 @@ namespace AchievementsExpanded
         public ThingDef def;
         public ThingDef madeFrom;
         public QualityCategory? quality;
-        public int count;
+        public int count = 1;
 
-        private int triggeredCount;
+        protected int triggeredCount;
     }
 }

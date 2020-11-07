@@ -8,24 +8,20 @@ using HarmonyLib;
 
 namespace AchievementsExpanded
 {
-    public class RaceDefTracker : Tracker<PawnKindDef>
+    public class RaceDefTracker : PawnJoinedTracker
     {
-        public override string Key => "RaceDefTracker";
-
-        public override MethodInfo MethodHook => AccessTools.Method(typeof(StoryWatcher_PopAdaptation), nameof(StoryWatcher_PopAdaptation.Notify_PawnEvent));
-        public override MethodInfo PatchMethod => AccessTools.Method(typeof(AchievementHarmony), nameof(AchievementHarmony.PawnJoinedFaction));
         protected override string[] DebugText
         {
             get
             {
-                string[] text = new string[0];
-                foreach (var kind in kindDefs)
+                List<string> text = new List<string>();
+                foreach (var race in raceDefs)
                 {
-                    string entry = $"Kind: {kind.Key?.defName ?? "None"} Count: {kind.Value}";
-                    text.AddItem(entry);
+                    string entry = $"Race: {race.Key?.defName ?? "None"} Count: {race.Value}";
+                    text.Add(entry);
                 }
-                text.AddItem($"Require all in list: {requireAll}");
-                return text;
+                text.Add($"Require all in list: {requireAll}");
+                return text.ToArray();
             }
         }
 
@@ -35,30 +31,29 @@ namespace AchievementsExpanded
 
         public RaceDefTracker(RaceDefTracker reference) : base(reference)
         {
-            kindDefs = reference.kindDefs;
-            if (kindDefs.EnumerableNullOrEmpty())
-                Log.Error($"KindDef list for RaceDefTracker cannot be Null or Empty");
-            requireAll = reference.requireAll;
+            raceDefs = reference.raceDefs;
+            if (raceDefs.EnumerableNullOrEmpty())
+                Log.Error($"raceDefs list for RaceDefTracker cannot be Null or Empty");
         }
 
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Collections.Look(ref kindDefs, "kindDefs", LookMode.Def, LookMode.Value);
-            Scribe_Values.Look(ref requireAll, "requireAll", true);
+            Scribe_Collections.Look(ref raceDefs, "raceDefs", LookMode.Def, LookMode.Value);
         }
 
-        public override bool Trigger(PawnKindDef param)
+        public override bool Trigger(Pawn param)
         {
             base.Trigger(param);
             bool trigger = true;
+            ThingDef raceDef = param?.def;
             var factionPawns = PawnsFinder.AllMapsCaravansAndTravelingTransportPods_Alive_OfPlayerFaction;
             if (factionPawns is null)
                 return false;
-            foreach (KeyValuePair<PawnKindDef, int> set in kindDefs)
+            foreach (KeyValuePair<ThingDef, int> set in raceDefs)
             {
                 var count = 0;
-                if (set.Key == param)
+                if (set.Key == raceDef)
                     count += 1;
                 if (requireAll)
                 {
@@ -81,7 +76,6 @@ namespace AchievementsExpanded
 
         public override bool UnlockOnStartup => Trigger(null);
 
-        Dictionary<PawnKindDef, int> kindDefs = new Dictionary<PawnKindDef, int>();
-        public bool requireAll = true;
+        Dictionary<ThingDef, int> raceDefs = new Dictionary<ThingDef, int>();
     }
 }

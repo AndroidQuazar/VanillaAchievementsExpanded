@@ -12,6 +12,8 @@ namespace AchievementsExpanded
         public string texPath;
         public string bgtexPath;
 
+        public new string description;
+
         public int points;
         public TrackerBase tracker;
 

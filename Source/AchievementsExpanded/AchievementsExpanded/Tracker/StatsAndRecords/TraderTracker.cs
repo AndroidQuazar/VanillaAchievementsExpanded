@@ -73,7 +73,7 @@ namespace AchievementsExpanded
         public int worth;
         public bool singleTransaction = false;
 
-        private int triggeredCount;
-        private float triggeredWorth;
+        protected int triggeredCount;
+        protected float triggeredWorth;
     }
 }

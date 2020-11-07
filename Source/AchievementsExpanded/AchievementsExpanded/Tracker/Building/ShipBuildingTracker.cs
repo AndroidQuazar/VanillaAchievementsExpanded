@@ -10,7 +10,7 @@ namespace AchievementsExpanded
 {
     public class ShipBuildingTracker : BuildingTracker
     {
-        protected override string[] DebugText => base.DebugText;
+        protected override string[] DebugText =>  base.DebugText;
 
         public ShipBuildingTracker()
         {
@@ -35,14 +35,14 @@ namespace AchievementsExpanded
 					int num = shipParts.Count((Building pa) => pa.def == partDef.Key);
 					if (num < partDef.Value)
 					{
-						DebugWriter.Log(string.Format("{0}: {1}x {2} ({3} {4})", new object[]
-						{
-							"ShipReportMissingPart".Translate(),
-							partDef.Value - num,
-							partDef.Key.label,
-							"ShipReportMissingPartRequires".Translate(),
-							partDef.Value
-						}));
+						//DebugWriter.Log(string.Format("{0}: {1}x {2} ({3} {4})", new object[]
+						//{
+						//	"ShipReportMissingPart".Translate(),
+						//	partDef.Value - num,
+						//	partDef.Key.label,
+						//	"ShipReportMissingPartRequires".Translate(),
+						//	partDef.Value
+						//}));
 						missingParts = true;
 					}
 				}

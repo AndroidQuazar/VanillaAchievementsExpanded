@@ -44,7 +44,7 @@
 	
 	<AchievementsExpanded.AchievementDef>
 		<defName>50ShadesOfGrey</defName>
-		<label>50 Shades Of Gray</label>
+		<label>50 Shades Of Grey</label>
 		<description>Have a pawn go into a sadistic rage on a prisoner</description>
 		
 		<tracker Class="AchievementsExpanded.MentalBreakTracker">

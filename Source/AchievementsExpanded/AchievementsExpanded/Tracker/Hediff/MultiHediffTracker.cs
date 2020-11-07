@@ -28,7 +28,7 @@ namespace AchievementsExpanded
         public override bool Trigger(Hediff hediff)
         {
             base.Trigger(hediff);
-            if (defs.ContainsKey(hediff.def))
+            if (defs.ContainsKey(hediff.def) && hediff.pawn.Faction == Faction.OfPlayerSilentFail)
             {
                 var hediffCounts = new Dictionary<HediffDef, int>(defs);
                 foreach (Hediff curHediff in hediff.pawn.health.hediffSet.hediffs)

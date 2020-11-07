@@ -76,6 +76,7 @@ namespace AchievementsExpanded
         public bool Trigger(string text = null)
         {
             DebugWriter.Log($"\nTrigger Event called for {GetUniqueLoadID()}");
+            DebugWriter.Log($"Tracker Type: {GetType()}");
             if (!string.IsNullOrEmpty(text))
                 DebugWriter.Log(text);
             DebugWriter.Log(DebugText);

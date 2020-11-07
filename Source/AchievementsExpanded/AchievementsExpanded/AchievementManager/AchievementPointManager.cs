@@ -125,6 +125,11 @@ namespace AchievementsExpanded
             return true;
         }
 
+        public void RefundPoints(int points)
+        {
+            availablePoints += points;
+        }
+
         public void AddPoints(int points)
         {
             availablePoints += points;
@@ -151,7 +156,10 @@ namespace AchievementsExpanded
             {
                 return key;
             }
-            typeToKey.Add(typeof(T), TrackersGenerated.FirstOrDefault(t => t.GetType() == typeof(T)).Key);
+            var check = typeof(T).IsAbstract ?
+                TrackersGenerated.FirstOrDefault(t => t.GetType().IsSubclassOf(typeof(T)))
+                : TrackersGenerated.FirstOrDefault(t => t.GetType() == typeof(T));
+            typeToKey.Add(typeof(T), check.Key);
             return typeToKey[typeof(T)];
         }
 

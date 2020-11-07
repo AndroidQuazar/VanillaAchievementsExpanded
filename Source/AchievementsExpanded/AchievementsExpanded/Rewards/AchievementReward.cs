@@ -34,6 +34,12 @@ namespace AchievementsExpanded
         public virtual bool PurchaseReward() => Current.Game.GetComponent<AchievementPointManager>().TryPurchasePoints(cost);
 
         /// <summary>
+        /// Refund reward purchased
+        /// </summary>
+        /// <returns></returns>
+        public virtual void RefundPoints() => Current.Game.GetComponent<AchievementPointManager>().RefundPoints(cost);
+
+        /// <summary>
         /// Try Execute reward post-purchase
         /// </summary>
         public abstract bool TryExecuteEvent();

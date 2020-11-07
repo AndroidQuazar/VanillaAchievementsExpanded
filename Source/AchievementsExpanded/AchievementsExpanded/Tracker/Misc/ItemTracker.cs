@@ -23,8 +23,6 @@ namespace AchievementsExpanded
         {
             def = reference.def;
             count = reference.count;
-            if (count <= 0)
-                count = 1;
         }
 
         public override void ExposeData()
@@ -43,6 +41,6 @@ namespace AchievementsExpanded
         public override bool UnlockOnStartup => Trigger();
 
         public ThingDef def;
-        public int count;
+        public int count = 1;
     }
 }

@@ -26,7 +26,7 @@ namespace AchievementsExpanded
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Values.Look(ref count, "percentImmune");
+            Scribe_Values.Look(ref count, "percentImmune", 1);
         }
 
         public override bool Trigger(Hediff hediff, float immunity)
@@ -44,6 +44,6 @@ namespace AchievementsExpanded
         }
 
         public HediffDef def;
-        public float count;
+        public float count = 1;
     }
 }

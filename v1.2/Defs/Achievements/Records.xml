@@ -115,7 +115,7 @@
 	<AchievementsExpanded.AchievementDef>
 		<defName>3StarMichelin</defName>
 		<label>3 Star Michelin</label>
-		<description>Have a single pawn cook 10000.</description>
+		<description>Have a single pawn cook 10000 meals.</description>
 		
 		<tracker Class="AchievementsExpanded.RecordEventTracker">
 			<def>MealsCooked</def>
@@ -160,11 +160,19 @@
 	<AchievementsExpanded.AchievementDef>
 		<defName>IWishThisWasIkea</defName>
 		<label>I Wish This Was IKEA</label>
-		<description>Construct a total of 100 structures.</description>
+		<description>Construct AND Disassemble a total of 100 structures.</description>
 		
-		<tracker Class="AchievementsExpanded.RecordEventTracker">
-			<def>ThingsConstructed</def>
-			<count>50</count>
+		<tracker Class="AchievementsExpanded.MultiRecordEventTracker">
+			<defs>
+				<li>
+					<key>ThingsConstructed</key>
+					<value>100</value>
+				</li>
+				<li>
+					<key>ThingsDeconstructed</key>
+					<value>100</value>
+				</li>
+			</defs>
 			<total>true</total>
 		</tracker>
 		

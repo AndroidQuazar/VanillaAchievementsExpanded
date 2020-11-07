@@ -30,7 +30,7 @@ namespace AchievementsExpanded
         {
             base.ExposeData();
             Scribe_Defs.Look(ref def, "def");
-            Scribe_Values.Look(ref count, "count");
+            Scribe_Values.Look(ref count, "count", 1);
             Scribe_Values.Look(ref triggeredCount, "triggeredCount", 0);
         }
 
@@ -49,7 +49,7 @@ namespace AchievementsExpanded
         }
 
         public IncidentDef def;
-        public int count;
+        public int count = 1;
 
         public int triggeredCount;
     }

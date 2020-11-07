@@ -103,5 +103,81 @@ namespace AchievementsExpanded
         {
             Current.Game.GetComponent<AchievementPointManager>().HardReset();
         }
+
+        [AchievementDebugAction(VAEDebugCategory, null)]
+        private static void OutputAchievementList()
+        {
+            DebugWriter.Log("---- ACHIEVEMENT CARD LIST ----");
+            Log.Message("---- ACHIEVEMENT CARD LIST ----");
+            foreach (AchievementCard card in AchievementPointManager.AchievementList)
+            {
+                string text = string.Concat(new object[]
+                {
+                    "Card: ",
+                    card.def.label + "\n",
+                    "Tracker: ",
+                    card.tracker + "\n"
+                });
+                DebugWriter.Log(text);
+                Log.Message(text);
+            }
+            DebugWriter.Log("--------------------------");
+            Log.Message("--------------------------");
+        }
+
+        [AchievementDebugAction(VAEDebugCategory, null)]
+        private static void OutputAchievementKey()
+        {
+            List<DebugMenuOption> list = new List<DebugMenuOption>();
+            var keys = AchievementPointManager.AchievementList.Select(a => a.tracker.Key).ToHashSet();
+            if (!keys.EnumerableNullOrEmpty())
+            {
+                foreach (string key in keys)
+			    {
+				    list.Add(new DebugMenuOption(key, DebugMenuOptionMode.Action, delegate()
+				    {
+                        DebugWriter.Log($"Outputting Achievements with key: {key}");
+                        Log.Message($"Outputting Achievements with key: {key}");
+                        foreach (var card in AchievementPointManager.AchievementList.Where(a => a.tracker.Key == key))
+                        {
+                            DebugWriter.Log(card.def.label);
+                            Log.Message(card.def.label);
+                        }
+				    }));
+			    }
+			    Find.WindowStack.Add(new Dialog_DebugOptionListLister(list));
+            }
+            else
+            {
+                Messages.Message("No AchievementKeys To Check", MessageTypeDefOf.RejectInput);
+            }
+        }
+
+        [AchievementDebugAction(VAEDebugCategory, null)]
+        private static void OutputAchievementTickerCards()
+        {
+            DebugWriter.Log("---- ACHIEVEMENT TICKER CARDS ----");
+            Log.Message("---- ACHIEVEMENT TICKER CARDS ----");
+            foreach (AchievementCard card in AchievementPointManager.tickerAchievements)
+            {
+                string text = string.Concat(new object[]
+                {
+                    "Card: ",
+                    card.def.label + "\n",
+                    "Tracker: ",
+                    card.tracker + "\n"
+                });
+                DebugWriter.Log(text);
+                Log.Message(text);
+            }
+            DebugWriter.Log("--------------------------");
+            Log.Message("--------------------------");
+        }
+
+        [AchievementDebugAction(VAEDebugCategory, null)]
+        private static void WriteToFile()
+        {
+            DebugWriter.PushToFile();
+        }
     }
 }

@@ -14,7 +14,7 @@ namespace AchievementsExpanded
         {
             if (string.IsNullOrEmpty(RootDir))
                 ResetRootDir();
-            MessageLogsLimitReached();
+            MessageLogsLimitReached(1);
             try
             {
                 //File.AppendAllLines(FullPath, new[] { text });
@@ -32,7 +32,7 @@ namespace AchievementsExpanded
         {
             if (string.IsNullOrEmpty(RootDir))
                 ResetRootDir();
-            MessageLogsLimitReached();
+            MessageLogsLimitReached(text.Length);
             try
             {
                 //File.AppendAllLines(FullPath, text);
@@ -50,6 +50,7 @@ namespace AchievementsExpanded
         {
             RootDir = ModLister.GetModWithIdentifier(AchievementHarmony.modIdentifier).RootDir.ToString();
             Clear();
+            messageLogs.Clear();
             Log(new string[] { "Vanilla Achievements Expanded", "This log is for logging Tracker information and Event triggers only.\n"});
         }
 
@@ -60,11 +61,20 @@ namespace AchievementsExpanded
                 messageLogs = new List<string>();
         }
 
-        private static void MessageLogsLimitReached()
+        private static void MessageLogsLimitReached(int adding)
         {
-            if (messageLogs.Count > MaxMessageLimit)
+            if (messageLogs.Count + adding > MaxMessageLimit)
             {
-                messageLogs = new List<string>();
+                for (int i = 0; i < adding; i++)
+                {
+                    messageLogs.RemoveAt(0);
+                }
+
+                if (messageLogs.Count > MaxMessageLimit)
+                {
+                    messageLogs.Clear();
+                    Verse.Log.Error("WENT OVER LOG LIMIT");
+                }
             }
         }
 
@@ -86,7 +96,7 @@ namespace AchievementsExpanded
         }
 
         internal static List<string> messageLogs = new List<string>();
-        private const int MaxMessageLimit = 1000;
+        private const int MaxMessageLimit = 3000;
 
         internal static string FullPath => $"{RootDir}\\{FileName}";
         internal static string RootDir;

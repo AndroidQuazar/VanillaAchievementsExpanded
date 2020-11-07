@@ -29,7 +29,7 @@ namespace AchievementsExpanded
         {
             base.ExposeData();
             Scribe_Defs.Look(ref def, "def");
-            Scribe_Values.Look(ref count, "num");
+            Scribe_Values.Look(ref count, "count", 1);
             Scribe_Values.Look(ref total, "total");
         }
 
@@ -75,7 +75,7 @@ namespace AchievementsExpanded
         }
 
         public RecordDef def;
-        public float count;
+        public float count = 1;
         public bool total;
     }
 }
