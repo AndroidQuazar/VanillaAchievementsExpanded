@@ -57,7 +57,7 @@ namespace AchievementsExpanded
                     count += 1;
                 if (requireAll)
                 {
-                    if (factionPawns.Where(f => f.kindDef.defName == set.Key.defName).Count() + count < set.Value)
+                    if (factionPawns.Where(f => f.def.defName == set.Key.defName).Count() + count < set.Value)
                     {
                         trigger = false;
                     }
@@ -65,7 +65,7 @@ namespace AchievementsExpanded
                 else
                 {
                     trigger = false;
-                    if (factionPawns.Where(f => f.kindDef.defName == set.Key.defName).Count() + count >= set.Value)
+                    if (factionPawns.Where(f => f.def.defName == set.Key.defName).Count() + count >= set.Value)
                     {
                         return true;
                     }
