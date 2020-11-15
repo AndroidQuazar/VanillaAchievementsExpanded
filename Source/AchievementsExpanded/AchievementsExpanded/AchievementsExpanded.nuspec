@@ -11,7 +11,7 @@
     <projectUrl>https://github.com/AndroidQuazar/VanillaAchievementsExpanded</projectUrl>
     <icon>vaeIcon.png</icon>
     <description>Vanilla Achievements Expanded modding tool</description>
-    <releaseNotes>Tracker bugfixes, debugwriter streamlining, 2 new Trackers.</releaseNotes>
+    <releaseNotes>Final version for Steam release.</releaseNotes>
     <copyright>Copyright 2020</copyright>
     <tags>rimworld vanilla achievements expanded</tags>
   </metadata>
