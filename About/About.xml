@@ -3,8 +3,6 @@
 	<name>Vanilla Achievements Expanded</name>
 	<author>Oskar Potocki, Smash Phil</author>
 	<supportedVersions>
-		<li>1.0</li>
-		<li>1.1</li>
 		<li>1.2</li>
 	</supportedVersions>
 	<modDependencies>
@@ -16,13 +14,9 @@
 		</li>
 	</modDependencies>
 	<packageId>vanillaexpanded.achievements</packageId>
-	<description>
-Vanilla Achievements Expanded is a unique, never before seen in RimWorld modding achievement mod, part of the Vanilla Expanded mod series and a framework for other modders. 
+	<description>Vanilla Achievements Expanded is a unique, never before seen in RimWorld modding achievement mod, part of the Vanilla Expanded mod series and a framework for other modders. 
+This mod adds an extensive achievement system, with various different stats being tracked. Players receive a pop up rewarding them for going above and beyond and pushing their boundaries. Players receive achievement points which can not only be shown off, but also can be used to fire several types of pre-existing in-game events.
 
-Vanilla Achievements Expanded adds an extensive achievement system, with various different stats being tracked. Players receive a pop up rewarding them for going above and beyond and pushing their boundaries. Players receive achievement points which can not only be shown off, but also can be used to fire several types of pre-existing in-game events.
-
-Beta uploaded: 28 September 2020
-
-Redistributing, uploading or sharing of this beta is the violation of intellectual property laws and will be acted on.
+Most achievement trackers (described below) can be used in xml. This means other modders can include an Achievements.xml file in their mods and inject custom, mod specific achievements into our framework. That is of course if Vanilla Achievements Expanded is active.
 </description>
 </ModMetaData>
