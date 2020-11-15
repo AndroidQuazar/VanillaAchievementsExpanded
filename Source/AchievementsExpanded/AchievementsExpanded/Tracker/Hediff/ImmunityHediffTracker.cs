@@ -11,7 +11,7 @@ namespace AchievementsExpanded
         public override string Key => "ImmunityHediffTracker";
         public override MethodInfo MethodHook => AccessTools.Method(typeof(ImmunityRecord), nameof(ImmunityRecord.ImmunityTick));
         public override MethodInfo PatchMethod => AccessTools.Method(typeof(AchievementHarmony), nameof(AchievementHarmony.ImmunityTicking));
-        protected override string[] DebugText => new string[] { $"ImmunityLevel: {count}" };
+        protected override string[] DebugText => new string[] { $"Def: {def?.defName ?? "[NullDef]"}" , $"ImmunityLevel: {count}" };
 
         public ImmunityHediffTracker()
         {
@@ -33,7 +33,7 @@ namespace AchievementsExpanded
         {
             base.Trigger(hediff);
 
-            if (def is null || (hediff != null && hediff?.def == def))
+            if (hediff != null && (def is null || hediff?.def == def))
             {
                 if (hediff.Severity >= count && immunity == 1)
                 {

@@ -34,6 +34,8 @@ namespace AchievementsExpanded
             Scribe_Values.Look(ref triggeredCount, "triggeredCount");
         }
 
+        public override (float percent, string text) PercentComplete => count > 1 ? ((float)triggeredCount / count, $"{triggeredCount} / {count}") : base.PercentComplete;
+
         public override bool Trigger(Hediff hediff)
         {
             if (hediff.pawn != null && (hediff.pawn.Faction == Faction.OfPlayer || hediff.pawn.IsPrisonerOfColony) && (def is null || hediff.def == def))

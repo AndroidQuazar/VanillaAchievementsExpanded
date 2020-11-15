@@ -14,6 +14,19 @@ namespace AchievementsExpanded
         public List<string> thingSetMakerTags;
         public List<ThingDef> additionalThingDefs;
 
+        public override string Disabled
+        {
+            get
+            {
+                string reason = base.Disabled;
+                if (Find.CurrentMap is null)
+                {
+                    reason += "\n" + "NoValidMap".Translate();
+                }
+                return reason;
+            }
+        }
+
         public override bool TryExecuteEvent()
         {
             try
@@ -26,10 +39,39 @@ namespace AchievementsExpanded
 
                 Rand.PushState();
                 ThingDef randomReward = rewards.RandomElement();
-                Rand.PopState();
 
                 Thing reward = ThingMaker.MakeThing(randomReward);
-                
+                if (reward is Building building)
+                {
+                    reward = building.MakeMinified();
+                }
+                else if (reward.def.stackLimit > 1)
+                {
+                    int stackCount = Rand.Range(reward.def.stackLimit / 4, reward.def.stackLimit);
+                    float itemValue = reward.def.BaseMarketValue;
+                    if (itemValue >= 2000)
+                    {
+                        stackCount = 1;
+                    }
+                    else if (itemValue >= 1500)
+                    {
+                        stackCount /= 30;
+                    }
+                    else if (itemValue >= 1000)
+                    {
+                        stackCount /= 20;
+                    }
+                    else if (itemValue >= 500)
+                    {
+                        stackCount /= 10;
+                    }
+                    else if (itemValue >= 50)
+                    {
+                        stackCount /= 2;
+                    }
+                    reward.stackCount = stackCount;
+                }
+                Rand.PopState();
                 if (Find.CurrentMap != null)
                 {
                     IntVec3 dropSpot = DropCellFinder.RandomDropSpot(Find.CurrentMap);

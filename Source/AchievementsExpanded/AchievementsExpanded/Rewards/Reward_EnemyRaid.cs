@@ -13,7 +13,7 @@ namespace AchievementsExpanded
             IncidentParms parms = new IncidentParms()
             {
                 target = Find.CurrentMap,
-                points = StorytellerUtility.DefaultThreatPointsNow(Find.CurrentMap) * RaidRatioDifficultyIncrease
+                points = StorytellerUtility.DefaultThreatPointsNow(Find.CurrentMap) * RaidRatioDifficultyIncrease,
             };
             if (!incident.Worker.TryExecute(parms))
             {

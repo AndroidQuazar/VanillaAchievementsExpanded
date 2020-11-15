@@ -18,13 +18,13 @@
 		<incident>TraderCaravanArrival</incident>
 	</AchievementsExpanded.Reward_MapIncident>
 	
-	<AchievementsExpanded.Reward_Random>
+	<AchievementsExpanded.Reward_RandomEvent>
 		<defName>RandomEventReward</defName>
 		<label>Random Event</label>
 		<tab>Main</tab>
 		
 		<cost>25</cost>
-	</AchievementsExpanded.Reward_Random>
+	</AchievementsExpanded.Reward_RandomEvent>
 	
 	<AchievementsExpanded.Reward_MapIncident>
 		<defName>CargoPodsReward</defName>

@@ -32,15 +32,20 @@ namespace AchievementsExpanded
             Scribe_Values.Look(ref count, "count", 1);
         }
 
+        public override (float percent, string text) PercentComplete => count > 1 ? ((float)triggeredCount / count, $"{triggeredCount} / {count}") : base.PercentComplete;
+
         public override bool Trigger()
         {
             base.Trigger();
-            return UtilityMethods.PlayerHas(def, out int _, count);
+            return UtilityMethods.PlayerHas(def, out triggeredCount, count);
         }
 
         public override bool UnlockOnStartup => Trigger();
 
         public ThingDef def;
         public int count = 1;
+
+        [Unsaved]
+        protected int triggeredCount; //Only for display
     }
 }

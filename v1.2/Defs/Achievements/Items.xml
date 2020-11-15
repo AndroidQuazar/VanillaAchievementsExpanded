@@ -16,7 +16,7 @@
 	
 	<AchievementsExpanded.AchievementDef>
 		<defName>humanLeatherHat</defName>
-		<label>Human Heather Hat</label>
+		<label>Human Leather Cowboy Hat</label>
 		<description>Craft a human leather cowboy hat</description>
 		
 		<tracker Class="AchievementsExpanded.ItemCraftTracker">
@@ -25,7 +25,7 @@
 			<count>1</count>
 		</tracker>
 		
-		<texPath>Achievements/Midas</texPath>
+		<texPath>Achievements/HumanLeatherHat</texPath>
 		<points>10</points>
 	</AchievementsExpanded.AchievementDef>
 	

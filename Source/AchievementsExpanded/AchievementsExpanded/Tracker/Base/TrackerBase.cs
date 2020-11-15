@@ -54,10 +54,15 @@ namespace AchievementsExpanded
         public virtual Func<bool> AttachToLongTick => null;
 
         /// <summary>
-        /// Checked on startup to determine if card should be unlocked or not
+        /// Checked on startup to determine if card should be unlocked
         /// </summary>
-        /// <returns></returns>
         public virtual bool UnlockOnStartup => false;
+
+        /// <summary>
+        /// Percentage complete of the current tracker. Only inherit if you want the completion bar to be displayed
+        /// on the card in the UI window.
+        /// </summary>
+        public virtual (float percent, string text) PercentComplete => (-1f, null);
 
         /// <summary>
         /// Trigger event to check requirements if card should be unlocked or not

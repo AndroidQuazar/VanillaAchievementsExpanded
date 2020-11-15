@@ -32,6 +32,8 @@ namespace AchievementsExpanded
             Scribe_Values.Look(ref total, "total");
         }
 
+        public override (float percent, string text) PercentComplete => total && count > 1 ? (triggeredCount / count, $"{triggeredCount} / {count}") : base.PercentComplete;
+
         public override bool Trigger(RecordDef record, Pawn pawn)
         {
             base.Trigger(record, pawn);
@@ -41,14 +43,14 @@ namespace AchievementsExpanded
             }
             if (total)
             {
-                float value = 0;
+                triggeredCount = 0;
                 foreach (Pawn pawn2 in PawnsFinder.AllMapsCaravansAndTravelingTransportPods_Alive_OfPlayerFaction)
                 {
-                    value += pawn2.records.GetValue(record);
-                    if (value >= count)
+                    triggeredCount += pawn2.records.GetValue(record);
+                    if (triggeredCount >= count)
                         return true;
                 }
-                if (value >= count)
+                if (triggeredCount >= count)
                         return true;
                 return false;
             }
@@ -77,5 +79,8 @@ namespace AchievementsExpanded
         public RecordDef def;
         public float count = 1;
         public bool total;
+
+        [Unsaved]
+        protected float triggeredCount;
     }
 }

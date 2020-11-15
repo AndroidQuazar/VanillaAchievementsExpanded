@@ -17,7 +17,7 @@ namespace AchievementsExpanded
                 {
                     reason += "\n" + "NoValidMap".Translate();
                 }
-                if (!incident.Worker.CanFireNow(Parms))
+                if (Parms is null || !incident.Worker.CanFireNow(Parms))
                 {
                     reason += "\n" + "IncidentNotAvailable".Translate();
                 }
@@ -25,7 +25,7 @@ namespace AchievementsExpanded
             }
         }
 
-        protected IncidentParms Parms => StorytellerUtility.DefaultParmsNow(incident.category, Find.CurrentMap);
+        protected IncidentParms Parms => Find.CurrentMap != null ? StorytellerUtility.DefaultParmsNow(incident.category, Find.CurrentMap) : null;
 
         public override bool TryExecuteEvent()
         {

@@ -25,5 +25,9 @@ namespace AchievementsExpanded
         public static Texture2D PointsIconDark;
 
         public static Texture2D CardBG;
+
+        public static readonly Texture2D DefaultBarBgTex = SolidColorMaterials.NewSolidColorTexture(new Color(0.1f, 0.1f, 0.1f));
+
+		public static readonly Texture2D BarFullTexHor = SolidColorMaterials.NewSolidColorTexture(new Color(0.35f, 0.35f, 0.2f));
     }
 }

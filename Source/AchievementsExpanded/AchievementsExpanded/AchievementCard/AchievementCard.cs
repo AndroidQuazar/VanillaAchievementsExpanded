@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Verse;
+using Verse.Sound;
 using RimWorld;
 using UnityEngine;
 
@@ -91,6 +92,7 @@ namespace AchievementsExpanded
                 dateUnlocked = (Prefs.DevMode || debugTools) ? "UnlockedDevMode".Translate().ToString() : GenDate.DateReadoutStringAt(Find.TickManager.TicksAbs, vector);
 
                 Current.Game.GetComponent<AchievementPointManager>().AddPoints(def.points);
+                DefDatabase<SoundDef>.GetNamed("LetterArrive_Good").PlayOneShotOnCamera();
                 DebugWriter.Log($"Unlocking: {GetUniqueLoadID()} Card: {def.label}");
                 if (debugTools)
                 {
@@ -116,6 +118,15 @@ namespace AchievementsExpanded
 
             var anchor = Text.Anchor;
             Text.Anchor = TextAnchor.UpperCenter;
+
+            if (!unlocked && !string.IsNullOrEmpty(tracker.PercentComplete.text) && tracker.PercentComplete.percent >= 0)
+            {
+                float height = iconRect.height * (1 / 8f);
+                float width = iconRect.width * (3 / 4f);
+                Rect barRect = new Rect(iconRect.x + (iconRect.width / 2) - (width / 2), iconRect.y + iconRect.height - height - (MainTabWindow_Achievements.SpaceBetweenCards / 2f), width, height);
+                Widgets.FillableBar(barRect, tracker.PercentComplete.percent, AchievementTex.BarFullTexHor, AchievementTex.DefaultBarBgTex, true);
+                Widgets.Label(barRect, tracker.PercentComplete.text);
+            }
 
             Rect labelRect = new Rect(iconRect.x, iconRect.y + iconRect.height, iconRect.width, rect.height - MainTabWindow_Achievements.SpaceBetweenCards - iconRect.height);
             Widgets.Label(labelRect, def.label);

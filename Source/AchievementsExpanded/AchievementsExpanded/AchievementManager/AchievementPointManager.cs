@@ -50,7 +50,6 @@ namespace AchievementsExpanded
         {
             base.FinalizeInit();
             PreInit();
-            CheckUnlocks();
         }
 
         internal void HardReset()
@@ -80,6 +79,8 @@ namespace AchievementsExpanded
             if(debug)
                 DebugWriter.Log($"Verifying Achievement List");
             AchievementGenerator.VerifyAchievementList(ref achievementList, debug);
+
+            CheckUnlocks();
         }
 
         private void CheckUnlocks()
@@ -186,7 +187,6 @@ namespace AchievementsExpanded
             Scribe_Values.Look(ref totalEarnedPoints, "totalEarnedPoints");
 
             Scribe_Collections.Look(ref achievementList, "achievementList", LookMode.Deep);
-            Scribe_Collections.Look(ref unlockedCards, "unlockedCards", LookMode.Deep);
         }
 
         internal const string AchievementTag = "VanillaAchievementsExpanded";

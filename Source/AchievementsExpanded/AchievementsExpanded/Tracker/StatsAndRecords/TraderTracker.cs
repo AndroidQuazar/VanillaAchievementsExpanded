@@ -42,6 +42,25 @@ namespace AchievementsExpanded
             Scribe_Values.Look(ref triggeredWorth, "triggeredWorth", 0);
         }
 
+        public override (float, string) PercentComplete
+        {
+            get
+            {
+                if (!singleTransaction)
+                {
+                    if (worth > 0 && count <= 1)
+                    {
+                        return (triggeredWorth / worth, $"{triggeredWorth} / {worth}");
+                    }
+                    else if (worth <= 0)
+                    {
+                        return ((float)triggeredCount / count, $"{triggeredCount} / {count}");
+                    }
+                }
+                return base.PercentComplete;
+            }
+        }
+
         public override bool Trigger(List<Tradeable> tradeables)
         {
             base.Trigger(tradeables);

@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>AchievementsExpanded</id>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
     <title>Vanilla Achievements Expanded</title>
     <authors>Smash Phil, Oskar Potocki</authors>
 	<owners />
@@ -11,7 +11,7 @@
     <projectUrl>https://github.com/AndroidQuazar/VanillaAchievementsExpanded</projectUrl>
     <icon>vaeIcon.png</icon>
     <description>Vanilla Achievements Expanded modding tool</description>
-    <releaseNotes>BuildingTracker bugfix, changes to DebugAction attribute for achievements.</releaseNotes>
+    <releaseNotes>Tracker bugfixes, debugwriter streamlining, 2 new Trackers.</releaseNotes>
     <copyright>Copyright 2020</copyright>
     <tags>rimworld vanilla achievements expanded</tags>
   </metadata>
