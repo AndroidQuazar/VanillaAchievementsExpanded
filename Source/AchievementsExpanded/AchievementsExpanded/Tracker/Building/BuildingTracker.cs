@@ -38,6 +38,8 @@ namespace AchievementsExpanded
             Scribe_Collections.Look(ref registeredBuildings, "registeredBuildings");
         }
 
+        public override (float percent, string text) PercentComplete => count > 1 ? ((float)triggeredCount / count, $"{triggeredCount} / {count}") : base.PercentComplete;
+
         public override bool Trigger(Building building)
         {
             base.Trigger(building);

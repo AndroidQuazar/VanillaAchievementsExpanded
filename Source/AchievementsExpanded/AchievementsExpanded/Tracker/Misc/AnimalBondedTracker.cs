@@ -35,6 +35,8 @@ namespace AchievementsExpanded
             Scribe_Values.Look(ref triggeredCount, "triggeredCount");
         }
 
+        public override (float percent, string text) PercentComplete => count > 1 ? ((float)triggeredCount / count, $"{triggeredCount} / {count}") : base.PercentComplete;
+
         public override bool Trigger(PawnKindDef param)
         {
             base.Trigger(param);

@@ -7,8 +7,21 @@ using Verse;
 
 namespace AchievementsExpanded
 {
-    public class Reward_Random : AchievementReward
+    public class Reward_RandomEvent : AchievementReward
     {
+        public override string Disabled
+        {
+            get
+            {
+                string reason = base.Disabled;
+                if (Find.CurrentMap is null)
+                {
+                    reason += "\n" + "NoValidMap".Translate();
+                }
+                return reason;
+            }
+        }
+
         public override bool TryExecuteEvent()
         {
             List<IncidentDef> incidents = DefDatabase<IncidentDef>.AllDefsListForReading.ToList();

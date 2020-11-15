@@ -91,7 +91,7 @@
     <Compile Include="AchievementManager\Debugging\DebugWriter.cs" />
     <Compile Include="Rewards\Reward_MapIncident.cs" />
     <Compile Include="Rewards\Reward_RandomQuest.cs" />
-    <Compile Include="Rewards\Reward_Random.cs" />
+    <Compile Include="Rewards\Reward_RandomEvent.cs" />
     <Compile Include="Rewards\Reward_RandomQuestItem.cs" />
     <Compile Include="Tracker\Kill\BondedAnimalOnFireKillTracker.cs" />
     <Compile Include="Tracker\Hediff\ImmunityHediffTracker.cs" />

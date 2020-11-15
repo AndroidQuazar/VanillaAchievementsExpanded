@@ -72,7 +72,16 @@ namespace AchievementsExpanded
                 harmony.Patch(original: AccessTools.Constructor(typeof(Dialog_DebugActionsMenu)),
                     prefix: new HarmonyMethod(typeof(DebugActionsSetup),
                     nameof(DebugActionsSetup.ClearCachedActions)));
+
+                /* Debugging */
+                //harmony.Patch(original: AccessTools.Method(typeof(DebugLoadIDsSavingErrorsChecker), nameof(DebugLoadIDsSavingErrorsChecker.RegisterDeepSaved)),
+                //    prefix: new HarmonyMethod(typeof(AchievementHarmony),
+                //    nameof(DebugTest)));
             }
+        }
+
+        public static void DebugTest()
+        {
         }
 
         /// <summary>
@@ -275,6 +284,10 @@ namespace AchievementsExpanded
                 {
                     card.UnlockCard();
                 }
+            }
+            if (!Find.Maps.NullOrEmpty() && Find.Maps.Any(m => m.IsPlayerHome))
+            {
+                
             }
         }
 

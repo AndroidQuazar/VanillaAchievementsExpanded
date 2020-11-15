@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Reflection;
+using System.Collections.Generic;
 using HarmonyLib;
 using Verse;
 using RimWorld;
-using System.Collections.Generic;
+using UnityEngine;
 
 namespace AchievementsExpanded
 {
@@ -48,6 +49,8 @@ namespace AchievementsExpanded
             Scribe_Values.Look(ref triggeredCount, "triggeredCount", 0);
             Scribe_Collections.Look(ref killedThings, "killedThings", LookMode.Value);
         }
+
+        public override (float percent, string text) PercentComplete => count > 1 ? ((float)triggeredCount / count, $"{triggeredCount} / {count}") : base.PercentComplete;
 
         public override bool Trigger(Pawn pawn, DamageInfo? dinfo)
         {
