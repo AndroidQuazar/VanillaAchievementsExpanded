@@ -64,6 +64,11 @@ namespace AchievementsExpanded
 
         private void PreInit(bool debug = false)
         {
+            if (!ModsConfig.IsActive(AchievementHarmony.modIdentifier))
+            {
+                return;
+            }
+
             if (achievementLookup is null)
                 achievementLookup = new Dictionary<string, HashSet<AchievementCard>>();
             if (achievementList is null)
