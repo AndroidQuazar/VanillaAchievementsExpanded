@@ -64,17 +64,18 @@ namespace AchievementsExpanded
 
         private void PreInit(bool debug = false)
         {
-            if (!ModsConfig.IsActive(AchievementHarmony.modIdentifier))
-            {
-                return;
-            }
-
             if (achievementLookup is null)
                 achievementLookup = new Dictionary<string, HashSet<AchievementCard>>();
             if (achievementList is null)
                 achievementList = new HashSet<AchievementCard>();
             if (unlockedCards is null)
                 unlockedCards = new Stack<AchievementCard>();
+
+            if (!ModsConfig.IsActive(AchievementHarmony.modIdentifier))
+            {
+                return;
+            }
+
             DebugWriter.ResetRootDir();
             if(debug)
                 DebugWriter.Log($"Resetting AchievementLinks");

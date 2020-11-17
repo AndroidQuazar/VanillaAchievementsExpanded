@@ -46,6 +46,7 @@ namespace AchievementsExpanded
 			{
 				if (value == curTab)
 					return;
+                sidebarScrollPosition = Vector2.zero;
 				curTab = value;
                 ClearRewardCache();
 			}
@@ -94,8 +95,7 @@ namespace AchievementsExpanded
 
             float panelWidth = SidePanelWidth;
             float marginWidth = panelWidth * SidePanelMargin;
-            float marginRowHeight = panelWidth * TextAreaHeight;
-            Rect panelRect = new Rect(UI.screenWidth - panelWidth + marginWidth, 0f, panelWidth - marginWidth * 2.5f, marginRowHeight);
+            Rect panelRect = new Rect(UI.screenWidth - panelWidth + marginWidth, 0f, panelWidth - marginWidth * 2.5f, inRect.height);
             DrawSidePanel(panelRect);
 
             Rect cardMenuRect = menuRect.ContractedBy(10f);
@@ -149,12 +149,18 @@ namespace AchievementsExpanded
             iconRect.width = rect.width * 0.1f;
             labelRect.width = rect.width * 0.2f;
             var color = GUI.color;
+
+            Rect buttonContainerRect = new Rect(iconRect.x, rect.y, rect.width - 10, rect.height);
+            var height = rect.y + Mathf.CeilToInt(Rewards.Count) * 35;
+            Rect buttonViewRect = new Rect(buttonContainerRect.x, buttonContainerRect.y, buttonContainerRect.width, height);
+
+            Widgets.BeginScrollView(buttonContainerRect, ref sidebarScrollPosition, buttonViewRect);
             foreach (AchievementReward reward in Rewards.OrderBy(r => r.cost))
             {
                 iconRect.y = rect.y;
                 labelRect.y = rect.y;
                 bool disabled = !string.IsNullOrEmpty(reward.Disabled);
-                Rect buttonRect = new Rect(iconRect.x + 100, rect.y, rect.width - (iconRect.width + labelRect.width) - 10, 30);
+                Rect buttonRect = new Rect(iconRect.x + 90, rect.y, rect.width - (iconRect.width + labelRect.width) - 20, 30);
                 Text.Font = GameFont.Medium;
                 Widgets.DrawTextureFitted(iconRect, AchievementTex.PointsIcon, 1f);
                 Widgets.Label(labelRect, reward.cost.ToString());
@@ -181,7 +187,7 @@ namespace AchievementsExpanded
                 rect.y += 35f;
                 GUI.color = color;
             }
-
+            Widgets.EndScrollView();
             Text.Font = font;
         }
 
@@ -246,6 +252,7 @@ namespace AchievementsExpanded
         private List<TabRecord> tabs = new List<TabRecord>();
 
         private static Vector2 menuScrollPosition;
+        private static Vector2 sidebarScrollPosition;
         private static string searchText;
 
         public static Color LightGray = new Color(0.85f, 0.85f, 0.85f, 1f);
