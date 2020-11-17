@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using System.Diagnostics;
 using System.Collections.Generic;
 using System.Linq;
 using Verse;
@@ -24,6 +25,7 @@ namespace AchievementsExpanded
             if (ModsConfig.IsActive(AchievementHarmony.modIdentifier))
             {
                 Log.Message($"[{AchievementPointManager.AchievementTag}] Removing duplicate Def Types.");
+                CheckAchievementVersions();
             }
             else
             {
@@ -61,6 +63,55 @@ namespace AchievementsExpanded
                 return false;
             }
             return true;
+        }
+
+        private static void CheckAchievementVersions()
+        {
+            if (ModsConfig.IsActive(AchievementHarmony.modIdentifier))
+            {
+                try
+                {
+                    bool vaePassed = false;
+                    Assembly vaeAssembly = Assembly.GetExecutingAssembly();
+                    string currentVersion = vaeAssembly.GetName().Version.ToString();
+                    if (int.TryParse(string.Join("", currentVersion.Split('.')), out int version))
+                    {
+                        foreach (ModContentPack mod in LoadedModManager.RunningMods)
+                        {
+                            if (mod.PackageId == AchievementHarmony.modIdentifier)
+                            {
+                                vaePassed = true;
+                            }
+                            else
+                            {
+                                for (int i = 0; i < mod.assemblies.loadedAssemblies.Count; i++)
+                                {
+                                    var modAssembly = mod.assemblies.loadedAssemblies[i];
+                                    if (modAssembly.GetName().Name == vaeAssembly.GetName().Name)
+                                    {
+                                        if (!vaePassed)
+                                        {
+                                            Log.Error($"[{mod.Name}] This mod adds achievements so it must be loaded below Vanilla Achievements Expanded to avoid bugs.");
+                                        }
+                                        //else
+                                        //{
+                                        //    string curModVersion = modAssembly.GetName().Version.ToString();
+                                        //    if (int.TryParse(string.Join("", curModVersion.Split('.')), out int modVersion) && modVersion < version)
+                                        //    {
+                                        //        Log.Warning($"[{mod.Name}] Using old version of AchievementsExpanded.dll, please inform the mod author to update to the newest version.");
+                                        //    }
+                                        //}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                catch(Exception ex)
+                {
+                    Log.Error($"Exception thrown while checking Achievements load order. {ex.Message}");
+                }
+            }
         }
 
         public static string GetAssemblyNameContainingType(Type type) => Assembly.GetAssembly(type).GetName().Name;

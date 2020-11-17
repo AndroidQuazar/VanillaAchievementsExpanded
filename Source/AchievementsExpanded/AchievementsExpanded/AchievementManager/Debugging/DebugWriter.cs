@@ -12,7 +12,7 @@ namespace AchievementsExpanded
     {
         public static bool Log(string text)
         {
-            if (!WriterDisabled)
+            if (!writerDisabled && Prefs.DevMode)
             {
                 if (string.IsNullOrEmpty(RootDir))
                 ResetRootDir();
@@ -33,7 +33,7 @@ namespace AchievementsExpanded
 
         public static bool Log(string[] text)
         {
-            if (!WriterDisabled)
+            if (!writerDisabled && Prefs.DevMode)
             {
                 if (string.IsNullOrEmpty(RootDir))
                 ResetRootDir();
@@ -58,7 +58,7 @@ namespace AchievementsExpanded
             if (string.IsNullOrEmpty(RootDir))
             {
                 Verse.Log.Message($"[{AchievementPointManager.AchievementTag}] Disabling DebugWriter. Vanilla Achievements Expanded mod not found in mod list.");
-                WriterDisabled = true;
+                writerDisabled = true;
                 return;
             }
             Clear();
@@ -68,7 +68,7 @@ namespace AchievementsExpanded
 
         public static void Clear()
         {
-            if (!WriterDisabled)
+            if (!writerDisabled)
             {
                 File.WriteAllText(FullPath, string.Empty);
                 if (messageLogs is null)
@@ -78,24 +78,15 @@ namespace AchievementsExpanded
 
         private static void MessageLogsLimitReached(int adding)
         {
-            if (messageLogs.Count + adding > MaxMessageLimit)
+            while (messageLogs.Count + adding > MaxMessageLimit)
             {
-                for (int i = 0; i < adding; i++)
-                {
-                    messageLogs.RemoveAt(0);
-                }
-
-                if (messageLogs.Count > MaxMessageLimit)
-                {
-                    messageLogs.Clear();
-                    Verse.Log.Error($"[{AchievementPointManager.AchievementTag}] Surpassed DebugWriter limit. Self correcting...");
-                }
+                messageLogs.RemoveAt(0);
             }
         }
 
         public static void PushToFile()
         {
-            if (WriterDisabled)
+            if (writerDisabled)
             {
                 Verse.Log.Warning($"[{AchievementPointManager.AchievementTag}] Cannot push to file. DebugWriter is disabled. Vanilla Achievements Expanded must be downloaded and in the mod list in order to use this feature.");
                 Verse.Log.TryOpenLogWindow();
@@ -123,6 +114,6 @@ namespace AchievementsExpanded
         internal static string RootDir;
         internal const string FileName = "AchievementLog.txt";
 
-        internal static bool WriterDisabled = false;
+        internal static bool writerDisabled = false;
     }
 }
