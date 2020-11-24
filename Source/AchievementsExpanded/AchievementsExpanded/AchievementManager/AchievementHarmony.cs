@@ -14,13 +14,14 @@ namespace AchievementsExpanded
     internal static class AchievementHarmony
     {
         internal static string modIdentifier = "vanillaexpanded.achievements";
+        internal static string CompatibleModIdentifier => modIdentifier.Replace("_copy", "");
 
         static AchievementHarmony()
         {
             AchievementPointManager.OnStartUp();
             var harmony = new Harmony(modIdentifier);
 
-            if (ModsConfig.IsActive(modIdentifier))
+            if (ModsConfig.IsActive(CompatibleModIdentifier))
             {
                 /// <summary>
                 /// Automated Patches by allowing user to specify MethodInfo. 

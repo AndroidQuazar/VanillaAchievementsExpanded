@@ -65,13 +65,19 @@ namespace AchievementsExpanded
         private void PreInit(bool debug = false)
         {
             if (achievementLookup is null)
+            {
                 achievementLookup = new Dictionary<string, HashSet<AchievementCard>>();
+            }
             if (achievementList is null)
+            {
                 achievementList = new HashSet<AchievementCard>();
+            }
             if (unlockedCards is null)
+            {
                 unlockedCards = new Stack<AchievementCard>();
+            }
 
-            if (!ModsConfig.IsActive(AchievementHarmony.modIdentifier))
+            if (!ModsConfig.IsActive(AchievementHarmony.CompatibleModIdentifier))
             {
                 return;
             }

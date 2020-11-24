@@ -12,7 +12,7 @@ namespace AchievementsExpanded
     {
         static AchievementTex()
         {
-            if (ModsConfig.IsActive(AchievementHarmony.modIdentifier))
+            if (ModsConfig.IsActive(AchievementHarmony.CompatibleModIdentifier))
             {
                 PointsIcon = ContentFinder<Texture2D>.Get("Icons/IconStorytellerPoints");
                 PointsIconDark = ContentFinder<Texture2D>.Get("Icons/IconStorytellerPointsDark");

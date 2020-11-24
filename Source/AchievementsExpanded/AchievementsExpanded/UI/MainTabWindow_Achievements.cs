@@ -73,7 +73,9 @@ namespace AchievementsExpanded
 				}, () => CurTab == localTabDef));
 			}
             if (CurTab is null)
+            {
                 CurTab = AchievementTabHelper.MainTab;
+            }
 		}
 
         public override void PreOpen()
@@ -224,9 +226,13 @@ namespace AchievementsExpanded
         private void ClearRewardCache()
         {
             if (rewardCache is null)
+            {
                 rewardCache = new List<AchievementReward>();
+            }
             else
+            {
                 rewardCache.Clear();
+            }
         }
 
         private const float CardSize = 200;

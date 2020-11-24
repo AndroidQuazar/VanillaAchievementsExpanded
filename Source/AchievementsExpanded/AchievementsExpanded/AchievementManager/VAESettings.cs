@@ -40,7 +40,7 @@ namespace AchievementsExpanded
 
         public override string SettingsCategory()
         {
-            return "VAE".Translate();
+            return ModsConfig.IsActive(AchievementHarmony.CompatibleModIdentifier) ? "VAE".Translate().ToString() : string.Empty;
         }
     }
 }
