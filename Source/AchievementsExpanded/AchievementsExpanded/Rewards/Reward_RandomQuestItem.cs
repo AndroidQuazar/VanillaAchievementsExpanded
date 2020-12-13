@@ -5,7 +5,7 @@ using RimWorld;
 using RimWorld.QuestGen;
 using RimWorld.Planet;
 using Verse;
-using HarmonyLib;
+using UnityEngine;
 
 namespace AchievementsExpanded
 {
@@ -41,13 +41,15 @@ namespace AchievementsExpanded
                 ThingDef randomReward = rewards.RandomElement();
 
                 Thing reward = ThingMaker.MakeThing(randomReward);
+                int stackCount = 1;
                 if (reward is Building building)
                 {
                     reward = building.MakeMinified();
                 }
                 else if (reward.def.stackLimit > 1)
                 {
-                    int stackCount = Rand.Range(reward.def.stackLimit / 4, reward.def.stackLimit);
+                    int stackLimit = Mathf.Clamp(reward.def.stackLimit, 1, 500);
+                    stackCount = Rand.Range(stackLimit / 4, stackLimit);
                     float itemValue = reward.def.BaseMarketValue;
                     if (itemValue >= 2000)
                     {
@@ -69,8 +71,8 @@ namespace AchievementsExpanded
                     {
                         stackCount /= 2;
                     }
-                    reward.stackCount = stackCount;
                 }
+                reward.stackCount = stackCount;
                 Rand.PopState();
                 if (Find.CurrentMap != null)
                 {

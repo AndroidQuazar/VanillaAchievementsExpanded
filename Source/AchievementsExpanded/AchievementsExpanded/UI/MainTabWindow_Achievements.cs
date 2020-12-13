@@ -31,6 +31,10 @@ namespace AchievementsExpanded
                 {
                     rewardCache = DefDatabase<AchievementReward>.AllDefsListForReading.Where(r => (CurTab == AchievementTabHelper.MainTab && r.tab is null) 
                                                                                             || r.tab == CurTab).OrderBy(d => d.cost).ToList();
+                    if (rewardCache.NullOrEmpty())
+                    {
+                        rewardCache = DefDatabase<AchievementReward>.AllDefsListForReading.Where(r => r.tab is null || r.tab == AchievementTabHelper.MainTab).OrderBy(d => d.cost).ToList();
+                    }
                 }
                 return rewardCache;
             }
@@ -56,7 +60,7 @@ namespace AchievementsExpanded
 		{
 			get
 			{
-				return new Vector2(Verse.UI.screenWidth, Verse.UI.screenHeight * ScreenHeightPercent);
+				return new Vector2(UI.screenWidth, UI.screenHeight * ScreenHeightPercent);
 			}
 		}
 
@@ -198,7 +202,8 @@ namespace AchievementsExpanded
             float iconWidth = (rect.width / CardsPerRow) - SpaceBetweenCards - (SpaceBetweenCards * 2 / CardsPerRow);
             float iconHeight = iconWidth + iconWidth * 0.55f;
 
-            var achievementList = APM.achievementList.Where(a => a.tab == CurTab && (string.IsNullOrEmpty(searchText) || a.def.label.Contains(searchText, StringComparison.OrdinalIgnoreCase))).ToList();
+            var achievementList = APM.achievementList.Where(a => a.tab == CurTab && 
+                (string.IsNullOrEmpty(searchText) || a.def.label.Contains(searchText, StringComparison.OrdinalIgnoreCase) || a.def.description.Contains(searchText, StringComparison.OrdinalIgnoreCase))).ToList();
 
             Rect windowRect = new Rect(rect.x, rect.y + 60, rect.width, rect.height);
 

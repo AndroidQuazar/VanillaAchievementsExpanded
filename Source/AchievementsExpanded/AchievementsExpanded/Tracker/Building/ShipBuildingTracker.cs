@@ -23,8 +23,10 @@ namespace AchievementsExpanded
         public override bool Trigger(Building building)
         {
             base.Trigger(building);
-			if (building.Faction != Faction.OfPlayer)
+			if (building.Faction != Faction.OfPlayer || building.Map is null)
+			{
 				return false;
+			}
             List<Building> shipParts = ShipUtility.ShipBuildingsAttachedTo(building).ToList();
 			bool missingParts = false;
 			using (Dictionary<ThingDef, int>.Enumerator enumerator = ShipUtility.RequiredParts().GetEnumerator())
