@@ -22,7 +22,7 @@ namespace AchievementsExpanded
 
         internal static void EnsureNoDuplicateHashes(Harmony harmony)
         {
-            if (ModsConfig.IsActive(AchievementHarmony.CompatibleModIdentifier))
+            if (UtilityMethods.BaseModActive)
             {
                 Log.Message($"[{AchievementPointManager.AchievementTag}] Removing duplicate Def Types.");
                 CheckAchievementVersions();
@@ -67,7 +67,7 @@ namespace AchievementsExpanded
 
         private static void CheckAchievementVersions()
         {
-            if (ModsConfig.IsActive(AchievementHarmony.CompatibleModIdentifier))
+            if (UtilityMethods.BaseModActive)
             {
                 try
                 {
@@ -78,7 +78,7 @@ namespace AchievementsExpanded
                     {
                         foreach (ModContentPack mod in LoadedModManager.RunningMods)
                         {
-                            if (mod.PackageId == AchievementHarmony.modIdentifier)
+                            if (mod.PackageId.Contains(AchievementHarmony.modIdentifier))
                             {
                                 vaePassed = true;
                             }

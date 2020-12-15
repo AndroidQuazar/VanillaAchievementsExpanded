@@ -18,7 +18,7 @@ namespace AchievementsExpanded
 
         public static bool GenerateCacheForVAEDebugActions(MethodInfo method, DebugActionAttribute attribute)
         {
-			bool vaeActive = ModsConfig.IsActive(AchievementHarmony.CompatibleModIdentifier);
+			bool vaeActive = UtilityMethods.BaseModActive;
 			if (method.TryGetAttribute(out AchievementDebugAction vaeAttribute))
 			{
 				return (vaeActive || !vaeAttribute.requireBaseMod) && actionsAdded.Add(method);

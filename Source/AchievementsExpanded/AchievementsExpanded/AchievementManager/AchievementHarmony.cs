@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Verse;
 using RimWorld;
+using RimWorld.Planet;
 using HarmonyLib;
 using UnityEngine;
 using OpCodes = System.Reflection.Emit.OpCodes;
@@ -14,15 +15,15 @@ namespace AchievementsExpanded
     internal static class AchievementHarmony
     {
         internal static string modIdentifier = "vanillaexpanded.achievements";
-        internal static string CompatibleModIdentifier => modIdentifier.Replace("_copy", "");
 
         static AchievementHarmony()
         {
             AchievementPointManager.OnStartUp();
             var harmony = new Harmony(modIdentifier);
 
-            if (ModsConfig.IsActive(CompatibleModIdentifier))
+            if (UtilityMethods.BaseModActive)
             {
+                harmony.PatchAll();
                 /// <summary>
                 /// Automated Patches by allowing user to specify MethodInfo. 
                 /// Solely for organization regarding Trackers

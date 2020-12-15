@@ -77,7 +77,7 @@ namespace AchievementsExpanded
                 unlockedCards = new Stack<AchievementCard>();
             }
 
-            if (!ModsConfig.IsActive(AchievementHarmony.CompatibleModIdentifier))
+            if (!UtilityMethods.BaseModActive)
             {
                 return;
             }

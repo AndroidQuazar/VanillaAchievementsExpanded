@@ -6,6 +6,7 @@ using Verse.Sound;
 using RimWorld;
 using RimWorld.Planet;
 using UnityEngine;
+using HarmonyLib;
 
 namespace AchievementsExpanded
 {
@@ -14,6 +15,19 @@ namespace AchievementsExpanded
 	/// </summary>
 	public static class UtilityMethods
 	{
+		private static HashSet<string> activeModsCopiedHashSet;
+		public static bool BaseModActive
+        {
+            get
+            {
+				if (activeModsCopiedHashSet.EnumerableNullOrEmpty())
+                {
+					activeModsCopiedHashSet = (HashSet<string>)AccessTools.Field(typeof(ModsConfig), "activeModsHashSet").GetValue(null);
+                }
+				return !string.IsNullOrEmpty(activeModsCopiedHashSet.FirstOrDefault(s => s.Contains(AchievementHarmony.modIdentifier)));
+            }
+        }
+
 		/// <summary>
 		/// Check if string contains another string within
 		/// </summary>
