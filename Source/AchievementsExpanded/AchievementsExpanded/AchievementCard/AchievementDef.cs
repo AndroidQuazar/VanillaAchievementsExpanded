@@ -7,17 +7,17 @@ using UnityEngine;
 
 namespace AchievementsExpanded
 {
-    public class AchievementDef : Def
-    {
-        public string texPath;
-        public string bgtexPath;
+	public class AchievementDef : Def
+	{
+		public string texPath;
+		public string bgtexPath;
 
-        public new string description;
+		public new string description;
 
-        public int points;
-        public TrackerBase tracker;
+		public int points;
+		public TrackerBase tracker;
 
-        public AchievementTabDef tab;
-        public Type achievementClass;
-    }
+		public AchievementTabDef tab;
+		public Type achievementClass;
+	}
 }

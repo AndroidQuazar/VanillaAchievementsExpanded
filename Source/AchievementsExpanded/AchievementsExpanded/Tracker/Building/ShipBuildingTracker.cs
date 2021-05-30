@@ -8,26 +8,26 @@ using RimWorld;
 
 namespace AchievementsExpanded
 {
-    public class ShipBuildingTracker : BuildingTracker
-    {
-        protected override string[] DebugText =>  base.DebugText;
+	public class ShipBuildingTracker : BuildingTracker
+	{
+		protected override string[] DebugText =>  base.DebugText;
 
-        public ShipBuildingTracker()
-        {
-        }
+		public ShipBuildingTracker()
+		{
+		}
 
-        public ShipBuildingTracker(ShipBuildingTracker reference) : base(reference)
-        {
-        }
+		public ShipBuildingTracker(ShipBuildingTracker reference) : base(reference)
+		{
+		}
 
-        public override bool Trigger(Building building)
-        {
-            base.Trigger(building);
+		public override bool Trigger(Building building)
+		{
+			base.Trigger(building);
 			if (building.Faction != Faction.OfPlayer || building.Map is null)
 			{
 				return false;
 			}
-            List<Building> shipParts = ShipUtility.ShipBuildingsAttachedTo(building).ToList();
+			List<Building> shipParts = ShipUtility.ShipBuildingsAttachedTo(building).ToList();
 			bool missingParts = false;
 			using (Dictionary<ThingDef, int>.Enumerator enumerator = ShipUtility.RequiredParts().GetEnumerator())
 			{
@@ -49,7 +49,7 @@ namespace AchievementsExpanded
 					}
 				}
 			}
-            return !missingParts;
-        }
-    }
+			return !missingParts;
+		}
+	}
 }

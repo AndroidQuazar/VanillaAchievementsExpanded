@@ -6,14 +6,14 @@ using Verse;
 
 namespace AchievementsExpanded
 {
-    [AttributeUsage(AttributeTargets.Method)]
-    public class AchievementDebugAction : DebugActionAttribute
-    {
+	[AttributeUsage(AttributeTargets.Method)]
+	public class AchievementDebugAction : DebugActionAttribute
+	{
+		public bool requireBaseMod;
+
 		public AchievementDebugAction(string category = null, string name = null, bool requireBaseMod = true) : base(category, name)
 		{
 			this.requireBaseMod = requireBaseMod;
 		}
-
-		public bool requireBaseMod;
-    }
+	}
 }

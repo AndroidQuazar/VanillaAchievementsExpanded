@@ -6,7 +6,7 @@ using RimWorld;
 
 namespace AchievementsExpanded
 {
-    public class AchievementTabDef : Def
-    {
-    }
+	public class AchievementTabDef : Def
+	{
+	}
 }

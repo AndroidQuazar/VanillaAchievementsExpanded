@@ -8,44 +8,44 @@ using RimWorld;
 
 namespace AchievementsExpanded
 {
-    public class ItemTracker : TrackerBase
-    {
-        public override string Key => "ItemTracker";
+	public class ItemTracker : TrackerBase
+	{
+		public ThingDef def;
+		public int count = 1;
 
-        public override Func<bool> AttachToLongTick => () => { return Trigger(); };
-        protected override string[] DebugText => new string[] { $"Def: {def?.defName ?? "None"}", $"Count: {count}" };
+		[Unsaved]
+		protected int triggeredCount; //Only for display
 
-        public ItemTracker()
-        {
-        }
+		public override string Key => "ItemTracker";
 
-        public ItemTracker(ItemTracker reference) : base(reference)
-        {
-            def = reference.def;
-            count = reference.count;
-        }
+		public override Func<bool> AttachToLongTick => () => { return Trigger(); };
+		protected override string[] DebugText => new string[] { $"Def: {def?.defName ?? "None"}", $"Count: {count}" };
 
-        public override void ExposeData()
-        {
-            base.ExposeData();
-            Scribe_Defs.Look(ref def, "def");
-            Scribe_Values.Look(ref count, "count", 1);
-        }
+		public ItemTracker()
+		{
+		}
 
-        public override (float percent, string text) PercentComplete => count > 1 ? ((float)triggeredCount / count, $"{triggeredCount} / {count}") : base.PercentComplete;
+		public ItemTracker(ItemTracker reference) : base(reference)
+		{
+			def = reference.def;
+			count = reference.count;
+		}
 
-        public override bool Trigger()
-        {
-            base.Trigger();
-            return UtilityMethods.PlayerHas(def, out triggeredCount, count);
-        }
+		public override bool UnlockOnStartup => Trigger();
 
-        public override bool UnlockOnStartup => Trigger();
+		public override void ExposeData()
+		{
+			base.ExposeData();
+			Scribe_Defs.Look(ref def, "def");
+			Scribe_Values.Look(ref count, "count", 1);
+		}
 
-        public ThingDef def;
-        public int count = 1;
+		public override (float percent, string text) PercentComplete => count > 1 ? ((float)triggeredCount / count, $"{triggeredCount} / {count}") : base.PercentComplete;
 
-        [Unsaved]
-        protected int triggeredCount; //Only for display
-    }
+		public override bool Trigger()
+		{
+			base.Trigger();
+			return UtilityMethods.PlayerHas(def, out triggeredCount, count);
+		}
+	}
 }

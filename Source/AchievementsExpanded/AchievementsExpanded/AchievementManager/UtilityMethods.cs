@@ -15,18 +15,21 @@ namespace AchievementsExpanded
 	/// </summary>
 	public static class UtilityMethods
 	{
+		private static readonly Color InactiveColor = new Color(0.37f, 0.37f, 0.37f, 0.8f);
 		private static HashSet<string> activeModsCopiedHashSet;
+		private static bool tmpState;
+
 		public static bool BaseModActive
-        {
-            get
-            {
+		{
+			get
+			{
 				if (activeModsCopiedHashSet.EnumerableNullOrEmpty())
-                {
+				{
 					activeModsCopiedHashSet = (HashSet<string>)AccessTools.Field(typeof(ModsConfig), "activeModsHashSet").GetValue(null);
-                }
+				}
 				return !string.IsNullOrEmpty(activeModsCopiedHashSet.FirstOrDefault(s => s.Contains(AchievementHarmony.modIdentifier)));
-            }
-        }
+			}
+		}
 
 		/// <summary>
 		/// Check if string contains another string within
@@ -58,8 +61,16 @@ namespace AchievementsExpanded
 		{
 			foreach (var card in AchievementPointManager.GetCards<MentalBreakTracker>())
 			{
-				if (started && (card.tracker as MentalBreakTracker).Trigger(def))
+				try
 				{
+					if (started && (card.tracker as MentalBreakTracker).Trigger(def))
+					{
+						card.UnlockCard();
+					}
+				}
+				catch (Exception ex)
+				{
+					Log.Error($"Unable to trigger event for card validation. To avoid further errors {card.def.LabelCap} has been automatically unlocked.\n\nException={ex.Message}");
 					card.UnlockCard();
 				}
 			}
@@ -70,30 +81,46 @@ namespace AchievementsExpanded
 		/// </summary>
 		/// <param name="thing"></param>
 		public static void ItemCraftedTrigger(Thing thing)
-        {
+		{
 			foreach(var card in AchievementPointManager.GetCards<ItemCraftTracker>())
-            {
-                if ((card.tracker as ItemCraftTracker).Trigger(thing))
-                {
-                    card.UnlockCard();
-                }
-            }
-        }
+			{
+				try
+				{
+					if ((card.tracker as ItemCraftTracker).Trigger(thing))
+					{
+						card.UnlockCard();
+					}
+				}
+				catch (Exception ex)
+				{
+					Log.Error($"Unable to trigger event for card validation. To avoid further errors {card.def.LabelCap} has been automatically unlocked.\n\nException={ex.Message}");
+					card.UnlockCard();
+				}
+			}
+		}
 
 		/// <summary>
 		/// HelperMethod for LevelUp Mote Transpiler
 		/// </summary>
 		/// <param name="skill"></param>
 		public static void LevelUpTrigger(SkillDef skill, int level)
-        {
+		{
 			foreach(var card in AchievementPointManager.GetCards<SkillTracker>())
-            {
-                if ((card.tracker as SkillTracker).Trigger(skill, level))
-                {
-                    card.UnlockCard();
-                }
-            }
-        }
+			{
+				try
+				{
+					if ((card.tracker as SkillTracker).Trigger(skill, level))
+					{
+						card.UnlockCard();
+					}
+				}
+				catch (Exception ex)
+				{
+					Log.Error($"Unable to trigger event for card validation. To avoid further errors {card.def.LabelCap} has been automatically unlocked.\n\nException={ex.Message}");
+					card.UnlockCard();
+				}
+			}
+		}
 
 		/// <summary>
 		/// HelperMethod for Time based record event
@@ -102,16 +129,24 @@ namespace AchievementsExpanded
 		/// <param name="pawn"></param>
 		/// <param name="interval"></param>
 		public static void RecordTimeEvent(RecordDef def, Pawn pawn, int interval)
-        {
+		{
 			foreach (var card in AchievementPointManager.GetCards<RecordTimeTracker>())
-            {
-                var tracker = card.tracker as RecordTimeTracker;
-                if (tracker.def == def && tracker.Trigger(def, pawn, (float)interval))
-                {
-                    card.UnlockCard();
-                }
-            }
-        }
+			{
+				try
+				{
+					var tracker = card.tracker as RecordTimeTracker;
+					if (tracker.def == def && tracker.Trigger(def, pawn, (float)interval))
+					{
+						card.UnlockCard();
+					}
+				}
+				catch (Exception ex)
+				{
+					Log.Error($"Unable to trigger event for card validation. To avoid further errors {card.def.LabelCap} has been automatically unlocked.\n\nException={ex.Message}");
+					card.UnlockCard();
+				}
+			}
+		}
 
 		/// <summary>
 		/// Get all items from Player's home inventory
@@ -162,7 +197,7 @@ namespace AchievementsExpanded
 		}
 
 		public static void ConfirmationBoxCheckboxLabeled(this Listing_Standard listing, string label, ref bool checkOn, string tooltip = null)
-        {
+		{
 			float lineHeight = Text.LineHeight;
 			Rect rect = listing.GetRect(lineHeight);
 			if (!tooltip.NullOrEmpty())
@@ -175,11 +210,10 @@ namespace AchievementsExpanded
 			}
 			ConfirmationCheckbox(rect, label, ref checkOn, false, null, null, false);
 			listing.Gap(listing.verticalSpacing);
-        }
+		}
 
-		private static bool tmpState;
 		private static void ConfirmationCheckbox(Rect rect, string label, ref bool checkOn, bool disabled = false, Texture2D texChecked = null, Texture2D texUnchecked = null, bool placeCheckboxNearText = false)
-		{ 
+		{
 			TextAnchor anchor = Text.Anchor;
 			Text.Anchor = TextAnchor.MiddleLeft;
 			if (placeCheckboxNearText)
@@ -227,7 +261,5 @@ namespace AchievementsExpanded
 				GUI.color = color;
 			}
 		}
-
-		private static readonly Color InactiveColor = new Color(0.37f, 0.37f, 0.37f, 0.8f);
 	}
 }

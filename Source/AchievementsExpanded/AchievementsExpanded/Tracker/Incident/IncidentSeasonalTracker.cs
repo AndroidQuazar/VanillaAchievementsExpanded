@@ -8,34 +8,33 @@ using Verse;
 
 namespace AchievementsExpanded
 {
-    public class IncidentSeasonalTracker : IncidentTracker
-    {
-        public IncidentSeasonalTracker()
-        {
-        }
+	public class IncidentSeasonalTracker : IncidentTracker
+	{
+		public List<Season> allowedSeasons;
 
-        public IncidentSeasonalTracker(IncidentSeasonalTracker reference) : base(reference)
-        {
-            allowedSeasons = reference.allowedSeasons;
-        }
+		public IncidentSeasonalTracker()
+		{
+		}
 
-        public override void ExposeData()
-        {
-            base.ExposeData();
-            Scribe_Collections.Look(ref allowedSeasons, "allowedSeasons", LookMode.Value);
-        }
+		public IncidentSeasonalTracker(IncidentSeasonalTracker reference) : base(reference)
+		{
+			allowedSeasons = reference.allowedSeasons;
+		}
 
-        public override bool Trigger(IncidentDef param, Map map)
-        {
-            if(map is null)
-                return false;
-            if (!allowedSeasons?.Contains(GenLocalDate.Season(map.Tile)) ?? true)
-            {
-                return false;
-            }
-            return base.Trigger(param, map);
-        }
+		public override void ExposeData()
+		{
+			base.ExposeData();
+			Scribe_Collections.Look(ref allowedSeasons, "allowedSeasons", LookMode.Value);
+		}
 
-        public List<Season> allowedSeasons;
-    }
+		public override bool Trigger(IncidentDef param, Map map)
+		{
+			if(map is null) return false;
+			if (!allowedSeasons?.Contains(GenLocalDate.Season(map.Tile)) ?? true)
+			{
+				return false;
+			}
+			return base.Trigger(param, map);
+		}
+	}
 }

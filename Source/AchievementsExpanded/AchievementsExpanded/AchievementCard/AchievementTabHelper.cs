@@ -5,14 +5,14 @@ using Verse;
 
 namespace AchievementsExpanded
 {
-    [StaticConstructorOnStartup]
-    public static class AchievementTabHelper
-    { 
-        static AchievementTabHelper()
-        {
-            MainTab = DefDatabase<AchievementTabDef>.GetNamedSilentFail("Main");
-        }
+	[StaticConstructorOnStartup]
+	public static class AchievementTabHelper
+	{
+		public static AchievementTabDef MainTab;
 
-        public static AchievementTabDef MainTab;
-    }
+		static AchievementTabHelper()
+		{
+			MainTab = DefDatabase<AchievementTabDef>.GetNamedSilentFail("Main");
+		}
+	}
 }
