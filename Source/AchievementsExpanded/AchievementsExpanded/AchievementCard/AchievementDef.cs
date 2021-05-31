@@ -20,6 +20,6 @@ namespace AchievementsExpanded
 		public AchievementTabDef tab;
 		public Type achievementClass;
 
-        public float order;
-    }
+		public float order;
+	}
 }

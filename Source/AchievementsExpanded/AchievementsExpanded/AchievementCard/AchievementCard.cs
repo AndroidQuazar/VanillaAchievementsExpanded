@@ -6,7 +6,7 @@ using Verse.Sound;
 
 namespace AchievementsExpanded
 {
-    public class AchievementCard : IExposable, ILoadReferenceable, IComparable<AchievementCard>
+	public class AchievementCard : IExposable, ILoadReferenceable, IComparable<AchievementCard>
 	{
 		public AchievementDef def;
 		public AchievementTabDef tab;
@@ -29,7 +29,7 @@ namespace AchievementsExpanded
 		{
 			this.def = def;
 			tab = def.tab ?? AchievementTabHelper.MainTab;
-            uniqueHash = def.defName.GetHashCode();
+			uniqueHash = def.defName.GetHashCode();
 			unlocked = preUnlocked;
 			tracker = (TrackerBase)Activator.CreateInstance(def.tracker.GetType(), new object[] { def.tracker });
 			tracker.cardAssigned = this.def.defName;
@@ -161,23 +161,23 @@ namespace AchievementsExpanded
 		public void ExposeData()
 		{
 			Scribe_Defs.Look(ref def, "def");
-            tab = def?.tab ?? AchievementTabHelper.MainTab;
+			tab = def?.tab ?? AchievementTabHelper.MainTab;
 
-            Scribe_Deep.Look(ref tracker, "tracker");
+			Scribe_Deep.Look(ref tracker, "tracker");
 
 			Scribe_Values.Look(ref unlocked, "unlocked", false);
 			Scribe_Values.Look(ref devModeUnlocked, "devModeUnlocked", false);
 			Scribe_Values.Look(ref dateUnlocked, "dateUnlocked", "Locked");
 
 			Scribe_Values.Look(ref uniqueHash, "uniqueHash");
-        }
+		}
 
-        public int CompareTo(AchievementCard other)
-        {
-            if (other == null)
-                return 1;
+		public int CompareTo(AchievementCard other)
+		{
+			if (other == null)
+				return 1;
 
-            return Mathf.RoundToInt((this.def.order - other.def.order) * 1000f);
-        }
-    }
+			return Mathf.RoundToInt((this.def.order - other.def.order) * 1000f);
+		}
+	}
 }

@@ -2,8 +2,8 @@
 
 namespace AchievementsExpanded
 {
-    public class AchievementTabDef : Def
-    {
-        public bool sorted;
-    }
+	public class AchievementTabDef : Def
+	{
+		public bool sorted;
+	}
 }

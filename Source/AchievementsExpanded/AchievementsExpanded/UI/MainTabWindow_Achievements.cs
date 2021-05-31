@@ -205,8 +205,8 @@ namespace AchievementsExpanded
 			var achievementList = APM.achievementList.Where(a => a.tab == CurTab && 
 				(string.IsNullOrEmpty(searchText) || a.def.label.Contains(searchText, StringComparison.OrdinalIgnoreCase) || a.def.description.Contains(searchText, StringComparison.OrdinalIgnoreCase))).ToList();
 
-            if (CurTab?.sorted ?? false)
-                achievementList.Sort();
+			if (CurTab?.sorted ?? false)
+				achievementList.Sort();
 
 			Rect windowRect = new Rect(rect.x, rect.y + 60, rect.width, rect.height);
 
