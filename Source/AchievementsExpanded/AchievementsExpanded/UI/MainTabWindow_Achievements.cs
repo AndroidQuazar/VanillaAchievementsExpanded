@@ -10,6 +10,31 @@ namespace AchievementsExpanded
 {
 	public class MainTabWindow_Achievements : MainTabWindow
 	{
+		private const float CardSize = 200;
+		public const float SpaceBetweenCards = 10;
+		private const float CardSizeToResolutionRatio = 9.6f;
+		private const float TextAreaHeight = 0.15f;
+		private const float SidePanelMargin = 0.05f;
+		private const float SidePanelRatio = 0.8f;
+		private const float ScreenHeightPercent = 0.8f;
+		//Default sizing of side panel based on 1920x1080 resolution ratio
+		private const float SidePanelWidth = 1920 * (1 - SidePanelRatio);
+
+		private static float FullPanelWidth;
+		public static int CardsPerRow;
+
+		private AchievementPointManager apmCache;
+		private List<AchievementReward> rewardCache;
+		private static AchievementTabDef curTab;
+		private List<TabRecord> tabs = new List<TabRecord>();
+
+		private static Vector2 menuScrollPosition;
+		private static Vector2 sidebarScrollPosition;
+		private static string searchText;
+
+		public static Color LightGray = new Color(0.85f, 0.85f, 0.85f, 1f);
+		public static Color MediumGray = new Color(0.75f, 0.75f, 0.75f, 1f);
+
 		public AchievementPointManager APM
 		{
 			get
@@ -203,7 +228,8 @@ namespace AchievementsExpanded
 			float iconHeight = iconWidth + iconWidth * 0.55f;
 
 			var achievementList = APM.achievementList.Where(a => a.tab == CurTab && 
-				(string.IsNullOrEmpty(searchText) || a.def.label.Contains(searchText, StringComparison.OrdinalIgnoreCase) || a.def.description.Contains(searchText, StringComparison.OrdinalIgnoreCase))).ToList();
+				(string.IsNullOrEmpty(searchText) || a.def.label.Contains(searchText, StringComparison.OrdinalIgnoreCase) || a.def.description.Contains(searchText, StringComparison.OrdinalIgnoreCase)))
+				.OrderBy(c => c.def.order).ToList();
 
 			Rect windowRect = new Rect(rect.x, rect.y + 60, rect.width, rect.height);
 
@@ -239,34 +265,5 @@ namespace AchievementsExpanded
 				rewardCache.Clear();
 			}
 		}
-
-		private const float CardSize = 200;
-
-		public static int CardsPerRow;
-
-		public const float SpaceBetweenCards = 10;
-
-		private const float CardSizeToResolutionRatio = 9.6f;
-
-		private const float TextAreaHeight = 0.15f;
-		private const float SidePanelMargin = 0.05f;
-		private const float SidePanelRatio = 0.8f;
-		private const float ScreenHeightPercent = 0.8f;
-
-		//Default sizing of side panel based on 1920x1080 resolution ratio
-		private const float SidePanelWidth = 1920 * (1 - SidePanelRatio);
-		private static float FullPanelWidth;
-
-		private AchievementPointManager apmCache;
-		private List<AchievementReward> rewardCache;
-		private static AchievementTabDef curTab;
-		private List<TabRecord> tabs = new List<TabRecord>();
-
-		private static Vector2 menuScrollPosition;
-		private static Vector2 sidebarScrollPosition;
-		private static string searchText;
-
-		public static Color LightGray = new Color(0.85f, 0.85f, 0.85f, 1f);
-		public static Color MediumGray = new Color(0.75f, 0.75f, 0.75f, 1f);
 	}
 }

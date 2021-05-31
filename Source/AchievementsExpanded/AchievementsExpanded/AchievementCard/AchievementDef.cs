@@ -13,6 +13,7 @@ namespace AchievementsExpanded
 		public string bgtexPath;
 
 		public new string description;
+		public int order = 9999;
 
 		public int points;
 		public TrackerBase tracker;

@@ -4,7 +4,7 @@
 		<defName>iWillSurvive</defName>
 		<label>I Will Survive</label>
 		<description>Have 7 colonists</description>
-		
+		<order>1</order>
 		<tracker Class="AchievementsExpanded.RaceDefTracker">
 			<raceDefs>
 				<li>
@@ -22,7 +22,7 @@
 		<defName>imStillStanding</defName>
 		<label>I'm Still Standing</label>
 		<description>Have 12 colonists</description>
-		
+		<order>2</order>
 		<tracker Class="AchievementsExpanded.RaceDefTracker">
 			<raceDefs>
 				<li>
@@ -40,7 +40,7 @@
 		<defName>imASurvivor</defName>
 		<label>I'm a Survivor</label>
 		<description>Have 18 colonists</description>
-		
+		<order>3</order>
 		<tracker Class="AchievementsExpanded.RaceDefTracker">
 			<raceDefs>
 				<li>
@@ -58,7 +58,7 @@
 		<defName>aintNoStoppingUsNow</defName>
 		<label>Ain't no Stopping us Now</label>
 		<description>Have 33 colonists</description>
-		
+		<order>4</order>
 		<tracker Class="AchievementsExpanded.RaceDefTracker">
 			<raceDefs>
 				<li>

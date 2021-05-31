@@ -167,8 +167,6 @@ namespace AchievementsExpanded
 		public void ExposeData()
 		{
 			Scribe_Defs.Look(ref def, "def");
-			Scribe_Defs.Look(ref tab, "tab");
-
 			Scribe_Deep.Look(ref tracker, "tracker");
 
 			Scribe_Values.Look(ref unlocked, "unlocked", false);
@@ -176,6 +174,11 @@ namespace AchievementsExpanded
 			Scribe_Values.Look(ref dateUnlocked, "dateUnlocked", "Locked");
 
 			Scribe_Values.Look(ref uniqueHash, "uniqueHash");
+
+			if (Scribe.mode == LoadSaveMode.PostLoadInit)
+			{
+				tab = def.tab ?? AchievementTabHelper.MainTab;
+			}
 		}
 	}
 }
