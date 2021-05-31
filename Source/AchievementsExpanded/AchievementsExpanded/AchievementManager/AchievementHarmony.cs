@@ -2,6 +2,7 @@
 using System.Reflection.Emit;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using Verse;
 using RimWorld;
 using RimWorld.Planet;
@@ -15,6 +16,31 @@ namespace AchievementsExpanded
 	internal static class AchievementHarmony
 	{
 		internal static string modIdentifier = "vanillaexpanded.achievements";
+		internal static Dictionary<MethodInfo, HashSet<MethodInfo>> hookToPatchMap = new Dictionary<MethodInfo, HashSet<MethodInfo>>();
+
+		/// <summary>
+		/// A method that checks whether or not a method has already been patched, in order to prevent duplicate patching.
+		/// </summary>
+		/// <param name="methodHook">The method that is being patched.</param>
+		/// <param name="patchMethod">The patch method (prefix/postfix/transpiler/finalizer).</param>
+		/// <param name="register">If true, the patch will be 'registered'. This does not mean that the patch is applied, the caller should do that themselves.</param>
+		/// <returns>True if the method has not already been patched by the target method, false otherwise.</returns>
+		internal static bool TryRegisterPatch(MethodInfo methodHook, MethodInfo patchMethod, bool register = true)
+		{
+			if (hookToPatchMap.TryGetValue(methodHook, out var hashSet))
+			{
+				bool canAdd = !hashSet.Contains(patchMethod);
+				if (canAdd && register)
+					hashSet.Add(patchMethod);
+				return canAdd;
+			}
+
+			hashSet = new HashSet<MethodInfo>();
+			hashSet.Add(patchMethod);
+			if(register)
+				hookToPatchMap.Add(methodHook, hashSet);
+			return true;
+		}
 
 		static AchievementHarmony()
 		{
@@ -32,6 +58,12 @@ namespace AchievementsExpanded
 				{
 					if (tracker.MethodHook != null && tracker.PatchMethod != null)
 					{
+						if (!TryRegisterPatch(tracker.MethodHook, tracker.PatchMethod))
+						{
+							Log.Warning($"Duplicate patch attempt detected (from {tracker.GetType().FullName}): Target method {tracker.MethodHook.DeclaringType.FullName}.{tracker.MethodHook.Name} Patch method: {tracker.PatchMethod.DeclaringType.FullName}.{tracker.PatchMethod.DeclaringType.Name} (type: {tracker.PatchType})");
+							continue;
+						}
+
 						switch(tracker.PatchType)
 						{
 							case PatchType.Prefix:
