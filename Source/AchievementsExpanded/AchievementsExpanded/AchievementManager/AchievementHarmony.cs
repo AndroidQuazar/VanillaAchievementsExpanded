@@ -60,7 +60,7 @@ namespace AchievementsExpanded
 					{
 						if (!TryRegisterPatch(tracker.MethodHook, tracker.PatchMethod))
 						{
-							Log.Warning($"Duplicate patch attempt detected: Target method {tracker.MethodHook.DeclaringType.FullName}.{tracker.MethodHook.Name} Patch method: {tracker.PatchMethod.DeclaringType.FullName}.{tracker.PatchMethod.DeclaringType.Name} (type: {tracker.PatchType})");
+							Log.Warning($"Duplicate patch attempt detected (from {tracker.GetType().FullName}): Target method {tracker.MethodHook.DeclaringType.FullName}.{tracker.MethodHook.Name} Patch method: {tracker.PatchMethod.DeclaringType.FullName}.{tracker.PatchMethod.DeclaringType.Name} (type: {tracker.PatchType})");
 							continue;
 						}
 
