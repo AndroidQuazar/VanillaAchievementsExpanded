@@ -54,7 +54,7 @@ namespace AchievementsExpanded
 				Pawn pawn = slate.Get<Pawn>("asker");
 				if (pawn.royalty.AllTitlesForReading.NullOrEmpty())
 				{
-					pawn.royalty.SetTitle(Faction.Empire, RoyalTitleDefOf.Knight, grantRewards: false);
+					pawn.royalty.SetTitle(Faction.OfEmpire, RoyalTitleDefOf.Knight, grantRewards: false);
 					Messages.Message("Dev: Gave " + RoyalTitleDefOf.Knight.label + " title to " + pawn.LabelCap, pawn, MessageTypeDefOf.NeutralEvent, historical: false);
 				}
 				Find.CurrentMap.StoryState.RecordDecreeFired(script);

@@ -117,7 +117,6 @@ namespace AchievementsExpanded
 
 		public override void DoWindowContents(Rect inRect)
 		{
-			base.DoWindowContents(inRect);
 			Rect menuRect = inRect;
 			menuRect.y += 40f;
 			menuRect.height -= 40f;

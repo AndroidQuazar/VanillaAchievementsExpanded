@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<AchievementsExpanded.AchievementDef>
+		<defName>couldBeWorse</defName>
+		<label>Could Be Worse</label>
+		<description>Survive a Quadrum</description>
+		
+		<tracker Class="AchievementsExpanded.TimeTracker">
+			<ticksPassed>900000</ticksPassed> <!-- 1 Quadrum -->
+		</tracker>
+		
+		<texPath>Achievements/CouldBeWorse</texPath>
+		<points>5</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>itsAllDownhillFromHere</defName>
+		<label>It's All Downhill From Here</label>
+		<description>Survive a year</description>
+		
+		<tracker Class="AchievementsExpanded.TimeTracker">
+			<ticksPassed>3600000</ticksPassed> <!-- 1 Year -->
+		</tracker>
+		
+		<texPath>Achievements/ItsAllDownhillFromHere</texPath>
+		<points>10</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>tenHoursWoah</defName>
+		<label>10 Hours? Woah!</label>
+		<description>Spend 10 hours playing the current colony</description>
+		
+		<tracker Class="AchievementsExpanded.TimeTracker">
+			<ticksPassed>2160000</ticksPassed>
+			<gameTime>false</gameTime>
+		</tracker>
+		
+		<texPath>Achievements/10HoursWoah</texPath>
+		<points>10</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>waitAMinute</defName>
+		<label>Wait a Minute!</label>
+		<description>Spend 100 hours playing the current colony</description>
+		
+		<tracker Class="AchievementsExpanded.TimeTracker">
+			<ticksPassed>21600000</ticksPassed>
+			<gameTime>false</gameTime>
+		</tracker>
+		
+		<texPath>Achievements/WaitAMinute</texPath>
+		<points>25</points>
+	</AchievementsExpanded.AchievementDef>
+</Defs>

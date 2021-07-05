@@ -1,0 +1,342 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<AchievementsExpanded.AchievementDef>
+		<defName>threeLittlePigs</defName>
+		<label>Three Little Pigs</label>
+		<description>Have 3 Pigs and 1 Timberwolf</description>
+		
+		<tracker Class="AchievementsExpanded.KindDefTracker">
+			<kindDefs>
+				<li>
+					<key>Pig</key>
+					<value>3</value>
+				</li>
+				<li>
+					<key>Wolf_Timber</key>
+					<value>1</value>
+				</li>
+			</kindDefs>
+		</tracker>
+		
+		<texPath>Achievements/ThreeLittlePigs</texPath>
+		<points>25</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>lookAtAllThoseChickens</defName>
+		<label>Look At All Those Chickens</label>
+		<description>Have 20 Geese</description>
+		
+		<tracker Class="AchievementsExpanded.KindDefTracker">
+			<kindDefs>
+				<li>
+					<key>Goose</key>
+					<value>20</value>
+				</li>
+			</kindDefs>
+		</tracker>
+		
+		<texPath>Achievements/LookAtAllThoseChickens</texPath>
+		<points>25</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>sustainableFuelSource</defName>
+		<label>Sustainable Fuel Source</label>
+		<description>Have 8 Boomalopes</description>
+		
+		<tracker Class="AchievementsExpanded.KindDefTracker">
+			<kindDefs>
+				<li>
+					<key>Boomalope</key>
+					<value>8</value>
+				</li>
+			</kindDefs>
+		</tracker>
+		
+		<texPath>Achievements/SustainableFuelSource</texPath>
+		<points>25</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>muffaloRancher</defName>
+		<label>Muffalo Rancher</label>
+		<description>Have 12 Muffalos</description>
+		
+		<tracker Class="AchievementsExpanded.KindDefTracker">
+			<kindDefs>
+				<li>
+					<key>Muffalo</key>
+					<value>12</value>
+				</li>
+			</kindDefs>
+		</tracker>
+		
+		<texPath>Achievements/MuffaloRancher</texPath>
+		<points>25</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>arkHalfFull</defName>
+		<label>Ark Half Full</label>
+		<description>Have 1 of every vanilla animal at the same time.</description>
+		
+		<tracker Class="AchievementsExpanded.KindDefTracker">
+			<kindDefs>
+				<li>
+					<key>Muffalo</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Gazelle</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Iguana</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Dromedary</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Bear_Grizzly</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Bear_Polar</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Cougar</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Panther</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Lynx</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Cassowary</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Emu</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Ostrich</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Turkey</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Chicken</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Pig</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Cow</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Alpaca</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Duck</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Bison</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Goat</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Goose</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Sheep</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Horse</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Yak</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>GuineaPig</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Donkey</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Rhinoceros</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Elephant</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Megasloth</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Thrumbo</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Hare</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Snowhare</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>YorkshireTerrier</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Husky</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>LabradorRetriever</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Cat</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Squirrel</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Alphabeaver</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Capybara</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Chinchilla</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Boomrat</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Raccoon</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Rat</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Deer</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Ibex</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Elk</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Caribou</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>WildBoar</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Tortoise</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Cobra</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Monkey</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Boomalope</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Warg</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Wolf_Timber</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Wolf_Arctic</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Fox_Fennec</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Fox_Red</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Fox_Arctic</key>
+					<value>1</value>
+				</li>
+			</kindDefs>
+		</tracker>
+		
+		<texPath>Achievements/ArkHalfFull</texPath>
+		<points>100</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>gentleGiant</defName>
+		<label>Gentle Giant</label>
+		<description>Tame a Thrumbo</description>
+		
+		<tracker Class="AchievementsExpanded.KindDefTracker">
+			<kindDefs>
+				<li>
+					<key>Thrumbo</key>
+					<value>1</value>
+				</li>
+			</kindDefs>
+		</tracker>
+		
+		<texPath>Achievements/GentleGiant</texPath>
+		<points>50</points>
+	</AchievementsExpanded.AchievementDef>
+</Defs>

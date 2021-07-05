@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<AchievementsExpanded.AchievementDef>
+		<defName>aHappyEnding</defName>
+		<label>A Happy Ending</label>
+		<description>Have a 90% average mood in the colony</description>
+		
+		<tracker Class="AchievementsExpanded.MoodTracker">
+			<mood>Above</mood>
+			<average>0.9</average>
+		</tracker>
+		
+		<texPath>Achievements/AHappyEnding</texPath>
+		<points>25</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>areYouNotEntertained</defName>
+		<label>Are You Not Entertained?</label>
+		<description>Have a 5% average mood in the colony</description>
+		
+		<tracker Class="AchievementsExpanded.MoodTracker">
+			<mood>Below</mood>
+			<average>0.05</average>
+		</tracker>
+		
+		<texPath>Achievements/AreYouNotEntertained</texPath>
+		<points>10</points>
+	</AchievementsExpanded.AchievementDef>
+</Defs>

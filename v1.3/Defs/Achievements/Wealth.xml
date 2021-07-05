@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<AchievementsExpanded.AchievementDef>
+		<defName>inForAPenny</defName>
+		<label>In For A Penny</label>
+		<description>Amass colony wealth of 100000</description>
+		
+		<tracker Class="AchievementsExpanded.WealthTracker">
+			<count>100000</count>
+		</tracker>
+		
+		<texPath>Achievements/InForAPenny</texPath>
+		<points>10</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>inForAPound</defName>
+		<label>In For A Pound</label>
+		<description>Amass colony wealth of 1000000</description>
+		
+		<tracker Class="AchievementsExpanded.WealthTracker">
+			<count>1000000</count>
+		</tracker>
+		
+		<texPath>Achievements/InForAPound</texPath>
+		<points>50</points>
+	</AchievementsExpanded.AchievementDef>
+</Defs>

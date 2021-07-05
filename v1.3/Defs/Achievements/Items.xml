@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<AchievementsExpanded.AchievementDef>
+		<defName>oneStepCloser</defName>
+		<label>One Step Closer</label>
+		<description>Obtain an AI Persona Core</description>
+		
+		<tracker Class="AchievementsExpanded.ItemTracker">
+			<def>AIPersonaCore</def>
+			<count>1</count>
+		</tracker>
+		
+		<texPath>Achievements/OneStepCloser</texPath>
+		<points>25</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>humanLeatherHat</defName>
+		<label>Human Leather Cowboy Hat</label>
+		<description>Craft a human leather cowboy hat</description>
+		
+		<tracker Class="AchievementsExpanded.ItemCraftTracker">
+			<def>Apparel_CowboyHat</def>
+			<madeFrom>Leather_Human</madeFrom>
+			<count>1</count>
+		</tracker>
+		
+		<texPath>Achievements/HumanLeatherHat</texPath>
+		<points>10</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>midas</defName>
+		<label>Midas</label>
+		<description>Have 5000 gold</description>
+		
+		<tracker Class="AchievementsExpanded.ItemTracker">
+			<def>Gold</def>
+			<count>5000</count>
+		</tracker>
+		
+		<texPath>Achievements/Midas</texPath>
+		<points>50</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>420blazeIt</defName>
+		<label>4/20 Blaze It</label>
+		<description>Obtain 420 smokeleaf</description>
+		
+		<tracker Class="AchievementsExpanded.ItemTracker">
+			<def>SmokeleafLeaves</def>
+			<count>420</count>
+		</tracker>
+		
+		<texPath>Achievements/420</texPath>
+		<points>25</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>silenceOfTheLambs</defName>
+		<label>Silence of the Lambs</label>
+		<description>Obtain 100 human meat</description>
+		
+		<tracker Class="AchievementsExpanded.ItemTracker">
+			<def>Meat_Human</def>
+			<count>100</count>
+		</tracker>
+		
+		<texPath>Achievements/SilenceOfTheLambs</texPath>
+		<points>10</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>theStuffOfLegends</defName>
+		<label>The Stuff Of Legends</label>
+		<description>Craft any legendary item</description>
+		
+		<tracker Class="AchievementsExpanded.ItemCraftTracker">
+			<quality>Legendary</quality>
+			<count>1</count>
+		</tracker>
+		
+		<texPath>Achievements/TheStuffOfLegends</texPath>
+		<points>25</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>futureCaveman</defName>
+		<label>Future Caveman</label>
+		<description>Make a plasteel club</description>
+		
+		<tracker Class="AchievementsExpanded.ItemCraftTracker">
+			<def>MeleeWeapon_Club</def>
+			<madeFrom>Plasteel</madeFrom>
+			<count>1</count>
+		</tracker>
+		
+		<texPath>Achievements/FutureCaveman</texPath>
+		<points>10</points>
+	</AchievementsExpanded.AchievementDef>
+</Defs>

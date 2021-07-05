@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<AchievementsExpanded.AchievementDef>
+		<defName>T-800</defName>
+		<label>T-800</label>
+		<description>Have a single pawn with bionic legs, arms, spine, ears and eyes</description>
+		
+		<tracker Class="AchievementsExpanded.MultiHediffTracker">
+			<defs>
+				<li>
+					<key>BionicEye</key>
+					<value>2</value>
+				</li>
+				<li>
+					<key>BionicArm</key>
+					<value>2</value>
+				</li>
+				<li>
+					<key>BionicLeg</key>
+					<value>2</value>
+				</li>
+				<li>
+					<key>BionicSpine</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>BionicEar</key>
+					<value>2</value>
+				</li>
+			</defs>
+		</tracker>
+		
+		<texPath>Achievements/T800</texPath>
+		<points>50</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>imAPirate</defName>
+		<label>I'm A Pirate!</label>
+		<description>Install a peg leg on a pawn</description>
+		
+		<tracker Class="AchievementsExpanded.HediffTracker">
+			<def>PegLeg</def>
+			<count>1</count>
+		</tracker>
+		
+		<texPath>Achievements/ImaPirate</texPath>
+		<points>5</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>onEdge</defName>
+		<label>On Edge</label>
+		<description>Gain immunity when infection is on 99%</description>
+		
+		<tracker Class="AchievementsExpanded.ImmunityHediffTracker">
+			<def>WoundInfection</def>
+			<count>0.99</count>
+		</tracker>
+		
+		<texPath>Achievements/OnEdge</texPath>
+		<points>50</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>thatllShowHim</defName>
+		<label>That'll Show Him</label>
+		<description>Starve a pawn to death</description>
+
+		<tracker Class="AchievementsExpanded.HediffDeathTracker">
+			<def>Malnutrition</def>
+			<count>1</count>
+		</tracker>
+		
+		<texPath>Achievements/ThatllShowHim</texPath>
+		<points>10</points>
+	</AchievementsExpanded.AchievementDef>
+</Defs>

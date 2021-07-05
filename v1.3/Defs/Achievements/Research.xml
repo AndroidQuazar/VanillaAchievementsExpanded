@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<AchievementsExpanded.AchievementDef>
+		<defName>sticksAndStones</defName>
+		<label>Sticks And Stones</label>
+		<description>Research all neolithic technologies</description>
+		
+		<tracker Class="AchievementsExpanded.ResearchTracker">
+			<tech>Neolithic</tech>
+			<coreModsOnly>true</coreModsOnly>
+		</tracker>
+		
+		<texPath>Achievements/SticksAndStones</texPath>
+		<points>10</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>outOfTheDarkAges</defName>
+		<label>Out of the Dark Ages</label>
+		<description>Research all medieval technologies</description>
+		
+		<tracker Class="AchievementsExpanded.ResearchTracker">
+			<tech>Medieval</tech>
+			<coreModsOnly>true</coreModsOnly>
+		</tracker>
+		
+		<texPath>Achievements/OutOfTheDarkAges</texPath>
+		<points>10</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>industrialRevolution</defName>
+		<label>Industrial Revolution</label>
+		<description>Research all industrial technologies</description>
+		
+		<tracker Class="AchievementsExpanded.ResearchTracker">
+			<tech>Industrial</tech>
+			<coreModsOnly>true</coreModsOnly>
+		</tracker>
+		
+		<texPath>Achievements/IndustrialRevolution</texPath>
+		<points>25</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>offToTheStars</defName>
+		<label>Off To The Stars</label>
+		<description>Research all spacer technologies</description>
+		
+		<tracker Class="AchievementsExpanded.ResearchTracker">
+			<tech>Spacer</tech>
+			<coreModsOnly>true</coreModsOnly>
+		</tracker>
+		
+		<texPath>Achievements/OffToTheStars</texPath>
+		<points>50</points>
+	</AchievementsExpanded.AchievementDef>
+</Defs>

@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<AchievementsExpanded.AchievementDef>
+		<defName>pabloEmilioEscobarGaviria</defName>
+		<label>Pablo Emilio Escobar Gaviria</label>
+		<description>Sell 400 Yayo to a single trader in a single transation</description>
+		
+		<tracker Class="AchievementsExpanded.TraderTracker">
+			<def>Yayo</def>
+			<count>400</count>
+			<singleTransaction>true</singleTransaction>
+		</tracker>
+		
+		<texPath>Achievements/PabloEmilioEscobarGaviria</texPath>
+		<points>25</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>wolfOfWallStreet</defName>
+		<label>Wolf Of Wall Street</label>
+		<description>Earn 3000 silver from a single transaction</description>
+		
+		<tracker Class="AchievementsExpanded.TraderTracker">
+			<worth>3000</worth>
+			<singleTransaction>true</singleTransaction>
+		</tracker>
+		
+		<texPath>Achievements/CheaterCheater</texPath>
+		<points>25</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>slaverScum</defName>
+		<label>Slaver Scum</label>
+		<description>Sell 5 prisoners in a single transaction</description>
+		
+		<tracker Class="AchievementsExpanded.TraderTracker">
+			<def>Human</def>
+			<count>5</count>
+			<singleTransaction>true</singleTransaction>
+		</tracker>
+		
+		<texPath>Achievements/SlaverScum</texPath>
+		<points>50</points>
+	</AchievementsExpanded.AchievementDef>
+</Defs>

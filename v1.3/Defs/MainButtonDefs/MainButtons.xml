@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<MainButtonDef>
+		<defName>Achievements</defName>
+		<label>achievements</label>
+		<description>Unlock achievements, earn points, manage progress.</description>
+		<tabWindowClass>AchievementsExpanded.MainTabWindow_Achievements</tabWindowClass>
+		<canBeTutorDenied>false</canBeTutorDenied>
+		<order>499</order>
+		<validWithoutMap>true</validWithoutMap>
+		<minimized>True</minimized>
+		<iconPath>Icons/IconAchievements</iconPath>
+	  </MainButtonDef>
+</Defs>

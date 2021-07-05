@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<AchievementsExpanded.AchievementDef>
+		<defName>aFormalComplaint</defName>
+		<label>A Formal Complaint</label>
+		<description>Have a pawn go berserk</description>
+		
+		<tracker Class="AchievementsExpanded.MentalBreakTracker">
+			<def>Berserk</def>
+			<count>1</count>
+		</tracker>
+		
+		<texPath>Achievements/AFormalComplaint</texPath>
+		<points>5</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>callOfTheWild</defName>
+		<label>Call Of The Wild</label>
+		<description>Have a pawn run wild</description>
+		
+		<tracker Class="AchievementsExpanded.MentalBreakTracker">
+			<def>RunWild</def>
+			<count>1</count>
+		</tracker>
+		
+		<texPath>Achievements/CallOfTheWild</texPath>
+		<points>25</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>letsStartARevolution</defName>
+		<label>Let's Start A Revolution</label>
+		<description>Have 5 pawns on mental break at the same time</description>
+		
+		<tracker Class="AchievementsExpanded.MentalBreakTracker">
+			<count>1</count>
+			<consecutive>5</consecutive>
+		</tracker>
+		
+		<texPath>Achievements/LetsStartARevolution</texPath>
+		<points>50</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>50ShadesOfGrey</defName>
+		<label>50 Shades Of Grey</label>
+		<description>Have a pawn go into a sadistic rage on a prisoner</description>
+		
+		<tracker Class="AchievementsExpanded.MentalBreakTracker">
+			<def>SadisticRage</def>
+			<count>1</count>
+		</tracker>
+		
+		<texPath>Achievements/50ShadesofGrey</texPath>
+		<points>25</points>
+	</AchievementsExpanded.AchievementDef>
+</Defs>

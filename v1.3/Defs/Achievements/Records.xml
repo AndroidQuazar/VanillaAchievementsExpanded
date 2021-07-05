@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<AchievementsExpanded.AchievementDef>
+		<defName>OneShotOneKill</defName>
+		<label>One Shot One Kill</label>
+		<description>Have a single pawn score 100 headshots.</description>
+		
+		<tracker Class="AchievementsExpanded.RecordEventTracker">
+			<def>Headshots</def>
+			<count>100</count>
+		</tracker>
+		
+		<texPath>Achievements/OneShotOneKill</texPath>
+		<points>50</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>TriggerHappy</defName>
+		<label>Trigger-Happy</label>
+		<description>Have a single pawn fire 2000 shots</description>
+		
+		<tracker Class="AchievementsExpanded.RecordEventTracker">
+			<def>ShotsFired</def>
+			<count>2000</count>
+		</tracker>
+		
+		<texPath>Achievements/TriggerHappy</texPath>
+		<points>25</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>OneSolidGardner</defName>
+		<label>One Solid Gardner</label>
+		<description>Have a single pawn sow 10000 plants.</description>
+		
+		<tracker Class="AchievementsExpanded.RecordEventTracker">
+			<def>PlantsSown</def>
+			<count>10000</count>
+		</tracker>
+		
+		<texPath>Achievements/OneSolidGardener</texPath>
+		<points>50</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>LifeSentence</defName>
+		<label>Life Sentence</label>
+		<description>Have a single prisoner for 2 years.</description>
+		
+		<tracker Class="AchievementsExpanded.RecordTimeTracker">
+			<def>TimeAsPrisoner</def>
+			<count>7200000</count>
+		</tracker>
+		
+		<texPath>Achievements/LifeSentence</texPath>
+		<points>25</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>IMightNeedAShrink</defName>
+		<label>I Might Need A Shrink</label>
+		<description>Have a single pawn spend 24 hours total in Mental Breaks.</description>
+		
+		<tracker Class="AchievementsExpanded.RecordTimeTracker">
+			<def>TimeInMentalState</def>
+			<count>60000</count>
+		</tracker>
+		
+		<texPath>Achievements/IMightNeedAShrink</texPath>
+		<points>25</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>DrDolittle</defName>
+		<label>Dr. Dolittle</label>
+		<description>Have a single pawn tame 50 animals.</description>
+		
+		<tracker Class="AchievementsExpanded.RecordEventTracker">
+			<def>AnimalsTamed</def>
+			<count>50</count>
+		</tracker>
+		
+		<texPath>Achievements/DrDolittle</texPath>
+		<points>50</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>ProfessionalStripper</defName>
+		<label>Professional Stripper</label>
+		<description>Have a single pawn strip 100 bodies.</description>
+		
+		<tracker Class="AchievementsExpanded.RecordEventTracker">
+			<def>BodiesStripped</def>
+			<count>100</count>
+		</tracker>
+		
+		<texPath>Achievements/ProfessionalStripper</texPath>
+		<points>25</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>BladeRunner</defName>
+		<label>Blade Runner</label>
+		<description>Have a single pawn kill 50 mechanoids</description>
+		
+		<tracker Class="AchievementsExpanded.RecordEventTracker">
+			<def>KillsMechanoids</def>
+			<count>50</count>
+		</tracker>
+		
+		<texPath>Achievements/BladeRunner</texPath>
+		<points>50</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>3StarMichelin</defName>
+		<label>3 Star Michelin</label>
+		<description>Have a single pawn cook 10000 meals.</description>
+		
+		<tracker Class="AchievementsExpanded.RecordEventTracker">
+			<def>MealsCooked</def>
+			<count>10000</count>
+			<total>true</total>
+		</tracker>
+		
+		<texPath>Achievements/3-StarMichelin</texPath>
+		<points>25</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>ScrubUp</defName>
+		<label>Scrub Up</label>
+		<description>Perform a total of 50 operations.</description>
+		
+		<tracker Class="AchievementsExpanded.RecordEventTracker">
+			<def>OperationsPerformed</def>
+			<count>50</count>
+			<total>true</total>
+		</tracker>
+		
+		<texPath>Achievements/ScrubUp</texPath>
+		<points>25</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>TheRimsBrightest</defName>
+		<label>The Rim's Brightest</label>
+		<description>Spend a total of 2 years researching.</description>
+		
+		<tracker Class="AchievementsExpanded.RecordTimeTracker">
+			<def>TimeResearching</def>
+			<count>7200000</count>
+			<total>true</total>
+		</tracker>
+		
+		<texPath>Achievements/TheRimsBrightest</texPath>
+		<points>25</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>IWishThisWasIkea</defName>
+		<label>I Wish This Was IKEA</label>
+		<description>Construct AND Disassemble a total of 100 structures.</description>
+		
+		<tracker Class="AchievementsExpanded.MultiRecordEventTracker">
+			<defs>
+				<li>
+					<key>ThingsConstructed</key>
+					<value>100</value>
+				</li>
+				<li>
+					<key>ThingsDeconstructed</key>
+					<value>100</value>
+				</li>
+			</defs>
+			<total>true</total>
+		</tracker>
+		
+		<texPath>Achievements/IWishThisWasIkea</texPath>
+		<points>10</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>ImOnFire</defName>
+		<label>I'm On Fire!</label>
+		<description>Have a single pawn spend a total of 3 days on fire.</description>
+		
+		<tracker Class="AchievementsExpanded.RecordTimeTracker">
+			<def>TimeOnFire</def>
+			<count>180000</count>
+		</tracker>
+		
+		<texPath>Achievements/ImOnFire</texPath>
+		<points>100</points>
+	</AchievementsExpanded.AchievementDef>
+</Defs>

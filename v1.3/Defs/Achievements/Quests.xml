@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<AchievementsExpanded.AchievementDef>
+		<defName>mercenary</defName>
+		<label>Mercenary</label>
+		<description>Complete any 5 quests</description>
+		
+		<tracker Class="AchievementsExpanded.QuestTracker">
+			<count>5</count>
+			<outcome>Success</outcome>
+		</tracker>
+		
+		<texPath>Achievements/Mercenary</texPath>
+		<points>10</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>ambassadorOfPeace</defName>
+		<label>Ambassador Of Peace</label>
+		<description>Complete 3 PeaceTalks quests</description>
+		
+		<tracker Class="AchievementsExpanded.QuestTracker">
+			<def>OpportunitySite_PeaceTalks</def>
+			<outcome>Success</outcome>
+			<count>3</count>
+		</tracker>
+		
+		<texPath>Achievements/AmbassadorOfPeace</texPath>
+		<points>25</points>
+	</AchievementsExpanded.AchievementDef>
+</Defs>

@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<AchievementsExpanded.AchievementDef>
+		<defName>iWillSurvive</defName>
+		<label>I Will Survive</label>
+		<description>Have 7 colonists</description>
+		<order>1</order>
+		<tracker Class="AchievementsExpanded.RaceDefTracker">
+			<raceDefs>
+				<li>
+					<key>Human</key>
+					<value>7</value>
+				</li>
+			</raceDefs>
+		</tracker>
+		
+		<texPath>Achievements/IWillSurvive</texPath>
+		<points>5</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>imStillStanding</defName>
+		<label>I'm Still Standing</label>
+		<description>Have 12 colonists</description>
+		<order>2</order>
+		<tracker Class="AchievementsExpanded.RaceDefTracker">
+			<raceDefs>
+				<li>
+					<key>Human</key>
+					<value>12</value>
+				</li>
+			</raceDefs>
+		</tracker>
+		
+		<texPath>Achievements/ImStillStanding</texPath>
+		<points>10</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>imASurvivor</defName>
+		<label>I'm a Survivor</label>
+		<description>Have 18 colonists</description>
+		<order>3</order>
+		<tracker Class="AchievementsExpanded.RaceDefTracker">
+			<raceDefs>
+				<li>
+					<key>Human</key>
+					<value>18</value>
+				</li>
+			</raceDefs>
+		</tracker>
+		
+		<texPath>Achievements/ImASurvivor</texPath>
+		<points>25</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>aintNoStoppingUsNow</defName>
+		<label>Ain't no Stopping us Now</label>
+		<description>Have 33 colonists</description>
+		<order>4</order>
+		<tracker Class="AchievementsExpanded.RaceDefTracker">
+			<raceDefs>
+				<li>
+					<key>Human</key>
+					<value>33</value>
+				</li>
+			</raceDefs>
+		</tracker>
+		
+		<texPath>Achievements/AintNoStoppingUsNow</texPath>
+		<points>50</points>
+	</AchievementsExpanded.AchievementDef>
+</Defs>

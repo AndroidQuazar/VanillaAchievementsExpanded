@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<AchievementsExpanded.AchievementDef>
+		<defName>comfierThanUsual</defName>
+		<label>Comfier Than Usual</label>
+		<description>Construct a human leather armchair</description>
+		
+		<tracker Class="AchievementsExpanded.BuildingTracker">
+			<def>Armchair</def>
+			<madeFrom>Leather_Human</madeFrom>
+			<count>1</count>
+		</tracker>
+		
+		<texPath>Achievements/ComfierThanUsual</texPath>
+		<points>10</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>theArchitect</defName>
+		<label>The Architect</label>
+		<description>Build 1000 Walls</description>
+		
+		<tracker Class="AchievementsExpanded.BuildingTracker">
+			<def>Wall</def>
+			<count>1000</count>
+		</tracker>
+		
+		<texPath>Achievements/TheArchitect</texPath>
+		<points>10</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>buildingTheSkynet</defName>
+		<label>Building the Skynet</label>
+		<description>Construct 30 mini-turrets</description>
+		
+		<tracker Class="AchievementsExpanded.BuildingTracker">
+			<def>Turret_MiniTurret</def>
+			<count>30</count>
+		</tracker>
+		
+		<texPath>Achievements/BuildingTheSkynet</texPath>
+		<points>25</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>itAintRocketScience</defName>
+		<label>It Ain't Rocket Science</label>
+		<description>Build a spaceship</description>
+		
+		<tracker Class="AchievementsExpanded.ShipBuildingTracker"/>
+		
+		<texPath>Achievements/ItAintRocketScience</texPath>
+		<points>50</points>
+	</AchievementsExpanded.AchievementDef>
+</Defs>

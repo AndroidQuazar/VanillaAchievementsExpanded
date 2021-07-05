@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<AchievementsExpanded.AchievementDef>
+		<defName>cheaterCheater</defName>
+		<label>Cheater, Cheater!</label>
+		<description>Enable development mode</description>
+		
+		<tracker Class="AchievementsExpanded.DevModeTracker">
+			<value>true</value>
+		</tracker>
+		
+		<texPath>Achievements/CheaterCheater</texPath>
+		<points>75</points>
+	</AchievementsExpanded.AchievementDef>
+</Defs>

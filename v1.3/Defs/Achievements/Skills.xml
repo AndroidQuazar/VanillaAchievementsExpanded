@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<AchievementsExpanded.AchievementDef>
+		<defName>sharpshooter</defName>
+		<label>Sharpshooter</label>
+		<description>Have a colonist reach level 20 in shooting</description>
+		
+		<tracker Class="AchievementsExpanded.SkillTracker">
+			<def>Shooting</def>
+			<level>20</level>
+		</tracker>
+		
+		<texPath>Achievements/Sharpshooter</texPath>
+		<points>50</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>mrPresident</defName>
+		<label>Mr. President</label>
+		<description>Have a colonist reach level 20 in Social</description>
+		
+		<tracker Class="AchievementsExpanded.SkillTracker">
+			<def>Social</def>
+			<level>20</level>
+		</tracker>
+		
+		<texPath>Achievements/MrPresident</texPath>
+		<points>50</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>conanTheBarbarian</defName>
+		<label>Conan The Barbarian</label>
+		<description>Have a colonist reach level 20 in Melee</description>
+		
+		<tracker Class="AchievementsExpanded.SkillTracker">
+			<def>Melee</def>
+			<level>20</level>
+		</tracker>
+		
+		<texPath>Achievements/ConanTheBarbarian</texPath>
+		<points>50</points>
+	</AchievementsExpanded.AchievementDef>
+</Defs>

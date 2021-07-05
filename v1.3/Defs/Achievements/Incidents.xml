@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<AchievementsExpanded.AchievementDef>
+		<defName>thisIsWhereTheFunBegins</defName>
+		<label>This Is Where The Fun Begins</label>
+		<description>Get raided for the first time</description>
+		
+		<tracker Class="AchievementsExpanded.IncidentTracker">
+			<def>RaidEnemy</def>
+			<count>1</count>
+		</tracker>
+		
+		<texPath>Achievements/ThisIsWhereTheFunBegins</texPath>
+		<points>5</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>showMustGoOn</defName>
+		<label>Show Must Go On</label>
+		<description>Have a man in black join your colony</description>
+		
+		<tracker Class="AchievementsExpanded.IncidentTracker">
+			<def>StrangerInBlackJoin</def>
+			<count>1</count>
+		</tracker>
+		
+		<texPath>Achievements/ShowMustGoOn</texPath>
+		<points>25</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>brrr</defName>
+		<label>Brrr</label>
+		<description>Have a coldsnap happen in winter</description>
+		
+		<tracker Class="AchievementsExpanded.IncidentSeasonalTracker">
+			<def>ColdSnap</def>
+			<count>1</count>
+			<allowedSeasons>
+				<li>Winter</li>
+				<li>PermanentWinter</li>
+			</allowedSeasons>
+		</tracker>
+		
+		<texPath>Achievements/Brrr</texPath>
+		<points>25</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>phew</defName>
+		<label>Phew</label>
+		<description>Have a heatwave happen in summer</description>
+		
+		<tracker Class="AchievementsExpanded.IncidentSeasonalTracker">
+			<def>HeatWave</def>
+			<count>1</count>
+			<allowedSeasons>
+				<li>Summer</li>
+				<li>PermanentSummer</li>
+			</allowedSeasons>
+		</tracker>
+		
+		<texPath>Achievements/Phew</texPath>
+		<points>25</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>outOfTheFryingPan</defName>
+		<label>Out Of The Frying Pan</label>
+		<description>Have a colonist develop a bond with a pig</description>
+		
+		<tracker Class="AchievementsExpanded.AnimalBondedTracker">
+			<kindDef>Pig</kindDef>
+			<count>1</count>
+		</tracker>
+		
+		<texPath>Achievements/OutOfTheFryingPan</texPath>
+		<points>25</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>intoTheFire</defName>
+		<label>Into The Fire</label>
+		<description>Have a bonded pig die on fire</description>
+		
+		<tracker Class="AchievementsExpanded.BondedAnimalOnFireKillTracker">
+			<kindDef>Pig</kindDef>
+			<factionDefs>
+				<li>PlayerColony</li>
+				<li>PlayerTribe</li>
+			</factionDefs>
+			<count>1</count>
+		</tracker>
+		
+		<texPath>Achievements/IntoTheFire</texPath>
+		<points>50</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<!-- Different Tracker? -->
+	<AchievementsExpanded.AchievementDef>
+		<defName>blitzkrieg</defName>
+		<label>Blitzkrieg</label>
+		<description>Destroy 5 faction bases</description>
+		
+		<tracker Class="AchievementsExpanded.SettlementDefeatTracker">
+			<count>5</count>
+		</tracker>
+		
+		<texPath>Achievements/Blitzkrieg</texPath>
+		<points>75</points>
+	</AchievementsExpanded.AchievementDef>
+</Defs>

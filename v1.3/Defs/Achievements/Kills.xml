@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<AchievementsExpanded.AchievementDef>
+		<defName>firstBlood</defName>
+		<label>First Blood</label>
+		<description>Kill another pawn</description>
+		
+		<tracker Class="AchievementsExpanded.KillTracker">
+			<raceDef>Human</raceDef>
+			<count>1</count>
+			<instigatorFactionDefs>
+				<li>PlayerColony</li>
+				<li>PlayerTribe</li>
+			</instigatorFactionDefs>
+		</tracker>
+		
+		<texPath>Achievements/FirstBlood</texPath>
+		<points>5</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>bloodlust</defName>
+		<label>Bloodlust</label>
+		<description>Kill 100 humanlikes in total</description>
+		
+		<tracker Class="AchievementsExpanded.KillTracker">
+			<raceDef>Human</raceDef>
+			<count>100</count>
+		</tracker>
+		
+		<texPath>Achievements/Bloodlust</texPath>
+		<points>10</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>bloodForTheBloodGod</defName>
+		<label>Blood For The Blood God</label>
+		<description>Kill 1000 humanlikes in total</description>
+		
+		<tracker Class="AchievementsExpanded.KillTracker">
+			<raceDef>Human</raceDef>
+			<count>1000</count>
+		</tracker>
+		
+		<texPath>Achievements/BloodForTheBloodGod</texPath>
+		<points>50</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>bigGameHunter</defName>
+		<label>Big Game Hunter</label>
+		<description>Hunt and kill 20 Thrumbos</description>
+		
+		<tracker Class="AchievementsExpanded.KillTracker">
+			<kindDef>Thrumbo</kindDef>
+			<count>20</count>
+		</tracker>
+		
+		<texPath>Achievements/BigGameHunter</texPath>
+		<points>50</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>exterminator</defName>
+		<label>Exterminator</label>
+		<description>Kill 150 Insectoids</description>
+		
+		<tracker Class="AchievementsExpanded.KillTracker">
+			<factionDefs>
+				<li>Insect</li>
+			</factionDefs>
+			<count>150</count>
+		</tracker>
+		
+		<texPath>Achievements/Exterminator</texPath>
+		<points>25</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>dragonSlayer</defName>
+		<label>Dragon Slayer</label>
+		<description>Kill 50 Iguanas</description>
+		
+		<tracker Class="AchievementsExpanded.KillTracker">
+			<kindDef>Iguana</kindDef>
+			<count>50</count>
+		</tracker>
+		
+		<texPath>Achievements/DragonSlayer</texPath>
+		<points>25</points>
+	</AchievementsExpanded.AchievementDef>
+	
+	<AchievementsExpanded.AchievementDef>
+		<defName>australianRevenge</defName>
+		<label>Australian Revenge</label>
+		<description>Kill 30 Emus</description>
+		
+		<tracker Class="AchievementsExpanded.KillTracker">
+			<kindDef>Emu</kindDef>
+			<count>30</count>
+		</tracker>
+		
+		<texPath>Achievements/AustralianRevenge</texPath>
+		<points>25</points>
+	</AchievementsExpanded.AchievementDef>
+</Defs>
