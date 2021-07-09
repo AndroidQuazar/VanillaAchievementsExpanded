@@ -67,6 +67,10 @@ namespace AchievementsExpanded
 			{
 				return false;
 			}
+			if (pawn.Faction != Faction.OfPlayerSilentFail)
+			{
+				return false;
+			}
 			if (total)
 			{
 				triggeredCount = 0;

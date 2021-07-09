@@ -113,7 +113,7 @@
 	</AchievementsExpanded.AchievementDef>
 	
 	<AchievementsExpanded.AchievementDef>
-		<defName>3StarMichelin</defName>
+		<defName>ThreeStarMichelin</defName>
 		<label>3 Star Michelin</label>
 		<description>Have a single pawn cook 10000 meals.</description>
 		

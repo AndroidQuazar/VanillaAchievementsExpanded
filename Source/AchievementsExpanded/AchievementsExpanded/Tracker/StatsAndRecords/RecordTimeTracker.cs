@@ -59,6 +59,10 @@ namespace AchievementsExpanded
 		public override bool Trigger(RecordDef record, Pawn pawn, float next)
 		{
 			base.Trigger(record, pawn);
+			if (pawn.Faction != Faction.OfPlayerSilentFail)
+			{
+				return false;
+			}
 			if (total)
 			{
 				float value = next;
