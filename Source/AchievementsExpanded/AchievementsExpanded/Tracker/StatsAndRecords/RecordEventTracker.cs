@@ -67,7 +67,7 @@ namespace AchievementsExpanded
 			{
 				return false;
 			}
-			if (pawn.Faction != Faction.OfPlayerSilentFail)
+			if (pawn?.Faction != Faction.OfPlayerSilentFail)
 			{
 				return false;
 			}

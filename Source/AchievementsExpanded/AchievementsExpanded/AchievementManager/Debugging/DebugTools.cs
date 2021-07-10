@@ -12,7 +12,7 @@ namespace AchievementsExpanded
 	{
 		internal const string VAEDebugCategory = "Vanilla Achievements Expanded";
 
-		[AchievementDebugAction(VAEDebugCategory, null)]
+		[AchievementDebugAction(category = VAEDebugCategory)]
 		private static void UnlockAchievement()
 		{
 			List<DebugMenuOption> list = new List<DebugMenuOption>();
@@ -34,7 +34,7 @@ namespace AchievementsExpanded
 			}
 		}
 
-		[AchievementDebugAction(VAEDebugCategory, null)]
+		[AchievementDebugAction(VAEDebugCategory)]
 		private static void LockAchievement()
 		{
 			List<DebugMenuOption> list = new List<DebugMenuOption>();
@@ -56,7 +56,7 @@ namespace AchievementsExpanded
 			}
 		}
 
-		[AchievementDebugAction(VAEDebugCategory, null)]
+		[AchievementDebugAction(VAEDebugCategory)]
 		private static void RegenerateAchievement()
 		{
 			List<DebugMenuOption> list = new List<DebugMenuOption>();
@@ -78,7 +78,7 @@ namespace AchievementsExpanded
 			}
 		}
 
-		[AchievementDebugAction(VAEDebugCategory, null)]
+		[AchievementDebugAction(VAEDebugCategory)]
 		private static void UnlockAllAchievements()
 		{
 			foreach (AchievementCard card in AchievementPointManager.AchievementList)
@@ -87,7 +87,7 @@ namespace AchievementsExpanded
 			}
 		}
 
-		[AchievementDebugAction(VAEDebugCategory, null)]
+		[AchievementDebugAction(VAEDebugCategory)]
 		private static void LockAllAchievements()
 		{
 			foreach (AchievementCard card in AchievementPointManager.AchievementList)
@@ -98,13 +98,13 @@ namespace AchievementsExpanded
 			Current.Game.GetComponent<AchievementPointManager>().ResetPoints();
 		}
 
-		[AchievementDebugAction(VAEDebugCategory, null)]
+		[AchievementDebugAction(VAEDebugCategory)]
 		private static void RegenerateAllAchievements()
 		{
 			Current.Game.GetComponent<AchievementPointManager>().HardReset();
 		}
 
-		[AchievementDebugAction(VAEDebugCategory, null)]
+		[AchievementDebugAction(VAEDebugCategory)]
 		private static void OutputAchievementList()
 		{
 			DebugWriter.Log("---- ACHIEVEMENT CARD LIST ----");
@@ -125,7 +125,7 @@ namespace AchievementsExpanded
 			Log.Message("--------------------------");
 		}
 
-		[AchievementDebugAction(VAEDebugCategory, null)]
+		[AchievementDebugAction(VAEDebugCategory)]
 		private static void OutputAchievementKey()
 		{
 			List<DebugMenuOption> list = new List<DebugMenuOption>();
@@ -153,7 +153,7 @@ namespace AchievementsExpanded
 			}
 		}
 
-		[AchievementDebugAction(VAEDebugCategory, null)]
+		[AchievementDebugAction(VAEDebugCategory)]
 		private static void OutputAchievementTickerCards()
 		{
 			DebugWriter.Log("---- ACHIEVEMENT TICKER CARDS ----");
@@ -174,7 +174,7 @@ namespace AchievementsExpanded
 			Log.Message("--------------------------");
 		}
 
-		[AchievementDebugAction(VAEDebugCategory, null)]
+		[AchievementDebugAction(VAEDebugCategory)]
 		private static void WriteToFile()
 		{
 			DebugWriter.PushToFile();
