@@ -67,7 +67,7 @@ namespace AchievementsExpanded
 			RootDir = ModLister.GetModWithIdentifier(AchievementHarmony.modIdentifier)?.RootDir.ToString();
 			if (string.IsNullOrEmpty(RootDir))
 			{
-				Verse.Log.Message($"[{AchievementPointManager.AchievementTag}] Disabling DebugWriter. Vanilla Achievements Expanded mod not found in mod list.");
+				Verse.Log.Message($"{AchievementPointManager.AchievementTag} Disabling DebugWriter. Vanilla Achievements Expanded mod not found in mod list.");
 				writerDisabled = true;
 				return;
 			}
@@ -98,7 +98,7 @@ namespace AchievementsExpanded
 		{
 			if (writerDisabled)
 			{
-				Verse.Log.Warning($"[{AchievementPointManager.AchievementTag}] Cannot push to file. DebugWriter is disabled. Vanilla Achievements Expanded must be downloaded and in the mod list in order to use this feature.");
+				Verse.Log.Warning($"{AchievementPointManager.AchievementTag} Cannot push to file. DebugWriter is disabled. Vanilla Achievements Expanded must be downloaded and in the mod list in order to use this feature.");
 				Verse.Log.TryOpenLogWindow();
 				return;
 			}

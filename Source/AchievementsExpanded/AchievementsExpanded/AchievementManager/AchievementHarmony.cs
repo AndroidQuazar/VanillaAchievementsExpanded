@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Reflection.Emit;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -18,13 +18,27 @@ namespace AchievementsExpanded
 		internal static string modIdentifier = "vanillaexpanded.achievements";
 		internal static Dictionary<MethodInfo, HashSet<MethodInfo>> hookToPatchMap = new Dictionary<MethodInfo, HashSet<MethodInfo>>();
 
+		internal static ModMetaData AchievementsMMD;
+
+		public static string CurrentVersion { get; private set; }
+
+		internal static string VersionDir => Path.Combine(AchievementsMMD.RootDir.FullName, "Version.txt");
+
 		static AchievementHarmony()
 		{
+			AchievementsMMD = ModLister.GetActiveModWithIdentifier(modIdentifier);
+
+			Version version = Assembly.GetExecutingAssembly().GetName().Version;
+			CurrentVersion = $"{version.Major}.{version.Minor}.{version.Build}";
+			Log.Message($"{AchievementPointManager.AchievementTag} version {CurrentVersion}");
+
 			AchievementPointManager.OnStartUp();
 			var harmony = new Harmony(modIdentifier);
 
 			if (UtilityMethods.BaseModActive)
 			{
+				File.WriteAllText(VersionDir, CurrentVersion);
+
 				harmony.PatchAll();
 				/// <summary>
 				/// Automated Patches by allowing user to specify MethodInfo. 

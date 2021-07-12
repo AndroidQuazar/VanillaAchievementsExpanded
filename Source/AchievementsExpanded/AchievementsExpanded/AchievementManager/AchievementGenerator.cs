@@ -59,7 +59,7 @@ namespace AchievementsExpanded
 				}
 				else if (card.tracker is null || card.def is null)
 				{
-					Log.Warning($"[{AchievementPointManager.AchievementTag}] Corrupted AchievementCard detected. " +
+					Log.Warning($"{AchievementPointManager.AchievementTag} Corrupted AchievementCard detected. " +
 						$"Regenerating {card?.GetUniqueLoadID() ?? "[Null Card]"}. Your current progress for it will be lost but it will remain unlocked if already completed.\n " +
 						$"If the problem persists, consider manually resetting {card.def?.defName ?? "[Null Def]"} through the DebugTools or reporting on the Steam Workshop.");
 					achievementCards.Remove(card);
@@ -71,7 +71,7 @@ namespace AchievementsExpanded
 				defCount++;
 			}
 			if(debugOutput)
-				Log.Message($"[{AchievementPointManager.AchievementTag}] {count}/{defCount} achievements generated.");
+				Log.Message($"{AchievementPointManager.AchievementTag} {count}/{defCount} achievements generated.");
 			return newlyAdded;
 		}
 

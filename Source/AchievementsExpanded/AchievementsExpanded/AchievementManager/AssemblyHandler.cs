@@ -28,14 +28,8 @@ namespace AchievementsExpanded
 		{
 			if (UtilityMethods.BaseModActive)
 			{
-				Log.Message($"[{AchievementPointManager.AchievementTag}] Removing duplicate Def Types.");
 				CheckAchievementVersions();
 			}
-			else
-			{
-				Log.Message($"[{AchievementPointManager.AchievementTag}] Mod is not in active mod list. The base mod must be included in order to generate achievements.");
-			}
-
 			achievementDefTypes = new HashSet<Type>();
 			harmony.Patch(original: AccessTools.Method(typeof(GenDefDatabase), nameof(GenDefDatabase.AllDefTypesWithDatabases)),
 				postfix: new HarmonyMethod(typeof(AssemblyHandler),

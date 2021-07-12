@@ -9,7 +9,7 @@ namespace AchievementsExpanded
 {
 	public class AchievementPointManager : GameComponent
 	{
-		internal const string AchievementTag = "VanillaAchievementsExpanded";
+		internal const string AchievementTag = "[VanillaAchievementsExpanded]";
 
 		public int availablePoints;
 		public int totalEarnedPoints;

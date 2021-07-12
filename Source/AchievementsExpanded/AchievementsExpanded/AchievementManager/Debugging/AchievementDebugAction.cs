@@ -11,7 +11,7 @@ namespace AchievementsExpanded
 	{
 		public bool requireBaseMod;
 
-		public AchievementDebugAction(string category = null, string name = null, bool requireBaseMod = true) : base(category, name)
+		public AchievementDebugAction(string category = null, string name = null, bool requireBaseMod = true, bool requiresRoyalty = false, bool requiresIdeology = false) : base(category, name, requiresRoyalty, requiresIdeology)
 		{
 			this.requireBaseMod = requireBaseMod;
 		}
