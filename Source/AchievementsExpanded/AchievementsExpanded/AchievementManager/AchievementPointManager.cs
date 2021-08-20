@@ -152,16 +152,19 @@ namespace AchievementsExpanded
 
 		public static HashSet<AchievementCard> GetCards<T>(bool locked = true)
 		{
-			if (achievementLookup.TryGetValue(GetTrackerKey<T>(), out var hashset))
+			lock (achievementLookup)
 			{
+				if (achievementLookup.TryGetValue(GetTrackerKey<T>(), out var hashset))
+				{
+					if (locked)
+						return hashset.Where(c => !c.unlocked).ToHashSet();
+					return hashset;
+				}
+				achievementLookup.Add(GetTrackerKey<T>(), AchievementList.Where(c => c.tracker.Key == GetTrackerKey<T>()).ToHashSet());
 				if (locked)
-					return hashset.Where(c => !c.unlocked).ToHashSet();
-				return hashset;
+					return achievementLookup[GetTrackerKey<T>()].Where(c => !c.unlocked).ToHashSet();
+				return achievementLookup[GetTrackerKey<T>()];
 			}
-			achievementLookup.Add(GetTrackerKey<T>(), AchievementList.Where(c => c.tracker.Key == GetTrackerKey<T>()).ToHashSet());
-			if (locked)
-				return achievementLookup[GetTrackerKey<T>()].Where(c => !c.unlocked).ToHashSet();
-			return achievementLookup[GetTrackerKey<T>()];
 		}
 
 		public static string GetTrackerKey<T>()
@@ -173,7 +176,7 @@ namespace AchievementsExpanded
 			var check = typeof(T).IsAbstract ?
 				TrackersGenerated.FirstOrDefault(t => t.GetType().IsSubclassOf(typeof(T)))
 				: TrackersGenerated.FirstOrDefault(t => t.GetType() == typeof(T));
-			typeToKey.Add(typeof(T), check.Key);
+			typeToKey[typeof(T)] = check.Key;
 			return typeToKey[typeof(T)];
 		}
 
