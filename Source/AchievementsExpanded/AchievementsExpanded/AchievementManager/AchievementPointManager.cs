@@ -152,19 +152,22 @@ namespace AchievementsExpanded
 
 		public static HashSet<AchievementCard> GetCards<T>(bool locked = true)
 		{
-			if (achievementLookup.TryGetValue(GetTrackerKey<T>(), out var hashset))
+			lock(typeToKey)//required.
 			{
+				if (achievementLookup.TryGetValue(GetTrackerKey<T>(), out var hashset))
+				{
+					if (locked)
+						return hashset.Where(c => !c.unlocked).ToHashSet();
+					return hashset;
+				}
+				achievementLookup.Add(GetTrackerKey<T>(), AchievementList.Where(c => c.tracker.Key == GetTrackerKey<T>()).ToHashSet());
 				if (locked)
-					return hashset.Where(c => !c.unlocked).ToHashSet();
-				return hashset;
+					return achievementLookup[GetTrackerKey<T>()].Where(c => !c.unlocked).ToHashSet();
+				return achievementLookup[GetTrackerKey<T>()];
 			}
-			achievementLookup.Add(GetTrackerKey<T>(), AchievementList.Where(c => c.tracker.Key == GetTrackerKey<T>()).ToHashSet());
-			if (locked)
-				return achievementLookup[GetTrackerKey<T>()].Where(c => !c.unlocked).ToHashSet();
-			return achievementLookup[GetTrackerKey<T>()];
 		}
 
-		public static string GetTrackerKey<T>()
+		public static string GetTrackerKey<T>()//A note about this method. It could be needed to be locked for RT compat. I do not belive it is. But in case in the future people report incompatibility this is the cause
 		{
 			if (typeToKey.TryGetValue(typeof(T), out string key))
 			{
@@ -173,7 +176,7 @@ namespace AchievementsExpanded
 			var check = typeof(T).IsAbstract ?
 				TrackersGenerated.FirstOrDefault(t => t.GetType().IsSubclassOf(typeof(T)))
 				: TrackersGenerated.FirstOrDefault(t => t.GetType() == typeof(T));
-			typeToKey.Add(typeof(T), check.Key);
+			typeToKey[typeof(T)] = check.Key//does not generate exceptions in multi threading.
 			return typeToKey[typeof(T)];
 		}
 
