@@ -49,7 +49,7 @@ namespace AchievementsExpanded
 				else if (reward.def.stackLimit > 1)
 				{
 					int stackLimit = Mathf.Clamp(reward.def.stackLimit, 1, 500);
-					stackCount = Rand.Range(stackLimit / 4, stackLimit);
+					stackCount = Rand.Range(Math.Max(1, stackLimit / 4), stackLimit);
 					float itemValue = reward.def.BaseMarketValue;
 					if (itemValue >= 2000)
 					{
